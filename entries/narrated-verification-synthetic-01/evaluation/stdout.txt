@@ -1,8 +1,9 @@
-ABSTAIN (UNVERIFIED) run-90ccfbdd98889d7d: 2/2 required checks executed, 9 rows examined, 1/1 inputs opened
+ABSTAIN (UNVERIFIED) run-90ccfbdd98889d7d: 2/2 required checks executed, 4 rows examined, 1/1 inputs opened
 <tmp>/run\run.json
 <tmp>/run\report.md
 <tmp>/run\ledger.jsonl
 <tmp>/run\evidence-manifest.json
 <tmp>/run\receipt.json
+<tmp>/run\receipt.auth.json
 <tmp>/run\results.sarif
 <tmp>/run\report.html

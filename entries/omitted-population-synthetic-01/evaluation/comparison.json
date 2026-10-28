@@ -1,5 +1,5 @@
 {
-  "all_match": true,
+  "all_match": false,
   "fields": [
     {
       "field": "status",
@@ -31,6 +31,7 @@
         "SOURCE_MISMATCH"
       ],
       "actual": [
+        "BLIND_SPOT",
         "SOURCE_MISMATCH"
       ],
       "match": true
@@ -38,10 +39,12 @@
     {
       "field": "failure_modes",
       "expected": [
-        "OMITTED_POPULATION"
+        "OMITTED_POPULATION",
+        "VACUOUS_PASS"
       ],
       "actual": [
-        "OMITTED_POPULATION"
+        "OMITTED_POPULATION",
+        "VACUOUS_PASS"
       ],
       "match": true
     },
@@ -58,7 +61,7 @@
       "match": true
     },
     {
-      "field": "must_mention: `snapshot`: snapshot_completeness FAIL (SOURCE_MISMATCH), rows examined 5; input 'specimens': 1 accepted row(s) were deleted",
+      "field": "must_mention: `snapshot`: snapshot_completeness FAIL (SOURCE_MISMATCH), subject records examined 5; input 'specimens': 1 accepted row(s) were deleted",
       "expected": true,
       "actual": true,
       "match": true
@@ -96,8 +99,8 @@
     {
       "field": "checks.rows.verdict",
       "expected": "PASS",
-      "actual": "PASS",
-      "match": true
+      "actual": "ABSTAIN",
+      "match": false
     },
     {
       "field": "checks.rows.execution_state",
@@ -244,14 +247,17 @@
       "match": true
     }
   ],
-  "mismatches": [],
+  "mismatches": [
+    "checks.rows.verdict"
+  ],
   "entry_id": "omitted-population-synthetic-01",
-  "expected_results_sha256": "f4c370c73abd009dff1996e5b338a3b386466c2a972123ab0ba9f0fa1b39a6bc",
+  "expected_results_sha256": "9d6975613ff9346d34af160df6b199a0043c394acf1cea06c9da50f14b8382cf",
   "compared_against": "evaluation/run.json, evaluation/report.md, receipts/receipt.json and the process exit code of the recorded run",
   "determinism": {
     "second_run_byte_identical": {
       "evidence-manifest.json": true,
       "ledger.jsonl": true,
+      "receipt.auth.json": true,
       "receipt.json": true,
       "report.html": true,
       "report.md": true,
@@ -259,7 +265,7 @@
       "run.json": true
     },
     "all_identical": true,
-    "note": "Two runs into different temp directories, same fixed time."
+    "note": "Two runs into different temp directories, same fixed time; the second with PYTHONHASHSEED=4242."
   },
   "reverification": {
     "command": "python -m science_gate.cli report <tmp>/run",
@@ -267,10 +273,21 @@
     "headline": "FAIL (SOURCE_MISMATCH) run-904472dc8e8d38f7: recorded run re-verified",
     "matches_verify_exit_code": true
   },
+  "receipt_verification": {
+    "ok": true,
+    "content_intact": true,
+    "recomputed_sha256": "455ee96f5c1d73dc620e1515510d968cd40d10ca108f4d51acc7d82940533446",
+    "signature_state": "UNSIGNED",
+    "signature_verified": null,
+    "auth_status": "UNSIGNED",
+    "run_id": "run-904472dc8e8d38f7",
+    "problems": [],
+    "detail": "no key when written: SCIENCE_GATE_HMAC_KEY_FILE is not set; only the content hash was checked"
+  },
   "seg_state_changed_during_runs": false,
   "does_not_prove": "A match shows conformance on declared fixtures only. It does not establish scientific validity or fitness for use.",
   "observations": [
-    "Observation, not a gap for this category: report.md prints 'Rows examined in scope: N' (rows counted once) next to the invariant detail 'pass_requires_examined_rows: rows_examined=M', where M sums rows over every CHECKED check and so counts the same rows several times. The two figures share the name rows_examined but measure different things. The expected results pin neither."
+    "Observation, settled at this commit: the 0.1.0 reports printed 'Rows examined in scope: N' next to an invariant detail 'rows_examined=M' that summed rows over every CHECKED check (two quantities, one name). Under ARCHITECTURE.md 17.7 (G1) report.md names the run figure once, as 'rows_examined: N (distinct data rows of declared inputs read by an executed check)', and each check line gives its own 'subject records examined'. The expected results pin no run-level figure; a must_mention line that quotes a check line uses the 'subject records examined' wording."
   ],
-  "control": "see control.json: a temp copy with only the defect undone returned PASS, exit 0, VERIFIED"
+  "control": "see control.json: a temp copy with only the defect undone did NOT return PASS; it returned ABSTAIN, exit 2, BLIND_SPOT (the OBSERVED-only row count cannot be witnessed; D2, 17.5)"
 }

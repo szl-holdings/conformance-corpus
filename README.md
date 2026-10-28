@@ -216,3 +216,167 @@ entries/<entry-id>/
     beside a contract line `rows_examined=M`, which counts rows once per
     check. These are two quantities with one name. No expected result pins
     either of them.
+
+## Refresh (2026-10-28)
+
+This section records the refresh asked for under "Refresh before publication".
+The notes above are kept as they were written; where they disagree with this
+section, this section describes the current files.
+
+- **Against what.** scientific-evidence-gate 0.1.0 at commit
+  `e563fd301d71ea409ad9884a571fe1df8f23a367`, with a clean worktree
+  (`git status --porcelain` empty before and after every run), CPython
+  3.11.9, `SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z`, no HMAC key and no
+  network. The source digest is `2dc76fa869bd8304...`, the digest
+  `tests/test_corpus.py` prints.
+- **What was regenerated, for all 12 entries.**
+  - Every `evaluation/` record, with the file names and shapes it had. The
+    comparison records now also carry the receipt re-check, and the
+    repaired-fixture controls record every changed file exactly
+    (`repaired_fixture`, with content and SHA-256). coverage-debt's control
+    now records its exact event.
+  - Every `receipts/receipt.json`, still UNSIGNED, with
+    `scientific_validity` `NOT ESTABLISHED`.
+  - Every `environment.lock`, in one format
+    (`conformance-corpus-environment-lock/v1`): the same keys in every entry,
+    and one source-digest method.
+- **Determinism.** Each entry was run twice, the second time with
+  `PYTHONHASHSEED=4242` into another temp directory, and every run file was
+  byte-identical. The whole regeneration then ran twice into two staging
+  trees, and all 112 kept files were byte-identical before one tree was
+  copied into the entries. No run changed a file in its entry.
+- **Receipt form.** Since section 17 (decision D9), a run writes a bare
+  statement `receipt.json` plus a sidecar `receipt.auth.json`.
+  `tests/test_corpus.py` still asserts the 0.1.0 envelope (`signature_state`,
+  `signature` and `body` in one file). Each entry therefore keeps the gate's
+  receipt record, the `{body, content_sha256, signature_state, signature,
+  key_id, detail}` object that `receipts.build_run_receipt` returns.
+  `receipts.receipt_files(record)` rebuilds both run files byte for byte.
+  `verify_receipt` reads only the two-file form, so given the record it
+  reports `LEGACY_ENVELOPE`. Each `receipts/README.md` says so.
+
+### Intended-outcome changes
+
+Only one intended outcome changed. One documented gap was closed.
+
+| entry | old intended outcome | new intended outcome | authority |
+|---|---|---|---|
+| coverage-debt-synthetic-01 | ABSTAIN / 2 / INSUFFICIENT_EVIDENCE, `[PARTIAL_EXECUTION]` | ABSTAIN / 2 / OUT_OF_SCOPE, `[]` | science-gate `docs/ARCHITECTURE.md` 17.7, G2: "coverage-debt (a required check NOT_APPLICABLE as NOT_DECLARED) is ABSTAIN / OUT_OF_SCOPE" |
+| vacuous-pass-synthetic-01 | unchanged: ABSTAIN / 2 / INSUFFICIENT_EVIDENCE, `[VACUOUS_PASS]` | unchanged (the G2 target) | 17.7 G1 and G2 resolved both documented gaps |
+
+- **coverage-debt.** The fixture now declares no `time_sources`, so the
+  required `time_window` check is NOT_APPLICABLE as NOT_DECLARED.
+  `fixtures/time/events.json` was removed. `must_mention`,
+  `reasons_include`, `must_not_mention` (now also `PARTIAL_EXECUTION`), the
+  check table and the notes follow. `expected-results.json` `rebaseline`
+  keeps the old values.
+- **vacuous-pass.** Its two `known_failures` (an extra PARTIAL_EXECUTION,
+  and no `rows_examined` in report.md) were removed, together with their
+  two `DOCUMENTED_GAPS` rows in `tests/test_corpus.py`. The tool now behaves
+  as intended. No other line of the test file changed.
+
+### Fixture repairs (intended outcome unchanged)
+
+- **citation-metadata-mismatch.** `frozen.json` gained a canary record for
+  prefix 10.5555 (17.14).
+- **ephemeral-claim.** The claims check declares `coverage_floor` `"0.5"`
+  (17.11). Otherwise CLM-02's own number was counted again as
+  OMITTED_POPULATION. Declaring it in `not_claims` was rejected, because it
+  is a registered claim. A reviewer may prefer the default floor and an
+  intended `[EPHEMERAL_CLAIM, OMITTED_POPULATION]`.
+- **verifier-blind-spot.** The row_count check was removed (17.5). With no
+  INDEPENDENT count it had no falsifier case, so it abstained and the
+  accepting baseline was invalid.
+
+### Left open (no intended outcome edited)
+
+`known_failures` and `unresolved_cases` in each entry give the evidence. No
+`DOCUMENTED_GAPS` row was added, so these tests fail normally:
+
+- **omitted-population (2 failures).**
+  - `failure_modes` gains VACUOUS_PASS. Under 17.5 a row_count PASS needs an
+    INDEPENDENT `expected_rows`, but the entry pins an OBSERVED count
+    ("row closure ... not evaluated (OBSERVED)"). No fixture satisfies both.
+  - The pinned check line says "rows examined 5". The tool now prints
+    "subject records examined 5" (G1). That settles the "Two row counts, one
+    name" item above, but the label cannot be restored.
+  - The repaired-fixture control now ABSTAINs for the same reason.
+- **partial-execution (2 failures and 1 expected failure).** G2 targets an
+  unlabelled skip, FAIL / PARTIAL_EXECUTION. Every built-in skip path labels
+  itself, so `verify` cannot produce one from fixtures. The only unlabelled
+  skip in the source is the `mutate` stand-in for M15. The labelled skip
+  gives ABSTAIN / INSUFFICIENT_EVIDENCE / `[OMITTED_POPULATION]`.
+- **verifier-blind-spot (1 failure).** The pinned "8/9" is now "9/10".
+  17.12 adds operator M21_removed_plan, which applies here and is detected.
+  The entry itself says that its counts depend on the operator set.
+- **Not regenerated.**
+  - The `schemas/formats.json` `*_at_generation` digests still name commit
+    `7ec36c6`.
+  - The `recorded_run` blocks in `expected-results.json` of the entries not
+    re-baselined still describe the 7ec36c6 runs.
+  - The templates still use an older lock format.
+- **Last test run (2026-10-28).** `Ran 280 tests`,
+  `FAILED (failures=5, expected failures=1)`. All 5 failures are the open
+  items above. The 1 expected failure is partial-execution's documented
+  reason gap.
+
+### Owner-approved updates (2026-10-28)
+
+The owner approved three decisions for the five failures listed under "Left
+open". Each was applied as approved, and nothing else in those entries'
+intended outcomes changed. They supersede the "Left open" list and the "Last
+test run" line above.
+
+1. **Spec-driven text.**
+   - omitted-population: the pinned snapshot line now reads "subject records
+     examined 5" (G1 wording, 17.7) where it read "rows examined 5". The
+     rest of the string is as the gate prints it.
+   - verifier-blind-spot: `must_mention` "8/9" became "9/10".
+     `additional_expectations` now hold the e563fd3 counts: 10 applicable and
+     executed, 9 detected, 1 escaped, 11 not applicable, and M21_removed_plan
+     among the detected ids (17.12). The known failure added for it was
+     removed.
+2. **omitted-population failure modes.** The intended `failure_modes` are
+   now `[OMITTED_POPULATION, VACUOUS_PASS]`. Under D2 and 17.5, a row_count
+   PASS over an OBSERVED-only count cannot be witnessed, so the check `rows`
+   abstains (BLIND_SPOT, VACUOUS_PASS). The fixture is unchanged. Its
+   repaired-fixture control now ABSTAINs for the same reason; `control.json`
+   records that as it ran, and the control was not altered to force a PASS.
+   Its `known_failures` are now empty.
+3. **partial-execution.** The intended outcome is unchanged. The divergence
+   is a documented gap under the `tests/README.md` procedure:
+   - two new `known_failures` anchors (failure_modes `[OMITTED_POPULATION]`,
+     and no `PARTIAL_EXECUTION` in report.md);
+   - two `DOCUMENTED_GAPS` rows in `tests/test_corpus.py`, beside the
+     existing reason row. The failure_modes row has its companion test; a
+     must_mention row has none, as before.
+   - The spec contradiction is recorded in `unresolved_cases` and
+     `limitations.md`. G2 targets an unlabelled skip, but the label rules of
+     17.7 give every `verify` skip path a label, and INPUT_UNAVAILABLE maps to
+     OMITTED_POPULATION. No fixture can produce FAIL / PARTIAL_EXECUTION
+     through `verify`; that needs a gate or spec decision.
+
+The `evaluation/` records were regenerated for the entries these edits
+affect. omitted-population, verifier-blind-spot, citation-metadata-mismatch
+and coverage-debt changed, the last two only in a comparison observation. Two
+staging runs were byte-identical again. Receipts and locks did not change.
+
+One reproducibility limit is new at this commit. verifier-blind-spot's
+mutation report records `tree_sha256` and `tree_canonical_sha256` over every
+file in the entry directory, `evaluation/` included, and its report id
+depends on them. Writing the recorded files changes those digests, so a
+re-run from the final tree reproduces every other field but a different
+report id and the two digest lines. invalid-mutation-baseline records no
+tree digests, so it is not affected.
+
+Two things remain that were not part of the approved edits:
+
+- omitted-population's `claim_tested` still says that row_count PASSes.
+- Its `expected-results.json` `checks.rows.verdict` is still PASS. That
+  field is not asserted, and `comparison.json` lists it as the one mismatch.
+
+**Last test run (2026-10-28, after these updates).** `Ran 281 tests`,
+`OK (expected failures=3)`. The three expected failures are
+partial-execution's documented gaps (reason, failure_modes, must_mention
+PARTIAL_EXECUTION). There were 0 failures, 0 errors and 0 unexpected
+successes, and 11 of 12 entries reproduce every asserted field.

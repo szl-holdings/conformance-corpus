@@ -29,7 +29,7 @@ No network access is needed, and none is used.
 | `recorded/reproduction.txt` | a second run compared with the first, byte for byte |
 
 The recorded run's receipt is in `../receipts/`. The run's `ledger.jsonl`,
-`evidence-manifest.json`, `results.sarif` and `report.html` are not kept
+`evidence-manifest.json`, `receipt.auth.json`, `results.sarif` and `report.html` are not kept
 here, to keep the entry small. The same command regenerates them.
 
 **Recorded result:** `FAIL (SOURCE_MISMATCH)`, exit

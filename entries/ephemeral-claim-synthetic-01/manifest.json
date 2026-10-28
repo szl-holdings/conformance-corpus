@@ -29,7 +29,10 @@
       "id": "claims",
       "kind": "claim_registry",
       "version": "1",
-      "required": true
+      "required": true,
+      "params": {
+        "coverage_floor": "0.5"
+      }
     }
   ],
   "claims": "fixtures/claims/registry.json",

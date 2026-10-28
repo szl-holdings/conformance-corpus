@@ -72,7 +72,7 @@
   ],
   "provenance": {
     "created": "2026-09-29",
-    "generator": "Values hand-specified by the corpus author and written by a one-off local Python script (not part of the corpus); every data value is invented. The files under evaluation/ and receipts/ were produced by running science-gate 0.1.0 (scientific-evidence-gate commit 7ec36c6bb134) with SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z, with local paths replaced by <tmp>, <entry>, <SEG> and <python>.",
+    "generator": "Values hand-specified by the corpus author and written by a one-off local Python script (not part of the corpus); every data value is invented. The files under evaluation/ and receipts/ were produced by running science-gate 0.1.0 (scientific-evidence-gate commit 7ec36c6bb134) with SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z, with local paths replaced by <tmp>, <entry>, <SEG> and <python>. Refreshed on 2026-10-28: evaluation/, receipts/ and environment.lock were regenerated against scientific-evidence-gate commit e563fd301d71; see the corpus README, 'Refresh (2026-10-28)'.",
     "reviewed_by": []
   }
 }

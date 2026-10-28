@@ -26,19 +26,17 @@
   },
   "status": "ABSTAIN",
   "exit_code": 2,
-  "reason": "INSUFFICIENT_EVIDENCE",
+  "reason": "OUT_OF_SCOPE",
   "reasons_include": [
-    "INSUFFICIENT_EVIDENCE",
-    "PARTIAL_EXECUTION"
+    "OUT_OF_SCOPE"
   ],
-  "failure_modes": [
-    "PARTIAL_EXECUTION"
-  ],
+  "failure_modes": [],
   "failure_modes_comparison": "exact set, compared with run.json failure_modes",
   "must_mention": [
-    "**ABSTAIN** (INSUFFICIENT_EVIDENCE), exit code 2.",
-    "Failure modes: PARTIAL_EXECUTION",
-    "`time_window`: time_source ABSTAIN (INSUFFICIENT_EVIDENCE), rows examined 0; the time sources list no events",
+    "**ABSTAIN** (OUT_OF_SCOPE), exit code 2.",
+    "Failure modes: none",
+    "`time_window`: time_source ABSTAIN (OUT_OF_SCOPE), subject records examined 0; the manifest declares no time_sources",
+    "required check 'time_window' did not execute: it was NOT_APPLICABLE, justified as NOT_DECLARED",
     "check `time_window` was NOT_APPLICABLE",
     "checks_executed 3 of checks_expected 4",
     "## WHAT THIS RESULT DOES NOT PROVE",
@@ -46,7 +44,8 @@
   ],
   "must_mention_scope": "report.md",
   "must_not_mention": [
-    "**PASS**"
+    "**PASS**",
+    "PARTIAL_EXECUTION"
   ],
   "checks": {
     "rows": {
@@ -66,7 +65,8 @@
       "verdict": "ABSTAIN",
       "execution_state": "NOT_APPLICABLE",
       "rows_examined": 0,
-      "reason": "INSUFFICIENT_EVIDENCE"
+      "reason": "OUT_OF_SCOPE",
+      "skip_justification": "NOT_DECLARED"
     }
   },
   "details": {
@@ -75,7 +75,9 @@
       "checks_executed": 3,
       "checks_passed": 3,
       "checks_abstained": 1,
-      "checks_not_applicable": 1
+      "checks_not_applicable": 1,
+      "checks_justified": 1,
+      "checks_shortfall": 1
     }
   },
   "receipt": {
@@ -89,6 +91,36 @@
     "It does not show that the readings fall inside or outside the April 2030 window; no observation time was examined, so nothing is known about it."
   ],
   "notes": [
-    "PARTIAL_EXECUTION is intended: the architecture counts a required check as executed only when it reached CHECKED, so a NOT_APPLICABLE check leaves checks_executed (3) below checks_expected (4). The corpus category COVERAGE_DEBT maps onto the gate reason INSUFFICIENT_EVIDENCE, not onto a taxonomy failure mode of its own."
-  ]
+    "OUT_OF_SCOPE with no failure mode is intended (ARCHITECTURE.md section 17.7, G2: a required check NOT_APPLICABLE as NOT_DECLARED contributes SKIP_JUSTIFICATION_OUTCOMES[NOT_DECLARED], ABSTAIN / OUT_OF_SCOPE with no failure mode; 'Corpus entries re-baseline accordingly: ... coverage-debt (a required check NOT_APPLICABLE as NOT_DECLARED) is ABSTAIN / OUT_OF_SCOPE'.) The corpus category COVERAGE_DEBT is reached because a declared required check had nothing to look at; the closed-vocabulary label NOT_DECLARED says why, so the shortfall abstains and is never PARTIAL_EXECUTION.",
+    "skip_justification is read from run.json checks[time_window].evidence.skip_justification."
+  ],
+  "rebaseline": {
+    "date": "2026-10-28",
+    "authority": "ARCHITECTURE.md section 17.7, G2: a required check NOT_APPLICABLE as NOT_DECLARED contributes SKIP_JUSTIFICATION_OUTCOMES[NOT_DECLARED], ABSTAIN / OUT_OF_SCOPE with no failure mode; 'Corpus entries re-baseline accordingly: ... coverage-debt (a required check NOT_APPLICABLE as NOT_DECLARED) is ABSTAIN / OUT_OF_SCOPE'.",
+    "from": {
+      "fixture": "manifest.json declared time_sources fixtures/time/events.json, whose events list was empty (NOT_APPLICABLE labelled EMPTY_POPULATION)",
+      "status": "ABSTAIN",
+      "exit_code": 2,
+      "reason": "INSUFFICIENT_EVIDENCE",
+      "failure_modes": [
+        "PARTIAL_EXECUTION"
+      ],
+      "must_mention": [
+        "**ABSTAIN** (INSUFFICIENT_EVIDENCE), exit code 2.",
+        "Failure modes: PARTIAL_EXECUTION",
+        "`time_window`: time_source ABSTAIN (INSUFFICIENT_EVIDENCE), rows examined 0; the time sources list no events",
+        "check `time_window` was NOT_APPLICABLE",
+        "checks_executed 3 of checks_expected 4",
+        "## WHAT THIS RESULT DOES NOT PROVE",
+        "Scientific validity: NOT ESTABLISHED"
+      ]
+    },
+    "to": {
+      "fixture": "manifest.json declares no time_sources (NOT_APPLICABLE labelled NOT_DECLARED)",
+      "status": "ABSTAIN",
+      "exit_code": 2,
+      "reason": "OUT_OF_SCOPE",
+      "failure_modes": []
+    }
+  }
 }

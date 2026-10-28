@@ -1,6 +1,6 @@
 {
-  "note": "Full mutation-report.json from the recorded run (small enough to keep whole).",
-  "mutation_report_json_sha256": "94b4389ce3295e5a23a622861c88f6f0f79377098100e982ff762fdf65d35a31",
+  "note": "Full mutation-report.json (science-gate-mutation-report/v2) from the recorded run (small enough to keep whole).",
+  "mutation_report_json_sha256": "30b55ea1871681bf5209d51cc7dad4866732d12f61a8aa1effaa8f5896760fc6",
   "report": {
     "baseline": {
       "counters": {
@@ -11,6 +11,7 @@
         "rows_examined": 4
       },
       "diagnostics": [],
+      "digests": {},
       "findings": [
         {
           "detail": "numeric_agreement CHECKED FAIL: key ['CW-03']: stored value rounds half-even to 97.15 at 2 decimal(s), not 97.51",
@@ -27,8 +28,23 @@
       "status": "FAIL",
       "valid": false
     },
+    "counts_as_detected": {
+      "BLIND_SPOT": false,
+      "CANONICALLY_EQUIVALENT": false,
+      "DETECTED": true,
+      "DUPLICATE_MUTANT": false,
+      "FLAKY": false,
+      "NOOP_MUTATION": false,
+      "NOT_ACTIVATED": false,
+      "NOT_APPLICABLE": false,
+      "SKIPPED": false,
+      "SUPPRESSED": false,
+      "TIMED_OUT": false,
+      "VERIFIER_ERROR": false
+    },
     "diagnostics": [],
     "exit_code": 1,
+    "forced_detection": null,
     "generated_at": "2026-09-26T00:00:00Z",
     "manifest": {
       "file": "manifest.json",
@@ -39,7 +55,9 @@
     "not_proven": [
       "Mutation testing measures how this verifier reacted to the injected defects on this one evidence tree. Defects of other kinds, or the same defects in other trees, may still go undetected.",
       "A detected mutation shows that a detector fired, not that the evidence it guards is scientifically valid. Scientific validity is not established by this tool.",
-      "Every verify ran offline with a network opener that refuses all requests; live citation lookups were not exercised."
+      "Every verify ran offline with a network opener that refuses all requests; live citation lookups were not exercised.",
+      "Activation is judged from file opens seen by one in-process audit hook. Reads made by a subprocess or by a C extension that bypasses Python's audited file APIs are invisible to it.",
+      "Nothing was sampled and nothing was reused: every applicable operator was generated, applied and judged afresh in this call."
     ],
     "operators": [
       "M01_empty_input",
@@ -61,11 +79,14 @@
       "M17_reordered_hash_chain",
       "M18_changed_upstream_design",
       "M19_replaced_stored_claim_output",
-      "M20_metadata_change_under_unchanged_pass_summary"
+      "M20_metadata_change_under_unchanged_pass_summary",
+      "M21_removed_plan"
     ],
     "reason": "INVALID_BASELINE",
-    "report_id": "mut-3f40cabadd6f265e",
-    "schema": "science-gate-mutation-report/v1",
+    "report_id": "mut-f2502c7c53bea537",
+    "reused": false,
+    "sampled": false,
+    "schema": "science-gate-mutation-report/v2",
     "selected_operators": [
       "M01_empty_input",
       "M02_missing_expected_file",
@@ -86,7 +107,8 @@
       "M17_reordered_hash_chain",
       "M18_changed_upstream_design",
       "M19_replaced_stored_claim_output",
-      "M20_metadata_change_under_unchanged_pass_summary"
+      "M20_metadata_change_under_unchanged_pass_summary",
+      "M21_removed_plan"
     ],
     "status": "FAIL",
     "tool": {

@@ -31,13 +31,14 @@
     "SOURCE_MISMATCH"
   ],
   "failure_modes": [
-    "OMITTED_POPULATION"
+    "OMITTED_POPULATION",
+    "VACUOUS_PASS"
   ],
   "failure_modes_comparison": "exact set, compared with run.json failure_modes",
   "must_mention": [
     "**FAIL** (SOURCE_MISMATCH), exit code 1.",
     "Failure modes: OMITTED_POPULATION",
-    "`snapshot`: snapshot_completeness FAIL (SOURCE_MISMATCH), rows examined 5; input 'specimens': 1 accepted row(s) were deleted",
+    "`snapshot`: snapshot_completeness FAIL (SOURCE_MISMATCH), subject records examined 5; input 'specimens': 1 accepted row(s) were deleted",
     "row closure of input `specimens` not evaluated (OBSERVED)",
     "## WHAT THIS RESULT DOES NOT PROVE",
     "Scientific validity: NOT ESTABLISHED"

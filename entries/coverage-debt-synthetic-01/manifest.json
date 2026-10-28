@@ -15,7 +15,6 @@
       "sha256": "6717b12e09e1b262927e09e3619b12e1ed9a11d9aa114e7b858a5f663d2c91b9"
     }
   ],
-  "time_sources": "fixtures/time/events.json",
   "checks": [
     {
       "id": "rows",

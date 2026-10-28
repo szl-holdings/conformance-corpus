@@ -25,7 +25,7 @@ ABSTAIN, not FAIL: nothing was contradicted. There is simply nothing to have pas
 
 ## Recorded result
 
-The recorded run matches the intended status, exit code and reason, and differs on the fields in known_failures. See `evaluation/README.md` and `entry.json` `known_failures`.
+The recorded run (science-gate commit e563fd3, refreshed 2026-10-28) matches every asserted field of the intended outcome. The two divergences recorded against commit 7ec36c6 (an extra PARTIAL_EXECUTION, and no `rows_examined` in report.md) were resolved by the tool's section 17.7 rules (G1, G2). See `evaluation/README.md`.
 
 ## What passing does not prove
 

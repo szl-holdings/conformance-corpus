@@ -4,9 +4,10 @@
 exit code: first 2, second 2
 identical  run.json
 identical  report.md
-identical  receipt.json
 identical  ledger.jsonl
 identical  evidence-manifest.json
+identical  receipt.json
+identical  receipt.auth.json
 identical  results.sarif
 identical  report.html
 result: REPRODUCED

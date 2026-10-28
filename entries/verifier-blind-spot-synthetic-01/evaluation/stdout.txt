@@ -1,16 +1,18 @@
 $ python -m science_gate.cli mutate manifest.json --output <tmp>/mutate
-FAIL (BLIND_SPOT) mut-50e087e15796d6b4: 8/9 executed mutations detected, 1 blind spot(s), 0 skipped, 11 not applicable; sensitivity 8/9
+FAIL (BLIND_SPOT) mut-639e31adfdcd67f5: 9/10 executed mutations detected, 1 blind spot(s), 0 verifier error(s), 0 skipped, 11 not applicable, 0 not activated; sensitivity 9/10
 <tmp>/mutate/mutation-report.json
 <tmp>/mutate/mutation-report.md
+<tmp>/mutate/mutation-report.html
 [exit code 1]
 
 $ python -m science_gate.cli verify manifest.json --output <tmp>/verify
-PASS (VERIFIED) run-fb54a3f2ab4c6bae: 3/3 required checks executed, 4 rows examined, 1/1 inputs opened
+PASS (VERIFIED) run-ab1808a64dc72890: 2/2 required checks executed, 4 rows examined, 1/1 inputs opened
 <tmp>/verify/run.json
 <tmp>/verify/report.md
 <tmp>/verify/ledger.jsonl
 <tmp>/verify/evidence-manifest.json
 <tmp>/verify/receipt.json
+<tmp>/verify/receipt.auth.json
 <tmp>/verify/results.sarif
 <tmp>/verify/report.html
 [exit code 0]

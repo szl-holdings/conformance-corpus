@@ -35,13 +35,10 @@
   "intended_by": "corpus author; written before the recorded run, not copied from it",
   "note": "A stored summary claims PASS for an input that has a header and zero data records. A conforming verifier must not confirm that PASS: it abstains because no row was examined, and names the vacuous pass.",
   "recorded_run": {
-    "matches": false,
-    "differs_on": [
-      "failure_modes",
-      "must_mention: rows_examined"
-    ],
+    "matches": true,
+    "differs_on": [],
     "comparison": "evaluation/comparison.json",
-    "note": "The recorded run (science-gate 0.1.0, commit 7ec36c6) matches status, exit_code and reason. Its failure_modes are [PARTIAL_EXECUTION, VACUOUS_PASS], and its report.md does not contain 'rows_examined'. Both differences are recorded in entry.json known_failures. The intended values above were not edited to match the run."
+    "note": "The recorded run (science-gate 0.1.0, commit e563fd3, refreshed 2026-10-28) matches status, exit_code, reason, failure_modes and every must_mention string. The run against commit 7ec36c6 differed on failure_modes ([PARTIAL_EXECUTION, VACUOUS_PASS]) and on must_mention rows_examined; ARCHITECTURE.md section 17.7 (G1, G2) resolved both, so the two known_failures and their DOCUMENTED_GAPS rows were removed. The intended values above were not edited."
   },
   "does_not_prove": [
     "Reproducing this outcome shows conformance on this declared synthetic fixture only.",

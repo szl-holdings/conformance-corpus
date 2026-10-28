@@ -206,11 +206,13 @@
   "receipt_verification": {
     "ok": true,
     "content_intact": true,
-    "recomputed_sha256": "bf2cf218af67f2c3e5f6c4995e716729d100b5a2118dbf1f7f42228e71223fc1",
+    "recomputed_sha256": "f685852054b169848e2eacaa818e99c0f662decc4736e2f09b8da979694199bd",
     "signature_state": "UNSIGNED",
     "signature_verified": null,
+    "auth_status": "UNSIGNED",
+    "run_id": "run-debea99fd49b07b0",
     "problems": [],
-    "detail": "the receipt is unsigned; only its content hash was checked"
+    "detail": "no key when written: SCIENCE_GATE_HMAC_KEY_FILE is not set; only the content hash was checked"
   },
   "seg_state_stable_during_run": true,
   "seg_src_files_changed_during_run": [],

@@ -5,8 +5,8 @@
   "failure_mode": "COVERAGE_DEBT",
   "synthetic": true,
   "scientific_question": "Illustrative only (SYNTHETIC): were the invented water-level readings at two invented stations taken inside the requested April 2030 window? The stations and readings are invented.",
-  "claim_tested": "When a required time_source check (time_window) reads a time-sources document that exists and parses but lists no events, science-gate verify does not count it as passed: the check is NOT_APPLICABLE with verdict ABSTAIN and 0 rows examined, it is not counted as executed (checks_executed 3 of checks_expected 4), and the run is ABSTAIN, exit 2, reason INSUFFICIENT_EVIDENCE, even though row_count, required_columns and duplicate_rows all PASS.",
-  "falsified_by": "The run returns PASS (or FAIL or ERROR), exits other than 2, reports a reason other than INSUFFICIENT_EVIDENCE, marks time_window as CHECKED or PASS, counts it as executed, or report.md omits any must_mention string in expected-results.json.",
+  "claim_tested": "When a manifest declares a required time_source check (time_window) but declares no time_sources document, so the check has nothing to look at, science-gate verify does not count it as passed: the check is NOT_APPLICABLE with verdict ABSTAIN, reason OUT_OF_SCOPE, 0 subject records examined and the closed-vocabulary justification NOT_DECLARED; it is not counted as executed (checks_executed 3 of checks_expected 4); and the run is ABSTAIN, exit 2, reason OUT_OF_SCOPE, with no failure mode (never PARTIAL_EXECUTION), even though row_count, required_columns and duplicate_rows all PASS with falsifier witnesses.",
+  "falsified_by": "The run returns PASS (or FAIL or ERROR), exits other than 2, reports a reason other than OUT_OF_SCOPE, reports any failure mode (PARTIAL_EXECUTION in particular), marks time_window as CHECKED or PASS, counts it as executed, labels its skip with anything but NOT_DECLARED, or report.md omits any must_mention string in expected-results.json.",
   "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
   "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
   "permissions": {
@@ -26,25 +26,19 @@
       "path": "fixtures/readings.csv",
       "license": "NOASSERTION",
       "evidence": "generated for this corpus; no license chosen"
-    },
-    {
-      "path": "fixtures/time/events.json",
-      "license": "NOASSERTION",
-      "evidence": "generated for this corpus; no license chosen"
     }
   ],
   "expected_outcome": {
     "command": "verify manifest.json",
     "status": "ABSTAIN",
     "exit_code": 2,
-    "reason": "INSUFFICIENT_EVIDENCE",
-    "failure_modes": [
-      "PARTIAL_EXECUTION"
-    ],
+    "reason": "OUT_OF_SCOPE",
+    "failure_modes": [],
     "must_mention": [
-      "**ABSTAIN** (INSUFFICIENT_EVIDENCE), exit code 2.",
-      "Failure modes: PARTIAL_EXECUTION",
-      "`time_window`: time_source ABSTAIN (INSUFFICIENT_EVIDENCE), rows examined 0; the time sources list no events",
+      "**ABSTAIN** (OUT_OF_SCOPE), exit code 2.",
+      "Failure modes: none",
+      "`time_window`: time_source ABSTAIN (OUT_OF_SCOPE), subject records examined 0; the manifest declares no time_sources",
+      "required check 'time_window' did not execute: it was NOT_APPLICABLE, justified as NOT_DECLARED",
       "check `time_window` was NOT_APPLICABLE",
       "checks_executed 3 of checks_expected 4",
       "## WHAT THIS RESULT DOES NOT PROVE",
@@ -54,10 +48,9 @@
   "known_failures": [],
   "unresolved_cases": [
     "Other checks with nothing to examine (a snapshot that accepts no rows, a citations list with no entries, a reviewer protocol with no verdicts) are not exercised here.",
-    "An optional (not required) empty check, which is shown but does not decide the run, is not exercised.",
-    "A time-sources document that is missing or malformed is a different case (SKIPPED), not exercised here.",
-    "Cross-entry conflict on failure modes, not settled here. This entry's intended failure_modes [PARTIAL_EXECUTION] rest on counting a NOT_APPLICABLE required check as not executed. vacuous-pass-synthetic-01 takes the opposite position: its NOT_APPLICABLE required checks reached a terminal state and should not add PARTIAL_EXECUTION, and it records science-gate's PARTIAL_EXECUTION as a known failure. One rule cannot satisfy both expectations. An independent reviewer must decide which expectation changes; neither has been edited.",
-    "Cross-entry conflict on the primary reason, not settled here. This entry intends INSUFFICIENT_EVIDENCE for a run whose reasons are [INSUFFICIENT_EVIDENCE, PARTIAL_EXECUTION] and whose contract finding is checks_executed=3 of checks_expected=4. partial-execution-synthetic-01 produces the same reasons and the same contract finding, with its fourth check SKIPPED instead of NOT_APPLICABLE, but intends PARTIAL_EXECUTION. The corpus states no rule that separates the two cases."
+    "An optional (not required) check with nothing to examine, which is shown but does not decide the run, is not exercised.",
+    "A time-sources document that is declared but lists no events (NOT_APPLICABLE labelled EMPTY_POPULATION, which gives ABSTAIN / INSUFFICIENT_EVIDENCE with VACUOUS_PASS) and one that is declared but missing or malformed (SKIPPED, labelled INPUT_UNAVAILABLE or EVIDENCE_MALFORMED) are different cases, not exercised here. Until 2026-10-28 this entry used the first of them.",
+    "Re-baselined on 2026-10-28 from ABSTAIN / INSUFFICIENT_EVIDENCE / [PARTIAL_EXECUTION] to ABSTAIN / OUT_OF_SCOPE / [] under ARCHITECTURE.md section 17.7, G2: a required check NOT_APPLICABLE as NOT_DECLARED contributes SKIP_JUSTIFICATION_OUTCOMES[NOT_DECLARED], ABSTAIN / OUT_OF_SCOPE with no failure mode; 'Corpus entries re-baseline accordingly: ... coverage-debt (a required check NOT_APPLICABLE as NOT_DECLARED) is ABSTAIN / OUT_OF_SCOPE'. The two cross-entry conflicts recorded before (PARTIAL_EXECUTION from a NOT_APPLICABLE required check, and the primary-reason precedence against partial-execution-synthetic-01) are settled by that rule: a labelled skip never adds PARTIAL_EXECUTION, and only an unlabelled one gives FAIL / PARTIAL_EXECUTION. An independent reviewer should still confirm the re-baseline."
   ],
   "human_review": {
     "required": true,
@@ -72,7 +65,7 @@
   ],
   "provenance": {
     "created": "2026-09-29",
-    "generator": "Generated for this corpus by a Claude Code subagent (model claude-opus-5-5, workstream 3) with a Python generator script run from an OS temp directory. Every name, DOI, site and value is invented.",
+    "generator": "Generated for this corpus by a Claude Code subagent (model claude-opus-5-5, workstream 3) with a Python generator script run from an OS temp directory. Every name, DOI, site and value is invented. Refreshed on 2026-10-28: manifest.json no longer declares time_sources and fixtures/time/events.json was removed (G2 re-baseline), and evaluation/, receipts/ and environment.lock were regenerated against scientific-evidence-gate commit e563fd301d71; see the corpus README, 'Refresh (2026-10-28)'.",
     "reviewed_by": []
   }
 }

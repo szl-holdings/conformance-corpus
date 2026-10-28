@@ -15,15 +15,6 @@
   ],
   "checks": [
     {
-      "id": "rows",
-      "kind": "row_count",
-      "version": "1",
-      "required": true,
-      "inputs": [
-        "readings"
-      ]
-    },
-    {
       "id": "columns",
       "kind": "required_columns",
       "version": "1",

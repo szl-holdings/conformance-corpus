@@ -49,18 +49,15 @@
       "rows_examined"
     ]
   },
-  "known_failures": [
-    "Recorded run (science-gate 0.1.0, commit 7ec36c6) reports failure_modes ['PARTIAL_EXECUTION', 'VACUOUS_PASS'], not the intended ['VACUOUS_PASS']. The extra PARTIAL_EXECUTION comes from the contract finding 'checks_executed=1 of checks_expected=4': the three input checks had nothing to examine (NOT_APPLICABLE), and science-gate counts NOT_APPLICABLE required checks as not executed. See unresolved_cases.",
-    "Recorded report.md does not contain the must_mention string 'rows_examined'. science-gate reports 'Rows examined in scope: 1' and '1 rows examined' in its headline although the only declared input has 0 data records: the summary_consistency check compared one pin, and because that check reads no declared input its count is added to the run-level rows_examined. The PASS-contract rule 'rows_examined >= 1' was therefore met by a pin comparison rather than by data, so its zero-rows finding never fired. The run still did not PASS: the EMPTY required input and the three NOT_APPLICABLE checks each block PASS on their own."
-  ],
+  "known_failures": [],
   "unresolved_cases": [
-    "Whether required checks that are NOT_APPLICABLE over an empty input should add PARTIAL_EXECUTION. science-gate says yes, through its checks_executed counter. This entry says no: the corpus defines partial execution as a required check that never reached a terminal state, and these checks reached one (each has a terminal ABSTAINED ledger invocation). It may be a taxonomy disagreement rather than a defect.",
-    "Whether a check that reads no declared input (here summary_consistency, which compared one pin) should contribute to run-level rows_examined, which is the counter the PASS contract uses to refuse a vacuous pass.",
-    "coverage-debt-synthetic-01 answers the first question the other way: its intended failure_modes [PARTIAL_EXECUTION] come from one NOT_APPLICABLE required check, and science-gate agrees with it. The two expectations need one corpus rule; neither has been edited."
+    "Resolved on 2026-10-28 (scientific-evidence-gate commit e563fd3, ARCHITECTURE.md section 17.7): required checks that are NOT_APPLICABLE over an empty input no longer add PARTIAL_EXECUTION. Each is labelled EMPTY_POPULATION, and G2 maps that label to ABSTAIN / INSUFFICIENT_EVIDENCE / VACUOUS_PASS, never PARTIAL_EXECUTION. The two known failures recorded against commit 7ec36c6 were removed, with their DOCUMENTED_GAPS rows in tests/test_corpus.py.",
+    "Resolved on 2026-10-28 by G1 (section 17.7): run-level rows_examined counts only distinct data rows of declared inputs read by an executed check, so the pin comparison of summary_consistency no longer counts, rows_examined is 0, and the PASS contract's zero-rows finding fires (report.md: 'rows_examined=0').",
+    "Only a header-only CSV is covered. Empty JSON inputs, filters that exclude every row, and checks whose scope is empty for other reasons are not exercised."
   ],
   "human_review": {
     "required": true,
-    "reason": "Draft written by one author. The recorded run matches the intended status, exit code and reason, and differs on the fields in known_failures; an independent reviewer should decide whether the corpus expectation or the tool is right."
+    "reason": "Draft written by one author. The run against scientific-evidence-gate commit e563fd3 reproduces every asserted field of the intended outcome; the two divergences recorded against commit 7ec36c6 were resolved by the tool. An independent reviewer should still confirm the expectations."
   },
   "does_not_prove": [
     "Reproducing this entry's expected outcome shows conformance on this declared synthetic fixture only.",
@@ -69,7 +66,7 @@
   ],
   "provenance": {
     "created": "2026-09-29",
-    "generator": "Values hand-specified by the corpus author and written by a one-off local Python script (not part of the corpus); every data value is invented. The files under evaluation/ and receipts/ were produced by running science-gate 0.1.0 (scientific-evidence-gate commit 7ec36c6bb134) with SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z, with local paths replaced by <tmp>, <entry>, <SEG> and <python>.",
+    "generator": "Values hand-specified by the corpus author and written by a one-off local Python script (not part of the corpus); every data value is invented. The files under evaluation/ and receipts/ were produced by running science-gate 0.1.0 (scientific-evidence-gate commit 7ec36c6bb134) with SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z, with local paths replaced by <tmp>, <entry>, <SEG> and <python>. Refreshed on 2026-10-28: evaluation/, receipts/ and environment.lock were regenerated against scientific-evidence-gate commit e563fd301d71; see the corpus README, 'Refresh (2026-10-28)'.",
     "reviewed_by": []
   }
 }

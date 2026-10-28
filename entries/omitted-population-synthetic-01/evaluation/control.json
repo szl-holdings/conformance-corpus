@@ -4,18 +4,39 @@
     "fixtures/specimens.csv: row OP-0004,plot-fictus-2,0.3 restored before OP-0005",
     "manifest.json: sha256 of the restored file; expected_rows 6 (still OBSERVED)"
   ],
+  "repaired_fixture": {
+    "fixtures/specimens.csv": {
+      "sha256": "25f5fd4e9d2df90c71b875c8035bacb86f9ee8267e62d8e01ca9377d26b5b884",
+      "bytes": 185,
+      "content": "specimen_id,plot,mass_mg\nOP-0001,plot-fictus-1,12.5\nOP-0002,plot-fictus-1,9.8\nOP-0003,plot-fictus-2,14.1\nOP-0004,plot-fictus-2,0.3\nOP-0005,plot-fictus-3,11.7\nOP-0006,plot-fictus-3,10.2\n"
+    },
+    "manifest.json": {
+      "sha256": "4134df9b908ed6131c30130419ad8ce705f9f2cbc05485d2a9b6f135190d703b",
+      "bytes": 1583,
+      "content": "{\n  \"schema\": \"science-gate-manifest/v1\",\n  \"run_label\": \"corpus-omitted-population-synthetic-01\",\n  \"inputs\": [\n    {\n      \"id\": \"specimens\",\n      \"path\": \"fixtures/specimens.csv\",\n      \"format\": \"csv\",\n      \"required\": true,\n      \"row_key\": [\n        \"specimen_id\"\n      ],\n      \"expected_rows\": 6,\n      \"denominator_source\": \"OBSERVED\",\n      \"sha256\": \"25f5fd4e9d2df90c71b875c8035bacb86f9ee8267e62d8e01ca9377d26b5b884\"\n    }\n  ],\n  \"accepted_snapshot\": \"fixtures/snapshots/accepted.json\",\n  \"checks\": [\n    {\n      \"id\": \"rows\",\n      \"kind\": \"row_count\",\n      \"version\": \"1\",\n      \"required\": true,\n      \"inputs\": [\n        \"specimens\"\n      ]\n    },\n    {\n      \"id\": \"columns\",\n      \"kind\": \"required_columns\",\n      \"version\": \"1\",\n      \"required\": true,\n      \"inputs\": [\n        \"specimens\"\n      ],\n      \"params\": {\n        \"columns\": [\n          \"specimen_id\",\n          \"plot\",\n          \"mass_mg\"\n        ]\n      }\n    },\n    {\n      \"id\": \"duplicates\",\n      \"kind\": \"duplicate_rows\",\n      \"version\": \"1\",\n      \"required\": true,\n      \"inputs\": [\n        \"specimens\"\n      ]\n    },\n    {\n      \"id\": \"snapshot\",\n      \"kind\": \"snapshot_completeness\",\n      \"version\": \"1\",\n      \"required\": true,\n      \"inputs\": [\n        \"specimens\"\n      ]\n    }\n  ],\n  \"corpus\": {\n    \"access_class\": \"SYNTHETIC\",\n    \"permissions\": {\n      \"evaluation_allowed\": true,\n      \"training_allowed\": false,\n      \"redistribution_allowed\": false,\n      \"derivatives_allowed\": false,\n      \"public_display_allowed\": false,\n      \"commercial_use_allowed\": false\n    }\n  }\n}\n"
+    }
+  },
   "expected": {
     "status": "PASS",
     "exit_code": 0,
     "reason": "VERIFIED"
   },
   "actual": {
-    "status": "PASS",
-    "exit_code": 0,
-    "reason": "VERIFIED",
-    "failure_modes": [],
-    "headline": "PASS (VERIFIED) run-18b2bce8c103ed3f: 4/4 required checks executed, 6 rows examined, 1/1 inputs opened"
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "BLIND_SPOT",
+    "failure_modes": [
+      "VACUOUS_PASS"
+    ],
+    "headline": "ABSTAIN (BLIND_SPOT) run-18b2bce8c103ed3f: 4/4 required checks executed, 6 rows examined, 1/1 inputs opened",
+    "reasons": [
+      "BLIND_SPOT"
+    ],
+    "diagnostics": [
+      "rows: ABSTAIN (BLIND_SPOT): FALSIFIER_NO_CASE: the generator found no known-bad case for this row_count instance"
+    ]
   },
-  "match": true,
-  "does_not_prove": "A control PASS shows conformance on declared fixtures only. It does not establish scientific validity or fitness for use."
+  "match": false,
+  "does_not_prove": "A control PASS shows conformance on declared fixtures only. It does not establish scientific validity or fitness for use.",
+  "note": "The control ABSTAINs against this commit: with expected_rows 6 still OBSERVED, the row_count check has no falsifier case under decision D2 and ARCHITECTURE.md 17.5 (drop-last-row needs an INDEPENDENT expectation), so it is ABSTAIN / BLIND_SPOT with VACUOUS_PASS and the run cannot PASS. It is recorded as it ran; its fixture was not changed to force a PASS (owner-approved decision of 2026-10-28; see entry.json unresolved_cases)."
 }

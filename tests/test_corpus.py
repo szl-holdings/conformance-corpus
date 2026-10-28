@@ -130,21 +130,21 @@ class DocumentedGap:
 
 DOCUMENTED_GAPS: tuple[DocumentedGap, ...] = (
     DocumentedGap(
-        entry_id="vacuous-pass-synthetic-01",
-        aspect="failure_modes",
-        anchor="reports failure_modes ['PARTIAL_EXECUTION', 'VACUOUS_PASS'], not the intended ['VACUOUS_PASS']",
-        documented_actual=["PARTIAL_EXECUTION", "VACUOUS_PASS"],
-    ),
-    DocumentedGap(
-        entry_id="vacuous-pass-synthetic-01",
-        aspect="must_mention:rows_examined",
-        anchor="does not contain the must_mention string 'rows_examined'",
-    ),
-    DocumentedGap(
         entry_id="partial-execution-synthetic-01",
         aspect="reason",
         anchor="primary reason is INSUFFICIENT_EVIDENCE, not the intended PARTIAL_EXECUTION",
         documented_actual="INSUFFICIENT_EVIDENCE",
+    ),
+    DocumentedGap(
+        entry_id="partial-execution-synthetic-01",
+        aspect="failure_modes",
+        anchor="reports failure_modes ['OMITTED_POPULATION'], not the intended ['PARTIAL_EXECUTION']",
+        documented_actual=["OMITTED_POPULATION"],
+    ),
+    DocumentedGap(
+        entry_id="partial-execution-synthetic-01",
+        aspect="must_mention:PARTIAL_EXECUTION",
+        anchor="does not contain the must_mention string 'PARTIAL_EXECUTION'",
     ),
 )
 

@@ -38,7 +38,9 @@
     "status": "ABSTAIN",
     "exit_code": 2,
     "reason": "UNVERIFIED",
-    "failure_modes": ["EPHEMERAL_CLAIM"],
+    "failure_modes": [
+      "EPHEMERAL_CLAIM"
+    ],
     "must_mention": [
       "EPHEMERAL_CLAIM",
       "CLM-02",
@@ -51,7 +53,8 @@
   "unresolved_cases": [
     "The value of CLM-02 (91) happens to equal the sum of the synthetic sightings column. The tool does not re-run analyses, so it cannot and should not credit that coincidence; an entry in which an ephemeral number disagrees with the data would exercise the same path and is not yet written.",
     "Only one missing-derivation shape is covered (every derivation link and the stored output absent). A claim missing a single link, such as only code_version, is not covered by this entry.",
-    "The manuscript is plain Markdown with two numbers. Numbers in tables, footnotes or with declared thousands separators are not exercised here."
+    "The manuscript is plain Markdown with two numbers. Numbers in tables, footnotes or with declared thousands separators are not exercised here.",
+    "2026-10-28 fixture repair: the claim_registry check declares coverage_floor \"0.5\" (ARCHITECTURE.md 17.11, coverage funnel #17; the default is \"1\"). Below its floor a claims check is ABSTAIN / INSUFFICIENT_EVIDENCE with OMITTED_POPULATION. Here the only unchecked manuscript number is CLM-02's own 91, which cannot be compared with a stored output because CLM-02 has none, so with the default floor the same defect is counted a second time as OMITTED_POPULATION ('NUMERIC_COVERAGE: 1 of 2 undeclared manuscript number(s) checked'). The floor 0.5 keeps the entry on the category it exercises; run.json still records 91 as NOT_COMPARED in numeric_coverage. Declaring 91 in not_claims was rejected: 91 is a registered claim, and expected-results.json pins DECLARED_NOT_A_CLAIM 0. A reviewer may instead prefer the default floor and an intended [EPHEMERAL_CLAIM, OMITTED_POPULATION]."
   ],
   "human_review": {
     "required": true,
@@ -65,7 +68,7 @@
   ],
   "provenance": {
     "created": "2026-09-29",
-    "generator": "Specified by the corpus author (an AI assistant working in this workspace) and written by a Python standard-library script that computed every SHA-256 from the exact bytes it wrote. All names, sites and values are invented; nothing is derived from a real dataset, paper, person or institution. Expected results were written from the intended behaviour and then confirmed by a recorded run (evaluation/).",
+    "generator": "Specified by the corpus author (an AI assistant working in this workspace) and written by a Python standard-library script that computed every SHA-256 from the exact bytes it wrote. All names, sites and values are invented; nothing is derived from a real dataset, paper, person or institution. Expected results were written from the intended behaviour and then confirmed by a recorded run (evaluation/). Refreshed on 2026-10-28: evaluation/, receipts/ and environment.lock were regenerated against scientific-evidence-gate commit e563fd301d71; see the corpus README, 'Refresh (2026-10-28)'.",
     "reviewed_by": []
   }
 }

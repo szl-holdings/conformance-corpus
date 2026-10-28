@@ -30,21 +30,7 @@
           "sha256_at_generation": "629c4c94a620d0a5cfcf5d3193e9de74b350b4e2eabf970d250e056f75f2b477"
         }
       ]
-    },
-    {
-      "path": "fixtures/time/events.json",
-      "format": "science-gate-time-sources/v1",
-      "defined_by": [
-        {
-          "seg_path": "src/science_gate/verifier.py",
-          "sha256_at_generation": "f615c9b082b1d05562e443a054d3293b61eef9a588460c3a656a20ba970cc2c1"
-        },
-        {
-          "seg_path": "docs/ARCHITECTURE.md",
-          "sha256_at_generation": "629c4c94a620d0a5cfcf5d3193e9de74b350b4e2eabf970d250e056f75f2b477"
-        }
-      ],
-      "no_schema_file": "SEG ships no JSON Schema file for time sources; the parser in verifier.py (_parse_time_sources) defines the format."
     }
-  ]
+  ],
+  "refresh_note": "2026-10-28: fixtures/time/events.json was removed when the entry was re-baselined under ARCHITECTURE.md 17.7 G2 (the manifest now declares no time_sources). The *_at_generation digests above still describe commit 7ec36c6; evaluation/ and environment.lock name the commit the recorded evidence was produced with."
 }

@@ -84,11 +84,32 @@
       "check_id": "columns",
       "diagnostics": [],
       "evidence": {
+        "checker_sha256": "2a2867d1c7f0a1829b582c3b0ed22ae5c5aa8ee0e471be78c50f583710adbbef",
         "columns": [
           "plot_id",
           "site",
           "biomass_g",
           "count"
+        ],
+        "falsification": "WITNESSED",
+        "falsifiers": [
+          {
+            "actual": {
+              "execution_state": "CHECKED",
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "case_id": "drop-column",
+            "checker_sha256": "2a2867d1c7f0a1829b582c3b0ed22ae5c5aa8ee0e471be78c50f583710adbbef",
+            "control_id": "control:falsifier:columns:drop-column",
+            "description": "declared column 'plot_id' removed from the header and every record",
+            "expected": {
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "outcome": "REJECTED",
+            "params_sha256": "6bbbe16b427b5477c3a5451eabef344353174ce9927e375a579c236e33277f69"
+          }
         ],
         "inputs": {
           "plots": {
@@ -103,14 +124,15 @@
             "sha256": "bc2f606fb2c361aef613a1311069ed5483a8aff17d0b789c99b96dc1069e19f3",
             "state": "PARSED"
           }
-        }
+        },
+        "params_sha256": "6bbbe16b427b5477c3a5451eabef344353174ce9927e375a579c236e33277f69"
       },
       "execution_state": "CHECKED",
       "failure_modes": [],
       "inputs": [
         "plots"
       ],
-      "invocation_id": "inv-a4851455f491",
+      "invocation_id": "inv-e8eeec79c84b",
       "kind": "required_columns",
       "reason": "VERIFIED",
       "required": true,
@@ -192,9 +214,10 @@
           "sha256": "9fab7ff816a5335fd4a38bae0c22f7d8f7597cb2ba0e5b73f3709331198f20bb",
           "state": "PARSED"
         },
-        "node_table_sha256": "f9c6398196779811b25247fd14c371949050711361e0364f0c4ed76973966f60",
+        "node_table_sha256": "9544c9298355c03a98cc8203d211674b6c0ee50987dd76e7fbadec2ec69b2807",
         "not_in_good_standing": [
           {
+            "backed_by_checks": [],
             "id": "conclusion-south-highest",
             "kind": "CONCLUSION",
             "path": "fixtures/conclusions/conclusion-south-highest.md",
@@ -203,9 +226,13 @@
             "stale_because": [
               "site-means"
             ],
+            "stale_categories": [
+              "UPSTREAM"
+            ],
             "validity": "STALE_PENDING_REVALIDATION"
           },
           {
+            "backed_by_checks": [],
             "id": "site-means",
             "kind": "RANKING_OR_MEASUREMENT",
             "path": "fixtures/analysis/site-means.csv",
@@ -214,9 +241,13 @@
             "stale_because": [
               "study-design"
             ],
+            "stale_categories": [
+              "UPSTREAM"
+            ],
             "validity": "STALE_PENDING_REVALIDATION"
           },
           {
+            "backed_by_checks": [],
             "id": "study-design",
             "kind": "DESIGN",
             "path": "fixtures/design/protocol.md",
@@ -225,19 +256,22 @@
             "stale_because": [
               "study-design"
             ],
+            "stale_categories": [
+              "UPSTREAM"
+            ],
             "validity": "STALE_PENDING_REVALIDATION"
           }
         ],
         "publication_block": {
           "blocked": true,
           "publication_nodes": 1,
-          "rule": "publication is blocked while any CONCLUSION or FIGURE_OR_TABLE node is STALE_PENDING_REVALIDATION; a node file whose digest differs from its recorded digest is STALE_PENDING_REVALIDATION, and so is every descendant of a pending node",
+          "rule": "publication is blocked while any CONCLUSION or FIGURE_OR_TABLE node is STALE_PENDING_REVALIDATION; a node file whose digest differs from its recorded digest is STALE_PENDING_REVALIDATION, and so is a node whose backing check changed (verifier drift), and every descendant of a pending node",
           "stale_publication_nodes": [
             "conclusion-south-highest"
           ],
           "undetermined_publication_nodes": []
         },
-        "rule": "publication is blocked while any CONCLUSION or FIGURE_OR_TABLE node is STALE_PENDING_REVALIDATION; a node file whose digest differs from its recorded digest is STALE_PENDING_REVALIDATION, and so is every descendant of a pending node",
+        "rule": "publication is blocked while any CONCLUSION or FIGURE_OR_TABLE node is STALE_PENDING_REVALIDATION; a node file whose digest differs from its recorded digest is STALE_PENDING_REVALIDATION, and so is a node whose backing check changed (verifier drift), and every descendant of a pending node",
         "scope": "currency of recorded artifact digests only: nothing is re-run, and no conclusion is judged true or false",
         "state": {
           "bytes": null,
@@ -255,14 +289,21 @@
           "present": false,
           "sha256": null
         },
-        "transitions_in_memory": 3
+        "transitions_in_memory": 3,
+        "verifier_backing": {
+          "entries": 0,
+          "nodes": 0,
+          "tool_version": "0.1.0"
+        },
+        "verifier_drift": {},
+        "verifier_drift_detail": []
       },
       "execution_state": "CHECKED",
       "failure_modes": [
         "STALE_DEPENDENCY"
       ],
       "inputs": [],
-      "invocation_id": "inv-e2056b8a4957",
+      "invocation_id": "inv-052756f92570",
       "kind": "dependency_currency",
       "reason": "SOURCE_MISMATCH",
       "required": true,
@@ -274,6 +315,27 @@
       "check_id": "rows",
       "diagnostics": [],
       "evidence": {
+        "checker_sha256": "4c70ae2861fe2106d090a0c2443951020963525a6ea4296e9f746426d0f00ca0",
+        "falsification": "WITNESSED",
+        "falsifiers": [
+          {
+            "actual": {
+              "execution_state": "CHECKED",
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "case_id": "drop-last-row",
+            "checker_sha256": "4c70ae2861fe2106d090a0c2443951020963525a6ea4296e9f746426d0f00ca0",
+            "control_id": "control:falsifier:rows:drop-last-row",
+            "description": "the last admitted row of each input with an INDEPENDENT expected_rows removed",
+            "expected": {
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "outcome": "REJECTED",
+            "params_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        ],
         "inputs": {
           "plots": {
             "closure": {
@@ -294,6 +356,7 @@
             "state": "PARSED"
           }
         },
+        "params_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
         "rows_admitted_total": 6
       },
       "execution_state": "CHECKED",
@@ -301,7 +364,7 @@
       "inputs": [
         "plots"
       ],
-      "invocation_id": "inv-cb0382a984ff",
+      "invocation_id": "inv-1378e5b6915f",
       "kind": "row_count",
       "reason": "VERIFIED",
       "required": true,
@@ -317,6 +380,87 @@
   "checks_passed": 2,
   "claim_tallies": [],
   "completed_at": "2026-09-26T00:00:00Z",
+  "controls": {
+    "canary": {
+      "holds": true,
+      "must_fail": {
+        "invocation_id": "inv-d9f11ddb43e6",
+        "reason": "SOURCE_MISMATCH",
+        "verdict": "FAIL"
+      },
+      "must_pass": {
+        "invocation_id": "inv-25002bd6a29b",
+        "reason": "VERIFIED",
+        "verdict": "PASS"
+      }
+    },
+    "claim_join": null,
+    "comparator_self_test": {
+      "holds": true,
+      "invocation_id": "inv-f37725e0978f",
+      "pairs": [
+        {
+          "actual": "DISAGREES",
+          "claim": "0.15",
+          "expected": "DISAGREES",
+          "stored": "0.14"
+        },
+        {
+          "actual": "EXACT",
+          "claim": "12.4",
+          "expected": "EXACT",
+          "stored": "12.40"
+        },
+        {
+          "actual": "AGREES_AT_STATED_PRECISION",
+          "claim": "0.1",
+          "expected": "AGREES_AT_STATED_PRECISION",
+          "stored": "0.14"
+        }
+      ]
+    },
+    "falsifiers": {
+      "NO_CASE": [],
+      "NO_GENERATOR": [],
+      "REFUTED": [],
+      "UNWITNESSED": [],
+      "WITNESSED": [
+        "columns",
+        "rows"
+      ],
+      "invocations": 2
+    },
+    "min_discrimination": null,
+    "pins": {
+      "changed": [],
+      "holds": true,
+      "pinned": 10,
+      "writes": []
+    },
+    "plan": {
+      "checks_planned": 3,
+      "entry_sha256": "032346c39170f5eab2fe542e63e7f3bb0b69d5eb26683b2618e0fdd54828769a",
+      "inputs_planned": 1,
+      "manifest_sha256": "e9cf152319b5686870affd470f18f48cdef1ff92c5d3ef02e9fbcb64546ea533",
+      "pins": 10
+    },
+    "verdict_transitions": [
+      {
+        "after": "PASS",
+        "before": "NONE",
+        "reason": "VERIFIED",
+        "source": "check:columns",
+        "step": 1
+      },
+      {
+        "after": "FAIL",
+        "before": "PASS",
+        "reason": "SOURCE_MISMATCH",
+        "source": "check:currency",
+        "step": 3
+      }
+    ]
+  },
   "counters": {
     "checks_abstained": 0,
     "checks_declared": 3,
@@ -324,15 +468,18 @@
     "checks_executed": 3,
     "checks_expected": 3,
     "checks_failed": 1,
+    "checks_justified": 0,
     "checks_not_applicable": 0,
     "checks_passed": 2,
+    "checks_shortfall": 0,
     "checks_skipped": 0,
+    "control_invocations": 5,
     "expected_inputs": 1,
     "inputs_discovered": 1,
     "inputs_examined": 1,
     "inputs_opened": 1,
     "inputs_parsed": 1,
-    "rows_examined": 10
+    "rows_examined": 6
   },
   "declared": {
     "checks": [
@@ -451,11 +598,11 @@
     }
   ],
   "evidence_boundary": {
-    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 6 entries; ledger head fffa8f7806e1775291ed0bfc79aa80dc819ecd8b0c973be81f7aadb01408d895; evidence manifest e420876f673e900943cbff6afc3523b63ffd738b20bffbe8b9d816b3d681ab82.",
-    "performance": "Run status FAIL (SOURCE_MISMATCH) from 3 check result(s): 2 PASS, 1 FAIL, 0 ABSTAIN, 0 ERROR; 9 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
+    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 17 entries; ledger head 435df4817512e70db37c2c53d9ef18c8a21003770ca3fde42a274b891f95f78d; evidence manifest 8decda1b0147eb4b1198c398b14ab60119c8787909b44bec4e6ea043fe5783fa.",
+    "performance": "CHECKER: falsifier witnesses 2 WITNESSED, 0 REFUTED, 0 UNWITNESSED, 0 NO_CASE, 0 NO_GENERATOR (2 falsifier invocation(s)); must-fail/must-pass canary held; comparator self-test held. RUN: Run status FAIL (SOURCE_MISMATCH) from 3 check result(s): 2 PASS, 1 FAIL, 0 ABSTAIN, 0 ERROR; 15 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
     "scientific_validity": "NOT ESTABLISHED"
   },
-  "evidence_manifest_sha256": "e420876f673e900943cbff6afc3523b63ffd738b20bffbe8b9d816b3d681ab82",
+  "evidence_manifest_sha256": "8decda1b0147eb4b1198c398b14ab60119c8787909b44bec4e6ea043fe5783fa",
   "exit_code": 1,
   "expected_inputs": 1,
   "failure_modes": [
@@ -477,13 +624,25 @@
   "invariants": [
     {
       "applicable": true,
-      "detail": "check results marked CHECKED: 3 claimed <= 3 invoked",
+      "detail": "the must-fail canary failed and its known-good twin passed",
+      "holds": true,
+      "name": "canary_controls_hold"
+    },
+    {
+      "applicable": true,
+      "detail": "check results marked CHECKED: 3 claimed <= 8 invoked",
       "holds": true,
       "name": "checked_claims_le_invocations"
     },
     {
       "applicable": true,
-      "detail": "3 invocation(s) each reached exactly one terminal result",
+      "detail": "3 known pairs compared as expected",
+      "holds": true,
+      "name": "comparator_self_test"
+    },
+    {
+      "applicable": true,
+      "detail": "8 invocation(s) each reached exactly one terminal result",
       "holds": true,
       "name": "every_invocation_has_terminal_result"
     },
@@ -501,13 +660,19 @@
     },
     {
       "applicable": true,
+      "detail": "10 pinned file(s) unchanged and never written during the run",
+      "holds": true,
+      "name": "harness_pins_intact"
+    },
+    {
+      "applicable": true,
       "detail": "2 INDEPENDENT closure(s) hold",
       "holds": true,
       "name": "input_accounting_closure"
     },
     {
       "applicable": true,
-      "detail": "6 entries chain to head fffa8f7806e1775291ed0bfc79aa80dc819ecd8b0c973be81f7aadb01408d895",
+      "detail": "17 entries chain to head 435df4817512e70db37c2c53d9ef18c8a21003770ca3fde42a274b891f95f78d",
       "holds": true,
       "name": "ledger_chain_intact"
     },
@@ -525,19 +690,37 @@
     },
     {
       "applicable": true,
-      "detail": "rows_examined=16",
+      "detail": "rows_examined=6 (distinct data rows of declared inputs)",
       "holds": true,
       "name": "pass_requires_examined_rows"
+    },
+    {
+      "applicable": true,
+      "detail": "2 PASS result(s) each carry a ledger-backed falsifier witness",
+      "holds": true,
+      "name": "pass_requires_falsifier_witness"
     },
     {
       "applicable": true,
       "detail": "every PASS carries non-empty, hashed evidence",
       "holds": true,
       "name": "pass_requires_nonempty_evidence"
+    },
+    {
+      "applicable": true,
+      "detail": "6 planned item(s) each ran exactly once",
+      "holds": true,
+      "name": "plan_closure"
+    },
+    {
+      "applicable": true,
+      "detail": "the recorded PLAN equals the plan the manifest implies",
+      "holds": true,
+      "name": "plan_matches_manifest"
     }
   ],
-  "ledger_head_sha256": "fffa8f7806e1775291ed0bfc79aa80dc819ecd8b0c973be81f7aadb01408d895",
-  "ledger_length": 6,
+  "ledger_head_sha256": "435df4817512e70db37c2c53d9ef18c8a21003770ca3fde42a274b891f95f78d",
+  "ledger_length": 17,
   "manifest": {
     "file": "manifest.json",
     "issues": [],
@@ -555,12 +738,12 @@
     "SOURCE_MISMATCH"
   ],
   "receipt": {
-    "content_sha256": "22fa6f0d8b528080e8a25d80a28e7dc268ad7ac6bb71c303850dae12929b7ca1",
+    "content_sha256": "f9cec90a7af017d9135514082f3aba768d6557a27df1abca47e0b496f8b04cc0",
     "key_id": null,
     "signature_state": "UNSIGNED"
   },
-  "rows_examined": 10,
-  "run_id": "run-ad078c6dec5e4572",
+  "rows_examined": 6,
+  "run_id": "run-38ae6718d765c8f5",
   "schema": "science-gate-run/v1",
   "started_at": "2026-09-26T00:00:00Z",
   "status": "FAIL",

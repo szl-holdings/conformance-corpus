@@ -14,19 +14,25 @@
 - **No completeness.** It has not shown that mutation testing finds every
   blind spot. It covers only the defect kinds its operators inject, and
   only on this tree.
-- **Sensitivity is not accuracy.** The sensitivity of 8/9 describes this
-  tree under the 20 operators of science-gate 0.1.0. It is not a measure of
-  the verifier's accuracy on real evidence.
+- **Sensitivity is not accuracy.** The sensitivity of 9/10 describes this
+  tree under the 21 operators of science-gate at commit e563fd3 (it was 8/9
+  under the 20 operators of 0.1.0 until the owner-approved change of
+  2026-10-28). It is not a measure of the verifier's accuracy on real
+  evidence.
 
 ## Scope limits of the fixture
 
 - **One tree.** One CSV input with a declared digest and a row key, but no
-  independent row count. Three checks.
+  independent row count. Two checks (a third, `row_count`, was removed on
+  2026-10-28; see `entry.json` `unresolved_cases`).
 - **One blind spot, by design.** The only intended blind spot is
   duplicated records. The escaped mutant verifies as PASS.
-- **Operator-dependent counts.** The expected counts (9 executed, 8
+- **Operator-dependent counts.** The expected counts (10 executed, 9
   detected, 1 escaped, 11 not applicable) depend on the operator set of
-  science-gate 0.1.0. The blind-spot set `[M04_duplicate_row]` does not.
+  science-gate at commit e563fd3 (21 operators). The blind-spot set
+  `[M04_duplicate_row]` does not. On 2026-10-28 they were re-baselined from
+  the 0.1.0 counts (9 executed, 8 detected), because section 17.12 added
+  M21_removed_plan (owner-approved on 2026-10-28).
 - **Uncovered variant.** A duplicate that *another* detector notices for the
   wrong reason is not covered (see `entry.json`, `unresolved_cases`).
 - **No receipt from mutate.** `science-gate mutate` writes

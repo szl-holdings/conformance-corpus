@@ -23,17 +23,16 @@
     "run_json_exit_code": 2,
     "reason": "INSUFFICIENT_EVIDENCE",
     "reasons": [
-      "INSUFFICIENT_EVIDENCE",
-      "PARTIAL_EXECUTION"
+      "INSUFFICIENT_EVIDENCE"
     ],
     "failure_modes": [
-      "PARTIAL_EXECUTION"
+      "OMITTED_POPULATION"
     ],
     "headline": "ABSTAIN (INSUFFICIENT_EVIDENCE) run-ebeaf9c4a4607f57: 3/4 required checks executed, 5 rows examined, 1/1 inputs opened",
     "signature_state": "UNSIGNED"
   },
   "must_mention_found": {
-    "PARTIAL_EXECUTION": true,
+    "PARTIAL_EXECUTION": false,
     "checks_executed=3 of checks_expected=4": true,
     "fixtures/time/events.json": true,
     "time-window": true
@@ -42,10 +41,35 @@
     "status": true,
     "exit_code": true,
     "reason": false,
-    "failure_modes": true,
-    "must_mention": true,
+    "failure_modes": false,
+    "must_mention": false,
     "status_must_not_be": true
   },
   "all_match": false,
+  "determinism": {
+    "second_run_byte_identical": {
+      "evidence-manifest.json": true,
+      "ledger.jsonl": true,
+      "receipt.auth.json": true,
+      "receipt.json": true,
+      "report.html": true,
+      "report.md": true,
+      "results.sarif": true,
+      "run.json": true
+    },
+    "all_identical": true,
+    "note": "A second run into a different temp directory with PYTHONHASHSEED=4242, same fixed time."
+  },
+  "receipt_verification": {
+    "ok": true,
+    "content_intact": true,
+    "recomputed_sha256": "b304311437d4d260b1d828ef7e2daba07ca338496dab211d4d6d001ba716b6b1",
+    "signature_state": "UNSIGNED",
+    "signature_verified": null,
+    "auth_status": "UNSIGNED",
+    "run_id": "run-ebeaf9c4a4607f57",
+    "problems": [],
+    "detail": "no key when written: SCIENCE_GATE_HMAC_KEY_FILE is not set; only the content hash was checked"
+  },
   "does_not_prove": "Passing shows conformance on this declared synthetic fixture only; it does not show scientific validity, and it does not show fitness for any use."
 }

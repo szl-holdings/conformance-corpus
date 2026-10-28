@@ -1,12 +1,12 @@
 {
-  "note": "Extract of mutation-report.json from the recorded run; the full file is not stored, to keep the entry small. Its SHA-256 is given so a re-run can be compared byte for byte. Omitted: the operator lists, not_proven (verbatim in mutation-report.md), each mutation's target and expected rule (in mutation-report.md), and fired-detector details (only their labels are kept here).",
-  "mutation_report_json_sha256": "8136f08672a4b4d862c8dafffe2a80cfb58eec81ea487a7b32e65cc362784844",
+  "note": "Extract of mutation-report.json (science-gate-mutation-report/v2) from the recorded run; the full file is not stored, to keep the entry small. Its SHA-256 is given so a re-run can be compared byte for byte. Omitted: the operator lists, not_proven (verbatim in mutation-report.md), buckets, conservation and counts_as_detected (in mutation-report.md), each mutation's target, activation and expected rule (in mutation-report.md), the baseline digests, and fired-detector details (only their labels are kept here).",
+  "mutation_report_json_sha256": "4932075778689bf8e02832526c62f842565804d33d9aba11c7fa3c08108bc899",
   "report": {
-    "applicable_mutations": 9,
+    "applicable_mutations": 10,
     "baseline": {
       "counters": {
-        "checks_executed": 3,
-        "checks_expected": 3,
+        "checks_executed": 2,
+        "checks_expected": 2,
         "expected_inputs": 1,
         "inputs_opened": 1,
         "rows_examined": 4
@@ -14,42 +14,59 @@
       "diagnostics": [],
       "findings": [],
       "reason": "VERIFIED",
-      "run_id": "run-fb54a3f2ab4c6bae",
+      "run_id": "run-ab1808a64dc72890",
       "status": "PASS",
       "valid": true
     },
-    "detected_mutations": 8,
+    "blind_spot_mutations": 1,
+    "canonically_equivalent_mutations": 0,
+    "detected_mutations": 9,
     "diagnostics": [],
+    "duplicate_mutations": 0,
     "escaped_mutations": 1,
-    "executed_mutations": 9,
+    "executed_mutations": 10,
     "exit_code": 1,
+    "flaky_mutations": 0,
     "generated_at": "2026-09-26T00:00:00Z",
+    "generated_mutations": 21,
     "manifest": {
       "file": "manifest.json",
-      "sha256": "7112354b66dcb1e3867fc318833888c34af3e5f446148e9cef97f4ef74381bb3"
+      "sha256": "1b0ef6b2b7ee8cb9bd0fd32a00eaf15e01d9e62c5fc92c79a7a64fe9ba925941"
     },
-    "message": "8 of 9 executed mutations were detected by their expected detector; 1 escaped as blind spots.",
+    "message": "9 of 10 executed mutations were detected by their expected detector; 1 escaped (1 blind spot(s), 0 verifier error(s)).",
     "network": "offline: every verify ran with a network opener that refuses all requests",
+    "noop_mutations": 0,
+    "not_activated_mutations": 0,
     "not_applicable_mutations": 11,
     "reason": "BLIND_SPOT",
-    "report_id": "mut-50e087e15796d6b4",
-    "schema": "science-gate-mutation-report/v1",
+    "report_id": "mut-639e31adfdcd67f5",
+    "reused": false,
+    "sampled": false,
+    "schema": "science-gate-mutation-report/v2",
     "sensitivity": {
-      "decimal": "0.8889",
+      "decimal": "0.9000",
       "decimal_rounding": "ROUND_HALF_EVEN to 4 places",
-      "detected": 8,
-      "executed": 9,
-      "fraction": "8/9"
+      "detected": 9,
+      "executed": 10,
+      "fraction": "9/10"
     },
     "skipped_mutations": 0,
     "status": "FAIL",
+    "suppressed_mutations": 0,
+    "timed_out_mutations": 0,
     "tool": {
       "name": "scientific-evidence-gate",
       "version": "0.1.0"
     },
+    "verifier_error_mutations": 0,
+    "forced_detection": {
+      "mutation_id": "M00_forced_detection",
+      "detected": true
+    },
     "mutations": [
       {
         "mutation_id": "M01_empty_input",
+        "status": "DETECTED",
         "execution_state": "CHECKED",
         "expected_detector": "input:EMPTY",
         "detected": true,
@@ -58,7 +75,6 @@
         "fired": [
           "check:numeric_agreement",
           "check:required_columns",
-          "check:row_count",
           "contract:checks_executed",
           "contract:rows_examined",
           "input:EMPTY"
@@ -66,6 +82,7 @@
       },
       {
         "mutation_id": "M02_missing_expected_file",
+        "status": "DETECTED",
         "execution_state": "CHECKED",
         "expected_detector": "input:MISSING",
         "detected": true,
@@ -74,7 +91,6 @@
         "fired": [
           "check:numeric_agreement",
           "check:required_columns",
-          "check:row_count",
           "contract:checks_executed",
           "contract:inputs_opened",
           "contract:rows_examined",
@@ -83,6 +99,7 @@
       },
       {
         "mutation_id": "M03_deleted_accepted_row",
+        "status": "NOT_APPLICABLE",
         "execution_state": "NOT_APPLICABLE",
         "expected_detector": "check:snapshot_completeness",
         "detected": null,
@@ -93,6 +110,7 @@
       },
       {
         "mutation_id": "M04_duplicate_row",
+        "status": "BLIND_SPOT",
         "execution_state": "CHECKED",
         "expected_detector": "check:duplicate_rows",
         "detected": false,
@@ -100,11 +118,12 @@
         "actual": "PASS (VERIFIED)",
         "fired": [],
         "diagnostics": [
-          "BLIND_SPOT: the mutant verified as PASS; expected check:duplicate_rows reports FAIL"
+          "BLIND_SPOT: the mutant verified as PASS; expected check:duplicate_rows reports FAIL [PROPAGATED_NOT_CHECKED]"
         ]
       },
       {
         "mutation_id": "M05_duplicate_reviewer_verdict",
+        "status": "NOT_APPLICABLE",
         "execution_state": "NOT_APPLICABLE",
         "expected_detector": "check:reviewer_protocol",
         "detected": null,
@@ -115,6 +134,7 @@
       },
       {
         "mutation_id": "M06_missing_required_reviewer",
+        "status": "NOT_APPLICABLE",
         "execution_state": "NOT_APPLICABLE",
         "expected_detector": "check:reviewer_protocol",
         "detected": null,
@@ -125,6 +145,7 @@
       },
       {
         "mutation_id": "M07_changed_source_hash",
+        "status": "DETECTED",
         "execution_state": "CHECKED",
         "expected_detector": "input:HASH_MISMATCH",
         "detected": true,
@@ -133,7 +154,6 @@
         "fired": [
           "check:numeric_agreement",
           "check:required_columns",
-          "check:row_count",
           "contract:checks_executed",
           "contract:rows_examined",
           "input:HASH_MISMATCH"
@@ -141,6 +161,7 @@
       },
       {
         "mutation_id": "M08_changed_author",
+        "status": "NOT_APPLICABLE",
         "execution_state": "NOT_APPLICABLE",
         "expected_detector": "check:citation_metadata",
         "detected": null,
@@ -151,6 +172,7 @@
       },
       {
         "mutation_id": "M09_changed_doi",
+        "status": "NOT_APPLICABLE",
         "execution_state": "NOT_APPLICABLE",
         "expected_detector": "check:citation_resolver",
         "detected": null,
@@ -161,6 +183,7 @@
       },
       {
         "mutation_id": "M10_changed_numeric_value",
+        "status": "DETECTED",
         "execution_state": "CHECKED",
         "expected_detector": "check:numeric_agreement",
         "detected": true,
@@ -172,6 +195,7 @@
       },
       {
         "mutation_id": "M11_changed_numeric_formatting",
+        "status": "DETECTED",
         "execution_state": "CHECKED",
         "expected_detector": "check:numeric_agreement",
         "detected": true,
@@ -183,6 +207,7 @@
       },
       {
         "mutation_id": "M12_timezone_shift",
+        "status": "NOT_APPLICABLE",
         "execution_state": "NOT_APPLICABLE",
         "expected_detector": "check:time_source",
         "detected": null,
@@ -193,6 +218,7 @@
       },
       {
         "mutation_id": "M13_removed_invocation",
+        "status": "NOT_APPLICABLE",
         "execution_state": "NOT_APPLICABLE",
         "expected_detector": "check:verification_log",
         "detected": null,
@@ -203,6 +229,7 @@
       },
       {
         "mutation_id": "M14_pass_summary_without_evidence",
+        "status": "NOT_APPLICABLE",
         "execution_state": "NOT_APPLICABLE",
         "expected_detector": "check:summary_consistency",
         "detected": null,
@@ -213,34 +240,35 @@
       },
       {
         "mutation_id": "M15_skipped_required_checker",
+        "status": "DETECTED",
         "execution_state": "CHECKED",
         "expected_detector": "contract:checks_executed",
         "detected": true,
         "blind_spot": false,
-        "actual": "ABSTAIN (INSUFFICIENT_EVIDENCE)",
+        "actual": "FAIL (PARTIAL_EXECUTION)",
         "fired": [
-          "check:row_count",
+          "check:required_columns",
           "contract:checks_executed"
         ]
       },
       {
         "mutation_id": "M16_truncated_ledger",
+        "status": "DETECTED",
         "execution_state": "CHECKED",
         "expected_detector": "invariant:ledger_chain_intact",
         "detected": true,
         "blind_spot": false,
         "actual": "FAIL (PROTOCOL_BROKEN)",
         "fired": [
-          "contract:checks_executed",
-          "invariant:checked_claims_le_invocations",
+          "invariant:canary_controls_hold",
           "invariant:every_invocation_has_terminal_result",
-          "invariant:every_required_check_has_terminal_state",
-          "invariant:every_verdict_has_invocation",
-          "invariant:ledger_chain_intact"
+          "invariant:ledger_chain_intact",
+          "invariant:plan_closure"
         ]
       },
       {
         "mutation_id": "M17_reordered_hash_chain",
+        "status": "DETECTED",
         "execution_state": "CHECKED",
         "expected_detector": "invariant:ledger_chain_intact",
         "detected": true,
@@ -252,6 +280,7 @@
       },
       {
         "mutation_id": "M18_changed_upstream_design",
+        "status": "NOT_APPLICABLE",
         "execution_state": "NOT_APPLICABLE",
         "expected_detector": "check:dependency_currency",
         "detected": null,
@@ -262,6 +291,7 @@
       },
       {
         "mutation_id": "M19_replaced_stored_claim_output",
+        "status": "NOT_APPLICABLE",
         "execution_state": "NOT_APPLICABLE",
         "expected_detector": "check:claim_registry",
         "detected": null,
@@ -272,12 +302,25 @@
       },
       {
         "mutation_id": "M20_metadata_change_under_unchanged_pass_summary",
+        "status": "NOT_APPLICABLE",
         "execution_state": "NOT_APPLICABLE",
         "expected_detector": "check:summary_consistency",
         "detected": null,
         "blind_spot": null,
         "diagnostics": [
           "NOT_APPLICABLE: the manifest declares no stored PASS summary to hold unchanged"
+        ]
+      },
+      {
+        "mutation_id": "M21_removed_plan",
+        "status": "DETECTED",
+        "execution_state": "CHECKED",
+        "expected_detector": "invariant:plan_closure",
+        "detected": true,
+        "blind_spot": false,
+        "actual": "FAIL (PARTIAL_EXECUTION)",
+        "fired": [
+          "invariant:plan_closure"
         ]
       }
     ]

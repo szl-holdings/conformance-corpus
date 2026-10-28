@@ -252,6 +252,7 @@
     "second_run_byte_identical": {
       "evidence-manifest.json": true,
       "ledger.jsonl": true,
+      "receipt.auth.json": true,
       "receipt.json": true,
       "report.html": true,
       "report.md": true,
@@ -259,18 +260,29 @@
       "run.json": true
     },
     "all_identical": true,
-    "note": "Two runs into different temp directories, same fixed time."
+    "note": "Two runs into different temp directories, same fixed time; the second with PYTHONHASHSEED=4242."
   },
   "reverification": {
     "command": "python -m science_gate.cli report <tmp>/run",
     "exit_code": 1,
-    "headline": "FAIL (SOURCE_MISMATCH) run-350cb2fc2f3085dd: recorded run re-verified",
+    "headline": "FAIL (SOURCE_MISMATCH) run-14e19b81fbfed4fc: recorded run re-verified",
     "matches_verify_exit_code": true
+  },
+  "receipt_verification": {
+    "ok": true,
+    "content_intact": true,
+    "recomputed_sha256": "383502fc327348a30454a216b43b00c13541b90ff3e1ac0623f9a7674582053d",
+    "signature_state": "UNSIGNED",
+    "signature_verified": null,
+    "auth_status": "UNSIGNED",
+    "run_id": "run-14e19b81fbfed4fc",
+    "problems": [],
+    "detail": "no key when written: SCIENCE_GATE_HMAC_KEY_FILE is not set; only the content hash was checked"
   },
   "seg_state_changed_during_runs": false,
   "does_not_prove": "A match shows conformance on declared fixtures only. It does not establish scientific validity or fitness for use.",
   "observations": [
-    "Observation, not a gap for this category: report.md prints 'Rows examined in scope: N' (rows counted once) next to the invariant detail 'pass_requires_examined_rows: rows_examined=M', where M sums rows over every CHECKED check and so counts the same rows several times. The two figures share the name rows_examined but measure different things. The expected results pin neither."
+    "Observation, settled at this commit: the 0.1.0 reports printed 'Rows examined in scope: N' next to an invariant detail 'rows_examined=M' that summed rows over every CHECKED check (two quantities, one name). Under ARCHITECTURE.md 17.7 (G1) report.md names the run figure once, as 'rows_examined: N (distinct data rows of declared inputs read by an executed check)', and each check line gives its own 'subject records examined'. The expected results pin no run-level figure; a must_mention line that quotes a check line uses the 'subject records examined' wording."
   ],
   "control": "see control.json: a temp copy with only the defect undone returned PASS, exit 0, VERIFIED"
 }

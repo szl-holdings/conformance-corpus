@@ -25,6 +25,15 @@ tool version recorded in `environment.lock`.
   also does not exercise a snapshot without a row key, or several deletions.
 - **The snapshot is trusted as given.** Nothing here checks how it was
   produced or whether it was right to accept those rows.
+- **The row count cannot be witnessed (2026-10-28).** `specimens` declares an
+  OBSERVED-only `expected_rows`. Under decisions D2 and 17.5 of the
+  science-gate architecture a row_count PASS needs a falsifier witness, and
+  row_count's only case (drop-last-row) needs an INDEPENDENT expectation, so
+  the check `rows` is ABSTAIN / BLIND_SPOT with VACUOUS_PASS. The intended
+  failure modes became [OMITTED_POPULATION, VACUOUS_PASS] and the pinned
+  snapshot line took the G1 wording "subject records examined 5"; both
+  updates were owner-approved on 2026-10-28. The repaired-fixture control now
+  ABSTAINs for the same reason (see `evaluation/control.json`).
 - **One tool version.** The recorded run used the science-gate version and
   commit in `environment.lock`.
 - **Unreviewed draft.** It was written by one author and has not been

@@ -24,17 +24,18 @@ UNSIGNED receipt. Then compare with `../expected-results.json`:
 - `stdout.txt`: what science-gate printed (paths replaced by `<tmp>`; Windows CRLF line endings
   normalized to LF)
 - `report.md`, `run.json`: copied from the run directory byte for byte (they contained no local path)
-- `comparison.json`: the intended outcome against the recorded one, field by field
+- `comparison.json`: the intended outcome against the recorded one, field by field, a second run
+  with `PYTHONHASHSEED=4242` compared byte for byte, and the receipt re-check
 
 | field | intended (expected-results.json) | recorded run | match |
 |---|---|---|---|
 | status | ABSTAIN | ABSTAIN | yes |
 | exit_code | 2 | 2 | yes |
 | reason | INSUFFICIENT_EVIDENCE | INSUFFICIENT_EVIDENCE | yes |
-| failure_modes | VACUOUS_PASS | PARTIAL_EXECUTION, VACUOUS_PASS | **NO** |
-| must_mention | 5 string(s) | 4 found; missing: 'rows_examined' | **NO** |
+| failure_modes | VACUOUS_PASS | VACUOUS_PASS | yes |
+| must_mention | 5 string(s) | 5 found | yes |
 
-The recorded run does **not** match every intended field. expected-results.json was **not** changed to match it; the differences are listed in entry.json `known_failures`.
+The recorded run matches every intended field.
 
 Environment: see `../environment.lock`. Receipt: see `../receipts/`.
 

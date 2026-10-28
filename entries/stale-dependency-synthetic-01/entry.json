@@ -65,7 +65,7 @@
   ],
   "provenance": {
     "created": "2026-09-29",
-    "generator": "Synthetic values specified by hand and written by a stdlib-only Python generator run by an AI coding agent (Claude Code) for the corpus author, workstream 3 of the verification program. Digests computed with hashlib.sha256 over the exact bytes (LF line endings). The expected outcome was fixed before the recorded run and then compared with it.",
+    "generator": "Synthetic values specified by hand and written by a stdlib-only Python generator run by an AI coding agent (Claude Code) for the corpus author, workstream 3 of the verification program. Digests computed with hashlib.sha256 over the exact bytes (LF line endings). The expected outcome was fixed before the recorded run and then compared with it. Refreshed on 2026-10-28: evaluation/, receipts/ and environment.lock were regenerated against scientific-evidence-gate commit e563fd301d71; see the corpus README, 'Refresh (2026-10-28)'.",
     "reviewed_by": []
   }
 }

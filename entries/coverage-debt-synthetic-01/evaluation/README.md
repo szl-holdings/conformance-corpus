@@ -34,10 +34,15 @@ Compare with `../expected-results.json`:
 - `report.md`, `run.json`: copied byte for byte from the recorded run. They
   contained no local path, so nothing needed replacing.
 - `comparison.json`: every expected field next to the recorded value, whether
-  they match, whether a second run was byte-identical, and the result of
-  `science-gate report` re-verifying the run directory.
-- `../receipts/receipt.json`: the run's UNSIGNED receipt.
-- `control.json`: a repaired-fixture control. A temp copy with only the defect undone was run the same way and returned PASS, showing that the recorded outcome comes from the defect.
+  they match, whether a second run (`PYTHONHASHSEED=4242`) was byte-identical,
+  and the result of `science-gate report` re-verifying the run directory.
+- `../receipts/receipt.json`: the run's UNSIGNED receipt record (statement and
+  sidecar; see `../receipts/README.md`).
+- `control.json`: a repaired-fixture control. A temp copy with only the defect
+  undone was run the same way. `repaired_fixture` holds every changed file
+  exactly as it was run, and `match` says whether the control returned PASS.
+
+The recorded run matches every expected field (see `comparison.json`).
 
 A match shows conformance on declared fixtures only. It does not establish
 scientific validity or fitness for use.
