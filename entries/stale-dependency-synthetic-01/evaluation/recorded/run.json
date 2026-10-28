@@ -1,0 +1,571 @@
+{
+  "accounting": {
+    "closure": {
+      "accounted": 1,
+      "expected": 1,
+      "holds": true,
+      "source": "INDEPENDENT"
+    },
+    "counters": {
+      "admitted": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "deferred": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "discovered": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "examined": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "excluded": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "expected": {
+        "denominator_source": "INDEPENDENT",
+        "value": 1
+      },
+      "failed": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "opened": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "parsed": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "unresolved": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      }
+    },
+    "inputs": [
+      {
+        "bytes": 250,
+        "closure": {
+          "accounted": 6,
+          "expected": 6,
+          "holds": true,
+          "source": "INDEPENDENT"
+        },
+        "declared_sha256": "bc2f606fb2c361aef613a1311069ed5483a8aff17d0b789c99b96dc1069e19f3",
+        "diagnostics": [],
+        "discovered": true,
+        "format": "csv",
+        "id": "plots",
+        "opened": true,
+        "parsed": true,
+        "path": "fixtures/data/plots.csv",
+        "required": true,
+        "row_counts": {
+          "admitted": 6,
+          "deferred": 0,
+          "excluded": 0,
+          "failed": 0,
+          "unresolved": 0
+        },
+        "rows": 6,
+        "sha256": "bc2f606fb2c361aef613a1311069ed5483a8aff17d0b789c99b96dc1069e19f3",
+        "state": "PARSED"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check_id": "columns",
+      "diagnostics": [],
+      "evidence": {
+        "columns": [
+          "plot_id",
+          "site",
+          "biomass_g",
+          "count"
+        ],
+        "inputs": {
+          "plots": {
+            "header": [
+              "plot_id",
+              "site",
+              "biomass_g",
+              "count"
+            ],
+            "missing_columns": [],
+            "rows_admitted": 6,
+            "sha256": "bc2f606fb2c361aef613a1311069ed5483a8aff17d0b789c99b96dc1069e19f3",
+            "state": "PARSED"
+          }
+        }
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [],
+      "inputs": [
+        "plots"
+      ],
+      "invocation_id": "inv-a4851455f491",
+      "kind": "required_columns",
+      "reason": "VERIFIED",
+      "required": true,
+      "rows_examined": 6,
+      "verdict": "PASS",
+      "version": "1"
+    },
+    {
+      "check_id": "currency",
+      "diagnostics": [
+        "publication blocked: CONCLUSION/FIGURE_OR_TABLE node(s) 'conclusion-south-highest' are STALE_PENDING_REVALIDATION",
+        "node(s) 'site-means', 'study-design' are STALE_PENDING_REVALIDATION: they block no publication node, but the graph is not current"
+      ],
+      "evidence": {
+        "comparisons": [
+          {
+            "diagnostic": null,
+            "id": "source-plots",
+            "observed_sha256": "bc2f606fb2c361aef613a1311069ed5483a8aff17d0b789c99b96dc1069e19f3",
+            "outcome": "UNCHANGED",
+            "path": "fixtures/data/plots.csv",
+            "recorded_sha256": "bc2f606fb2c361aef613a1311069ed5483a8aff17d0b789c99b96dc1069e19f3"
+          },
+          {
+            "diagnostic": null,
+            "id": "study-design",
+            "observed_sha256": "7987eed13d74508e23f9434dc0a976dbe8095e72a9681075d1836fdd0b947777",
+            "outcome": "CHANGED",
+            "path": "fixtures/design/protocol.md",
+            "recorded_sha256": "08e73858c6ec3295d791bd22a0497316b264fc85fe63f405d13fe378fd421d3b"
+          },
+          {
+            "diagnostic": null,
+            "id": "site-means",
+            "observed_sha256": "30b91b0e98e0f4f7b3cf9b2b2272ee5383161bdb25fc18fcfc8a4d2d9f220d34",
+            "outcome": "UNCHANGED",
+            "path": "fixtures/analysis/site-means.csv",
+            "recorded_sha256": "30b91b0e98e0f4f7b3cf9b2b2272ee5383161bdb25fc18fcfc8a4d2d9f220d34"
+          },
+          {
+            "diagnostic": null,
+            "id": "conclusion-south-highest",
+            "observed_sha256": "bed11c00b085a8517ea6f7c7f41ae0272a97924229396ebce2fce4dc7b838286",
+            "outcome": "UNCHANGED",
+            "path": "fixtures/conclusions/conclusion-south-highest.md",
+            "recorded_sha256": "bed11c00b085a8517ea6f7c7f41ae0272a97924229396ebce2fce4dc7b838286"
+          }
+        ],
+        "comparisons_sha256": "9e5af0c0dd6b62c53f736beb7dbeb7b2eeaad254e34a0481f1c11063777a00f3",
+        "comparisons_total": 4,
+        "counts": {
+          "comparisons": {
+            "CHANGED": 1,
+            "NO_BASELINE": 0,
+            "NO_FILE": 0,
+            "UNAVAILABLE": 0,
+            "UNCHANGED": 3
+          },
+          "edges": 3,
+          "files_hashed": 4,
+          "nodes": 4,
+          "publication_nodes": 1,
+          "validity": {
+            "CURRENT": 1,
+            "INVALIDATED": 0,
+            "REVALIDATED_CHANGED": 0,
+            "REVALIDATED_UNCHANGED": 0,
+            "STALE_PENDING_REVALIDATION": 3,
+            "SUPERSEDED": 0,
+            "UNRESOLVED": 0
+          }
+        },
+        "graph": {
+          "bytes": 1317,
+          "declared": true,
+          "diagnostic": null,
+          "path": "fixtures/graph/graph.json",
+          "role": "dependencies",
+          "sha256": "9fab7ff816a5335fd4a38bae0c22f7d8f7597cb2ba0e5b73f3709331198f20bb",
+          "state": "PARSED"
+        },
+        "node_table_sha256": "f9c6398196779811b25247fd14c371949050711361e0364f0c4ed76973966f60",
+        "not_in_good_standing": [
+          {
+            "id": "conclusion-south-highest",
+            "kind": "CONCLUSION",
+            "path": "fixtures/conclusions/conclusion-south-highest.md",
+            "publication_node": true,
+            "recorded_sha256": "bed11c00b085a8517ea6f7c7f41ae0272a97924229396ebce2fce4dc7b838286",
+            "stale_because": [
+              "site-means"
+            ],
+            "validity": "STALE_PENDING_REVALIDATION"
+          },
+          {
+            "id": "site-means",
+            "kind": "RANKING_OR_MEASUREMENT",
+            "path": "fixtures/analysis/site-means.csv",
+            "publication_node": false,
+            "recorded_sha256": "30b91b0e98e0f4f7b3cf9b2b2272ee5383161bdb25fc18fcfc8a4d2d9f220d34",
+            "stale_because": [
+              "study-design"
+            ],
+            "validity": "STALE_PENDING_REVALIDATION"
+          },
+          {
+            "id": "study-design",
+            "kind": "DESIGN",
+            "path": "fixtures/design/protocol.md",
+            "publication_node": false,
+            "recorded_sha256": "08e73858c6ec3295d791bd22a0497316b264fc85fe63f405d13fe378fd421d3b",
+            "stale_because": [
+              "study-design"
+            ],
+            "validity": "STALE_PENDING_REVALIDATION"
+          }
+        ],
+        "publication_block": {
+          "blocked": true,
+          "publication_nodes": 1,
+          "rule": "publication is blocked while any CONCLUSION or FIGURE_OR_TABLE node is STALE_PENDING_REVALIDATION; a node file whose digest differs from its recorded digest is STALE_PENDING_REVALIDATION, and so is every descendant of a pending node",
+          "stale_publication_nodes": [
+            "conclusion-south-highest"
+          ],
+          "undetermined_publication_nodes": []
+        },
+        "rule": "publication is blocked while any CONCLUSION or FIGURE_OR_TABLE node is STALE_PENDING_REVALIDATION; a node file whose digest differs from its recorded digest is STALE_PENDING_REVALIDATION, and so is every descendant of a pending node",
+        "scope": "currency of recorded artifact digests only: nothing is re-run, and no conclusion is judged true or false",
+        "state": {
+          "bytes": null,
+          "declared": true,
+          "diagnostic": "MISSING: no file at fixtures/graph/graph-state.json",
+          "path": "fixtures/graph/graph-state.json",
+          "role": "dependencies.state",
+          "sha256": null,
+          "state": "MISSING"
+        },
+        "state_record": {
+          "graph_changed_since_state": null,
+          "orphaned_nodes": [],
+          "path": "fixtures/graph/graph-state.json",
+          "present": false,
+          "sha256": null
+        },
+        "transitions_in_memory": 3
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [
+        "STALE_DEPENDENCY"
+      ],
+      "inputs": [],
+      "invocation_id": "inv-e2056b8a4957",
+      "kind": "dependency_currency",
+      "reason": "SOURCE_MISMATCH",
+      "required": true,
+      "rows_examined": 4,
+      "verdict": "FAIL",
+      "version": "1"
+    },
+    {
+      "check_id": "rows",
+      "diagnostics": [],
+      "evidence": {
+        "inputs": {
+          "plots": {
+            "closure": {
+              "accounted": 6,
+              "expected": 6,
+              "holds": true,
+              "source": "INDEPENDENT"
+            },
+            "row_counts": {
+              "admitted": 6,
+              "deferred": 0,
+              "excluded": 0,
+              "failed": 0,
+              "unresolved": 0
+            },
+            "rows_admitted": 6,
+            "sha256": "bc2f606fb2c361aef613a1311069ed5483a8aff17d0b789c99b96dc1069e19f3",
+            "state": "PARSED"
+          }
+        },
+        "rows_admitted_total": 6
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [],
+      "inputs": [
+        "plots"
+      ],
+      "invocation_id": "inv-cb0382a984ff",
+      "kind": "row_count",
+      "reason": "VERIFIED",
+      "required": true,
+      "rows_examined": 6,
+      "verdict": "PASS",
+      "version": "1"
+    }
+  ],
+  "checks_abstained": 0,
+  "checks_executed": 3,
+  "checks_expected": 3,
+  "checks_failed": 1,
+  "checks_passed": 2,
+  "claim_tallies": [],
+  "completed_at": "2026-09-26T00:00:00Z",
+  "counters": {
+    "checks_abstained": 0,
+    "checks_declared": 3,
+    "checks_errored": 0,
+    "checks_executed": 3,
+    "checks_expected": 3,
+    "checks_failed": 1,
+    "checks_not_applicable": 0,
+    "checks_passed": 2,
+    "checks_skipped": 0,
+    "expected_inputs": 1,
+    "inputs_discovered": 1,
+    "inputs_examined": 1,
+    "inputs_opened": 1,
+    "inputs_parsed": 1,
+    "rows_examined": 10
+  },
+  "declared": {
+    "checks": [
+      {
+        "id": "rows",
+        "inputs": [
+          "plots"
+        ],
+        "kind": "row_count",
+        "params": {},
+        "required": true,
+        "version": "1"
+      },
+      {
+        "id": "columns",
+        "inputs": [
+          "plots"
+        ],
+        "kind": "required_columns",
+        "params": {
+          "columns": [
+            "plot_id",
+            "site",
+            "biomass_g",
+            "count"
+          ]
+        },
+        "required": true,
+        "version": "1"
+      },
+      {
+        "id": "currency",
+        "inputs": [],
+        "kind": "dependency_currency",
+        "params": {},
+        "required": true,
+        "version": "1"
+      }
+    ],
+    "inputs": [
+      {
+        "denominator_source": "INDEPENDENT",
+        "expected_rows": 6,
+        "format": "csv",
+        "id": "plots",
+        "path": "fixtures/data/plots.csv",
+        "required": true,
+        "row_key": [
+          "plot_id"
+        ],
+        "sha256": "bc2f606fb2c361aef613a1311069ed5483a8aff17d0b789c99b96dc1069e19f3"
+      }
+    ]
+  },
+  "disclaimer": "A receipt supports integrity, provenance, and replayability. It does not establish scientific truth, accuracy, safety, or fitness for use.",
+  "documents": [
+    {
+      "bytes": 120,
+      "diagnostic": null,
+      "path": "fixtures/analysis/site-means.csv",
+      "roles": [
+        "dependencies.node"
+      ],
+      "sha256": "30b91b0e98e0f4f7b3cf9b2b2272ee5383161bdb25fc18fcfc8a4d2d9f220d34",
+      "state": "PARSED"
+    },
+    {
+      "bytes": 223,
+      "diagnostic": null,
+      "path": "fixtures/conclusions/conclusion-south-highest.md",
+      "roles": [
+        "dependencies.node"
+      ],
+      "sha256": "bed11c00b085a8517ea6f7c7f41ae0272a97924229396ebce2fce4dc7b838286",
+      "state": "PARSED"
+    },
+    {
+      "bytes": 250,
+      "diagnostic": null,
+      "path": "fixtures/data/plots.csv",
+      "roles": [
+        "dependencies.node"
+      ],
+      "sha256": "bc2f606fb2c361aef613a1311069ed5483a8aff17d0b789c99b96dc1069e19f3",
+      "state": "PARSED"
+    },
+    {
+      "bytes": 360,
+      "diagnostic": null,
+      "path": "fixtures/design/protocol.md",
+      "roles": [
+        "dependencies.node"
+      ],
+      "sha256": "7987eed13d74508e23f9434dc0a976dbe8095e72a9681075d1836fdd0b947777",
+      "state": "PARSED"
+    },
+    {
+      "bytes": null,
+      "diagnostic": "MISSING: no file at fixtures/graph/graph-state.json",
+      "path": "fixtures/graph/graph-state.json",
+      "roles": [
+        "dependencies.state"
+      ],
+      "sha256": null,
+      "state": "MISSING"
+    },
+    {
+      "bytes": 1317,
+      "diagnostic": null,
+      "path": "fixtures/graph/graph.json",
+      "roles": [
+        "dependencies"
+      ],
+      "sha256": "9fab7ff816a5335fd4a38bae0c22f7d8f7597cb2ba0e5b73f3709331198f20bb",
+      "state": "PARSED"
+    }
+  ],
+  "evidence_boundary": {
+    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 6 entries; ledger head fffa8f7806e1775291ed0bfc79aa80dc819ecd8b0c973be81f7aadb01408d895; evidence manifest e420876f673e900943cbff6afc3523b63ffd738b20bffbe8b9d816b3d681ab82.",
+    "performance": "Run status FAIL (SOURCE_MISMATCH) from 3 check result(s): 2 PASS, 1 FAIL, 0 ABSTAIN, 0 ERROR; 9 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
+    "scientific_validity": "NOT ESTABLISHED"
+  },
+  "evidence_manifest_sha256": "e420876f673e900943cbff6afc3523b63ffd738b20bffbe8b9d816b3d681ab82",
+  "exit_code": 1,
+  "expected_inputs": 1,
+  "failure_modes": [
+    "STALE_DEPENDENCY"
+  ],
+  "findings": [
+    {
+      "detail": "dependency_currency CHECKED FAIL: publication blocked: CONCLUSION/FIGURE_OR_TABLE node(s) 'conclusion-south-highest' are STALE_PENDING_REVALIDATION; node(s) 'site-means', 'study-design' are STALE_PENDING_REVALIDATION: they block no publication node, but the graph is not current",
+      "failure_modes": [
+        "STALE_DEPENDENCY"
+      ],
+      "reason": "SOURCE_MISMATCH",
+      "source": "check:currency",
+      "status": "FAIL"
+    }
+  ],
+  "inputs_discovered": 1,
+  "inputs_opened": 1,
+  "invariants": [
+    {
+      "applicable": true,
+      "detail": "check results marked CHECKED: 3 claimed <= 3 invoked",
+      "holds": true,
+      "name": "checked_claims_le_invocations"
+    },
+    {
+      "applicable": true,
+      "detail": "3 invocation(s) each reached exactly one terminal result",
+      "holds": true,
+      "name": "every_invocation_has_terminal_result"
+    },
+    {
+      "applicable": true,
+      "detail": "3 required check(s) each reached a terminal state",
+      "holds": true,
+      "name": "every_required_check_has_terminal_state"
+    },
+    {
+      "applicable": true,
+      "detail": "3 verdict(s) each trace to a terminal invocation",
+      "holds": true,
+      "name": "every_verdict_has_invocation"
+    },
+    {
+      "applicable": true,
+      "detail": "2 INDEPENDENT closure(s) hold",
+      "holds": true,
+      "name": "input_accounting_closure"
+    },
+    {
+      "applicable": true,
+      "detail": "6 entries chain to head fffa8f7806e1775291ed0bfc79aa80dc819ecd8b0c973be81f7aadb01408d895",
+      "holds": true,
+      "name": "ledger_chain_intact"
+    },
+    {
+      "applicable": false,
+      "detail": "the run does not claim PASS",
+      "holds": null,
+      "name": "pass_requires_complete_required_checks"
+    },
+    {
+      "applicable": true,
+      "detail": "every input behind a PASS is complete",
+      "holds": true,
+      "name": "pass_requires_complete_required_inputs"
+    },
+    {
+      "applicable": true,
+      "detail": "rows_examined=16",
+      "holds": true,
+      "name": "pass_requires_examined_rows"
+    },
+    {
+      "applicable": true,
+      "detail": "every PASS carries non-empty, hashed evidence",
+      "holds": true,
+      "name": "pass_requires_nonempty_evidence"
+    }
+  ],
+  "ledger_head_sha256": "fffa8f7806e1775291ed0bfc79aa80dc819ecd8b0c973be81f7aadb01408d895",
+  "ledger_length": 6,
+  "manifest": {
+    "file": "manifest.json",
+    "issues": [],
+    "run_label": "corpus-stale-dependency-synthetic-01",
+    "sha256": "e9cf152319b5686870affd470f18f48cdef1ff92c5d3ef02e9fbcb64546ea533"
+  },
+  "network": {
+    "live": false,
+    "opener": "urllib",
+    "timeout_seconds": 10,
+    "user_agent": "scientific-evidence-gate/0.1.0 (local evidence gate)"
+  },
+  "reason": "SOURCE_MISMATCH",
+  "reasons": [
+    "SOURCE_MISMATCH"
+  ],
+  "receipt": {
+    "content_sha256": "22fa6f0d8b528080e8a25d80a28e7dc268ad7ac6bb71c303850dae12929b7ca1",
+    "key_id": null,
+    "signature_state": "UNSIGNED"
+  },
+  "rows_examined": 10,
+  "run_id": "run-ad078c6dec5e4572",
+  "schema": "science-gate-run/v1",
+  "started_at": "2026-09-26T00:00:00Z",
+  "status": "FAIL",
+  "tool": {
+    "name": "scientific-evidence-gate",
+    "version": "0.1.0"
+  }
+}

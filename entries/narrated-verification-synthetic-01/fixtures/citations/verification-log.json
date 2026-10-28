@@ -1,0 +1,46 @@
+{
+  "schema": "science-gate-verification-log/v1",
+  "claimed_verified": 5,
+  "verifier": {
+    "name": "inkwell-refcheck (fictional)",
+    "version": "0.0-synthetic"
+  },
+  "entries": [
+    {
+      "citation_id": "C1",
+      "claimed_status": "VERIFIED"
+    },
+    {
+      "citation_id": "C2",
+      "claimed_status": "VERIFIED"
+    },
+    {
+      "citation_id": "C3",
+      "claimed_status": "VERIFIED"
+    },
+    {
+      "citation_id": "C4",
+      "claimed_status": "VERIFIED"
+    },
+    {
+      "citation_id": "C5",
+      "claimed_status": "VERIFIED"
+    }
+  ],
+  "invocations": [
+    {
+      "invocation_id": "inkwell-inv-0001",
+      "citation_id": "C1",
+      "request": "https://resolver.invalid/works/10.5555/corpus.nv.0001",
+      "response_sha256": "e8df0493b7172f699946401b42dc8e143ad5b6d78887d76cc68ee1e6a8a0d206",
+      "retrieved_at": "2026-09-20T10:01:00Z"
+    },
+    {
+      "invocation_id": "inkwell-inv-0002",
+      "citation_id": "C2",
+      "request": "https://resolver.invalid/works/10.5555/corpus.nv.0002",
+      "response_sha256": "142b891aa1beac6f1142c3a73deafd6ba718b61c37ae0b94418ef90abbcde3e5",
+      "retrieved_at": "2026-09-20T10:02:00Z"
+    }
+  ]
+}

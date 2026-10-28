@@ -1,0 +1,8 @@
+ABSTAIN (PROTOCOL_BROKEN) run-4b040081a8b6d019: 3/3 required checks executed, 7 rows examined, 1/1 inputs opened
+<tmp>\run.json
+<tmp>\report.md
+<tmp>\ledger.jsonl
+<tmp>\evidence-manifest.json
+<tmp>\receipt.json
+<tmp>\results.sarif
+<tmp>\report.html

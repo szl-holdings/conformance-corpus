@@ -1,0 +1,49 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "partial-execution-synthetic-01",
+  "synthetic": true,
+  "command": "verify manifest.json",
+  "argv": [
+    "verify",
+    "manifest.json",
+    "--output",
+    "<tmp>/run"
+  ],
+  "cwd": "<entry>",
+  "environment": {
+    "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "status": "ABSTAIN",
+  "exit_code": 2,
+  "reason": "PARTIAL_EXECUTION",
+  "failure_modes": [
+    "PARTIAL_EXECUTION"
+  ],
+  "failure_modes_match": "exact set: run.json failure_modes, sorted, must equal this list",
+  "must_mention": [
+    "PARTIAL_EXECUTION",
+    "checks_executed=3 of checks_expected=4",
+    "fixtures/time/events.json",
+    "time-window"
+  ],
+  "must_mention_in": "report.md written by the run (case-sensitive substring match)",
+  "status_must_not_be": [
+    "PASS"
+  ],
+  "intended_by": "corpus author; written before the recorded run, not copied from it",
+  "note": "Four checks are required; the stage that feeds the fourth (time-window) never completed, so that check cannot execute. Three of four required checks ran and passed. A conforming verifier must not PASS a run in which a required check did not execute; the intended primary reason is PARTIAL_EXECUTION because an unexecuted required check is the defect this category exercises.",
+  "recorded_run": {
+    "matches": false,
+    "differs_on": [
+      "reason"
+    ],
+    "comparison": "evaluation/comparison.json",
+    "note": "The recorded run (science-gate 0.1.0, commit 7ec36c6) matches status, exit_code, failure_modes and every must_mention string, but its primary reason is INSUFFICIENT_EVIDENCE. The difference is recorded in entry.json known_failures. The intended values above were not edited to match the run."
+  },
+  "does_not_prove": [
+    "Reproducing this outcome shows conformance on this declared synthetic fixture only.",
+    "It does not show that the verifier catches failures outside the corpus.",
+    "It does not show that any scientific conclusion is true, and it does not show fitness for any use."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "omitted-population-synthetic-01",
+  "title": "SYNTHETIC: an accepted row is missing while the file digest and the observed row count agree",
+  "failure_mode": "OMITTED_POPULATION",
+  "synthetic": true,
+  "scientific_question": "Illustrative only (SYNTHETIC): is every specimen that was accepted into an invented plot survey still present in the current export? The plots, specimens and masses are invented.",
+  "claim_tested": "When a row accepted in the snapshot (OP-0004) is missing from the current CSV, and the manifest's declared sha256 and OBSERVED expected_rows were both refreshed from the shortened file, science-gate verify still FAILs the run (exit 1, reason SOURCE_MISMATCH, failure mode OMITTED_POPULATION) through snapshot_completeness, which reports 1 accepted row deleted and names the key OP-0004 in run.json, while row_count, required_columns and duplicate_rows PASS and the report says row closure was not evaluated.",
+  "falsified_by": "The run returns PASS, ABSTAIN or ERROR, exits other than 1, lacks OMITTED_POPULATION among its failure modes, reports the missing row as changed rather than deleted, does not name OP-0004 in run.json, or report.md omits any must_mention string in expected-results.json.",
+  "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
+  "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "No license has been chosen for the corpus (NOASSERTION), so no grant beyond local evaluation is asserted. With evidence_of_grant NOASSERTION every flag other than evaluation_allowed must stay false, so redistribution_allowed is false until a license is chosen. Evaluation permission does not imply training permission."
+  },
+  "source_licenses": [
+    {
+      "path": "fixtures/specimens.csv",
+      "license": "NOASSERTION",
+      "evidence": "generated for this corpus; no license chosen"
+    },
+    {
+      "path": "fixtures/snapshots/accepted.json",
+      "license": "NOASSERTION",
+      "evidence": "generated for this corpus from invented rows; no license chosen"
+    }
+  ],
+  "expected_outcome": {
+    "command": "verify manifest.json",
+    "status": "FAIL",
+    "exit_code": 1,
+    "reason": "SOURCE_MISMATCH",
+    "failure_modes": [
+      "OMITTED_POPULATION"
+    ],
+    "must_mention": [
+      "**FAIL** (SOURCE_MISMATCH), exit code 1.",
+      "Failure modes: OMITTED_POPULATION",
+      "`snapshot`: snapshot_completeness FAIL (SOURCE_MISMATCH), rows examined 5; input 'specimens': 1 accepted row(s) were deleted",
+      "row closure of input `specimens` not evaluated (OBSERVED)",
+      "## WHAT THIS RESULT DOES NOT PROVE",
+      "Scientific validity: NOT ESTABLISHED"
+    ]
+  },
+  "known_failures": [],
+  "unresolved_cases": [
+    "A deletion inside a PARTIAL input (where the row may be among unexamined records, so ABSTAIN is expected) is not exercised here.",
+    "A snapshot without row_key (where a changed row cannot be told from a deleted one) is not exercised.",
+    "Rows that were never accepted into the snapshot are outside what this entry can show."
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "Written by one author and not independently reviewed; it stays a draft until someone else reviews it."
+  },
+  "does_not_prove": [
+    "A pass shows conformance on declared fixtures only: science-gate produced the declared outcome on this entry's synthetic fixtures, with the tool version recorded in environment.lock.",
+    "It does not show that science-gate detects this failure in data, layouts or tool versions outside this entry.",
+    "It does not establish scientific validity: the data, works, people and sites are invented, so no scientific conclusion is supported or refuted.",
+    "It does not show that science-gate, or any pipeline that uses it, is fit for any particular use.",
+    "It does not show that rows never accepted into the snapshot are complete; the snapshot vouches only for the rows it accepted, and an OBSERVED row count cannot reveal a loss."
+  ],
+  "provenance": {
+    "created": "2026-09-29",
+    "generator": "Generated for this corpus by a Claude Code subagent (model claude-opus-5-5, workstream 3) with a Python generator script run from an OS temp directory. Every name, DOI, site and value is invented.",
+    "reviewed_by": []
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "citation-metadata-mismatch-synthetic-01",
+  "category": "citation-metadata-mismatch",
+  "synthetic": true,
+  "written": "Written from the entry's intent by the generator, before the recorded run; not copied from tool output. evaluation/comparison.json records whether the run matched.",
+  "command": {
+    "subcommand": "verify",
+    "argv": [
+      "-m",
+      "science_gate.cli",
+      "verify",
+      "manifest.json",
+      "--output",
+      "<tmp>/run"
+    ],
+    "cwd": "<entry>",
+    "env": {
+      "PYTHONPATH": "<seg>/src",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z"
+    },
+    "env_unset": [
+      "SCIENCE_GATE_HMAC_KEY_FILE"
+    ]
+  },
+  "status": "FAIL",
+  "exit_code": 1,
+  "reason": "SOURCE_MISMATCH",
+  "reasons_include": [
+    "SOURCE_MISMATCH"
+  ],
+  "failure_modes": [
+    "SOURCE_MISMATCH"
+  ],
+  "failure_modes_comparison": "exact set, compared with run.json failure_modes",
+  "must_mention": [
+    "**FAIL** (SOURCE_MISMATCH), exit code 1.",
+    "Failure modes: SOURCE_MISMATCH",
+    "FIELD_MISMATCH: citation C2 (10.5555/cc-synth.cmm.0002): AUTHOR_MISMATCH",
+    "FIELD_MISMATCH: citation C3 (10.5555/cc-synth.cmm.0003): DOI_WORK_MISMATCH",
+    "DOI_TARGET_MISMATCH: 10.5555/cc-synth.cmm.0003 (cited as C3) reached the work 10.5555/cc-synth.cmm.0030",
+    "## WHAT THIS RESULT DOES NOT PROVE",
+    "Scientific validity: NOT ESTABLISHED"
+  ],
+  "must_mention_scope": "report.md",
+  "must_not_mention": [
+    "citation C1 (10.5555/cc-synth.cmm.0001)",
+    "**PASS**",
+    "CONFLATED_ENTRY:"
+  ],
+  "checks": {
+    "observations": {
+      "verdict": "PASS",
+      "execution_state": "CHECKED",
+      "rows_examined": 3
+    },
+    "citation-log": {
+      "verdict": "PASS",
+      "execution_state": "CHECKED"
+    },
+    "doi-resolution": {
+      "verdict": "FAIL",
+      "execution_state": "CHECKED",
+      "reason": "SOURCE_MISMATCH"
+    },
+    "citation-metadata": {
+      "verdict": "FAIL",
+      "execution_state": "CHECKED",
+      "reason": "SOURCE_MISMATCH"
+    }
+  },
+  "details": {
+    "citation_dispositions": {
+      "C1": "VERIFIED_WITHIN_DECLARED_SCOPE",
+      "C2": "FIELD_MISMATCH",
+      "C3": "FIELD_MISMATCH"
+    },
+    "citation_defects": {
+      "C1": [],
+      "C2": [
+        "AUTHOR_MISMATCH"
+      ],
+      "C3": [
+        "DOI_WORK_MISMATCH"
+      ]
+    },
+    "resolver_states": {
+      "10.5555/cc-synth.cmm.0001": "DOI_RESOLVED",
+      "10.5555/cc-synth.cmm.0002": "DOI_RESOLVED",
+      "10.5555/cc-synth.cmm.0003": "DOI_TARGET_MISMATCH"
+    },
+    "resolver_returned_doi": {
+      "10.5555/cc-synth.cmm.0003": "10.5555/cc-synth.cmm.0030"
+    }
+  },
+  "receipt": {
+    "signature_state": "UNSIGNED"
+  },
+  "does_not_prove": [
+    "A pass shows conformance on declared fixtures only: science-gate produced the declared outcome on this entry's synthetic fixtures, with the tool version recorded in environment.lock.",
+    "It does not show that science-gate detects this failure in data, layouts or tool versions outside this entry.",
+    "It does not establish scientific validity: the data, works, people and sites are invented, so no scientific conclusion is supported or refuted.",
+    "It does not show that science-gate, or any pipeline that uses it, is fit for any particular use.",
+    "It does not show that any citation outside this entry is correct, or that a live resolver would return what the frozen capture records; no network lookup is performed."
+  ],
+  "notes": []
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "reviewer-protocol-drift-synthetic-01",
+  "synthetic": true,
+  "command": "verify manifest.json",
+  "invocation": {
+    "cwd": "the entry directory",
+    "argv": [
+      "python",
+      "-m",
+      "science_gate.cli",
+      "verify",
+      "manifest.json",
+      "--output",
+      "<tmp>"
+    ],
+    "environment": {
+      "PYTHONPATH": "<scientific-evidence-gate>/src",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z"
+    },
+    "output": "an OS temporary directory outside the entry (verify never writes into the entry)"
+  },
+  "status": "ABSTAIN",
+  "exit_code": 2,
+  "reason": "PROTOCOL_BROKEN",
+  "failure_modes": [
+    "PROTOCOL_DRIFT"
+  ],
+  "failure_modes_match": "exact: run.json failure_modes must equal this list",
+  "must_mention": [
+    "PROTOCOL_DRIFT",
+    "PROTOCOL_BROKEN",
+    "syn-reviewer-c",
+    "recorded no verdict",
+    "syn-reviewer-b",
+    "more than one verdict"
+  ],
+  "must_mention_in": "report.md",
+  "headline_prefix": "ABSTAIN (PROTOCOL_BROKEN)",
+  "intended_before_run": true,
+  "recorded_run_matches": true,
+  "mismatches": [],
+  "note": "ARCHITECTURE.md section 5 states that a missing reviewer or a duplicate verdict is ABSTAIN with PROTOCOL_BROKEN and PROTOCOL_DRIFT. It is ABSTAIN rather than FAIL because the protocol was not completed, so no verdict can be relied on; nothing was shown to be wrong.",
+  "recorded_run": {
+    "run_id": "run-4b040081a8b6d019",
+    "evidence_manifest_sha256": "cf03da130604214b0ac1a706f226333fc09a66306aa2c7ec7c8d5d8d7e414b5c",
+    "ledger_head_sha256": "a5ed0328d1af412128632734c6f4d0b3bd793892bee8e644365daee1610bdd39",
+    "ledger_length": 6,
+    "receipt_content_sha256": "b4c729358e88d3bace4a1180d68bc1f13e05f63c134b10fd7f95a355fc8f1faf",
+    "signature_state": "UNSIGNED",
+    "informational": "These values depend on the tool version and are recorded for reference; they are not part of the expected outcome."
+  },
+  "does_not_prove": "Matching these results shows conformance on declared fixtures only. It does not show scientific validity, detection of failures outside this corpus, or fitness for use."
+}

@@ -1,0 +1,17 @@
+# environment.lock: the interpreter and tool versions the recorded run used.
+# entry: citation-metadata-mismatch-synthetic-01 (SYNTHETIC)
+python_implementation=CPython
+python_version=3.11.9
+platform=Windows-10-10.0.26200-SP0
+science_gate_distribution=scientific-evidence-gate
+science_gate_version=0.1.0
+seg_git_commit=7ec36c6bb13494dab3fdc15a2c5bf2b0f0ac1926
+seg_worktree_dirty_before_run=false
+seg_worktree_dirty_after_run=false
+seg_src_tree_sha256=47b732a8755cf0b2e6cec51bf4bcfe6b7acda9d2df5b20d0ac4e8ff15831fe14
+seg_src_tree_sha256_after_run=47b732a8755cf0b2e6cec51bf4bcfe6b7acda9d2df5b20d0ac4e8ff15831fe14
+seg_src_tree_sha256_method=sha256 of sorted lines '<relpath> <sha256>' for src/science_gate/**/*.py, LF-joined with a trailing LF
+science_gate_fixed_time=2026-09-26T00:00:00Z
+science_gate_runtime_dependencies=none (standard library only)
+hmac_key_configured=false (SCIENCE_GATE_HMAC_KEY_FILE unset; receipts UNSIGNED)
+network=none (frozen captures only; no --live)

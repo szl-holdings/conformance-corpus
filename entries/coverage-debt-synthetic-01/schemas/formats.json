@@ -1,0 +1,50 @@
+{
+  "note": "Formats of this entry's files. No schema is copied from elsewhere; each format is defined in the scientific-evidence-gate (SEG) repo at the commit below. SYNTHETIC entry.",
+  "seg_git_commit_at_generation": "7ec36c6bb13494dab3fdc15a2c5bf2b0f0ac1926",
+  "files": [
+    {
+      "path": "manifest.json",
+      "format": "science-gate-manifest/v1",
+      "defined_by": [
+        {
+          "seg_path": "schemas/manifest.schema.json",
+          "sha256_at_generation": "83270fea58e9df8fc67e2accc0a4d62cbfbe922bc37dc4ff1691cd8b2de84e86"
+        },
+        {
+          "seg_path": "docs/ARCHITECTURE.md",
+          "sha256_at_generation": "629c4c94a620d0a5cfcf5d3193e9de74b350b4e2eabf970d250e056f75f2b477"
+        }
+      ]
+    },
+    {
+      "path": "fixtures/readings.csv",
+      "format": "csv (header row; values kept as strings)",
+      "columns": {
+        "reading_id": "row key, text",
+        "station": "text",
+        "level_cm": "integer as text"
+      },
+      "defined_by": [
+        {
+          "seg_path": "docs/ARCHITECTURE.md",
+          "sha256_at_generation": "629c4c94a620d0a5cfcf5d3193e9de74b350b4e2eabf970d250e056f75f2b477"
+        }
+      ]
+    },
+    {
+      "path": "fixtures/time/events.json",
+      "format": "science-gate-time-sources/v1",
+      "defined_by": [
+        {
+          "seg_path": "src/science_gate/verifier.py",
+          "sha256_at_generation": "f615c9b082b1d05562e443a054d3293b61eef9a588460c3a656a20ba970cc2c1"
+        },
+        {
+          "seg_path": "docs/ARCHITECTURE.md",
+          "sha256_at_generation": "629c4c94a620d0a5cfcf5d3193e9de74b350b4e2eabf970d250e056f75f2b477"
+        }
+      ],
+      "no_schema_file": "SEG ships no JSON Schema file for time sources; the parser in verifier.py (_parse_time_sources) defines the format."
+    }
+  ]
+}

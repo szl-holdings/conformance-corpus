@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conformance-corpus/fixture-schemas/dependency-graph.fixture.schema.json",
+  "title": "Dependency graph fixture (science-gate-graph/v1), as used by this entry",
+  "description": "Documentation of the subset of science-gate-graph/v1 this entry's fixtures/graph/graph.json uses. It is not normative: science-gate validates the graph in src/science_gate/dependencies.py, and its schemas/graph.schema.json documents the full format. Node paths are relative to the manifest directory, not to the graph file. SYNTHETIC entry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "schema": {
+      "const": "science-gate-graph/v1"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "path",
+          "recorded_sha256",
+          "validity",
+          "history"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "SOURCE_SNAPSHOT",
+              "DESIGN",
+              "ADMITTED_EVIDENCE",
+              "ANALYSIS_RUN",
+              "RANKING_OR_MEASUREMENT",
+              "FIGURE_OR_TABLE",
+              "CONCLUSION"
+            ]
+          },
+          "path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "recorded_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "validity": {
+            "enum": [
+              "CURRENT",
+              "STALE_PENDING_REVALIDATION",
+              "REVALIDATED_UNCHANGED",
+              "REVALIDATED_CHANGED",
+              "SUPERSEDED",
+              "INVALIDATED",
+              "UNRESOLVED"
+            ]
+          },
+          "history": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "string"
+          }
+        ],
+        "minItems": 2,
+        "maxItems": 2
+      }
+    }
+  }
+}

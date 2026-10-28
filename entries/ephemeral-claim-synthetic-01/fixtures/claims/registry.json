@@ -1,0 +1,34 @@
+{
+  "schema": "science-gate-claims/v1",
+  "claims": [
+    {
+      "claim_id": "CLM-01",
+      "statement": "Mean synthetic glow index at plot-umber (fictional)",
+      "value": "40.00",
+      "unit": "arbitrary units",
+      "precision_decimals": 2,
+      "derivation": {
+        "analysis_recipe": "recipes/plot-summary (invented recipe name)",
+        "code_version": "synthetic-analysis 0.0.1 (invented)",
+        "environment": "CPython 3.11, standard library only (synthetic)",
+        "input_manifest_sha256": "13f913d8120c034a4391ce7c6fd4a651132d07a79ee4174debcf25ae4f0d09aa"
+      },
+      "stored_output": {
+        "path": "fixtures/outputs/plot-summary.json",
+        "sha256": "38453298d808ea671fe0e1a9cf7a237494ee9d0b5101efc21e29214972889855",
+        "selector": "/plots/plot-umber/mean_glow_index"
+      },
+      "review_state": "REVIEWED (synthetic review by invented reviewer-a)",
+      "publication_location": "fixtures/claims/manuscript.md line 4"
+    },
+    {
+      "claim_id": "CLM-02",
+      "statement": "Total synthetic sightings across every plot (fictional)",
+      "value": "91",
+      "unit": "sightings",
+      "precision_decimals": 0,
+      "review_state": "REVIEWED (synthetic review by invented reviewer-a)",
+      "publication_location": "fixtures/claims/manuscript.md line 5"
+    }
+  ]
+}

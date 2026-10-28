@@ -1,0 +1,78 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "coverage-debt-synthetic-01",
+  "title": "SYNTHETIC: a required time-window check had no events to examine while every other check passed",
+  "failure_mode": "COVERAGE_DEBT",
+  "synthetic": true,
+  "scientific_question": "Illustrative only (SYNTHETIC): were the invented water-level readings at two invented stations taken inside the requested April 2030 window? The stations and readings are invented.",
+  "claim_tested": "When a required time_source check (time_window) reads a time-sources document that exists and parses but lists no events, science-gate verify does not count it as passed: the check is NOT_APPLICABLE with verdict ABSTAIN and 0 rows examined, it is not counted as executed (checks_executed 3 of checks_expected 4), and the run is ABSTAIN, exit 2, reason INSUFFICIENT_EVIDENCE, even though row_count, required_columns and duplicate_rows all PASS.",
+  "falsified_by": "The run returns PASS (or FAIL or ERROR), exits other than 2, reports a reason other than INSUFFICIENT_EVIDENCE, marks time_window as CHECKED or PASS, counts it as executed, or report.md omits any must_mention string in expected-results.json.",
+  "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
+  "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "No license has been chosen for the corpus (NOASSERTION), so no grant beyond local evaluation is asserted. With evidence_of_grant NOASSERTION every flag other than evaluation_allowed must stay false, so redistribution_allowed is false until a license is chosen. Evaluation permission does not imply training permission."
+  },
+  "source_licenses": [
+    {
+      "path": "fixtures/readings.csv",
+      "license": "NOASSERTION",
+      "evidence": "generated for this corpus; no license chosen"
+    },
+    {
+      "path": "fixtures/time/events.json",
+      "license": "NOASSERTION",
+      "evidence": "generated for this corpus; no license chosen"
+    }
+  ],
+  "expected_outcome": {
+    "command": "verify manifest.json",
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "INSUFFICIENT_EVIDENCE",
+    "failure_modes": [
+      "PARTIAL_EXECUTION"
+    ],
+    "must_mention": [
+      "**ABSTAIN** (INSUFFICIENT_EVIDENCE), exit code 2.",
+      "Failure modes: PARTIAL_EXECUTION",
+      "`time_window`: time_source ABSTAIN (INSUFFICIENT_EVIDENCE), rows examined 0; the time sources list no events",
+      "check `time_window` was NOT_APPLICABLE",
+      "checks_executed 3 of checks_expected 4",
+      "## WHAT THIS RESULT DOES NOT PROVE",
+      "Scientific validity: NOT ESTABLISHED"
+    ]
+  },
+  "known_failures": [],
+  "unresolved_cases": [
+    "Other checks with nothing to examine (a snapshot that accepts no rows, a citations list with no entries, a reviewer protocol with no verdicts) are not exercised here.",
+    "An optional (not required) empty check, which is shown but does not decide the run, is not exercised.",
+    "A time-sources document that is missing or malformed is a different case (SKIPPED), not exercised here.",
+    "Cross-entry conflict on failure modes, not settled here. This entry's intended failure_modes [PARTIAL_EXECUTION] rest on counting a NOT_APPLICABLE required check as not executed. vacuous-pass-synthetic-01 takes the opposite position: its NOT_APPLICABLE required checks reached a terminal state and should not add PARTIAL_EXECUTION, and it records science-gate's PARTIAL_EXECUTION as a known failure. One rule cannot satisfy both expectations. An independent reviewer must decide which expectation changes; neither has been edited.",
+    "Cross-entry conflict on the primary reason, not settled here. This entry intends INSUFFICIENT_EVIDENCE for a run whose reasons are [INSUFFICIENT_EVIDENCE, PARTIAL_EXECUTION] and whose contract finding is checks_executed=3 of checks_expected=4. partial-execution-synthetic-01 produces the same reasons and the same contract finding, with its fourth check SKIPPED instead of NOT_APPLICABLE, but intends PARTIAL_EXECUTION. The corpus states no rule that separates the two cases."
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "Written by one author and not independently reviewed; it stays a draft until someone else reviews it."
+  },
+  "does_not_prove": [
+    "A pass shows conformance on declared fixtures only: science-gate produced the declared outcome on this entry's synthetic fixtures, with the tool version recorded in environment.lock.",
+    "It does not show that science-gate detects this failure in data, layouts or tool versions outside this entry.",
+    "It does not establish scientific validity: the data, works, people and sites are invented, so no scientific conclusion is supported or refuted.",
+    "It does not show that science-gate, or any pipeline that uses it, is fit for any particular use.",
+    "It does not show that the readings fall inside or outside the April 2030 window; no observation time was examined, so nothing is known about it."
+  ],
+  "provenance": {
+    "created": "2026-09-29",
+    "generator": "Generated for this corpus by a Claude Code subagent (model claude-opus-5-5, workstream 3) with a Python generator script run from an OS temp directory. Every name, DOI, site and value is invented.",
+    "reviewed_by": []
+  }
+}

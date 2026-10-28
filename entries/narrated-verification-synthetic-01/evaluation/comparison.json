@@ -1,0 +1,56 @@
+{
+  "schema": "conformance-corpus-comparison/v1",
+  "entry_id": "narrated-verification-synthetic-01",
+  "synthetic": true,
+  "expected_source": "expected-results.json (intended outcome; not edited to match this run)",
+  "expected": {
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "UNVERIFIED",
+    "failure_modes": [
+      "NARRATED_VERIFICATION"
+    ],
+    "must_mention": [
+      "NARRATED_VERIFICATION",
+      "checked_claims_le_invocations",
+      "3 citation(s) claimed VERIFIED with no complete invocation record",
+      "5 claimed but only 2 invoked",
+      "C3",
+      "C4",
+      "C5"
+    ]
+  },
+  "actual": {
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "run_json_exit_code": 2,
+    "reason": "UNVERIFIED",
+    "reasons": [
+      "UNVERIFIED"
+    ],
+    "failure_modes": [
+      "NARRATED_VERIFICATION"
+    ],
+    "headline": "ABSTAIN (UNVERIFIED) run-90ccfbdd98889d7d: 2/2 required checks executed, 9 rows examined, 1/1 inputs opened",
+    "signature_state": "UNSIGNED"
+  },
+  "must_mention_found": {
+    "NARRATED_VERIFICATION": true,
+    "checked_claims_le_invocations": true,
+    "3 citation(s) claimed VERIFIED with no complete invocation record": true,
+    "5 claimed but only 2 invoked": true,
+    "C3": true,
+    "C4": true,
+    "C5": true
+  },
+  "matches": {
+    "status": true,
+    "exit_code": true,
+    "reason": true,
+    "failure_modes": true,
+    "must_mention": true,
+    "status_must_not_be": true
+  },
+  "all_match": true,
+  "does_not_prove": "Passing shows conformance on this declared synthetic fixture only; it does not show scientific validity, and it does not show fitness for any use."
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conformance-corpus/permissions-schema.json",
+  "title": "Corpus entry permissions",
+  "description": "What may be done with an entry's data. Every flag is explicit. Evaluation permission does not imply training permission, and nothing here is inferred from the data being reachable.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "access_class",
+    "evaluation_allowed",
+    "training_allowed",
+    "redistribution_allowed",
+    "derivatives_allowed",
+    "public_display_allowed",
+    "commercial_use_allowed",
+    "granted_by",
+    "evidence_of_grant"
+  ],
+  "properties": {
+    "access_class": {
+      "enum": ["PUBLIC", "REFERENCE_ONLY", "SYNTHETIC", "CONTROLLED_LOCAL"],
+      "description": "PUBLIC: redistributable under its stated license. REFERENCE_ONLY: cite and hash, never copy. SYNTHETIC: generated for this corpus. CONTROLLED_LOCAL: stays on the holder's machine; only hashes and instructions leave."
+    },
+    "evaluation_allowed": {"type": "boolean", "default": true},
+    "training_allowed": {"type": "boolean", "default": false},
+    "redistribution_allowed": {"type": "boolean", "default": false},
+    "derivatives_allowed": {"type": "boolean", "default": false},
+    "public_display_allowed": {"type": "boolean", "default": false},
+    "commercial_use_allowed": {"type": "boolean", "default": false},
+    "granted_by": {
+      "type": "string",
+      "description": "Who granted these permissions, as they identify themselves. For SYNTHETIC entries generated here: 'generated for this corpus; no third-party rights'."
+    },
+    "evidence_of_grant": {
+      "type": "string",
+      "description": "Where the grant can be checked (a license file path, a signed agreement reference). 'NOASSERTION' when no grant exists, in which case every flag other than evaluation_allowed must be false."
+    },
+    "notes": {"type": "string"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"evidence_of_grant": {"const": "NOASSERTION"}}},
+      "then": {
+        "properties": {
+          "training_allowed": {"const": false},
+          "redistribution_allowed": {"const": false},
+          "derivatives_allowed": {"const": false},
+          "public_display_allowed": {"const": false},
+          "commercial_use_allowed": {"const": false}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"access_class": {"enum": ["CONTROLLED_LOCAL", "REFERENCE_ONLY"]}}},
+      "then": {"properties": {"redistribution_allowed": {"const": false}}}
+    }
+  ]
+}

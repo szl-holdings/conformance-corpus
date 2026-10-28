@@ -1,0 +1,66 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "<ENTRY_ID, e.g. partial-execution-synthetic-02>",
+  "title": "<SHORT TITLE naming the defect, ending ', synthetic' for synthetic entries>",
+  "failure_mode": "PARTIAL_EXECUTION",
+  "synthetic": true,
+  "scientific_question": "<THE QUESTION THE CHECK SERVES, stated plainly. Synthetic: begin 'Illustrative only (SYNTHETIC):' and say no real question is being answered.>",
+  "claim_tested": "<THE EXACT CLAIM ABOUT THE CHECK, not about the world: given <fixture>, science-gate <command> returns ABSTAIN (exit 2) with reason PARTIAL_EXECUTION and failure mode(s) PARTIAL_EXECUTION, and its report mentions ...>",
+  "falsified_by": "<THE OBSERVATION THAT WOULD SHOW THE CLAIM FALSE, e.g. PASS or exit 0; the defect not named; a different status or reason>",
+  "data_owner": "<WHO OWNS THE DATA. Synthetic: 'The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.'>",
+  "scientific_owner": "<WHO OWNS THE SCIENCE. Synthetic: 'The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.'>",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "<WHERE THE GRANT CAN BE CHECKED (a license file path or an agreement reference). For synthetic data with no license chosen: exactly 'NOASSERTION', and then every flag other than evaluation_allowed must be false.>",
+    "notes": "Evaluation permission does not imply training permission. <ANY FURTHER NOTE, e.g. why redistribution is or is not allowed.>"
+  },
+  "source_licenses": [
+    {
+      "path": "fixtures/<EACH FIXTURE FILE>",
+      "license": "NOASSERTION",
+      "evidence": "<generated for this corpus; no license has been chosen>"
+    }
+  ],
+  "expected_outcome": {
+    "command": "verify manifest.json",
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "PARTIAL_EXECUTION",
+    "failure_modes": [
+      "PARTIAL_EXECUTION"
+    ],
+    "must_mention": [
+      "PARTIAL_EXECUTION",
+      "checks_executed=<N> of checks_expected=<M>",
+      "<ID OF THE UNEXECUTED CHECK>",
+      "<PATH OF THE EVIDENCE THAT WAS NEVER WRITTEN>"
+    ]
+  },
+  "known_failures": [
+    "<EACH DIFFERENCE BETWEEN THE INTENDED AND THE RECORDED OUTCOME, with its cause; [] if none>"
+  ],
+  "unresolved_cases": [
+    "<EACH QUESTION THIS ENTRY DOES NOT SETTLE; e.g. a disputed expectation>"
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "<WHY REVIEW IS NEEDED; a draft always needs one>"
+  },
+  "does_not_prove": [
+    "Reproducing this entry's expected outcome shows conformance on this declared fixture only.",
+    "It does not show that the verifier catches failures outside the corpus.",
+    "It does not show that any scientific conclusion is true, and it does not show that the verifier is fit for any particular use."
+  ],
+  "provenance": {
+    "created": "<YYYY-MM-DD>",
+    "generator": "<HOW EVERY FILE WAS PRODUCED: by hand, by a script, by science-gate (version, commit, fixed time)>",
+    "reviewed_by": []
+  }
+}

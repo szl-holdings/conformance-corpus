@@ -1,0 +1,88 @@
+{
+  "schema": "science-gate-citations/v1",
+  "citations": [
+    {
+      "citation_id": "C1",
+      "doi": "10.5555/corpus.nv.0001",
+      "title": "Counting imaginary reed warblers on an invented marsh",
+      "authors": [
+        {
+          "family": "Fixturewright",
+          "given": "Ona"
+        }
+      ],
+      "year": 2031,
+      "journal": "Journal of Invented Fixtures",
+      "volume": "3",
+      "issue": "1"
+    },
+    {
+      "citation_id": "C2",
+      "doi": "10.5555/corpus.nv.0002",
+      "title": "A made-up calibration of pretend salinity probes",
+      "authors": [
+        {
+          "family": "Mockmoor",
+          "given": "Tamsin"
+        },
+        {
+          "family": "Fixturewright",
+          "given": "Ona"
+        }
+      ],
+      "year": 2032,
+      "journal": "Synthetic Conformance Letters",
+      "volume": "7",
+      "issue": "2"
+    },
+    {
+      "citation_id": "C3",
+      "doi": "10.5555/corpus.nv.0003",
+      "title": "Simulated silt drift in a nonexistent estuary",
+      "authors": [
+        {
+          "family": "Placeholdt",
+          "given": "Rudi"
+        }
+      ],
+      "year": 2033,
+      "journal": "Journal of Invented Fixtures",
+      "volume": "4",
+      "issue": "3"
+    },
+    {
+      "citation_id": "C4",
+      "doi": "10.5555/corpus.nv.0004",
+      "title": "An illustrative census of fictional mudflat snails",
+      "authors": [
+        {
+          "family": "Synthwick",
+          "given": "Lo"
+        },
+        {
+          "family": "Testerby",
+          "given": "Quin"
+        }
+      ],
+      "year": 2034,
+      "journal": "Synthetic Conformance Letters",
+      "volume": "8",
+      "issue": "1"
+    },
+    {
+      "citation_id": "C5",
+      "doi": "10.5555/corpus.nv.0005",
+      "title": "Placeholder tide tables for an unreal coastline",
+      "authors": [
+        {
+          "family": "Testerby",
+          "given": "Quin"
+        }
+      ],
+      "year": 2035,
+      "journal": "Journal of Invented Fixtures",
+      "volume": "5",
+      "issue": "2"
+    }
+  ]
+}

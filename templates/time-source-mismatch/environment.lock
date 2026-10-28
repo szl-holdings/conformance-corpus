@@ -1,0 +1,17 @@
+# environment.lock: the environment in which expected-results.json was confirmed (fill in every <REPLACE>)
+# Passing shows conformance on declared fixtures only; it does not show scientific validity or fitness for use.
+python_implementation = "<REPLACE: e.g. CPython>"
+python_version = "<REPLACE: e.g. 3.11.9>"
+platform = "<REPLACE: OS and version>"
+science_gate_distribution = "scientific-evidence-gate"
+science_gate_version = "<REPLACE: science_gate.__version__>"
+science_gate_git_commit = "<REPLACE: full commit hash of the scientific-evidence-gate checkout>"
+science_gate_worktree_clean_at_run = <REPLACE: true or false>
+science_gate_src_tree_sha256 = "<REPLACE: see method>"
+science_gate_src_tree_sha256_method = "sha256 of the output of: cd src && find science_gate -name '*.py' | sort | xargs sha256sum"
+science_gate_runtime_dependencies = "none (standard library only)"
+SCIENCE_GATE_FIXED_TIME = "2026-09-26T00:00:00Z"
+PYTHONDONTWRITEBYTECODE = "1"
+SCIENCE_GATE_HMAC_KEY_FILE = "<REPLACE: unset (receipts UNSIGNED), or the key id; never the key>"
+network = "none"
+recorded = "<REPLACE: YYYY-MM-DD>"

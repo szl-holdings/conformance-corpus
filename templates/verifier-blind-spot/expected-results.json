@@ -1,0 +1,85 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "verifier-blind-spot-synthetic-NN",
+  "synthetic": true,
+  "category": "verifier-blind-spot",
+  "command": "mutate manifest.json --output <tmp>/mutate",
+  "argv": [
+    "mutate",
+    "manifest.json",
+    "--output",
+    "<tmp>/mutate"
+  ],
+  "cwd": "the entry directory",
+  "environment": {
+    "PYTHONPATH": "<scientific-evidence-gate>/src",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z",
+    "network": "none",
+    "see": "environment.lock"
+  },
+  "status": "FAIL",
+  "exit_code": 1,
+  "reason": "BLIND_SPOT",
+  "failure_modes": [],
+  "must_mention": [
+    "BLIND_SPOT",
+    "<the escaped operator id, e.g. M04_duplicate_row>",
+    "<its expected detector, e.g. check:duplicate_rows>",
+    "<how the mutant verified, e.g. the mutant verified as PASS>"
+  ],
+  "must_mention_in": "mutation-report.md",
+  "failure_modes_match": "exact: mutation-report.json has no top-level failure_modes field; it must be absent or equal this (empty) list",
+  "must_mention_match": "case-sensitive substring of mutation-report.md written to --output",
+  "additional_expectations": {
+    "baseline_in_json": {
+      "valid": true,
+      "status": "PASS",
+      "reason": "VERIFIED"
+    },
+    "blind_spot_ids": [
+      "<Mnn_operator_id>"
+    ],
+    "escaped_mutant_actual_status": {
+      "<Mnn_operator_id>": "<PASS, or the status another detector produced>"
+    },
+    "detected_ids": [
+      "<every other executed operator id>"
+    ],
+    "counts_in_json": {
+      "applicable_mutations": "<n>",
+      "executed_mutations": "<n>",
+      "detected_mutations": "<n>",
+      "escaped_mutations": 1,
+      "skipped_mutations": 0,
+      "not_applicable_mutations": "<n>"
+    },
+    "sensitivity_fraction": "<detected>/<executed>",
+    "must_not": [
+      "status PASS or ABSTAIN",
+      "the escaped operator counted as detected",
+      "a skipped or not-applicable operator counted as detected"
+    ]
+  },
+  "supplementary_verify": {
+    "command": "verify manifest.json --output <tmp>/verify",
+    "purpose": "science-gate mutate writes no receipt; this run provides the run receipt kept in receipts/.",
+    "status": "PASS",
+    "exit_code": 0,
+    "reason": "VERIFIED",
+    "failure_modes": []
+  },
+  "field_sources": {
+    "<field>": "<where in the run output the field is read>"
+  },
+  "intended_by": "<GUIDANCE: who wrote the expectation and from what contract, before the recorded run>",
+  "recorded_run": {
+    "matches": "<true | false>",
+    "comparison": "evaluation/comparison.json",
+    "note": "<GUIDANCE: if the run did not match, keep the intended values above, set matches to false, and record the gap in entry.json known_failures. Never edit the expectation to fit the run.>"
+  },
+  "does_not_prove": [
+    "Reproducing these results shows conformance on this declared fixture only.",
+    "It does not show scientific validity, detection of failures outside the corpus, or fitness for any use."
+  ]
+}

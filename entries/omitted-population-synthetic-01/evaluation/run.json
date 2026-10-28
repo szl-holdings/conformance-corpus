@@ -1,0 +1,466 @@
+{
+  "accounting": {
+    "closure": {
+      "accounted": 1,
+      "expected": 1,
+      "holds": true,
+      "source": "INDEPENDENT"
+    },
+    "counters": {
+      "admitted": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "deferred": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "discovered": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "examined": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "excluded": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "expected": {
+        "denominator_source": "INDEPENDENT",
+        "value": 1
+      },
+      "failed": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "opened": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "parsed": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "unresolved": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      }
+    },
+    "inputs": [
+      {
+        "bytes": 159,
+        "closure": {
+          "accounted": 5,
+          "expected": 5,
+          "holds": null,
+          "source": "OBSERVED"
+        },
+        "declared_sha256": "332625dbf3d73ae54d7a2411db2c43d61d7a71a7675ecfaa4f01fb0dc5c020f8",
+        "diagnostics": [],
+        "discovered": true,
+        "format": "csv",
+        "id": "specimens",
+        "opened": true,
+        "parsed": true,
+        "path": "fixtures/specimens.csv",
+        "required": true,
+        "row_counts": {
+          "admitted": 5,
+          "deferred": 0,
+          "excluded": 0,
+          "failed": 0,
+          "unresolved": 0
+        },
+        "rows": 5,
+        "sha256": "332625dbf3d73ae54d7a2411db2c43d61d7a71a7675ecfaa4f01fb0dc5c020f8",
+        "state": "PARSED"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check_id": "columns",
+      "diagnostics": [],
+      "evidence": {
+        "columns": [
+          "specimen_id",
+          "plot",
+          "mass_mg"
+        ],
+        "inputs": {
+          "specimens": {
+            "header": [
+              "specimen_id",
+              "plot",
+              "mass_mg"
+            ],
+            "missing_columns": [],
+            "rows_admitted": 5,
+            "sha256": "332625dbf3d73ae54d7a2411db2c43d61d7a71a7675ecfaa4f01fb0dc5c020f8",
+            "state": "PARSED"
+          }
+        }
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [],
+      "inputs": [
+        "specimens"
+      ],
+      "invocation_id": "inv-a66285ac6c50",
+      "kind": "required_columns",
+      "reason": "VERIFIED",
+      "required": true,
+      "rows_examined": 5,
+      "verdict": "PASS",
+      "version": "1"
+    },
+    {
+      "check_id": "duplicates",
+      "diagnostics": [],
+      "evidence": {
+        "inputs": {
+          "specimens": {
+            "duplicate_key_groups": 0,
+            "duplicate_keys": [],
+            "exact_duplicate_extra_rows": 0,
+            "exact_duplicate_groups": 0,
+            "exact_duplicates": [],
+            "row_key": [
+              "specimen_id"
+            ],
+            "rows_admitted": 5,
+            "sha256": "332625dbf3d73ae54d7a2411db2c43d61d7a71a7675ecfaa4f01fb0dc5c020f8",
+            "state": "PARSED"
+          }
+        }
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [],
+      "inputs": [
+        "specimens"
+      ],
+      "invocation_id": "inv-0e7a1d8086d2",
+      "kind": "duplicate_rows",
+      "reason": "VERIFIED",
+      "required": true,
+      "rows_examined": 5,
+      "verdict": "PASS",
+      "version": "1"
+    },
+    {
+      "check_id": "rows",
+      "diagnostics": [],
+      "evidence": {
+        "inputs": {
+          "specimens": {
+            "closure": {
+              "accounted": 5,
+              "expected": 5,
+              "holds": null,
+              "source": "OBSERVED"
+            },
+            "closure_note": "not enforced: the expectation is OBSERVED, not INDEPENDENT",
+            "row_counts": {
+              "admitted": 5,
+              "deferred": 0,
+              "excluded": 0,
+              "failed": 0,
+              "unresolved": 0
+            },
+            "rows_admitted": 5,
+            "sha256": "332625dbf3d73ae54d7a2411db2c43d61d7a71a7675ecfaa4f01fb0dc5c020f8",
+            "state": "PARSED"
+          }
+        },
+        "rows_admitted_total": 5
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [],
+      "inputs": [
+        "specimens"
+      ],
+      "invocation_id": "inv-ad24763f08e7",
+      "kind": "row_count",
+      "reason": "VERIFIED",
+      "required": true,
+      "rows_examined": 5,
+      "verdict": "PASS",
+      "version": "1"
+    },
+    {
+      "check_id": "snapshot",
+      "diagnostics": [
+        "input 'specimens': 1 accepted row(s) were deleted"
+      ],
+      "evidence": {
+        "inputs": {
+          "specimens": {
+            "accepted_rows": 6,
+            "added": 0,
+            "changed": 0,
+            "changed_keys": [],
+            "deleted": 1,
+            "deleted_keys": [
+              [
+                "OP-0004"
+              ]
+            ],
+            "input_complete": true,
+            "present_unchanged": 5,
+            "row_key": [
+              "specimen_id"
+            ],
+            "rows_admitted": 5,
+            "rows_without_snapshot_key": 0,
+            "sha256": "332625dbf3d73ae54d7a2411db2c43d61d7a71a7675ecfaa4f01fb0dc5c020f8",
+            "state": "PARSED"
+          }
+        },
+        "snapshot": {
+          "bytes": 1132,
+          "declared": true,
+          "diagnostic": null,
+          "path": "fixtures/snapshots/accepted.json",
+          "role": "accepted_snapshot",
+          "sha256": "e5957696dc49a3cfeedc6387a3a4fa92c5080bcb12d3bbe6390d0df4f100d8b8",
+          "state": "PARSED"
+        }
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [
+        "OMITTED_POPULATION"
+      ],
+      "inputs": [
+        "specimens"
+      ],
+      "invocation_id": "inv-654eb4fc2f93",
+      "kind": "snapshot_completeness",
+      "reason": "SOURCE_MISMATCH",
+      "required": true,
+      "rows_examined": 5,
+      "verdict": "FAIL",
+      "version": "1"
+    }
+  ],
+  "checks_abstained": 0,
+  "checks_executed": 4,
+  "checks_expected": 4,
+  "checks_failed": 1,
+  "checks_passed": 3,
+  "claim_tallies": [],
+  "completed_at": "2026-09-26T00:00:00Z",
+  "counters": {
+    "checks_abstained": 0,
+    "checks_declared": 4,
+    "checks_errored": 0,
+    "checks_executed": 4,
+    "checks_expected": 4,
+    "checks_failed": 1,
+    "checks_not_applicable": 0,
+    "checks_passed": 3,
+    "checks_skipped": 0,
+    "expected_inputs": 1,
+    "inputs_discovered": 1,
+    "inputs_examined": 1,
+    "inputs_opened": 1,
+    "inputs_parsed": 1,
+    "rows_examined": 5
+  },
+  "declared": {
+    "checks": [
+      {
+        "id": "rows",
+        "inputs": [
+          "specimens"
+        ],
+        "kind": "row_count",
+        "params": {},
+        "required": true,
+        "version": "1"
+      },
+      {
+        "id": "columns",
+        "inputs": [
+          "specimens"
+        ],
+        "kind": "required_columns",
+        "params": {
+          "columns": [
+            "specimen_id",
+            "plot",
+            "mass_mg"
+          ]
+        },
+        "required": true,
+        "version": "1"
+      },
+      {
+        "id": "duplicates",
+        "inputs": [
+          "specimens"
+        ],
+        "kind": "duplicate_rows",
+        "params": {},
+        "required": true,
+        "version": "1"
+      },
+      {
+        "id": "snapshot",
+        "inputs": [
+          "specimens"
+        ],
+        "kind": "snapshot_completeness",
+        "params": {},
+        "required": true,
+        "version": "1"
+      }
+    ],
+    "inputs": [
+      {
+        "denominator_source": "OBSERVED",
+        "expected_rows": 5,
+        "format": "csv",
+        "id": "specimens",
+        "path": "fixtures/specimens.csv",
+        "required": true,
+        "row_key": [
+          "specimen_id"
+        ],
+        "sha256": "332625dbf3d73ae54d7a2411db2c43d61d7a71a7675ecfaa4f01fb0dc5c020f8"
+      }
+    ]
+  },
+  "disclaimer": "A receipt supports integrity, provenance, and replayability. It does not establish scientific truth, accuracy, safety, or fitness for use.",
+  "documents": [
+    {
+      "bytes": 1132,
+      "diagnostic": null,
+      "path": "fixtures/snapshots/accepted.json",
+      "roles": [
+        "accepted_snapshot"
+      ],
+      "sha256": "e5957696dc49a3cfeedc6387a3a4fa92c5080bcb12d3bbe6390d0df4f100d8b8",
+      "state": "PARSED"
+    }
+  ],
+  "evidence_boundary": {
+    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 8 entries; ledger head 1f86c5f0786d2fba1d80b844345c2eec28f97b996f3a6393c799c578124ebbdb; evidence manifest 78d89961ae5860606738ea7c6d7876bf66d4aecf517b288f1a4ff898b140f325.",
+    "performance": "Run status FAIL (SOURCE_MISMATCH) from 4 check result(s): 3 PASS, 1 FAIL, 0 ABSTAIN, 0 ERROR; 9 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
+    "scientific_validity": "NOT ESTABLISHED"
+  },
+  "evidence_manifest_sha256": "78d89961ae5860606738ea7c6d7876bf66d4aecf517b288f1a4ff898b140f325",
+  "exit_code": 1,
+  "expected_inputs": 1,
+  "failure_modes": [
+    "OMITTED_POPULATION"
+  ],
+  "findings": [
+    {
+      "detail": "snapshot_completeness CHECKED FAIL: input 'specimens': 1 accepted row(s) were deleted",
+      "failure_modes": [
+        "OMITTED_POPULATION"
+      ],
+      "reason": "SOURCE_MISMATCH",
+      "source": "check:snapshot",
+      "status": "FAIL"
+    }
+  ],
+  "inputs_discovered": 1,
+  "inputs_opened": 1,
+  "invariants": [
+    {
+      "applicable": true,
+      "detail": "check results marked CHECKED: 4 claimed <= 4 invoked",
+      "holds": true,
+      "name": "checked_claims_le_invocations"
+    },
+    {
+      "applicable": true,
+      "detail": "4 invocation(s) each reached exactly one terminal result",
+      "holds": true,
+      "name": "every_invocation_has_terminal_result"
+    },
+    {
+      "applicable": true,
+      "detail": "4 required check(s) each reached a terminal state",
+      "holds": true,
+      "name": "every_required_check_has_terminal_state"
+    },
+    {
+      "applicable": true,
+      "detail": "4 verdict(s) each trace to a terminal invocation",
+      "holds": true,
+      "name": "every_verdict_has_invocation"
+    },
+    {
+      "applicable": true,
+      "detail": "1 INDEPENDENT closure(s) hold",
+      "holds": true,
+      "name": "input_accounting_closure"
+    },
+    {
+      "applicable": true,
+      "detail": "8 entries chain to head 1f86c5f0786d2fba1d80b844345c2eec28f97b996f3a6393c799c578124ebbdb",
+      "holds": true,
+      "name": "ledger_chain_intact"
+    },
+    {
+      "applicable": false,
+      "detail": "the run does not claim PASS",
+      "holds": null,
+      "name": "pass_requires_complete_required_checks"
+    },
+    {
+      "applicable": true,
+      "detail": "every input behind a PASS is complete",
+      "holds": true,
+      "name": "pass_requires_complete_required_inputs"
+    },
+    {
+      "applicable": true,
+      "detail": "rows_examined=20",
+      "holds": true,
+      "name": "pass_requires_examined_rows"
+    },
+    {
+      "applicable": true,
+      "detail": "every PASS carries non-empty, hashed evidence",
+      "holds": true,
+      "name": "pass_requires_nonempty_evidence"
+    }
+  ],
+  "ledger_head_sha256": "1f86c5f0786d2fba1d80b844345c2eec28f97b996f3a6393c799c578124ebbdb",
+  "ledger_length": 8,
+  "manifest": {
+    "file": "manifest.json",
+    "issues": [],
+    "run_label": "corpus-omitted-population-synthetic-01",
+    "sha256": "7083263b900fd06b40dbabcd7dd4b7adf9742c21ab9a02cf2f3346f140f6b2b5"
+  },
+  "network": {
+    "live": false,
+    "opener": "urllib",
+    "timeout_seconds": 10,
+    "user_agent": "scientific-evidence-gate/0.1.0 (local evidence gate)"
+  },
+  "reason": "SOURCE_MISMATCH",
+  "reasons": [
+    "SOURCE_MISMATCH"
+  ],
+  "receipt": {
+    "content_sha256": "53a81904e1af539eceb42da23dfd23a310f1b9a485099f7eb6ad95c2f19402e8",
+    "key_id": null,
+    "signature_state": "UNSIGNED"
+  },
+  "rows_examined": 5,
+  "run_id": "run-904472dc8e8d38f7",
+  "schema": "science-gate-run/v1",
+  "started_at": "2026-09-26T00:00:00Z",
+  "status": "FAIL",
+  "tool": {
+    "name": "scientific-evidence-gate",
+    "version": "0.1.0"
+  }
+}

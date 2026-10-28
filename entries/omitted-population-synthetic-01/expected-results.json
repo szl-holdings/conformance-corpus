@@ -1,0 +1,107 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "omitted-population-synthetic-01",
+  "category": "omitted-population",
+  "synthetic": true,
+  "written": "Written from the entry's intent by the generator, before the recorded run; not copied from tool output. evaluation/comparison.json records whether the run matched.",
+  "command": {
+    "subcommand": "verify",
+    "argv": [
+      "-m",
+      "science_gate.cli",
+      "verify",
+      "manifest.json",
+      "--output",
+      "<tmp>/run"
+    ],
+    "cwd": "<entry>",
+    "env": {
+      "PYTHONPATH": "<seg>/src",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z"
+    },
+    "env_unset": [
+      "SCIENCE_GATE_HMAC_KEY_FILE"
+    ]
+  },
+  "status": "FAIL",
+  "exit_code": 1,
+  "reason": "SOURCE_MISMATCH",
+  "reasons_include": [
+    "SOURCE_MISMATCH"
+  ],
+  "failure_modes": [
+    "OMITTED_POPULATION"
+  ],
+  "failure_modes_comparison": "exact set, compared with run.json failure_modes",
+  "must_mention": [
+    "**FAIL** (SOURCE_MISMATCH), exit code 1.",
+    "Failure modes: OMITTED_POPULATION",
+    "`snapshot`: snapshot_completeness FAIL (SOURCE_MISMATCH), rows examined 5; input 'specimens': 1 accepted row(s) were deleted",
+    "row closure of input `specimens` not evaluated (OBSERVED)",
+    "## WHAT THIS RESULT DOES NOT PROVE",
+    "Scientific validity: NOT ESTABLISHED"
+  ],
+  "must_mention_scope": "report.md",
+  "must_not_mention": [
+    "accepted row(s) changed",
+    "**PASS**"
+  ],
+  "checks": {
+    "rows": {
+      "verdict": "PASS",
+      "execution_state": "CHECKED",
+      "rows_examined": 5
+    },
+    "columns": {
+      "verdict": "PASS",
+      "execution_state": "CHECKED"
+    },
+    "duplicates": {
+      "verdict": "PASS",
+      "execution_state": "CHECKED"
+    },
+    "snapshot": {
+      "verdict": "FAIL",
+      "execution_state": "CHECKED",
+      "reason": "SOURCE_MISMATCH",
+      "failure_modes": [
+        "OMITTED_POPULATION"
+      ]
+    }
+  },
+  "details": {
+    "snapshot_input": {
+      "input_id": "specimens",
+      "accepted_rows": 6,
+      "present_unchanged": 5,
+      "deleted": 1,
+      "deleted_keys": [
+        [
+          "OP-0004"
+        ]
+      ],
+      "changed": 0,
+      "added": 0,
+      "input_complete": true
+    },
+    "counters": {
+      "checks_expected": 4,
+      "checks_executed": 4,
+      "checks_failed": 1
+    }
+  },
+  "receipt": {
+    "signature_state": "UNSIGNED"
+  },
+  "does_not_prove": [
+    "A pass shows conformance on declared fixtures only: science-gate produced the declared outcome on this entry's synthetic fixtures, with the tool version recorded in environment.lock.",
+    "It does not show that science-gate detects this failure in data, layouts or tool versions outside this entry.",
+    "It does not establish scientific validity: the data, works, people and sites are invented, so no scientific conclusion is supported or refuted.",
+    "It does not show that science-gate, or any pipeline that uses it, is fit for any particular use.",
+    "It does not show that rows never accepted into the snapshot are complete; the snapshot vouches only for the rows it accepted, and an OBSERVED row count cannot reveal a loss."
+  ],
+  "notes": [
+    "The deleted key OP-0004 is named in run.json (checks[snapshot].evidence), not in report.md; report.md gives the count. That is the tool's documented report layout, not a gap."
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "ephemeral-claim-synthetic-01",
+  "synthetic": true,
+  "category": "ephemeral-claim",
+  "command": "verify manifest.json --output <tmp>/verify",
+  "argv": [
+    "verify",
+    "manifest.json",
+    "--output",
+    "<tmp>/verify"
+  ],
+  "cwd": "the entry directory",
+  "environment": {
+    "PYTHONPATH": "<scientific-evidence-gate>/src",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z",
+    "network": "none (live lookups off)",
+    "see": "environment.lock"
+  },
+  "status": "ABSTAIN",
+  "exit_code": 2,
+  "reason": "UNVERIFIED",
+  "failure_modes": [
+    "EPHEMERAL_CLAIM"
+  ],
+  "must_mention": [
+    "EPHEMERAL_CLAIM",
+    "CLM-02",
+    "no reproducible derivation",
+    "ANALYSIS_RECIPE, CODE_VERSION, ENVIRONMENT, INPUT_MANIFEST, STORED_OUTPUT",
+    "Scientific validity: NOT ESTABLISHED"
+  ],
+  "must_mention_in": "report.md",
+  "failure_modes_match": "exact: run.json failure_modes, sorted, must equal this list",
+  "must_mention_match": "case-sensitive substring of report.md written to --output",
+  "additional_expectations": {
+    "checks_in_run_json": {
+      "rows": {
+        "verdict": "PASS",
+        "reason": "VERIFIED",
+        "failure_modes": []
+      },
+      "claims": {
+        "verdict": "ABSTAIN",
+        "reason": "UNVERIFIED",
+        "failure_modes": [
+          "EPHEMERAL_CLAIM"
+        ]
+      }
+    },
+    "claim_dispositions_in_run_json": {
+      "CLM-01": "RESOLVED",
+      "CLM-02": "EPHEMERAL_CLAIM"
+    },
+    "manuscript_scan_in_run_json": {
+      "MATCHED": 2,
+      "UNREGISTERED": 0,
+      "DECLARED_NOT_A_CLAIM": 0
+    },
+    "must_not": [
+      "status PASS or FAIL",
+      "a claim_registry verdict of PASS or FAIL",
+      "CLM-02 reported as false, disagreeing or VALUE_DISAGREES",
+      "any failure mode other than EPHEMERAL_CLAIM"
+    ]
+  },
+  "field_sources": {
+    "status, reason, failure_modes, exit_code": "run.json top level (exit_code also the process exit code)",
+    "must_mention": "report.md written to --output",
+    "checks_in_run_json": "run.json checks[] by check_id",
+    "claim_dispositions_in_run_json": "run.json checks[claims].evidence.problem_claims[] and resolved_claims[]",
+    "manuscript_scan_in_run_json": "run.json checks[claims].evidence.manuscript_scan.classifications"
+  },
+  "intended_by": "the entry author, from ARCHITECTURE.md section 7, before the recorded run",
+  "recorded_run": {
+    "matches": true,
+    "comparison": "evaluation/comparison.json",
+    "note": "The recorded run reproduced every expected field. The expectations above were written from the intended behaviour and were not edited to fit the run."
+  },
+  "does_not_prove": [
+    "Reproducing these results shows conformance on this declared synthetic fixture only.",
+    "It does not show scientific validity of anything, that the verifier catches ephemeral claims elsewhere, or fitness for any use."
+  ]
+}

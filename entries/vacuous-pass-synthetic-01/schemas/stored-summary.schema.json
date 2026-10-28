@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conformance-corpus/stored-summary.schema.json",
+  "title": "Stored run summary (science-gate-summary/v1), as this SYNTHETIC fixture uses it",
+  "description": "Corpus-authored description, derived by reading science-gate's summary_consistency check (verifier._parse_summary). It is not an official science-gate schema. Passing shows conformance on this declared synthetic fixture only; it does not show scientific validity, and it does not show fitness for any use.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status"
+  ],
+  "properties": {
+    "schema": {
+      "const": "science-gate-summary/v1"
+    },
+    "status": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "recorded_at": {
+      "type": "string"
+    },
+    "pinned": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "inputs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sha256"
+            ],
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "rows": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        },
+        "documents": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}

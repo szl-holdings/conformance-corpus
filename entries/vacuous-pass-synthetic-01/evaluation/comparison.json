@@ -1,0 +1,55 @@
+{
+  "schema": "conformance-corpus-comparison/v1",
+  "entry_id": "vacuous-pass-synthetic-01",
+  "synthetic": true,
+  "expected_source": "expected-results.json (intended outcome; not edited to match this run)",
+  "expected": {
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "INSUFFICIENT_EVIDENCE",
+    "failure_modes": [
+      "VACUOUS_PASS"
+    ],
+    "must_mention": [
+      "VACUOUS_PASS",
+      "fixtures/data/readings.csv",
+      "EMPTY",
+      "with 0 rows",
+      "rows_examined"
+    ]
+  },
+  "actual": {
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "run_json_exit_code": 2,
+    "reason": "INSUFFICIENT_EVIDENCE",
+    "reasons": [
+      "INSUFFICIENT_EVIDENCE",
+      "PARTIAL_EXECUTION",
+      "UNVERIFIED"
+    ],
+    "failure_modes": [
+      "PARTIAL_EXECUTION",
+      "VACUOUS_PASS"
+    ],
+    "headline": "ABSTAIN (INSUFFICIENT_EVIDENCE) run-36a763016ef9da5c: 1/4 required checks executed, 1 rows examined, 1/1 inputs opened",
+    "signature_state": "UNSIGNED"
+  },
+  "must_mention_found": {
+    "VACUOUS_PASS": true,
+    "fixtures/data/readings.csv": true,
+    "EMPTY": true,
+    "with 0 rows": true,
+    "rows_examined": false
+  },
+  "matches": {
+    "status": true,
+    "exit_code": true,
+    "reason": true,
+    "failure_modes": false,
+    "must_mention": false,
+    "status_must_not_be": true
+  },
+  "all_match": false,
+  "does_not_prove": "Passing shows conformance on this declared synthetic fixture only; it does not show scientific validity, and it does not show fitness for any use."
+}

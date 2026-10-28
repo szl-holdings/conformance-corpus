@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conformance-corpus/fixture-schemas/reviews.fixture.schema.json",
+  "title": "Reviews fixture (science-gate-reviews/v1), as used by this entry",
+  "description": "Documentation of the reviews document this entry's fixtures/reviews/verdicts.json uses, written from src/science_gate/verifier.py (_parse_verdicts and check_reviewer_protocol) at the commit in environment.lock. It is not normative. science-gate compares reviewer names after trimming and case folding; the required reviewers are declared in the manifest (reviews.required_reviewers), not here. SYNTHETIC entry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "verdicts"
+  ],
+  "properties": {
+    "schema": {
+      "const": "science-gate-reviews/v1"
+    },
+    "verdicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reviewer",
+          "verdict"
+        ],
+        "properties": {
+          "reviewer": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "verdict": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "recorded_at": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "time-source-mismatch-synthetic-01",
+  "synthetic": true,
+  "command": "verify manifest.json",
+  "invocation": {
+    "cwd": "the entry directory",
+    "argv": [
+      "python",
+      "-m",
+      "science_gate.cli",
+      "verify",
+      "manifest.json",
+      "--output",
+      "<tmp>"
+    ],
+    "environment": {
+      "PYTHONPATH": "<scientific-evidence-gate>/src",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z"
+    },
+    "output": "an OS temporary directory outside the entry (verify never writes into the entry)"
+  },
+  "status": "FAIL",
+  "exit_code": 1,
+  "reason": "SOURCE_MISMATCH",
+  "failure_modes": [
+    "SOURCE_MISMATCH"
+  ],
+  "failure_modes_match": "exact: run.json failure_modes must equal this list",
+  "must_mention": [
+    "OUTSIDE_WINDOW",
+    "syn-obs-03",
+    "SOURCE_MISMATCH"
+  ],
+  "must_mention_in": "report.md",
+  "headline_prefix": "FAIL (SOURCE_MISMATCH)",
+  "intended_before_run": true,
+  "recorded_run_matches": true,
+  "mismatches": [],
+  "note": "ARCHITECTURE.md section 5 states that an observation outside the requested window is FAIL with SOURCE_MISMATCH; the failure mode is SOURCE_MISMATCH as well.",
+  "recorded_run": {
+    "run_id": "run-7e468bf65c2d53c1",
+    "evidence_manifest_sha256": "f2d414db6600cdaf377caf6b8d88fc3c3f02e24ab4cf2799914463266d272736",
+    "ledger_head_sha256": "daf00271550005fa25d00dbb87a89d1b4b68f0011c8f805349e41ae09b6ac673",
+    "ledger_length": 6,
+    "receipt_content_sha256": "12d1dee641f300f6c83103fa3f1c94117a0342c871232a149526b42373b657da",
+    "signature_state": "UNSIGNED",
+    "informational": "These values depend on the tool version and are recorded for reference; they are not part of the expected outcome."
+  },
+  "does_not_prove": "Matching these results shows conformance on declared fixtures only. It does not show scientific validity, detection of failures outside this corpus, or fitness for use."
+}

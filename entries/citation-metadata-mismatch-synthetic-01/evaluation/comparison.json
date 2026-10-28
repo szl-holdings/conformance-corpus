@@ -1,0 +1,276 @@
+{
+  "all_match": true,
+  "fields": [
+    {
+      "field": "status",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "match": true
+    },
+    {
+      "field": "exit_code",
+      "expected": 1,
+      "actual": 1,
+      "match": true
+    },
+    {
+      "field": "run.json exit_code",
+      "expected": 1,
+      "actual": 1,
+      "match": true
+    },
+    {
+      "field": "reason",
+      "expected": "SOURCE_MISMATCH",
+      "actual": "SOURCE_MISMATCH",
+      "match": true
+    },
+    {
+      "field": "reasons_include",
+      "expected": [
+        "SOURCE_MISMATCH"
+      ],
+      "actual": [
+        "SOURCE_MISMATCH"
+      ],
+      "match": true
+    },
+    {
+      "field": "failure_modes",
+      "expected": [
+        "SOURCE_MISMATCH"
+      ],
+      "actual": [
+        "SOURCE_MISMATCH"
+      ],
+      "match": true
+    },
+    {
+      "field": "must_mention: **FAIL** (SOURCE_MISMATCH), exit code 1.",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: Failure modes: SOURCE_MISMATCH",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: FIELD_MISMATCH: citation C2 (10.5555/cc-synth.cmm.0002): AUTHOR_MISMATCH",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: FIELD_MISMATCH: citation C3 (10.5555/cc-synth.cmm.0003): DOI_WORK_MISMATCH",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: DOI_TARGET_MISMATCH: 10.5555/cc-synth.cmm.0003 (cited as C3) reached the work 10.5555/cc-synth.cmm.0030",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: ## WHAT THIS RESULT DOES NOT PROVE",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: Scientific validity: NOT ESTABLISHED",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_not_mention: citation C1 (10.5555/cc-synth.cmm.0001)",
+      "expected": false,
+      "actual": false,
+      "match": true
+    },
+    {
+      "field": "must_not_mention: **PASS**",
+      "expected": false,
+      "actual": false,
+      "match": true
+    },
+    {
+      "field": "must_not_mention: CONFLATED_ENTRY:",
+      "expected": false,
+      "actual": false,
+      "match": true
+    },
+    {
+      "field": "checks.observations.verdict",
+      "expected": "PASS",
+      "actual": "PASS",
+      "match": true
+    },
+    {
+      "field": "checks.observations.execution_state",
+      "expected": "CHECKED",
+      "actual": "CHECKED",
+      "match": true
+    },
+    {
+      "field": "checks.observations.rows_examined",
+      "expected": 3,
+      "actual": 3,
+      "match": true
+    },
+    {
+      "field": "checks.citation-log.verdict",
+      "expected": "PASS",
+      "actual": "PASS",
+      "match": true
+    },
+    {
+      "field": "checks.citation-log.execution_state",
+      "expected": "CHECKED",
+      "actual": "CHECKED",
+      "match": true
+    },
+    {
+      "field": "checks.doi-resolution.verdict",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "match": true
+    },
+    {
+      "field": "checks.doi-resolution.execution_state",
+      "expected": "CHECKED",
+      "actual": "CHECKED",
+      "match": true
+    },
+    {
+      "field": "checks.doi-resolution.reason",
+      "expected": "SOURCE_MISMATCH",
+      "actual": "SOURCE_MISMATCH",
+      "match": true
+    },
+    {
+      "field": "checks.citation-metadata.verdict",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "match": true
+    },
+    {
+      "field": "checks.citation-metadata.execution_state",
+      "expected": "CHECKED",
+      "actual": "CHECKED",
+      "match": true
+    },
+    {
+      "field": "checks.citation-metadata.reason",
+      "expected": "SOURCE_MISMATCH",
+      "actual": "SOURCE_MISMATCH",
+      "match": true
+    },
+    {
+      "field": "details.citation_dispositions",
+      "expected": {
+        "C1": "VERIFIED_WITHIN_DECLARED_SCOPE",
+        "C2": "FIELD_MISMATCH",
+        "C3": "FIELD_MISMATCH"
+      },
+      "actual": {
+        "C1": "VERIFIED_WITHIN_DECLARED_SCOPE",
+        "C2": "FIELD_MISMATCH",
+        "C3": "FIELD_MISMATCH"
+      },
+      "match": true
+    },
+    {
+      "field": "details.citation_defects",
+      "expected": {
+        "C1": [],
+        "C2": [
+          "AUTHOR_MISMATCH"
+        ],
+        "C3": [
+          "DOI_WORK_MISMATCH"
+        ]
+      },
+      "actual": {
+        "C1": [],
+        "C2": [
+          "AUTHOR_MISMATCH"
+        ],
+        "C3": [
+          "DOI_WORK_MISMATCH"
+        ]
+      },
+      "match": true
+    },
+    {
+      "field": "details.resolver_states",
+      "expected": {
+        "10.5555/cc-synth.cmm.0001": "DOI_RESOLVED",
+        "10.5555/cc-synth.cmm.0002": "DOI_RESOLVED",
+        "10.5555/cc-synth.cmm.0003": "DOI_TARGET_MISMATCH"
+      },
+      "actual": {
+        "10.5555/cc-synth.cmm.0001": "DOI_RESOLVED",
+        "10.5555/cc-synth.cmm.0002": "DOI_RESOLVED",
+        "10.5555/cc-synth.cmm.0003": "DOI_TARGET_MISMATCH"
+      },
+      "match": true
+    },
+    {
+      "field": "details.resolver_returned_doi",
+      "expected": {
+        "10.5555/cc-synth.cmm.0003": "10.5555/cc-synth.cmm.0030"
+      },
+      "actual": {
+        "10.5555/cc-synth.cmm.0003": "10.5555/cc-synth.cmm.0030"
+      },
+      "match": true
+    },
+    {
+      "field": "receipt.signature_state",
+      "expected": "UNSIGNED",
+      "actual": "UNSIGNED",
+      "match": true
+    },
+    {
+      "field": "receipt.body.evidence_boundary.scientific_validity",
+      "expected": "NOT ESTABLISHED",
+      "actual": "NOT ESTABLISHED",
+      "match": true
+    }
+  ],
+  "mismatches": [],
+  "entry_id": "citation-metadata-mismatch-synthetic-01",
+  "expected_results_sha256": "36b898ab734ccf95f23766a4870b92ef3256290df7174db6092abd9f0525dc0f",
+  "compared_against": "evaluation/run.json, evaluation/report.md, receipts/receipt.json and the process exit code of the recorded run",
+  "determinism": {
+    "second_run_byte_identical": {
+      "evidence-manifest.json": true,
+      "ledger.jsonl": true,
+      "receipt.json": true,
+      "report.html": true,
+      "report.md": true,
+      "results.sarif": true,
+      "run.json": true
+    },
+    "all_identical": true,
+    "note": "Two runs into different temp directories, same fixed time."
+  },
+  "reverification": {
+    "command": "python -m science_gate.cli report <tmp>/run",
+    "exit_code": 1,
+    "headline": "FAIL (SOURCE_MISMATCH) run-350cb2fc2f3085dd: recorded run re-verified",
+    "matches_verify_exit_code": true
+  },
+  "seg_state_changed_during_runs": false,
+  "does_not_prove": "A match shows conformance on declared fixtures only. It does not establish scientific validity or fitness for use.",
+  "observations": [
+    "Observation, not a gap for this category: report.md prints 'Rows examined in scope: N' (rows counted once) next to the invariant detail 'pass_requires_examined_rows: rows_examined=M', where M sums rows over every CHECKED check and so counts the same rows several times. The two figures share the name rows_examined but measure different things. The expected results pin neither."
+  ],
+  "control": "see control.json: a temp copy with only the defect undone returned PASS, exit 0, VERIFIED"
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "invalid-mutation-baseline-synthetic-01",
+  "title": "SYNTHETIC: mutation sensitivity requested while the accepting baseline fails must yield INVALID_BASELINE with no sensitivity figure",
+  "failure_mode": "INVALID_BASELINE",
+  "synthetic": true,
+  "scientific_question": "Illustrative only (the setting is fictional): do the invented depth gauges of the fictional Cobblewick canal agree with the depths an analyst declared? No real canal, gauge, person or measurement is described.",
+  "claim_tested": "When `science-gate mutate` is asked for mutation sensitivity on an evidence tree whose untouched copy does not verify as PASS (here the declared depth for gauge CW-03 is 97.51 while the stored value is 97.15, so the numeric_agreement check 'depth' FAILs with SOURCE_MISMATCH), the mutation report has status FAIL, reason INVALID_BASELINE and exit code 1. It prints the verbatim sentence 'No sensitivity figure was produced because the verifier failed its accepting baseline.' It carries no sensitivity figure, omits every count key, and executes no mutation. It never converts the failing baseline into a vacuous 100% detection rate.",
+  "falsified_by": "Running `science-gate mutate manifest.json` from this entry directory yields any status other than FAIL, any exit code other than 1, a reason other than INVALID_BASELINE, a mutation-report.json containing any of the keys sensitivity, applicable_mutations, executed_mutations, detected_mutations, escaped_mutations, skipped_mutations, not_applicable_mutations or mutations, or a mutation-report.md lacking the verbatim no-sensitivity sentence or the baseline's failing finding.",
+  "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
+  "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "No license has been chosen for the corpus, so no grant exists beyond local evaluation. Evaluation permission does not imply training permission. Redistribution stays false until a license is chosen by the corpus owner."
+  },
+  "source_licenses": [
+    {
+      "path": "fixtures/",
+      "license": "NOASSERTION",
+      "evidence": "Generated for this corpus by its author; no license has been chosen and no third-party material is included."
+    },
+    {
+      "path": "manifest.json",
+      "license": "NOASSERTION",
+      "evidence": "Generated for this corpus by its author; no license has been chosen."
+    }
+  ],
+  "expected_outcome": {
+    "command": "mutate manifest.json --output <tmp>/mutate",
+    "status": "FAIL",
+    "exit_code": 1,
+    "reason": "INVALID_BASELINE",
+    "failure_modes": [],
+    "must_mention": [
+      "INVALID_BASELINE",
+      "No sensitivity figure was produced because the verifier failed its accepting baseline.",
+      "SOURCE_MISMATCH",
+      "check:depth",
+      "CW-03"
+    ]
+  },
+  "known_failures": [],
+  "unresolved_cases": [
+    "Only a FAIL baseline is covered. A baseline that ABSTAINs (for example an empty input) or ERRORs must also invalidate the report; no entry exercises that yet.",
+    "The baseline fails for one reason (a transposed digit in a declared expectation). Baselines failing through a hash mismatch, an omitted accepted row or a broken ledger are not covered.",
+    "science-gate mutate writes no receipt. The receipt in receipts/ comes from a supplementary `verify` of the same manifest, and it records the failing baseline rather than the mutation report."
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "Draft written by a single author (an AI assistant). An independent reviewer must confirm that the baseline fails for exactly the declared reason, and that the expected outcome follows from ARCHITECTURE.md section 10, before the entry leaves draft."
+  },
+  "does_not_prove": [
+    "A pass on this entry shows only that the mutation harness behaves as declared on this one synthetic fixture with a failing baseline. It is a performance claim about declared fixtures.",
+    "It does not show that the harness handles every kind of invalid baseline, or that its sensitivity figures are meaningful when the baseline does pass.",
+    "It does not show that any gauge value is right or wrong. The data are invented and no scientific validity is established.",
+    "It does not show that scientific-evidence-gate is fit for any particular use."
+  ],
+  "provenance": {
+    "created": "2026-09-29",
+    "generator": "Specified by the corpus author (an AI assistant working in this workspace) and written by a Python standard-library script that computed every SHA-256 from the exact bytes it wrote. All names and values are invented; nothing is derived from a real dataset, paper, person or institution. Expected results were written from the intended behaviour and then confirmed by a recorded run (evaluation/).",
+    "reviewed_by": []
+  }
+}

@@ -1,0 +1,6 @@
+# Recorded evaluation command (run from this entry directory; <SEG> is the scientific-evidence-gate checkout,
+# <tmp> an OS temporary directory). No shell features are needed; every argument is literal.
+PYTHONPATH=<SEG>/src PYTHONDONTWRITEBYTECODE=1 SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z python -m science_gate.cli mutate manifest.json --output <tmp>/mutate
+
+# Supplementary run (same environment), made only to obtain a run receipt, which mutate does not write:
+PYTHONPATH=<SEG>/src PYTHONDONTWRITEBYTECODE=1 SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z python -m science_gate.cli verify manifest.json --output <tmp>/verify

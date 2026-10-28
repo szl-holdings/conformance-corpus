@@ -1,0 +1,73 @@
+{
+  "schema": "science-gate-manifest/v1",
+  "run_label": "corpus-REPLACE-ENTRY-ID",
+  "inputs": [
+    {
+      "id": "REPLACE_input_id",
+      "path": "fixtures/REPLACE.csv",
+      "format": "csv",
+      "required": true,
+      "row_key": [
+        "REPLACE_key_column"
+      ],
+      "expected_rows": 0,
+      "denominator_source": "OBSERVED",
+      "sha256": "REPLACE_with_the_sha256_of_the_current_csv"
+    }
+  ],
+  "accepted_snapshot": "fixtures/snapshots/accepted.json",
+  "checks": [
+    {
+      "id": "rows",
+      "kind": "row_count",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "REPLACE_input_id"
+      ]
+    },
+    {
+      "id": "columns",
+      "kind": "required_columns",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "REPLACE_input_id"
+      ],
+      "params": {
+        "columns": [
+          "REPLACE_column"
+        ]
+      }
+    },
+    {
+      "id": "duplicates",
+      "kind": "duplicate_rows",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "REPLACE_input_id"
+      ]
+    },
+    {
+      "id": "snapshot",
+      "kind": "snapshot_completeness",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "REPLACE_input_id"
+      ]
+    }
+  ],
+  "corpus": {
+    "access_class": "SYNTHETIC",
+    "permissions": {
+      "evaluation_allowed": true,
+      "training_allowed": false,
+      "redistribution_allowed": false,
+      "derivatives_allowed": false,
+      "public_display_allowed": false,
+      "commercial_use_allowed": false
+    }
+  }
+}

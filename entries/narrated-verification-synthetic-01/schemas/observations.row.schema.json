@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conformance-corpus/observations.row.schema.json",
+  "title": "One record of the SYNTHETIC CSV fixture (observations.row.schema.json)",
+  "description": "Corpus-authored description of the fixture's columns. science-gate reads every CSV value as a string and parses numbers only through its decimal rules, so every column is a string here. Passing shows conformance on this declared synthetic fixture only; it does not show scientific validity, and it does not show fitness for any use.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "observation_id",
+    "site",
+    "reading"
+  ],
+  "properties": {
+    "observation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "site": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reading": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "x-row-key": [
+    "observation_id"
+  ]
+}

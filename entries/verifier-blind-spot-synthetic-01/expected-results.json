@@ -1,0 +1,99 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "verifier-blind-spot-synthetic-01",
+  "synthetic": true,
+  "category": "verifier-blind-spot",
+  "command": "mutate manifest.json --output <tmp>/mutate",
+  "argv": [
+    "mutate",
+    "manifest.json",
+    "--output",
+    "<tmp>/mutate"
+  ],
+  "cwd": "the entry directory",
+  "environment": {
+    "PYTHONPATH": "<scientific-evidence-gate>/src",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z",
+    "network": "none (every mutation verify runs with a refusing opener)",
+    "see": "environment.lock"
+  },
+  "status": "FAIL",
+  "exit_code": 1,
+  "reason": "BLIND_SPOT",
+  "failure_modes": [],
+  "must_mention": [
+    "BLIND_SPOT",
+    "M04_duplicate_row",
+    "check:duplicate_rows",
+    "the mutant verified as PASS",
+    "8/9"
+  ],
+  "must_mention_in": "mutation-report.md",
+  "failure_modes_match": "exact: mutation-report.json has no top-level failure_modes field; it must be absent or equal this (empty) list",
+  "failure_modes_note": "A mutation report has no top-level failure_modes field, so none are expected. The escaped mutant verified as PASS and carries no failure mode.",
+  "must_mention_match": "case-sensitive substring of mutation-report.md written to --output",
+  "additional_expectations": {
+    "baseline_in_json": {
+      "valid": true,
+      "status": "PASS",
+      "reason": "VERIFIED"
+    },
+    "blind_spot_ids": [
+      "M04_duplicate_row"
+    ],
+    "escaped_mutant_actual_status": {
+      "M04_duplicate_row": "PASS"
+    },
+    "detected_ids": [
+      "M01_empty_input",
+      "M02_missing_expected_file",
+      "M07_changed_source_hash",
+      "M10_changed_numeric_value",
+      "M11_changed_numeric_formatting",
+      "M15_skipped_required_checker",
+      "M16_truncated_ledger",
+      "M17_reordered_hash_chain"
+    ],
+    "counts_in_json": {
+      "applicable_mutations": 9,
+      "executed_mutations": 9,
+      "detected_mutations": 8,
+      "escaped_mutations": 1,
+      "skipped_mutations": 0,
+      "not_applicable_mutations": 11
+    },
+    "sensitivity_fraction": "8/9",
+    "counts_note": "The counts follow from the 20 operators of science-gate 0.1.0 (ARCHITECTURE.md section 10) and from which of them find a target in this tree. The blind-spot set, exactly [M04_duplicate_row], is the part of this entry that is independent of the operator set.",
+    "must_not": [
+      "status PASS or ABSTAIN",
+      "M04_duplicate_row counted as detected",
+      "a sensitivity of 1 or 9/9",
+      "a skipped or not-applicable operator counted as detected"
+    ]
+  },
+  "supplementary_verify": {
+    "command": "verify manifest.json --output <tmp>/verify",
+    "purpose": "Shows the accepting baseline directly and produces the run receipt kept in receipts/ (mutate writes no receipt).",
+    "status": "PASS",
+    "exit_code": 0,
+    "reason": "VERIFIED",
+    "failure_modes": []
+  },
+  "field_sources": {
+    "status, reason, exit_code": "mutation-report.json top level (exit_code also the process exit code)",
+    "must_mention": "mutation-report.md written to --output",
+    "blind_spot_ids, detected_ids, escaped_mutant_actual_status": "mutation-report.json mutations[] (blind_spot, detected, actual_result.status)",
+    "counts_in_json, sensitivity_fraction": "mutation-report.json top level and sensitivity.fraction"
+  },
+  "intended_by": "the entry author, from ARCHITECTURE.md section 10, before the recorded run",
+  "recorded_run": {
+    "matches": true,
+    "comparison": "evaluation/comparison.json",
+    "note": "The recorded run reproduced every expected field. The fixture was revised once before the recorded run, so that the duplicated record is not cited by numeric_agreement and the escaped mutant verifies as PASS; see entry.json unresolved_cases. The expected outcome itself was not changed."
+  },
+  "does_not_prove": [
+    "Reproducing these results shows conformance on this declared synthetic fixture only.",
+    "It does not show scientific validity of anything, that every blind spot is found, or fitness for any use."
+  ]
+}

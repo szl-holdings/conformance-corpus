@@ -1,0 +1,51 @@
+{
+  "schema": "science-gate-graph/v1",
+  "nodes": [
+    {
+      "id": "source-plots",
+      "kind": "SOURCE_SNAPSHOT",
+      "path": "fixtures/data/plots.csv",
+      "recorded_sha256": "bc2f606fb2c361aef613a1311069ed5483a8aff17d0b789c99b96dc1069e19f3",
+      "validity": "CURRENT",
+      "history": []
+    },
+    {
+      "id": "study-design",
+      "kind": "DESIGN",
+      "path": "fixtures/design/protocol.md",
+      "recorded_sha256": "08e73858c6ec3295d791bd22a0497316b264fc85fe63f405d13fe378fd421d3b",
+      "validity": "CURRENT",
+      "history": []
+    },
+    {
+      "id": "site-means",
+      "kind": "RANKING_OR_MEASUREMENT",
+      "path": "fixtures/analysis/site-means.csv",
+      "recorded_sha256": "30b91b0e98e0f4f7b3cf9b2b2272ee5383161bdb25fc18fcfc8a4d2d9f220d34",
+      "validity": "CURRENT",
+      "history": []
+    },
+    {
+      "id": "conclusion-south-highest",
+      "kind": "CONCLUSION",
+      "path": "fixtures/conclusions/conclusion-south-highest.md",
+      "recorded_sha256": "bed11c00b085a8517ea6f7c7f41ae0272a97924229396ebce2fce4dc7b838286",
+      "validity": "CURRENT",
+      "history": []
+    }
+  ],
+  "edges": [
+    [
+      "source-plots",
+      "site-means"
+    ],
+    [
+      "study-design",
+      "site-means"
+    ],
+    [
+      "site-means",
+      "conclusion-south-highest"
+    ]
+  ]
+}

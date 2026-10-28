@@ -1,0 +1,77 @@
+{
+  "note": "Formats of this entry's files. No schema is copied from elsewhere; each format is defined in the scientific-evidence-gate (SEG) repo at the commit below. SYNTHETIC entry.",
+  "seg_git_commit_at_generation": "7ec36c6bb13494dab3fdc15a2c5bf2b0f0ac1926",
+  "files": [
+    {
+      "path": "manifest.json",
+      "format": "science-gate-manifest/v1",
+      "defined_by": [
+        {
+          "seg_path": "schemas/manifest.schema.json",
+          "sha256_at_generation": "83270fea58e9df8fc67e2accc0a4d62cbfbe922bc37dc4ff1691cd8b2de84e86"
+        },
+        {
+          "seg_path": "docs/ARCHITECTURE.md",
+          "sha256_at_generation": "629c4c94a620d0a5cfcf5d3193e9de74b350b4e2eabf970d250e056f75f2b477"
+        }
+      ]
+    },
+    {
+      "path": "fixtures/observations.csv",
+      "format": "csv (header row; values kept as strings)",
+      "columns": {
+        "observation_id": "row key, text",
+        "plot": "text",
+        "cover_pct": "integer as text"
+      },
+      "defined_by": [
+        {
+          "seg_path": "docs/ARCHITECTURE.md",
+          "sha256_at_generation": "629c4c94a620d0a5cfcf5d3193e9de74b350b4e2eabf970d250e056f75f2b477"
+        }
+      ]
+    },
+    {
+      "path": "fixtures/citations/entries.json",
+      "format": "science-gate-citations/v1",
+      "defined_by": [
+        {
+          "seg_path": "schemas/citations.schema.json",
+          "sha256_at_generation": "126e26118ef5cfa15733cd113cd3242e5dfe3c0c1c1c1a2c9072e9e17cb5f760"
+        },
+        {
+          "seg_path": "src/science_gate/citations.py",
+          "sha256_at_generation": "23e3fefa6c26a7b768c9d4148f3631cf61127625cc677ee2014997101873a9e3"
+        }
+      ]
+    },
+    {
+      "path": "fixtures/citations/verification-log.json",
+      "format": "science-gate-verification-log/v1",
+      "defined_by": [
+        {
+          "seg_path": "schemas/citations.schema.json",
+          "sha256_at_generation": "126e26118ef5cfa15733cd113cd3242e5dfe3c0c1c1c1a2c9072e9e17cb5f760"
+        },
+        {
+          "seg_path": "src/science_gate/citations.py",
+          "sha256_at_generation": "23e3fefa6c26a7b768c9d4148f3631cf61127625cc677ee2014997101873a9e3"
+        }
+      ]
+    },
+    {
+      "path": "fixtures/citations/frozen.json",
+      "format": "science-gate-citations-frozen/v1",
+      "defined_by": [
+        {
+          "seg_path": "schemas/citations.schema.json",
+          "sha256_at_generation": "126e26118ef5cfa15733cd113cd3242e5dfe3c0c1c1c1a2c9072e9e17cb5f760"
+        },
+        {
+          "seg_path": "src/science_gate/adapters/frozen.py",
+          "sha256_at_generation": "e2d85dfd55cb892bcb6b0e1d3cd0bf789884a342cab8d44437597b65970f45f5"
+        }
+      ]
+    }
+  ]
+}

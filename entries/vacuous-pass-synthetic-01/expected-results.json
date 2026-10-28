@@ -1,0 +1,51 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "vacuous-pass-synthetic-01",
+  "synthetic": true,
+  "command": "verify manifest.json",
+  "argv": [
+    "verify",
+    "manifest.json",
+    "--output",
+    "<tmp>/run"
+  ],
+  "cwd": "<entry>",
+  "environment": {
+    "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "status": "ABSTAIN",
+  "exit_code": 2,
+  "reason": "INSUFFICIENT_EVIDENCE",
+  "failure_modes": [
+    "VACUOUS_PASS"
+  ],
+  "failure_modes_match": "exact set: run.json failure_modes, sorted, must equal this list",
+  "must_mention": [
+    "VACUOUS_PASS",
+    "fixtures/data/readings.csv",
+    "EMPTY",
+    "with 0 rows",
+    "rows_examined"
+  ],
+  "must_mention_in": "report.md written by the run (case-sensitive substring match)",
+  "status_must_not_be": [
+    "PASS"
+  ],
+  "intended_by": "corpus author; written before the recorded run, not copied from it",
+  "note": "A stored summary claims PASS for an input that has a header and zero data records. A conforming verifier must not confirm that PASS: it abstains because no row was examined, and names the vacuous pass.",
+  "recorded_run": {
+    "matches": false,
+    "differs_on": [
+      "failure_modes",
+      "must_mention: rows_examined"
+    ],
+    "comparison": "evaluation/comparison.json",
+    "note": "The recorded run (science-gate 0.1.0, commit 7ec36c6) matches status, exit_code and reason. Its failure_modes are [PARTIAL_EXECUTION, VACUOUS_PASS], and its report.md does not contain 'rows_examined'. Both differences are recorded in entry.json known_failures. The intended values above were not edited to match the run."
+  },
+  "does_not_prove": [
+    "Reproducing this outcome shows conformance on this declared synthetic fixture only.",
+    "It does not show that the verifier catches failures outside the corpus.",
+    "It does not show that any scientific conclusion is true, and it does not show fitness for any use."
+  ]
+}

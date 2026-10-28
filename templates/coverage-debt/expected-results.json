@@ -1,0 +1,78 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "REPLACE-ENTRY-ID",
+  "category": "coverage-debt",
+  "synthetic": true,
+  "written": "REPLACE: say that these values were written from the entry's intent before the recorded run, not copied from tool output.",
+  "command": {
+    "subcommand": "verify",
+    "argv": [
+      "-m",
+      "science_gate.cli",
+      "verify",
+      "manifest.json",
+      "--output",
+      "<tmp>/run"
+    ],
+    "cwd": "<entry>",
+    "env": {
+      "PYTHONPATH": "<seg>/src",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z"
+    },
+    "env_unset": [
+      "SCIENCE_GATE_HMAC_KEY_FILE"
+    ]
+  },
+  "status": "ABSTAIN",
+  "exit_code": 2,
+  "reason": "INSUFFICIENT_EVIDENCE",
+  "reasons_include": [
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "failure_modes": [
+    "PARTIAL_EXECUTION"
+  ],
+  "failure_modes_comparison": "exact set, compared with run.json failure_modes",
+  "must_mention": [
+    "REPLACE: the check line, e.g. `<check id>`: <kind> ABSTAIN (INSUFFICIENT_EVIDENCE), rows examined 0",
+    "REPLACE: e.g. check `<check id>` was NOT_APPLICABLE"
+  ],
+  "must_mention_scope": "report.md",
+  "must_not_mention": [
+    "**PASS**"
+  ],
+  "checks": {
+    "rows": {
+      "verdict": "PASS",
+      "execution_state": "CHECKED"
+    },
+    "columns": {
+      "verdict": "PASS",
+      "execution_state": "CHECKED"
+    },
+    "duplicates": {
+      "verdict": "PASS",
+      "execution_state": "CHECKED"
+    },
+    "time_window": {
+      "verdict": "ABSTAIN",
+      "execution_state": "NOT_APPLICABLE",
+      "rows_examined": 0,
+      "reason": "INSUFFICIENT_EVIDENCE"
+    }
+  },
+  "details": {
+    "REPLACE": "counters: checks_expected, checks_executed (one fewer), checks_not_applicable"
+  },
+  "receipt": {
+    "signature_state": "UNSIGNED"
+  },
+  "does_not_prove": [
+    "A pass shows conformance on declared fixtures only: science-gate produced the declared outcome on this entry's synthetic fixtures, with the tool version recorded in environment.lock.",
+    "It does not show that science-gate detects this failure in data, layouts or tool versions outside this entry.",
+    "It does not establish scientific validity: the data, works, people and sites are invented, so no scientific conclusion is supported or refuted.",
+    "It does not show that science-gate, or any pipeline that uses it, is fit for any particular use."
+  ],
+  "notes": []
+}

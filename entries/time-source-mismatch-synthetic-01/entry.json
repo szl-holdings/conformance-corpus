@@ -1,0 +1,70 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "time-source-mismatch-synthetic-01",
+  "title": "Time-source mismatch: local date inside the window, normalized UTC outside it (SYNTHETIC)",
+  "failure_mode": "SOURCE_MISMATCH",
+  "synthetic": true,
+  "scientific_question": "Illustrative only (invented): were all synthetic readings taken inside the requested evidence window of May 2026 (UTC)? No real station, logger or observation is involved.",
+  "claim_tested": "Given a time-sources document whose requested window is 2026-05-01T00:00:00Z to 2026-05-31T23:59:59Z, and whose event syn-obs-03 is recorded at local time 2026-05-31T22:30:00 with offset -04:00 and an internally consistent normalized UTC of 2026-06-01T02:30:00Z, science-gate verify with a required time_source check reports FAIL with exit code 1, reason SOURCE_MISMATCH and failure modes exactly [SOURCE_MISMATCH], and its report names syn-obs-03 as OUTSIDE_WINDOW. It must not PASS on the local date, which falls inside the window.",
+  "falsified_by": "The recorded run returning PASS, ABSTAIN or ERROR; an exit code other than 1; a reason other than SOURCE_MISMATCH; failure_modes other than exactly [SOURCE_MISMATCH]; or a report.md that lacks any of the must_mention strings.",
+  "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
+  "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "Every file was generated for this corpus and contains no third-party material. No license has been chosen for the corpus (NOASSERTION), so only evaluation is allowed and every other flag is false; redistribution is not granted until a license is chosen. Evaluation permission does not imply training permission."
+  },
+  "source_licenses": [
+    {
+      "path": ".",
+      "license": "NOASSERTION",
+      "evidence": "Every file in this entry was generated for the corpus. No license has been chosen, and no third-party material is included."
+    }
+  ],
+  "expected_outcome": {
+    "command": "verify manifest.json",
+    "status": "FAIL",
+    "exit_code": 1,
+    "reason": "SOURCE_MISMATCH",
+    "failure_modes": [
+      "SOURCE_MISMATCH"
+    ],
+    "must_mention": [
+      "OUTSIDE_WINDOW",
+      "syn-obs-03",
+      "SOURCE_MISMATCH"
+    ]
+  },
+  "known_failures": [],
+  "unresolved_cases": [
+    "A disagreement between local time, offset and recorded UTC (UTC_MISMATCH) is not exercised; here the three agree and only the window is violated.",
+    "Named zones such as Region/City (ABSTAIN, REQUIRES_HUMAN_REVIEW), missing timezones and missing UTC values (ABSTAIN, INSUFFICIENT_EVIDENCE) are not exercised.",
+    "An observation exactly on a window boundary is not exercised.",
+    "Whether the recorded offset was the true offset at the observing location is not checked by anything; the offset is taken as declared.",
+    "report.md prints two different row figures: 'Rows examined in scope: 6' (3 reading rows + 3 events) and the pass_requires_examined_rows line, which sums per-check counts. Neither is asserted here."
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "Draft. One author wrote it, with an AI coding agent, and nobody else has reviewed it. A reviewer should confirm two things. First, that the fixture exercises the category. Second, that the expected outcome follows from the published contract (ARCHITECTURE.md), not only from the current implementation."
+  },
+  "does_not_prove": [
+    "Passing this entry shows only that a verifier produced the declared outcome (status, exit code, reason, failure modes and required report strings) on these declared SYNTHETIC fixtures. It is a conformance result on declared fixtures only.",
+    "It does not show that the verifier catches this failure outside this corpus, in other data, or when the failure takes another form.",
+    "It does not show that any scientific conclusion is true or false. The data, the study and the conclusion here are invented and mean nothing.",
+    "It does not show that the verifier, or anything checked with it, is fit for any particular use.",
+    "It does not show that the declared offsets are the true local offsets, or that any clock was accurate. The offsets are taken as declared.",
+    "It does not show that the readings themselves are correct or meaningful."
+  ],
+  "provenance": {
+    "created": "2026-09-29",
+    "generator": "Synthetic values specified by hand and written by a stdlib-only Python generator run by an AI coding agent (Claude Code) for the corpus author, workstream 3 of the verification program. Digests computed with hashlib.sha256 over the exact bytes (LF line endings). The expected outcome was fixed before the recorded run and then compared with it.",
+    "reviewed_by": []
+  }
+}

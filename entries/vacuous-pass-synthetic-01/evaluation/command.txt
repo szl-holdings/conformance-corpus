@@ -1,0 +1,11 @@
+# Recorded evaluation command (SYNTHETIC entry). Run from the entry directory (<entry>).
+# No shell is needed: this is one process with the argument list below.
+# Passing shows conformance on this declared synthetic fixture only; it does not show scientific validity, and it does not show fitness for any use.
+cwd: <entry>
+env: PYTHONPATH=<SEG>/src
+env: PYTHONDONTWRITEBYTECODE=1
+env: SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z
+env: SCIENCE_GATE_HMAC_KEY_FILE unset (receipt is UNSIGNED)
+argv: ["<python>", "-m", "science_gate.cli", "verify", "manifest.json", "--output", "<tmp>/run"]
+shell form (Git Bash): PYTHONPATH=<SEG>/src PYTHONDONTWRITEBYTECODE=1 SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z <python> -m science_gate.cli verify manifest.json --output <tmp>/run
+exit_code: 2

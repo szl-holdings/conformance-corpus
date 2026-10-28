@@ -1,0 +1,27 @@
+# Receipts: `stale-dependency-synthetic-01`
+
+> **SYNTHETIC.** Every file in this entry was generated for the conformance corpus. The names, sites, reviewers, values and dates are invented, and no real person, institution, paper or data set is involved. **Passing shows conformance on declared fixtures only. It does not show scientific validity or fitness for use.**
+
+`receipt.json` is the receipt that the recorded evaluation wrote
+(`science-gate-receipt/v1`), copied byte for byte.
+
+| field | value |
+|---|---|
+| signature_state | `UNSIGNED` |
+| content_sha256 | `22fa6f0d8b528080e8a25d80a28e7dc268ad7ac6bb71c303850dae12929b7ca1` |
+| run_id | `run-ad078c6dec5e4572` |
+
+**The receipt is UNSIGNED.** No `SCIENCE_GATE_HMAC_KEY_FILE` was
+configured. Its content hash detects accidental change. Anyone who can edit
+this file can rewrite it and recompute the hash.
+
+To re-check the content hash, run this with `PYTHONPATH` set as in
+`../evaluation/command.txt`:
+
+```
+python -c "from science_gate.receipts import verify_receipt; print(verify_receipt('receipts/receipt.json'))"
+```
+
+A receipt supports integrity, provenance and replayability. It does not
+establish scientific truth, accuracy, safety or fitness for use. Passing
+this entry shows conformance on declared fixtures only.

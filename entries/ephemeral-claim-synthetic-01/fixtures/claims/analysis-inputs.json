@@ -1,0 +1,9 @@
+{
+  "note": "SYNTHETIC. Input manifest of the invented analysis behind claim CLM-01 only.",
+  "inputs": [
+    {
+      "path": "fixtures/data/tallies.csv",
+      "sha256": "6a717a23dd44026f8220481a66c60fc665609792a532a273f153672b270dc573"
+    }
+  ]
+}

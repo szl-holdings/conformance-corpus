@@ -1,0 +1,21 @@
+{
+  "purpose": "Repaired-fixture control. A temp copy of this entry had only its defect undone and was run the same way. A PASS here shows that the entry's recorded outcome comes from the defect, not from an unrelated problem in the fixtures. The corpus copy was not modified.",
+  "changes_applied_to_temp_copy": [
+    "fixtures/citations/entries.json: C2 authors set to the frozen record's (Notrealova, Fictivus)",
+    "fixtures/citations/frozen.json: the record requested for 10.5555/cc-synth.cmm.0003 now returns a work with that same DOI"
+  ],
+  "expected": {
+    "status": "PASS",
+    "exit_code": 0,
+    "reason": "VERIFIED"
+  },
+  "actual": {
+    "status": "PASS",
+    "exit_code": 0,
+    "reason": "VERIFIED",
+    "failure_modes": [],
+    "headline": "PASS (VERIFIED) run-1289f6ce452f4ff5: 4/4 required checks executed, 12 rows examined, 1/1 inputs opened"
+  },
+  "match": true,
+  "does_not_prove": "A control PASS shows conformance on declared fixtures only. It does not establish scientific validity or fitness for use."
+}

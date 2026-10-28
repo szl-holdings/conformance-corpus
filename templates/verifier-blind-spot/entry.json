@@ -1,0 +1,68 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "verifier-blind-spot-synthetic-NN",
+  "title": "<GUIDANCE: start with 'SYNTHETIC:' for a synthetic entry, then one line naming the defect (a declared mutation escapes detection) and the outcome a conforming verifier must produce>",
+  "failure_mode": "BLIND_SPOT",
+  "synthetic": true,
+  "scientific_question": "<GUIDANCE: the question the check is meant to serve, stated plainly. For a synthetic entry, say it is illustrative only and that the setting is fictional.>",
+  "claim_tested": "<GUIDANCE: the exact claim about the CHECK, not about the world. For this category: The tree verifies as PASS (a valid baseline), but its declared checks cannot see one defect class that a mutation operator injects (state which operator and why). science-gate mutate must execute that operator, report it as escaped (blind_spot true), and report FAIL / BLIND_SPOT / exit 1; every other executed operator must be detected by its expected detector.>",
+  "falsified_by": "<GUIDANCE: the observation that shows the claim false, e.g. running `science-gate mutate manifest.json --output <tmp>/mutate` from the entry directory yields any status other than FAIL, an exit code other than 1, a reason other than BLIND_SPOT, or a mutation-report.md missing a must_mention string.>",
+  "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
+  "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "<GUIDANCE: keep these defaults for a SYNTHETIC entry. 'NOASSERTION' requires every flag except evaluation_allowed to be false (permissions-schema.json). Set redistribution_allowed true only with a real grant recorded in evidence_of_grant, never with NOASSERTION. Evaluation permission never implies training permission.>"
+  },
+  "source_licenses": [
+    {
+      "path": "fixtures/",
+      "license": "NOASSERTION",
+      "evidence": "Generated for this corpus by its author; no license has been chosen and no third-party material is included."
+    },
+    {
+      "path": "manifest.json",
+      "license": "NOASSERTION",
+      "evidence": "Generated for this corpus by its author; no license has been chosen."
+    }
+  ],
+  "expected_outcome": {
+    "command": "mutate manifest.json --output <tmp>/mutate",
+    "status": "FAIL",
+    "exit_code": 1,
+    "reason": "BLIND_SPOT",
+    "failure_modes": [],
+    "must_mention": [
+      "BLIND_SPOT",
+      "<the escaped operator id, e.g. M04_duplicate_row>",
+      "<its expected detector, e.g. check:duplicate_rows>",
+      "<how the mutant verified, e.g. the mutant verified as PASS>"
+    ]
+  },
+  "known_failures": [],
+  "unresolved_cases": [
+    "<GUIDANCE: variants of this defect the entry does not cover; neighbouring cases worth their own entry.>"
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "<GUIDANCE: why review is needed, e.g. draft by a single author; an independent reviewer must confirm the fixture isolates exactly the stated defect and that the expected outcome follows from the tool's documented contract.>"
+  },
+  "does_not_prove": [
+    "A pass on this entry shows only that the verifier behaves as declared on this one fixture. It is a performance claim about declared fixtures.",
+    "It does not show that the verifier catches failures outside the corpus.",
+    "It does not show that any scientific conclusion is true. The data are invented.",
+    "It does not show that the verifier is fit for any particular use."
+  ],
+  "provenance": {
+    "created": "<YYYY-MM-DD>",
+    "generator": "<GUIDANCE: how every file was produced (by hand, by a script, with what), and that nothing derives from a real dataset, paper, person or institution.>",
+    "reviewed_by": []
+  }
+}

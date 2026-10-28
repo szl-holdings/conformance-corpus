@@ -1,0 +1,48 @@
+{
+  "schema": "science-gate-snapshot/v1",
+  "inputs": {
+    "specimens": {
+      "row_key": [
+        "specimen_id"
+      ],
+      "rows": [
+        {
+          "key": [
+            "OP-0001"
+          ],
+          "sha256": "d6bd506f98c5ac5994b1c7eae51198fa8b0d0c290a0c34a6d44125f56c5011ef"
+        },
+        {
+          "key": [
+            "OP-0002"
+          ],
+          "sha256": "1a1442569b21a0525baebe4dfc564fbd403773561aa631364d5839e9bf1def3b"
+        },
+        {
+          "key": [
+            "OP-0003"
+          ],
+          "sha256": "e81476cbaa28bb2c8231066b042623dfe98919f7fe1ecebeea0872a205c1c393"
+        },
+        {
+          "key": [
+            "OP-0004"
+          ],
+          "sha256": "13b8e900589cd3c2653326578a357c5fe641307468181d1e38e40ad9050b87f1"
+        },
+        {
+          "key": [
+            "OP-0005"
+          ],
+          "sha256": "94a76ea96a0f2507d77c3f94b6e14ba111905105f39b27b9a469e27209e32357"
+        },
+        {
+          "key": [
+            "OP-0006"
+          ],
+          "sha256": "330f8a63f6172b6350f758eb48797794ce81880744c28a871bab762c59ea5820"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+# environment.lock: the environment in which expected-results.json was confirmed
+# SYNTHETIC entry. Passing shows conformance on declared fixtures only; it does not show
+# scientific validity or fitness for use.
+python_implementation = "CPython"
+python_version = "3.11.9"
+platform = "win32 (Windows 11 Home 10.0.26200)"
+science_gate_distribution = "scientific-evidence-gate"
+science_gate_version = "0.1.0"
+science_gate_git_commit = "7ec36c6bb13494dab3fdc15a2c5bf2b0f0ac1926"
+science_gate_worktree_clean_at_run = true
+science_gate_src_tree_sha256 = "d59ffc0c4e038d1bea81e1184e599d0c596ed25f6b51264299e84810dd97a9ef"
+science_gate_src_tree_sha256_method = "sha256 of the output of: cd src && find science_gate -name '*.py' | sort | xargs sha256sum"
+science_gate_runtime_dependencies = "none (standard library only)"
+SCIENCE_GATE_FIXED_TIME = "2026-09-26T00:00:00Z"
+PYTHONDONTWRITEBYTECODE = "1"
+SCIENCE_GATE_HMAC_KEY_FILE = "unset (receipts are UNSIGNED)"
+network = "none (no --live; citations not used)"
+recorded = "2026-09-29"

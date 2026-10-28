@@ -1,0 +1,236 @@
+{
+  "all_match": true,
+  "fields": [
+    {
+      "field": "status",
+      "expected": "ABSTAIN",
+      "actual": "ABSTAIN",
+      "match": true
+    },
+    {
+      "field": "exit_code",
+      "expected": 2,
+      "actual": 2,
+      "match": true
+    },
+    {
+      "field": "run.json exit_code",
+      "expected": 2,
+      "actual": 2,
+      "match": true
+    },
+    {
+      "field": "reason",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual": "INSUFFICIENT_EVIDENCE",
+      "match": true
+    },
+    {
+      "field": "reasons_include",
+      "expected": [
+        "INSUFFICIENT_EVIDENCE",
+        "PARTIAL_EXECUTION"
+      ],
+      "actual": [
+        "INSUFFICIENT_EVIDENCE",
+        "PARTIAL_EXECUTION"
+      ],
+      "match": true
+    },
+    {
+      "field": "failure_modes",
+      "expected": [
+        "PARTIAL_EXECUTION"
+      ],
+      "actual": [
+        "PARTIAL_EXECUTION"
+      ],
+      "match": true
+    },
+    {
+      "field": "must_mention: **ABSTAIN** (INSUFFICIENT_EVIDENCE), exit code 2.",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: Failure modes: PARTIAL_EXECUTION",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: `time_window`: time_source ABSTAIN (INSUFFICIENT_EVIDENCE), rows examined 0; the time sources list no events",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: check `time_window` was NOT_APPLICABLE",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: checks_executed 3 of checks_expected 4",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: ## WHAT THIS RESULT DOES NOT PROVE",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention: Scientific validity: NOT ESTABLISHED",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_not_mention: **PASS**",
+      "expected": false,
+      "actual": false,
+      "match": true
+    },
+    {
+      "field": "checks.rows.verdict",
+      "expected": "PASS",
+      "actual": "PASS",
+      "match": true
+    },
+    {
+      "field": "checks.rows.execution_state",
+      "expected": "CHECKED",
+      "actual": "CHECKED",
+      "match": true
+    },
+    {
+      "field": "checks.rows.rows_examined",
+      "expected": 4,
+      "actual": 4,
+      "match": true
+    },
+    {
+      "field": "checks.columns.verdict",
+      "expected": "PASS",
+      "actual": "PASS",
+      "match": true
+    },
+    {
+      "field": "checks.columns.execution_state",
+      "expected": "CHECKED",
+      "actual": "CHECKED",
+      "match": true
+    },
+    {
+      "field": "checks.duplicates.verdict",
+      "expected": "PASS",
+      "actual": "PASS",
+      "match": true
+    },
+    {
+      "field": "checks.duplicates.execution_state",
+      "expected": "CHECKED",
+      "actual": "CHECKED",
+      "match": true
+    },
+    {
+      "field": "checks.time_window.verdict",
+      "expected": "ABSTAIN",
+      "actual": "ABSTAIN",
+      "match": true
+    },
+    {
+      "field": "checks.time_window.execution_state",
+      "expected": "NOT_APPLICABLE",
+      "actual": "NOT_APPLICABLE",
+      "match": true
+    },
+    {
+      "field": "checks.time_window.rows_examined",
+      "expected": 0,
+      "actual": 0,
+      "match": true
+    },
+    {
+      "field": "checks.time_window.reason",
+      "expected": "INSUFFICIENT_EVIDENCE",
+      "actual": "INSUFFICIENT_EVIDENCE",
+      "match": true
+    },
+    {
+      "field": "details.counters.checks_expected",
+      "expected": 4,
+      "actual": 4,
+      "match": true
+    },
+    {
+      "field": "details.counters.checks_executed",
+      "expected": 3,
+      "actual": 3,
+      "match": true
+    },
+    {
+      "field": "details.counters.checks_passed",
+      "expected": 3,
+      "actual": 3,
+      "match": true
+    },
+    {
+      "field": "details.counters.checks_abstained",
+      "expected": 1,
+      "actual": 1,
+      "match": true
+    },
+    {
+      "field": "details.counters.checks_not_applicable",
+      "expected": 1,
+      "actual": 1,
+      "match": true
+    },
+    {
+      "field": "receipt.signature_state",
+      "expected": "UNSIGNED",
+      "actual": "UNSIGNED",
+      "match": true
+    },
+    {
+      "field": "receipt.body.evidence_boundary.scientific_validity",
+      "expected": "NOT ESTABLISHED",
+      "actual": "NOT ESTABLISHED",
+      "match": true
+    }
+  ],
+  "mismatches": [],
+  "entry_id": "coverage-debt-synthetic-01",
+  "expected_results_sha256": "79e572dd87782adc5fee41fa99289284ba8f7f82eb21595dccffb894471586df",
+  "compared_against": "evaluation/run.json, evaluation/report.md, receipts/receipt.json and the process exit code of the recorded run",
+  "determinism": {
+    "second_run_byte_identical": {
+      "evidence-manifest.json": true,
+      "ledger.jsonl": true,
+      "receipt.json": true,
+      "report.html": true,
+      "report.md": true,
+      "results.sarif": true,
+      "run.json": true
+    },
+    "all_identical": true,
+    "note": "Two runs into different temp directories, same fixed time."
+  },
+  "reverification": {
+    "command": "python -m science_gate.cli report <tmp>/run",
+    "exit_code": 2,
+    "headline": "ABSTAIN (INSUFFICIENT_EVIDENCE) run-c94566eed728c723: recorded run re-verified",
+    "matches_verify_exit_code": true
+  },
+  "seg_state_changed_during_runs": false,
+  "does_not_prove": "A match shows conformance on declared fixtures only. It does not establish scientific validity or fitness for use.",
+  "observations": [
+    "Observation, not a gap for this category: report.md prints 'Rows examined in scope: N' (rows counted once) next to the invariant detail 'pass_requires_examined_rows: rows_examined=M', where M sums rows over every CHECKED check and so counts the same rows several times. The two figures share the name rows_examined but measure different things. The expected results pin neither."
+  ],
+  "control": "see control.json: a temp copy with only the defect undone returned PASS, exit 0, VERIFIED"
+}

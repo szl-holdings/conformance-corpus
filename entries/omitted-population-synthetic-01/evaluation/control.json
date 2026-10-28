@@ -1,0 +1,21 @@
+{
+  "purpose": "Repaired-fixture control. A temp copy of this entry had only its defect undone and was run the same way. A PASS here shows that the entry's recorded outcome comes from the defect, not from an unrelated problem in the fixtures. The corpus copy was not modified.",
+  "changes_applied_to_temp_copy": [
+    "fixtures/specimens.csv: row OP-0004,plot-fictus-2,0.3 restored before OP-0005",
+    "manifest.json: sha256 of the restored file; expected_rows 6 (still OBSERVED)"
+  ],
+  "expected": {
+    "status": "PASS",
+    "exit_code": 0,
+    "reason": "VERIFIED"
+  },
+  "actual": {
+    "status": "PASS",
+    "exit_code": 0,
+    "reason": "VERIFIED",
+    "failure_modes": [],
+    "headline": "PASS (VERIFIED) run-18b2bce8c103ed3f: 4/4 required checks executed, 6 rows examined, 1/1 inputs opened"
+  },
+  "match": true,
+  "does_not_prove": "A control PASS shows conformance on declared fixtures only. It does not establish scientific validity or fitness for use."
+}

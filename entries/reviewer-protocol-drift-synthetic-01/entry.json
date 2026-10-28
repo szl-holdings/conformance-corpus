@@ -1,0 +1,73 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "reviewer-protocol-drift-synthetic-01",
+  "title": "Reviewer protocol drift: a missing reviewer hidden by a case-variant duplicate verdict (SYNTHETIC)",
+  "failure_mode": "PROTOCOL_DRIFT",
+  "synthetic": true,
+  "scientific_question": "Illustrative only (invented): did every required reviewer record exactly one verdict on the synthetic sample batch? No real reviewer, person or institution is involved.",
+  "claim_tested": "Given three required reviewers (syn-reviewer-a, syn-reviewer-b, syn-reviewer-c) and three recorded verdicts, where syn-reviewer-c recorded none and syn-reviewer-b recorded two under spellings that differ only in case and trailing whitespace ('syn-reviewer-b' and 'SYN-Reviewer-B '), science-gate verify with a required reviewer_protocol check reports ABSTAIN with exit code 2, reason PROTOCOL_BROKEN and failure modes exactly [PROTOCOL_DRIFT], and its report names syn-reviewer-c as recording no verdict and syn-reviewer-b as recording more than one. It must not PASS because the number of verdicts equals the number of required reviewers.",
+  "falsified_by": "The recorded run returning PASS, FAIL or ERROR; an exit code other than 2; a reason other than PROTOCOL_BROKEN; failure_modes other than exactly [PROTOCOL_DRIFT]; or a report.md that lacks any of the must_mention strings.",
+  "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
+  "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "Every file was generated for this corpus and contains no third-party material. No license has been chosen for the corpus (NOASSERTION), so only evaluation is allowed and every other flag is false; redistribution is not granted until a license is chosen. Evaluation permission does not imply training permission."
+  },
+  "source_licenses": [
+    {
+      "path": ".",
+      "license": "NOASSERTION",
+      "evidence": "Every file in this entry was generated for the corpus. No license has been chosen, and no third-party material is included."
+    }
+  ],
+  "expected_outcome": {
+    "command": "verify manifest.json",
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "PROTOCOL_BROKEN",
+    "failure_modes": [
+      "PROTOCOL_DRIFT"
+    ],
+    "must_mention": [
+      "PROTOCOL_DRIFT",
+      "PROTOCOL_BROKEN",
+      "syn-reviewer-c",
+      "recorded no verdict",
+      "syn-reviewer-b",
+      "more than one verdict"
+    ]
+  },
+  "known_failures": [],
+  "unresolved_cases": [
+    "The content of the verdicts (all ACCEPT here) is not judged; the check establishes protocol completeness only.",
+    "Reviewer identity is a name string compared after trimming and case folding. One person recording under two unrelated names, or two people sharing a name, cannot be detected, and the verdicts document is not authenticated.",
+    "A verdict from a reviewer who is not required is listed as evidence but is not exercised here.",
+    "A missing reviewer alone, and a duplicate alone, are not separate entries; this entry combines both.",
+    "report.md prints two different row figures: 'Rows examined in scope: 7' (4 sample rows + 3 verdicts) and the pass_requires_examined_rows line, which sums per-check counts. Neither is asserted here."
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "Draft. One author wrote it, with an AI coding agent, and nobody else has reviewed it. A reviewer should confirm two things. First, that the fixture exercises the category. Second, that the expected outcome follows from the published contract (ARCHITECTURE.md), not only from the current implementation."
+  },
+  "does_not_prove": [
+    "Passing this entry shows only that a verifier produced the declared outcome (status, exit code, reason, failure modes and required report strings) on these declared SYNTHETIC fixtures. It is a conformance result on declared fixtures only.",
+    "It does not show that the verifier catches this failure outside this corpus, in other data, or when the failure takes another form.",
+    "It does not show that any scientific conclusion is true or false. The data, the study and the conclusion here are invented and mean nothing.",
+    "It does not show that the verifier, or anything checked with it, is fit for any particular use.",
+    "It does not show that the reviewers exist, that they are independent, or that their verdicts are sound. The reviewers are invented names.",
+    "An ABSTAIN here is not a finding that the reviewed work is wrong; it means the review protocol was not completed."
+  ],
+  "provenance": {
+    "created": "2026-09-29",
+    "generator": "Synthetic values specified by hand and written by a stdlib-only Python generator run by an AI coding agent (Claude Code) for the corpus author, workstream 3 of the verification program. Digests computed with hashlib.sha256 over the exact bytes (LF line endings). The expected outcome was fixed before the recorded run and then compared with it.",
+    "reviewed_by": []
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "coverage-debt-replace-me-01",
+  "title": "REPLACE: one line naming the empty check, e.g. 'A required time-window check had no events to examine'",
+  "failure_mode": "COVERAGE_DEBT",
+  "synthetic": true,
+  "scientific_question": "REPLACE: the question the check is meant to serve, stated plainly. For a synthetic entry say that it is illustrative only.",
+  "claim_tested": "REPLACE: the exact claim about the CHECK (not about the world) that this entry tests.",
+  "falsified_by": "REPLACE: the observation that would show the claim is false.",
+  "data_owner": "REPLACE: who owns the data. For synthetic data: 'The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.'",
+  "scientific_owner": "REPLACE: who is responsible for the scientific intent. For synthetic data: 'The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.'",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "REPLACE or keep: keep every flag false except evaluation_allowed unless a real grant exists; with evidence_of_grant NOASSERTION the schema requires that. Evaluation permission never implies training permission."
+  },
+  "source_licenses": [
+    {
+      "path": "fixtures/",
+      "license": "NOASSERTION",
+      "evidence": "REPLACE: e.g. 'generated for this corpus; no license chosen'. List each file separately if their sources differ."
+    }
+  ],
+  "expected_outcome": {
+    "command": "verify manifest.json",
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "INSUFFICIENT_EVIDENCE",
+    "failure_modes": [
+      "PARTIAL_EXECUTION"
+    ],
+    "must_mention": [
+      "REPLACE: the check line, e.g. `<check id>`: <kind> ABSTAIN (INSUFFICIENT_EVIDENCE), rows examined 0",
+      "REPLACE: e.g. check `<check id>` was NOT_APPLICABLE"
+    ]
+  },
+  "known_failures": [],
+  "unresolved_cases": [
+    "REPLACE: what this entry does not settle."
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "REPLACE: e.g. written by one author; needs independent review before it counts as reviewed."
+  },
+  "does_not_prove": [
+    "A pass shows conformance on declared fixtures only: science-gate produced the declared outcome on this entry's synthetic fixtures, with the tool version recorded in environment.lock.",
+    "It does not show that science-gate detects this failure in data, layouts or tool versions outside this entry.",
+    "It does not establish scientific validity: the data, works, people and sites are invented, so no scientific conclusion is supported or refuted.",
+    "It does not show that science-gate, or any pipeline that uses it, is fit for any particular use.",
+    "REPLACE or keep: It does not show that the property the empty check was meant to test holds or fails; nothing was examined for it."
+  ],
+  "provenance": {
+    "created": "REPLACE: YYYY-MM-DD",
+    "generator": "REPLACE: how the entry's files were produced.",
+    "reviewed_by": []
+  }
+}

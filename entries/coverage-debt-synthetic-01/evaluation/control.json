@@ -1,0 +1,20 @@
+{
+  "purpose": "Repaired-fixture control. A temp copy of this entry had only its defect undone and was run the same way. A PASS here shows that the entry's recorded outcome comes from the defect, not from an unrelated problem in the fixtures. The corpus copy was not modified.",
+  "changes_applied_to_temp_copy": [
+    "fixtures/time/events.json: one event inside the April 2030 window (local 08:00 at +02:00 = 06:00Z)"
+  ],
+  "expected": {
+    "status": "PASS",
+    "exit_code": 0,
+    "reason": "VERIFIED"
+  },
+  "actual": {
+    "status": "PASS",
+    "exit_code": 0,
+    "reason": "VERIFIED",
+    "failure_modes": [],
+    "headline": "PASS (VERIFIED) run-b8d59f93ad7b877f: 4/4 required checks executed, 5 rows examined, 1/1 inputs opened"
+  },
+  "match": true,
+  "does_not_prove": "A control PASS shows conformance on declared fixtures only. It does not establish scientific validity or fitness for use."
+}

@@ -1,0 +1,72 @@
+{
+  "argv": [
+    "<python>/python.exe",
+    "-m",
+    "science_gate.cli",
+    "verify",
+    "manifest.json",
+    "--output",
+    "<tmp>/run"
+  ],
+  "cwd": "<entry>",
+  "env_set": {
+    "PYTHONPATH": "<seg>/src",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "env_unset": [
+    "SCIENCE_GATE_HMAC_KEY_FILE"
+  ],
+  "shell": false,
+  "git_bash_equivalent": "cd <entry> && PYTHONPATH=<seg>/src PYTHONDONTWRITEBYTECODE=1 SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z <python>/python.exe -m science_gate.cli verify manifest.json --output <tmp>/run",
+  "placeholders": {
+    "<tmp>": "a fresh OS temp directory created for the run (deleted afterwards)",
+    "<entry>": "conformance-corpus/entries/omitted-population-synthetic-01",
+    "<seg>": "the local scientific-evidence-gate checkout (commit in environment.lock)",
+    "<python>": "the CPython install recorded in environment.lock"
+  },
+  "exit_code": 1,
+  "stdout": [
+    "FAIL (SOURCE_MISMATCH) run-904472dc8e8d38f7: 4/4 required checks executed, 5 rows examined, 1/1 inputs opened",
+    "<tmp>\\run\\run.json",
+    "<tmp>\\run\\report.md",
+    "<tmp>\\run\\ledger.jsonl",
+    "<tmp>\\run\\evidence-manifest.json",
+    "<tmp>\\run\\receipt.json",
+    "<tmp>\\run\\results.sarif",
+    "<tmp>\\run\\report.html"
+  ],
+  "stderr": [],
+  "run_directory_files": {
+    "evidence-manifest.json": {
+      "bytes": 1337,
+      "sha256_of_original": "8f7446cb870ea0b80e11947d90dbeff41b18847226e4e01e325d34e6e6689b4d"
+    },
+    "ledger.jsonl": {
+      "bytes": 6282,
+      "sha256_of_original": "ea1feef4e58b3be2c2db98bd834b3b0ce096ad190002dddaae3d8ad0145d5adf"
+    },
+    "receipt.json": {
+      "bytes": 4604,
+      "sha256_of_original": "848c1699890425ed68c50dec2e3909cbaa67719fd12c8be5cf0304f16286d098"
+    },
+    "report.html": {
+      "bytes": 63783,
+      "sha256_of_original": "26d9061cd3d93be42511629a66d82cccc0f9b609d70584d7206f628b748127e4"
+    },
+    "report.md": {
+      "bytes": 5670,
+      "sha256_of_original": "962ab488efa69ae22cc5ea69a59d8079355cc5bffcdc461e20b3b868177dc431"
+    },
+    "results.sarif": {
+      "bytes": 7017,
+      "sha256_of_original": "416c7984d96c9a75e4aad2342cea169addf5d43186154caa00d3a33b06a29531"
+    },
+    "run.json": {
+      "bytes": 12417,
+      "sha256_of_original": "c07d9ffe84e29179c0dfd50c0529cbd7c7ec916bd6257eac852ac6b8a907ab18"
+    }
+  },
+  "recorded_on": "2026-09-29 (wall clock); tool time fixed at 2026-09-26T00:00:00Z"
+}

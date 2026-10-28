@@ -1,0 +1,45 @@
+{
+  "schema": "science-gate-verification-log/v1",
+  "claimed_verified": 3,
+  "verifier": {
+    "name": "fictional-citation-checker",
+    "version": "0.0-synthetic"
+  },
+  "entries": [
+    {
+      "citation_id": "C1",
+      "claimed_status": "VERIFIED"
+    },
+    {
+      "citation_id": "C2",
+      "claimed_status": "VERIFIED"
+    },
+    {
+      "citation_id": "C3",
+      "claimed_status": "VERIFIED"
+    }
+  ],
+  "invocations": [
+    {
+      "invocation_id": "cmm-syn-inv-01",
+      "citation_id": "C1",
+      "request": "https://resolver.invalid/works/10.5555/cc-synth.cmm.0001",
+      "response_sha256": "be36825c07a118343cfb5b90de7bfafb061b5ce8594710894112f7c12e42a7bf",
+      "retrieved_at": "2026-09-20T09:05:00Z"
+    },
+    {
+      "invocation_id": "cmm-syn-inv-02",
+      "citation_id": "C2",
+      "request": "https://resolver.invalid/works/10.5555/cc-synth.cmm.0002",
+      "response_sha256": "df4c8f505266d1dcfc73a79930ac10b978f1a514e14768bb67bb3aaca68c8e75",
+      "retrieved_at": "2026-09-20T09:05:00Z"
+    },
+    {
+      "invocation_id": "cmm-syn-inv-03",
+      "citation_id": "C3",
+      "request": "https://resolver.invalid/works/10.5555/cc-synth.cmm.0003",
+      "response_sha256": "2c854e012fd7764425ca60055830c061d20cb111608272911ea974563c61c4a9",
+      "retrieved_at": "2026-09-20T09:05:00Z"
+    }
+  ]
+}

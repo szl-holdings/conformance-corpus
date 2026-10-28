@@ -1,0 +1,165 @@
+{
+  "schema": "conformance-corpus-comparison/v1",
+  "entry_id": "ephemeral-claim-synthetic-01",
+  "synthetic": true,
+  "command": "verify manifest.json --output <tmp>/verify",
+  "compared_against": "expected-results.json (written before this run and not edited to fit it)",
+  "all_fields_match": true,
+  "fields": [
+    {
+      "field": "status",
+      "expected": "ABSTAIN",
+      "actual": "ABSTAIN",
+      "match": true
+    },
+    {
+      "field": "exit_code",
+      "expected": 2,
+      "actual": 2,
+      "match": true
+    },
+    {
+      "field": "exit_code (run.json)",
+      "expected": 2,
+      "actual": 2,
+      "match": true
+    },
+    {
+      "field": "reason",
+      "expected": "UNVERIFIED",
+      "actual": "UNVERIFIED",
+      "match": true
+    },
+    {
+      "field": "failure_modes",
+      "expected": [
+        "EPHEMERAL_CLAIM"
+      ],
+      "actual": [
+        "EPHEMERAL_CLAIM"
+      ],
+      "match": true
+    },
+    {
+      "field": "must_mention 'EPHEMERAL_CLAIM' in report.md",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention 'CLM-02' in report.md",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention 'no reproducible derivation' in report.md",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention 'ANALYSIS_RECIPE, CODE_VERSION, ENVIRONMENT, INPUT_MANIFEST, STORED_OUTPUT' in report.md",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention 'Scientific validity: NOT ESTABLISHED' in report.md",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "check rows",
+      "expected": {
+        "verdict": "PASS",
+        "reason": "VERIFIED",
+        "failure_modes": []
+      },
+      "actual": {
+        "verdict": "PASS",
+        "reason": "VERIFIED",
+        "failure_modes": []
+      },
+      "match": true
+    },
+    {
+      "field": "check claims",
+      "expected": {
+        "verdict": "ABSTAIN",
+        "reason": "UNVERIFIED",
+        "failure_modes": [
+          "EPHEMERAL_CLAIM"
+        ]
+      },
+      "actual": {
+        "verdict": "ABSTAIN",
+        "reason": "UNVERIFIED",
+        "failure_modes": [
+          "EPHEMERAL_CLAIM"
+        ]
+      },
+      "match": true
+    },
+    {
+      "field": "claim dispositions",
+      "expected": {
+        "CLM-01": "RESOLVED",
+        "CLM-02": "EPHEMERAL_CLAIM"
+      },
+      "actual": {
+        "CLM-02": "EPHEMERAL_CLAIM",
+        "CLM-01": "RESOLVED"
+      },
+      "match": true
+    },
+    {
+      "field": "manuscript classifications",
+      "expected": {
+        "MATCHED": 2,
+        "UNREGISTERED": 0,
+        "DECLARED_NOT_A_CLAIM": 0
+      },
+      "actual": {
+        "DECLARED_NOT_A_CLAIM": 0,
+        "MATCHED": 2,
+        "UNREGISTERED": 0
+      },
+      "match": true
+    },
+    {
+      "field": "deterministic re-run (PYTHONHASHSEED=4242) byte-identical",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "receipt content hash recomputes",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "receipt signature_state",
+      "expected": "UNSIGNED",
+      "actual": "UNSIGNED",
+      "match": true
+    }
+  ],
+  "receipt_verification": {
+    "ok": true,
+    "content_intact": true,
+    "recomputed_sha256": "318fdffc271514f01cd8ae83f26537457d32a7f489dfde17cb7b46cb915acc96",
+    "signature_state": "UNSIGNED",
+    "signature_verified": null,
+    "problems": [],
+    "detail": "the receipt is unsigned; only its content hash was checked"
+  },
+  "seg_state_stable_during_run": true,
+  "seg_src_files_changed_during_run": [],
+  "does_not_prove": [
+    "A match shows conformance on this declared synthetic fixture only.",
+    "It does not show scientific validity, detection of failures outside the corpus, or fitness for use."
+  ]
+}

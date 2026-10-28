@@ -1,0 +1,207 @@
+{
+  "schema": "conformance-corpus-comparison/v1",
+  "entry_id": "verifier-blind-spot-synthetic-01",
+  "synthetic": true,
+  "command": "mutate manifest.json --output <tmp>/mutate",
+  "compared_against": "expected-results.json (written before this run and not edited to fit it)",
+  "all_fields_match": true,
+  "fields": [
+    {
+      "field": "status",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "match": true
+    },
+    {
+      "field": "exit_code",
+      "expected": 1,
+      "actual": 1,
+      "match": true
+    },
+    {
+      "field": "exit_code (mutation-report.json)",
+      "expected": 1,
+      "actual": 1,
+      "match": true
+    },
+    {
+      "field": "reason",
+      "expected": "BLIND_SPOT",
+      "actual": "BLIND_SPOT",
+      "match": true
+    },
+    {
+      "field": "failure_modes",
+      "expected": [],
+      "actual": [],
+      "match": true
+    },
+    {
+      "field": "must_mention 'BLIND_SPOT' in mutation-report.md",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention 'M04_duplicate_row' in mutation-report.md",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention 'check:duplicate_rows' in mutation-report.md",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention 'the mutant verified as PASS' in mutation-report.md",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "must_mention '8/9' in mutation-report.md",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "baseline",
+      "expected": {
+        "valid": true,
+        "status": "PASS",
+        "reason": "VERIFIED"
+      },
+      "actual": {
+        "valid": true,
+        "status": "PASS",
+        "reason": "VERIFIED"
+      },
+      "match": true
+    },
+    {
+      "field": "blind_spot_ids",
+      "expected": [
+        "M04_duplicate_row"
+      ],
+      "actual": [
+        "M04_duplicate_row"
+      ],
+      "match": true
+    },
+    {
+      "field": "detected_ids",
+      "expected": [
+        "M01_empty_input",
+        "M02_missing_expected_file",
+        "M07_changed_source_hash",
+        "M10_changed_numeric_value",
+        "M11_changed_numeric_formatting",
+        "M15_skipped_required_checker",
+        "M16_truncated_ledger",
+        "M17_reordered_hash_chain"
+      ],
+      "actual": [
+        "M01_empty_input",
+        "M02_missing_expected_file",
+        "M07_changed_source_hash",
+        "M10_changed_numeric_value",
+        "M11_changed_numeric_formatting",
+        "M15_skipped_required_checker",
+        "M16_truncated_ledger",
+        "M17_reordered_hash_chain"
+      ],
+      "match": true
+    },
+    {
+      "field": "M04_duplicate_row mutant status",
+      "expected": "PASS",
+      "actual": "PASS",
+      "match": true
+    },
+    {
+      "field": "counts",
+      "expected": {
+        "applicable_mutations": 9,
+        "executed_mutations": 9,
+        "detected_mutations": 8,
+        "escaped_mutations": 1,
+        "skipped_mutations": 0,
+        "not_applicable_mutations": 11
+      },
+      "actual": {
+        "applicable_mutations": 9,
+        "executed_mutations": 9,
+        "detected_mutations": 8,
+        "escaped_mutations": 1,
+        "skipped_mutations": 0,
+        "not_applicable_mutations": 11
+      },
+      "match": true
+    },
+    {
+      "field": "sensitivity fraction",
+      "expected": "8/9",
+      "actual": "8/9",
+      "match": true
+    },
+    {
+      "field": "supplementary verify status",
+      "expected": "PASS",
+      "actual": "PASS",
+      "match": true
+    },
+    {
+      "field": "supplementary verify exit_code",
+      "expected": 0,
+      "actual": 0,
+      "match": true
+    },
+    {
+      "field": "supplementary verify reason",
+      "expected": "VERIFIED",
+      "actual": "VERIFIED",
+      "match": true
+    },
+    {
+      "field": "supplementary verify failure_modes",
+      "expected": [],
+      "actual": [],
+      "match": true
+    },
+    {
+      "field": "deterministic re-run (PYTHONHASHSEED=4242) byte-identical",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "receipt content hash recomputes",
+      "expected": true,
+      "actual": true,
+      "match": true
+    },
+    {
+      "field": "receipt signature_state",
+      "expected": "UNSIGNED",
+      "actual": "UNSIGNED",
+      "match": true
+    }
+  ],
+  "receipt_verification": {
+    "ok": true,
+    "content_intact": true,
+    "recomputed_sha256": "b580e3823aedb41f9dcd7cc0450ddfa1a9cc882c2a56f1b51da5348abed41021",
+    "signature_state": "UNSIGNED",
+    "signature_verified": null,
+    "problems": [],
+    "detail": "the receipt is unsigned; only its content hash was checked"
+  },
+  "seg_state_stable_during_run": true,
+  "seg_src_files_changed_during_run": [],
+  "does_not_prove": [
+    "A match shows conformance on this declared synthetic fixture only.",
+    "It does not show scientific validity, detection of failures outside the corpus, or fitness for use."
+  ]
+}

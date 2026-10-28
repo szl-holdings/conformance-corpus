@@ -1,0 +1,70 @@
+{
+  "schema": "science-gate-manifest/v1",
+  "run_label": "corpus-reviewer-protocol-drift-synthetic-01",
+  "inputs": [
+    {
+      "id": "samples",
+      "path": "fixtures/data/samples.csv",
+      "format": "csv",
+      "required": true,
+      "sha256": "56d2a65b338bf5977d78b03f8143cc48b07e2913f7b576d1a722aefeb53c440a",
+      "row_key": [
+        "sample_id"
+      ],
+      "expected_rows": 4,
+      "denominator_source": "INDEPENDENT"
+    }
+  ],
+  "checks": [
+    {
+      "id": "rows",
+      "kind": "row_count",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "samples"
+      ]
+    },
+    {
+      "id": "columns",
+      "kind": "required_columns",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "samples"
+      ],
+      "params": {
+        "columns": [
+          "sample_id",
+          "batch",
+          "score"
+        ]
+      }
+    },
+    {
+      "id": "reviewers",
+      "kind": "reviewer_protocol",
+      "version": "1",
+      "required": true
+    }
+  ],
+  "reviews": {
+    "required_reviewers": [
+      "syn-reviewer-a",
+      "syn-reviewer-b",
+      "syn-reviewer-c"
+    ],
+    "verdicts": "fixtures/reviews/verdicts.json"
+  },
+  "corpus": {
+    "access_class": "SYNTHETIC",
+    "permissions": {
+      "evaluation_allowed": true,
+      "training_allowed": false,
+      "redistribution_allowed": false,
+      "derivatives_allowed": false,
+      "public_display_allowed": false,
+      "commercial_use_allowed": false
+    }
+  }
+}

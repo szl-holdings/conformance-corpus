@@ -1,0 +1,10 @@
+$ python -m science_gate.cli verify manifest.json --output <tmp>/verify
+ABSTAIN (UNVERIFIED) run-e32f6fa09ea74fc0: 2/2 required checks executed, 9 rows examined, 1/1 inputs opened
+<tmp>/verify/run.json
+<tmp>/verify/report.md
+<tmp>/verify/ledger.jsonl
+<tmp>/verify/evidence-manifest.json
+<tmp>/verify/receipt.json
+<tmp>/verify/results.sarif
+<tmp>/verify/report.html
+[exit code 2]

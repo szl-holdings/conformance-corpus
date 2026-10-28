@@ -1,0 +1,5 @@
+reading_id,station,lumen_level,tally
+BM-01,station-thistle,12.50,4
+BM-02,station-thistle,13.25,6
+BM-03,station-quartz,9.75,3
+BM-04,station-quartz,10.00,5

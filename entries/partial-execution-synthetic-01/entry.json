@@ -1,0 +1,69 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "partial-execution-synthetic-01",
+  "title": "Required time-window check cannot execute because its stage never completed, synthetic",
+  "failure_mode": "PARTIAL_EXECUTION",
+  "synthetic": true,
+  "scientific_question": "Illustrative only (SYNTHETIC): were five invented water samples at two fictional stations collected inside the requested time window? No real question is being answered.",
+  "claim_tested": "Given a manifest with four required checks, where the evidence for the fourth (fixtures/time/events.json) was never written because its stage never completed, science-gate verify does not report PASS: it returns ABSTAIN (exit 2) with primary reason PARTIAL_EXECUTION and failure mode PARTIAL_EXECUTION only, and its report states checks_executed=3 of checks_expected=4 and names the unexecuted check and its missing file.",
+  "falsified_by": "science-gate returns PASS or exit code 0; or it presents the three passing checks as a complete run; or it does not name the time-window check or the missing file; or its primary reason is not PARTIAL_EXECUTION.",
+  "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
+  "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "No grant exists beyond local evaluation: every file was generated for this corpus (see provenance.generator) and no license has been chosen (NOASSERTION), so every flag other than evaluation_allowed stays false. Evaluation permission does not imply training permission. Redistribution stays false until a corpus license is chosen; the data carries no third-party rights, so this is a choice, not a constraint."
+  },
+  "source_licenses": [
+    {
+      "path": "fixtures/data/samples.csv",
+      "license": "NOASSERTION",
+      "evidence": "generated for this corpus; no license has been chosen"
+    }
+  ],
+  "expected_outcome": {
+    "command": "verify manifest.json",
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "PARTIAL_EXECUTION",
+    "failure_modes": [
+      "PARTIAL_EXECUTION"
+    ],
+    "must_mention": [
+      "PARTIAL_EXECUTION",
+      "checks_executed=3 of checks_expected=4",
+      "fixtures/time/events.json",
+      "time-window"
+    ]
+  },
+  "known_failures": [
+    "Recorded run's primary reason is INSUFFICIENT_EVIDENCE, not the intended PARTIAL_EXECUTION (science-gate 0.1.0, commit 7ec36c6; reasons ['INSUFFICIENT_EVIDENCE', 'PARTIAL_EXECUTION']). science-gate's decision precedence (ARCHITECTURE.md section 6) takes the primary reason from the first finding in the order manifest, inputs, checks, contract, invariants. The skipped check's own finding (time_sources MISSING, INSUFFICIENT_EVIDENCE) comes before the contract finding 'checks_executed=3 of checks_expected=4' (PARTIAL_EXECUTION). Status, exit code, failure_modes and every must_mention string match.",
+    "The recorded report lists the invariant every_required_check_has_terminal_state as holding ('4 required check(s) each reached a terminal state'). In science-gate's vocabulary a SKIPPED check whose ledger invocation closed as ABSTAINED is terminal, so the category's 'never reached a terminal state' is detected only through the checks_executed counter, not through that invariant."
+  ],
+  "unresolved_cases": [
+    "Whether the primary reason should name the cause of the skip (missing evidence: INSUFFICIENT_EVIDENCE) or its consequence (a required check did not execute: PARTIAL_EXECUTION). This entry takes the second position because the unexecuted check is the defect the category exercises; science-gate takes the first.",
+    "science-gate verify cannot take an externally recorded execution ledger as input, so a check that literally started and never finished (a STARTED ledger entry with no terminal entry) cannot be presented to verify. This entry approximates the category with a required check that could not execute. According to science-gate's documentation and code (not exercised here), a literally unterminated invocation arises only in a science-gate run directory, where `science-gate report` treats it as a re-verification failure (ERROR), or through the ledger mutations M16 and M17.",
+    "coverage-debt-synthetic-01 intends the cause (INSUFFICIENT_EVIDENCE) as the primary reason for a run with the same reasons [INSUFFICIENT_EVIDENCE, PARTIAL_EXECUTION] and the same contract finding checks_executed=3 of checks_expected=4; there the fourth check is NOT_APPLICABLE instead of SKIPPED. The corpus states no rule that separates the two cases. A reviewer must decide whether both positions stand; neither expected outcome has been edited."
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "Draft written by one author. The recorded run differs from the intended primary reason; an independent reviewer should decide whether the corpus expectation or the tool's precedence rule is right."
+  },
+  "does_not_prove": [
+    "Reproducing this entry's expected outcome shows conformance on this declared synthetic fixture only.",
+    "It does not show that the verifier catches failures outside the corpus.",
+    "It does not show that any scientific conclusion is true, and it does not show that the verifier is fit for any particular use."
+  ],
+  "provenance": {
+    "created": "2026-09-29",
+    "generator": "Values hand-specified by the corpus author and written by a one-off local Python script (not part of the corpus); every data value is invented. The files under evaluation/ and receipts/ were produced by running science-gate 0.1.0 (scientific-evidence-gate commit 7ec36c6bb134) with SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z, with local paths replaced by <tmp>, <entry>, <SEG> and <python>.",
+    "reviewed_by": []
+  }
+}

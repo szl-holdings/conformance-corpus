@@ -1,0 +1,44 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "narrated-verification-synthetic-01",
+  "synthetic": true,
+  "command": "verify manifest.json",
+  "argv": [
+    "verify",
+    "manifest.json",
+    "--output",
+    "<tmp>/run"
+  ],
+  "cwd": "<entry>",
+  "environment": {
+    "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "status": "ABSTAIN",
+  "exit_code": 2,
+  "reason": "UNVERIFIED",
+  "failure_modes": [
+    "NARRATED_VERIFICATION"
+  ],
+  "failure_modes_match": "exact set: run.json failure_modes, sorted, must equal this list",
+  "must_mention": [
+    "NARRATED_VERIFICATION",
+    "checked_claims_le_invocations",
+    "3 citation(s) claimed VERIFIED with no complete invocation record",
+    "5 claimed but only 2 invoked",
+    "C3",
+    "C4",
+    "C5"
+  ],
+  "must_mention_in": "report.md written by the run (case-sensitive substring match)",
+  "status_must_not_be": [
+    "PASS"
+  ],
+  "intended_by": "corpus author; written before the recorded run, not copied from it",
+  "note": "A citation-checking log claims five verifications and records invocations for two. The three unbacked claims are narrated, not shown. A conforming verifier abstains as UNVERIFIED (the claims may be true; they have not been shown) and never counts them as verified.",
+  "does_not_prove": [
+    "Reproducing this outcome shows conformance on this declared synthetic fixture only.",
+    "It does not show that the verifier catches failures outside the corpus.",
+    "It does not show that any scientific conclusion is true, and it does not show fitness for any use."
+  ]
+}

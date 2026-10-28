@@ -1,0 +1,2 @@
+# Keep fixture bytes exact: manifest.json pins their sha256 digests.
+* -text

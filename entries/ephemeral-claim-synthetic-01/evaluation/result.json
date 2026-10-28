@@ -1,0 +1,167 @@
+{
+  "note": "Extract of run.json from the recorded run; the full file is not stored, to keep the entry small. Its SHA-256 is given so a re-run can be compared byte for byte.",
+  "run_json_sha256": "b1c8ea00e15700d779868daed513d35442c1c71186d944adf6ec4f27c8fea3fd",
+  "status": "ABSTAIN",
+  "reason": "UNVERIFIED",
+  "reasons": [
+    "UNVERIFIED"
+  ],
+  "failure_modes": [
+    "EPHEMERAL_CLAIM"
+  ],
+  "exit_code": 2,
+  "run_id": "run-e32f6fa09ea74fc0",
+  "expected_inputs": 1,
+  "inputs_discovered": 1,
+  "inputs_opened": 1,
+  "rows_examined": 9,
+  "checks_expected": 2,
+  "checks_executed": 2,
+  "checks_passed": 1,
+  "checks_failed": 0,
+  "checks_abstained": 1,
+  "evidence_manifest_sha256": "2b07d38601b9d08c0abb204b07b4c54be84af7b665062dda96c77304350ce38a",
+  "ledger_head_sha256": "cf50c27bbdc5586abbe3b4fe737a3a17407be53dd437cbb20eda6d686f4b95d7",
+  "ledger_length": 4,
+  "started_at": "2026-09-26T00:00:00Z",
+  "completed_at": "2026-09-26T00:00:00Z",
+  "findings": [
+    {
+      "detail": "claim_registry CHECKED ABSTAIN: claim 'CLM-02' EPHEMERAL_CLAIM: no reproducible derivation: missing link(s) ANALYSIS_RECIPE, CODE_VERSION, ENVIRONMENT, INPUT_MANIFEST, STORED_OUTPUT",
+      "failure_modes": [
+        "EPHEMERAL_CLAIM"
+      ],
+      "reason": "UNVERIFIED",
+      "source": "check:claims",
+      "status": "ABSTAIN"
+    }
+  ],
+  "manifest": {
+    "file": "manifest.json",
+    "issues": [],
+    "run_label": "corpus-ephemeral-claim-synthetic-01",
+    "sha256": "6ced9c8b6dba7509566ee1eaacde95dda55279946208cf26e9c302a03a69cc03"
+  },
+  "receipt": {
+    "content_sha256": "318fdffc271514f01cd8ae83f26537457d32a7f489dfde17cb7b46cb915acc96",
+    "key_id": null,
+    "signature_state": "UNSIGNED"
+  },
+  "tool": {
+    "name": "scientific-evidence-gate",
+    "version": "0.1.0"
+  },
+  "checks": [
+    {
+      "check_id": "claims",
+      "kind": "claim_registry",
+      "execution_state": "CHECKED",
+      "verdict": "ABSTAIN",
+      "reason": "UNVERIFIED",
+      "failure_modes": [
+        "EPHEMERAL_CLAIM"
+      ],
+      "rows_examined": 4,
+      "diagnostics": [
+        "claim 'CLM-02' EPHEMERAL_CLAIM: no reproducible derivation: missing link(s) ANALYSIS_RECIPE, CODE_VERSION, ENVIRONMENT, INPUT_MANIFEST, STORED_OUTPUT"
+      ]
+    },
+    {
+      "check_id": "rows",
+      "kind": "row_count",
+      "execution_state": "CHECKED",
+      "verdict": "PASS",
+      "reason": "VERIFIED",
+      "failure_modes": [],
+      "rows_examined": 5,
+      "diagnostics": []
+    }
+  ],
+  "invariants": [
+    {
+      "name": "checked_claims_le_invocations",
+      "applicable": true,
+      "holds": true
+    },
+    {
+      "name": "every_invocation_has_terminal_result",
+      "applicable": true,
+      "holds": true
+    },
+    {
+      "name": "every_required_check_has_terminal_state",
+      "applicable": true,
+      "holds": true
+    },
+    {
+      "name": "every_verdict_has_invocation",
+      "applicable": true,
+      "holds": true
+    },
+    {
+      "name": "input_accounting_closure",
+      "applicable": true,
+      "holds": true
+    },
+    {
+      "name": "ledger_chain_intact",
+      "applicable": true,
+      "holds": true
+    },
+    {
+      "name": "pass_requires_complete_required_checks",
+      "applicable": false,
+      "holds": null
+    },
+    {
+      "name": "pass_requires_complete_required_inputs",
+      "applicable": true,
+      "holds": true
+    },
+    {
+      "name": "pass_requires_examined_rows",
+      "applicable": true,
+      "holds": true
+    },
+    {
+      "name": "pass_requires_nonempty_evidence",
+      "applicable": true,
+      "holds": true
+    }
+  ],
+  "claim_registry": {
+    "dispositions": {
+      "EPHEMERAL_CLAIM": 1,
+      "RESOLVED": 1
+    },
+    "claims": [
+      {
+        "claim_id": "CLM-02",
+        "disposition": "EPHEMERAL_CLAIM",
+        "missing_links": [
+          "ANALYSIS_RECIPE",
+          "CODE_VERSION",
+          "ENVIRONMENT",
+          "INPUT_MANIFEST",
+          "STORED_OUTPUT"
+        ],
+        "manuscript_lines": [
+          5
+        ]
+      },
+      {
+        "claim_id": "CLM-01",
+        "disposition": "RESOLVED",
+        "missing_links": [],
+        "manuscript_lines": [
+          4
+        ]
+      }
+    ],
+    "manuscript_classifications": {
+      "DECLARED_NOT_A_CLAIM": 0,
+      "MATCHED": 2,
+      "UNREGISTERED": 0
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "invalid-mutation-baseline-synthetic-01",
+  "synthetic": true,
+  "category": "invalid-mutation-baseline",
+  "command": "mutate manifest.json --output <tmp>/mutate",
+  "argv": [
+    "mutate",
+    "manifest.json",
+    "--output",
+    "<tmp>/mutate"
+  ],
+  "cwd": "the entry directory",
+  "environment": {
+    "PYTHONPATH": "<scientific-evidence-gate>/src",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z",
+    "network": "none (every mutation verify runs with a refusing opener)",
+    "see": "environment.lock"
+  },
+  "status": "FAIL",
+  "exit_code": 1,
+  "reason": "INVALID_BASELINE",
+  "failure_modes": [],
+  "must_mention": [
+    "INVALID_BASELINE",
+    "No sensitivity figure was produced because the verifier failed its accepting baseline.",
+    "SOURCE_MISMATCH",
+    "check:depth",
+    "CW-03"
+  ],
+  "must_mention_in": "mutation-report.md",
+  "failure_modes_match": "exact: mutation-report.json has no top-level failure_modes field; it must be absent or equal this (empty) list",
+  "failure_modes_note": "A mutation report has no top-level failure_modes field, so none are expected. The failing baseline's own finding carries SOURCE_MISMATCH; see additional_expectations.baseline_failure_modes.",
+  "must_mention_match": "case-sensitive substring of mutation-report.md written to --output",
+  "additional_expectations": {
+    "baseline_in_json": {
+      "valid": false,
+      "status": "FAIL",
+      "reason": "SOURCE_MISMATCH"
+    },
+    "baseline_failure_modes": [
+      "SOURCE_MISMATCH"
+    ],
+    "keys_absent_from_json": [
+      "sensitivity",
+      "applicable_mutations",
+      "executed_mutations",
+      "detected_mutations",
+      "escaped_mutations",
+      "skipped_mutations",
+      "not_applicable_mutations",
+      "mutations"
+    ],
+    "headings_absent_from_markdown": [
+      "## SENSITIVITY",
+      "## DETECTED",
+      "## BLIND SPOTS"
+    ],
+    "must_not": [
+      "any sensitivity figure, fraction or percentage",
+      "any executed mutation",
+      "status PASS or ABSTAIN",
+      "exit code 0 or 2"
+    ]
+  },
+  "supplementary_verify": {
+    "command": "verify manifest.json --output <tmp>/verify",
+    "purpose": "Shows the baseline failure directly and produces the run receipt kept in receipts/ (mutate writes no receipt).",
+    "status": "FAIL",
+    "exit_code": 1,
+    "reason": "SOURCE_MISMATCH",
+    "failure_modes": [
+      "SOURCE_MISMATCH"
+    ]
+  },
+  "field_sources": {
+    "status, reason, exit_code": "mutation-report.json top level (exit_code also the process exit code)",
+    "must_mention": "mutation-report.md written to --output",
+    "baseline_in_json": "mutation-report.json baseline",
+    "baseline_failure_modes": "mutation-report.json baseline.findings[].failure_modes"
+  },
+  "intended_by": "the entry author, from ARCHITECTURE.md section 10, before the recorded run",
+  "recorded_run": {
+    "matches": true,
+    "comparison": "evaluation/comparison.json",
+    "note": "The recorded run reproduced every expected field. The expectations above were written from the intended behaviour and were not edited to fit the run."
+  },
+  "does_not_prove": [
+    "Reproducing these results shows conformance on this declared synthetic fixture only.",
+    "It does not show scientific validity of anything, that every invalid baseline is handled, or fitness for any use."
+  ]
+}

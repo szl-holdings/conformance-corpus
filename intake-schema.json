@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conformance-corpus/intake-schema.json",
+  "title": "Conformance corpus entry intake record (entry.json)",
+  "description": "One record per entry. It states what is tested, what would falsify it, who owns the data and the science, what may be done with it, the exact expected outcome, and what passing does not prove.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "entry_id", "title", "failure_mode", "synthetic", "scientific_question", "claim_tested",
+    "falsified_by", "data_owner", "scientific_owner", "permissions", "source_licenses",
+    "expected_outcome", "known_failures", "unresolved_cases", "human_review", "does_not_prove",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {"const": "conformance-corpus-entry/v1"},
+    "entry_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"},
+    "title": {"type": "string", "minLength": 5},
+    "failure_mode": {
+      "enum": ["VACUOUS_PASS", "NARRATED_VERIFICATION", "PARTIAL_EXECUTION", "DEFECTIVE_VERIFICATION",
+               "OMITTED_POPULATION", "SOURCE_MISMATCH", "PROTOCOL_DRIFT", "EPHEMERAL_CLAIM",
+               "STALE_DEPENDENCY", "COVERAGE_DEBT", "INVALID_BASELINE", "BLIND_SPOT"],
+      "description": "The failure this entry exercises. COVERAGE_DEBT, INVALID_BASELINE and BLIND_SPOT name corpus categories that map onto gate reasons rather than the taxonomy."
+    },
+    "synthetic": {
+      "type": "boolean",
+      "description": "True when every data file was generated for this corpus. Synthetic entries must say so in claim.md and limitations.md as well."
+    },
+    "scientific_question": {"type": "string", "description": "The question the check is meant to serve, stated plainly. For synthetic entries it is illustrative only."},
+    "claim_tested": {"type": "string", "description": "The exact claim about the CHECK (not about the world) that this entry tests."},
+    "falsified_by": {"type": "string", "description": "The observation that would show the claim is false."},
+    "data_owner": {"type": "string"},
+    "scientific_owner": {"type": "string"},
+    "permissions": {"$ref": "permissions-schema.json"},
+    "source_licenses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "license", "evidence"],
+        "properties": {
+          "path": {"type": "string"},
+          "license": {"type": "string", "description": "As declared; 'NOASSERTION' when none was declared."},
+          "evidence": {"type": "string"}
+        }
+      }
+    },
+    "expected_outcome": {
+      "type": "object",
+      "required": ["command", "status", "exit_code", "reason"],
+      "properties": {
+        "command": {"type": "string", "description": "The science-gate subcommand run, e.g. 'verify manifest.json'."},
+        "status": {"enum": ["PASS", "FAIL", "ABSTAIN", "ERROR"]},
+        "exit_code": {"enum": [0, 1, 2, 3]},
+        "reason": {"type": "string"},
+        "failure_modes": {"type": "array", "items": {"type": "string"}},
+        "must_mention": {"type": "array", "items": {"type": "string"}, "description": "Strings the report must contain, e.g. a missing file name or a blind-spot id."}
+      }
+    },
+    "known_failures": {"type": "array", "items": {"type": "string"}},
+    "unresolved_cases": {"type": "array", "items": {"type": "string"}},
+    "human_review": {
+      "type": "object",
+      "required": ["required", "reason"],
+      "properties": {"required": {"type": "boolean"}, "reason": {"type": "string"}}
+    },
+    "does_not_prove": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "provenance": {
+      "type": "object",
+      "required": ["created", "generator", "reviewed_by"],
+      "properties": {
+        "created": {"type": "string"},
+        "generator": {"type": "string", "description": "How the entry's files were produced."},
+        "reviewed_by": {"type": "array", "items": {"type": "string"}, "description": "Independent reviewers. Empty until someone other than the author reviews it; an entry with no reviewers is a draft."}
+      }
+    }
+  }
+}

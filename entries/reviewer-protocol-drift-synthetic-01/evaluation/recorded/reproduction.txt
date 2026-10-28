@@ -1,0 +1,12 @@
+# Reproduction check (SYNTHETIC entry)
+# The same command was run a second time, with PYTHONHASHSEED=4242 and a different <tmp> output directory,
+# and every output file was compared byte-for-byte with the recorded run.
+exit code: first 2, second 2
+identical  run.json
+identical  report.md
+identical  receipt.json
+identical  ledger.jsonl
+identical  evidence-manifest.json
+identical  results.sarif
+identical  report.html
+result: REPRODUCED

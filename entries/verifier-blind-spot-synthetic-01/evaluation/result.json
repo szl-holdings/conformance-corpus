@@ -1,0 +1,285 @@
+{
+  "note": "Extract of mutation-report.json from the recorded run; the full file is not stored, to keep the entry small. Its SHA-256 is given so a re-run can be compared byte for byte. Omitted: the operator lists, not_proven (verbatim in mutation-report.md), each mutation's target and expected rule (in mutation-report.md), and fired-detector details (only their labels are kept here).",
+  "mutation_report_json_sha256": "8136f08672a4b4d862c8dafffe2a80cfb58eec81ea487a7b32e65cc362784844",
+  "report": {
+    "applicable_mutations": 9,
+    "baseline": {
+      "counters": {
+        "checks_executed": 3,
+        "checks_expected": 3,
+        "expected_inputs": 1,
+        "inputs_opened": 1,
+        "rows_examined": 4
+      },
+      "diagnostics": [],
+      "findings": [],
+      "reason": "VERIFIED",
+      "run_id": "run-fb54a3f2ab4c6bae",
+      "status": "PASS",
+      "valid": true
+    },
+    "detected_mutations": 8,
+    "diagnostics": [],
+    "escaped_mutations": 1,
+    "executed_mutations": 9,
+    "exit_code": 1,
+    "generated_at": "2026-09-26T00:00:00Z",
+    "manifest": {
+      "file": "manifest.json",
+      "sha256": "7112354b66dcb1e3867fc318833888c34af3e5f446148e9cef97f4ef74381bb3"
+    },
+    "message": "8 of 9 executed mutations were detected by their expected detector; 1 escaped as blind spots.",
+    "network": "offline: every verify ran with a network opener that refuses all requests",
+    "not_applicable_mutations": 11,
+    "reason": "BLIND_SPOT",
+    "report_id": "mut-50e087e15796d6b4",
+    "schema": "science-gate-mutation-report/v1",
+    "sensitivity": {
+      "decimal": "0.8889",
+      "decimal_rounding": "ROUND_HALF_EVEN to 4 places",
+      "detected": 8,
+      "executed": 9,
+      "fraction": "8/9"
+    },
+    "skipped_mutations": 0,
+    "status": "FAIL",
+    "tool": {
+      "name": "scientific-evidence-gate",
+      "version": "0.1.0"
+    },
+    "mutations": [
+      {
+        "mutation_id": "M01_empty_input",
+        "execution_state": "CHECKED",
+        "expected_detector": "input:EMPTY",
+        "detected": true,
+        "blind_spot": false,
+        "actual": "ABSTAIN (INSUFFICIENT_EVIDENCE)",
+        "fired": [
+          "check:numeric_agreement",
+          "check:required_columns",
+          "check:row_count",
+          "contract:checks_executed",
+          "contract:rows_examined",
+          "input:EMPTY"
+        ]
+      },
+      {
+        "mutation_id": "M02_missing_expected_file",
+        "execution_state": "CHECKED",
+        "expected_detector": "input:MISSING",
+        "detected": true,
+        "blind_spot": false,
+        "actual": "ABSTAIN (INSUFFICIENT_EVIDENCE)",
+        "fired": [
+          "check:numeric_agreement",
+          "check:required_columns",
+          "check:row_count",
+          "contract:checks_executed",
+          "contract:inputs_opened",
+          "contract:rows_examined",
+          "input:MISSING"
+        ]
+      },
+      {
+        "mutation_id": "M03_deleted_accepted_row",
+        "execution_state": "NOT_APPLICABLE",
+        "expected_detector": "check:snapshot_completeness",
+        "detected": null,
+        "blind_spot": null,
+        "diagnostics": [
+          "NOT_APPLICABLE: the manifest declares no readable accepted_snapshot"
+        ]
+      },
+      {
+        "mutation_id": "M04_duplicate_row",
+        "execution_state": "CHECKED",
+        "expected_detector": "check:duplicate_rows",
+        "detected": false,
+        "blind_spot": true,
+        "actual": "PASS (VERIFIED)",
+        "fired": [],
+        "diagnostics": [
+          "BLIND_SPOT: the mutant verified as PASS; expected check:duplicate_rows reports FAIL"
+        ]
+      },
+      {
+        "mutation_id": "M05_duplicate_reviewer_verdict",
+        "execution_state": "NOT_APPLICABLE",
+        "expected_detector": "check:reviewer_protocol",
+        "detected": null,
+        "blind_spot": null,
+        "diagnostics": [
+          "NOT_APPLICABLE: the manifest declares no readable reviewer verdicts"
+        ]
+      },
+      {
+        "mutation_id": "M06_missing_required_reviewer",
+        "execution_state": "NOT_APPLICABLE",
+        "expected_detector": "check:reviewer_protocol",
+        "detected": null,
+        "blind_spot": null,
+        "diagnostics": [
+          "NOT_APPLICABLE: the manifest declares no readable reviewer verdicts"
+        ]
+      },
+      {
+        "mutation_id": "M07_changed_source_hash",
+        "execution_state": "CHECKED",
+        "expected_detector": "input:HASH_MISMATCH",
+        "detected": true,
+        "blind_spot": false,
+        "actual": "FAIL (SOURCE_MISMATCH)",
+        "fired": [
+          "check:numeric_agreement",
+          "check:required_columns",
+          "check:row_count",
+          "contract:checks_executed",
+          "contract:rows_examined",
+          "input:HASH_MISMATCH"
+        ]
+      },
+      {
+        "mutation_id": "M08_changed_author",
+        "execution_state": "NOT_APPLICABLE",
+        "expected_detector": "check:citation_metadata",
+        "detected": null,
+        "blind_spot": null,
+        "diagnostics": [
+          "NOT_APPLICABLE: the manifest declares no readable citation entries"
+        ]
+      },
+      {
+        "mutation_id": "M09_changed_doi",
+        "execution_state": "NOT_APPLICABLE",
+        "expected_detector": "check:citation_resolver",
+        "detected": null,
+        "blind_spot": null,
+        "diagnostics": [
+          "NOT_APPLICABLE: the manifest declares no readable citation entries"
+        ]
+      },
+      {
+        "mutation_id": "M10_changed_numeric_value",
+        "execution_state": "CHECKED",
+        "expected_detector": "check:numeric_agreement",
+        "detected": true,
+        "blind_spot": false,
+        "actual": "FAIL (SOURCE_MISMATCH)",
+        "fired": [
+          "check:numeric_agreement"
+        ]
+      },
+      {
+        "mutation_id": "M11_changed_numeric_formatting",
+        "execution_state": "CHECKED",
+        "expected_detector": "check:numeric_agreement",
+        "detected": true,
+        "blind_spot": false,
+        "actual": "ABSTAIN (REQUIRES_HUMAN_REVIEW)",
+        "fired": [
+          "check:numeric_agreement"
+        ]
+      },
+      {
+        "mutation_id": "M12_timezone_shift",
+        "execution_state": "NOT_APPLICABLE",
+        "expected_detector": "check:time_source",
+        "detected": null,
+        "blind_spot": null,
+        "diagnostics": [
+          "NOT_APPLICABLE: the manifest declares no readable time sources"
+        ]
+      },
+      {
+        "mutation_id": "M13_removed_invocation",
+        "execution_state": "NOT_APPLICABLE",
+        "expected_detector": "check:verification_log",
+        "detected": null,
+        "blind_spot": null,
+        "diagnostics": [
+          "NOT_APPLICABLE: the manifest declares no citation verification log with invocation records"
+        ]
+      },
+      {
+        "mutation_id": "M14_pass_summary_without_evidence",
+        "execution_state": "NOT_APPLICABLE",
+        "expected_detector": "check:summary_consistency",
+        "detected": null,
+        "blind_spot": null,
+        "diagnostics": [
+          "NOT_APPLICABLE: the manifest declares no stored PASS summary that pins evidence"
+        ]
+      },
+      {
+        "mutation_id": "M15_skipped_required_checker",
+        "execution_state": "CHECKED",
+        "expected_detector": "contract:checks_executed",
+        "detected": true,
+        "blind_spot": false,
+        "actual": "ABSTAIN (INSUFFICIENT_EVIDENCE)",
+        "fired": [
+          "check:row_count",
+          "contract:checks_executed"
+        ]
+      },
+      {
+        "mutation_id": "M16_truncated_ledger",
+        "execution_state": "CHECKED",
+        "expected_detector": "invariant:ledger_chain_intact",
+        "detected": true,
+        "blind_spot": false,
+        "actual": "FAIL (PROTOCOL_BROKEN)",
+        "fired": [
+          "contract:checks_executed",
+          "invariant:checked_claims_le_invocations",
+          "invariant:every_invocation_has_terminal_result",
+          "invariant:every_required_check_has_terminal_state",
+          "invariant:every_verdict_has_invocation",
+          "invariant:ledger_chain_intact"
+        ]
+      },
+      {
+        "mutation_id": "M17_reordered_hash_chain",
+        "execution_state": "CHECKED",
+        "expected_detector": "invariant:ledger_chain_intact",
+        "detected": true,
+        "blind_spot": false,
+        "actual": "FAIL (PROTOCOL_BROKEN)",
+        "fired": [
+          "invariant:ledger_chain_intact"
+        ]
+      },
+      {
+        "mutation_id": "M18_changed_upstream_design",
+        "execution_state": "NOT_APPLICABLE",
+        "expected_detector": "check:dependency_currency",
+        "detected": null,
+        "blind_spot": null,
+        "diagnostics": [
+          "NOT_APPLICABLE: the manifest declares no readable dependency graph"
+        ]
+      },
+      {
+        "mutation_id": "M19_replaced_stored_claim_output",
+        "execution_state": "NOT_APPLICABLE",
+        "expected_detector": "check:claim_registry",
+        "detected": null,
+        "blind_spot": null,
+        "diagnostics": [
+          "NOT_APPLICABLE: the manifest declares no readable claim registry"
+        ]
+      },
+      {
+        "mutation_id": "M20_metadata_change_under_unchanged_pass_summary",
+        "execution_state": "NOT_APPLICABLE",
+        "expected_detector": "check:summary_consistency",
+        "detected": null,
+        "blind_spot": null,
+        "diagnostics": [
+          "NOT_APPLICABLE: the manifest declares no stored PASS summary to hold unchanged"
+        ]
+      }
+    ]
+  }
+}

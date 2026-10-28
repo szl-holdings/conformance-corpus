@@ -1,0 +1,64 @@
+{
+  "schema": "science-gate-manifest/v1",
+  "run_label": "corpus-citation-metadata-mismatch-synthetic-01",
+  "inputs": [
+    {
+      "id": "observations",
+      "path": "fixtures/observations.csv",
+      "format": "csv",
+      "required": true,
+      "row_key": [
+        "observation_id"
+      ],
+      "expected_rows": 3,
+      "denominator_source": "INDEPENDENT",
+      "sha256": "050eacc36df51309da52b1e5a88faaf3462269f4f9323105541630dd3ae6e233"
+    }
+  ],
+  "checks": [
+    {
+      "id": "observations",
+      "kind": "row_count",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "observations"
+      ]
+    },
+    {
+      "id": "citation-log",
+      "kind": "verification_log",
+      "version": "1",
+      "required": true
+    },
+    {
+      "id": "doi-resolution",
+      "kind": "citation_resolver",
+      "version": "1",
+      "required": true
+    },
+    {
+      "id": "citation-metadata",
+      "kind": "citation_metadata",
+      "version": "1",
+      "required": true
+    }
+  ],
+  "citations": {
+    "entries": "fixtures/citations/entries.json",
+    "log": "fixtures/citations/verification-log.json",
+    "frozen": "fixtures/citations/frozen.json",
+    "live": false
+  },
+  "corpus": {
+    "access_class": "SYNTHETIC",
+    "permissions": {
+      "evaluation_allowed": true,
+      "training_allowed": false,
+      "redistribution_allowed": false,
+      "derivatives_allowed": false,
+      "public_display_allowed": false,
+      "commercial_use_allowed": false
+    }
+  }
+}

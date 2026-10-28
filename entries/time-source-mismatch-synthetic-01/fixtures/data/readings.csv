@@ -1,0 +1,4 @@
+obs_id,station,reading
+syn-obs-01,synthetic-station-1,4.2
+syn-obs-02,synthetic-station-2,3.9
+syn-obs-03,synthetic-station-3,4.6

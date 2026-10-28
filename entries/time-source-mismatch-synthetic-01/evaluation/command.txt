@@ -1,0 +1,4 @@
+# Exact command of the recorded evaluation (SYNTHETIC entry)
+# cwd: the entry directory (time-source-mismatch-synthetic-01)
+# <tmp> is an OS temporary directory; <scientific-evidence-gate> is a checkout at the commit in environment.lock
+PYTHONPATH=<scientific-evidence-gate>/src PYTHONDONTWRITEBYTECODE=1 SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z python -m science_gate.cli verify manifest.json --output <tmp>

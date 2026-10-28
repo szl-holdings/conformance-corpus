@@ -1,0 +1,8 @@
+{
+  "schema": "science-gate-time-sources/v1",
+  "window": {
+    "start": "2030-04-01T00:00:00Z",
+    "end": "2030-04-30T23:59:59Z"
+  },
+  "events": []
+}

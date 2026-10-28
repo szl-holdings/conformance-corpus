@@ -1,0 +1,23 @@
+# environment.lock: the interpreter and tool the expected results were confirmed with.
+# SYNTHETIC entry. Reproducing the expected results under this environment shows conformance on
+# declared fixtures only; it does not show scientific validity or fitness for any use.
+python.implementation=CPython
+python.version=3.11.9
+python.build=tags/v3.11.9:de54cf5 Apr  2 2024 10:12:12
+python.compiler=MSC v.1938 64 bit (AMD64)
+platform=Windows 10 10.0.26200 AMD64
+science_gate.cli_version=science-gate 0.1.0
+science_gate.distribution=scientific-evidence-gate
+science_gate.git_commit=7ec36c6bb13494dab3fdc15a2c5bf2b0f0ac1926
+science_gate.git_worktree=dirty (uncommitted changes by a concurrent process): M src/science_gate/_html.py
+science_gate.git_worktree.note=the SEG repository was only read; the src tree digest below pins the exact code that ran, including any uncommitted change
+science_gate.src_tree_sha256=2caf69da11e1a4c1ff1c33c0045b94c4262f22cb0b27187676e88a848482c9bd
+science_gate.src_tree_sha256.method=sha256 of lines '<sha256>  <path>' for src/science_gate/**/*.py, sorted by path, LF-terminated
+science_gate.src_tree_sha256.after_run=2caf69da11e1a4c1ff1c33c0045b94c4262f22cb0b27187676e88a848482c9bd
+science_gate.src_files_changed_during_run=none
+science_gate.runtime_dependencies=none (standard library only)
+SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z
+SCIENCE_GATE_HMAC_KEY_FILE=unset (receipts are UNSIGNED)
+PYTHONHASHSEED=unset for the recorded run; a second run with 4242 was byte-identical
+network=none
+recorded=2026-09-29 (wall-clock date of the recording; tool time was fixed as above)

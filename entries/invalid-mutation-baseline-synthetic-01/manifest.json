@@ -1,0 +1,88 @@
+{
+  "schema": "science-gate-manifest/v1",
+  "run_label": "corpus-invalid-mutation-baseline-synthetic-01",
+  "inputs": [
+    {
+      "id": "gauges",
+      "path": "fixtures/data/gauges.csv",
+      "format": "csv",
+      "required": true,
+      "sha256": "dcc4f349c83a08ea45743be6fd3fae78587fe001a47ec7fc824cd76849bb02bf",
+      "row_key": [
+        "gauge_id"
+      ],
+      "expected_rows": 4,
+      "denominator_source": "INDEPENDENT"
+    }
+  ],
+  "checks": [
+    {
+      "id": "rows",
+      "kind": "row_count",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "gauges"
+      ]
+    },
+    {
+      "id": "columns",
+      "kind": "required_columns",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "gauges"
+      ],
+      "params": {
+        "columns": [
+          "gauge_id",
+          "reach",
+          "depth_cm",
+          "visits"
+        ]
+      }
+    },
+    {
+      "id": "duplicates",
+      "kind": "duplicate_rows",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "gauges"
+      ]
+    },
+    {
+      "id": "depth",
+      "kind": "numeric_agreement",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "gauges"
+      ],
+      "params": {
+        "column": "depth_cm",
+        "expected": [
+          {
+            "key": "CW-01",
+            "value": "120.40"
+          },
+          {
+            "key": "CW-03",
+            "value": "97.51"
+          }
+        ]
+      }
+    }
+  ],
+  "corpus": {
+    "access_class": "SYNTHETIC",
+    "permissions": {
+      "evaluation_allowed": true,
+      "training_allowed": false,
+      "redistribution_allowed": false,
+      "derivatives_allowed": false,
+      "public_display_allowed": false,
+      "commercial_use_allowed": false
+    }
+  }
+}

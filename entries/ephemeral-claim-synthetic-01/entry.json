@@ -1,0 +1,71 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "ephemeral-claim-synthetic-01",
+  "title": "SYNTHETIC: a manuscript number that is registered but has no derivation must abstain as EPHEMERAL_CLAIM, never pass and never be called false",
+  "failure_mode": "EPHEMERAL_CLAIM",
+  "synthetic": true,
+  "scientific_question": "Illustrative only (the setting is fictional): how many sightings did an invented survey of invented 'mooncress sprites' record across every plot of the fictional Glassreed Fen? No real survey, place or organism is described.",
+  "claim_tested": "When a claim registry lists a claim (CLM-02, value 91) that has no derivation (no analysis recipe, code version, environment or input manifest) and no stored output, while its value is printed in the declared manuscript, the claim_registry check of scientific-evidence-gate reports ABSTAIN with reason UNVERIFIED and failure mode EPHEMERAL_CLAIM, names CLM-02 and every missing link, and the run as a whole exits 2 (ABSTAIN). It neither passes the claim nor marks it false, even though a fully traced sibling claim (CLM-01) resolves and every other check passes.",
+  "falsified_by": "Running `science-gate verify manifest.json` from this entry directory yields any status other than ABSTAIN, any exit code other than 2, a primary reason other than UNVERIFIED, failure modes other than exactly [EPHEMERAL_CLAIM], a report.md that does not name CLM-02 or its missing derivation links, or a claim_registry verdict of PASS or FAIL.",
+  "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
+  "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "No license has been chosen for the corpus, so no grant exists beyond local evaluation. Evaluation permission does not imply training permission. Redistribution stays false until a license is chosen by the corpus owner."
+  },
+  "source_licenses": [
+    {
+      "path": "fixtures/",
+      "license": "NOASSERTION",
+      "evidence": "Generated for this corpus by its author; no license has been chosen and no third-party material is included."
+    },
+    {
+      "path": "manifest.json",
+      "license": "NOASSERTION",
+      "evidence": "Generated for this corpus by its author; no license has been chosen."
+    }
+  ],
+  "expected_outcome": {
+    "command": "verify manifest.json --output <tmp>/verify",
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "UNVERIFIED",
+    "failure_modes": ["EPHEMERAL_CLAIM"],
+    "must_mention": [
+      "EPHEMERAL_CLAIM",
+      "CLM-02",
+      "no reproducible derivation",
+      "ANALYSIS_RECIPE, CODE_VERSION, ENVIRONMENT, INPUT_MANIFEST, STORED_OUTPUT",
+      "Scientific validity: NOT ESTABLISHED"
+    ]
+  },
+  "known_failures": [],
+  "unresolved_cases": [
+    "The value of CLM-02 (91) happens to equal the sum of the synthetic sightings column. The tool does not re-run analyses, so it cannot and should not credit that coincidence; an entry in which an ephemeral number disagrees with the data would exercise the same path and is not yet written.",
+    "Only one missing-derivation shape is covered (every derivation link and the stored output absent). A claim missing a single link, such as only code_version, is not covered by this entry.",
+    "The manuscript is plain Markdown with two numbers. Numbers in tables, footnotes or with declared thousands separators are not exercised here."
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "Draft written by a single author (an AI assistant). An independent reviewer must confirm that the fixture isolates exactly one ephemeral claim and that the expected outcome follows from ARCHITECTURE.md section 7 before the entry leaves draft."
+  },
+  "does_not_prove": [
+    "A pass on this entry shows only that the verifier behaves as declared on this one synthetic fixture. It is a performance claim about declared fixtures.",
+    "It does not show that the verifier catches ephemeral claims in other manuscripts, other registry shapes or other number formats.",
+    "It does not show that any number in the fixture, or any scientific conclusion anywhere, is true or false. The data are invented.",
+    "It does not show that scientific-evidence-gate is fit for any particular use."
+  ],
+  "provenance": {
+    "created": "2026-09-29",
+    "generator": "Specified by the corpus author (an AI assistant working in this workspace) and written by a Python standard-library script that computed every SHA-256 from the exact bytes it wrote. All names, sites and values are invented; nothing is derived from a real dataset, paper, person or institution. Expected results were written from the intended behaviour and then confirmed by a recorded run (evaluation/).",
+    "reviewed_by": []
+  }
+}

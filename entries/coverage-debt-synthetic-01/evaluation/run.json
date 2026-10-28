@@ -1,0 +1,448 @@
+{
+  "accounting": {
+    "closure": {
+      "accounted": 1,
+      "expected": 1,
+      "holds": true,
+      "source": "INDEPENDENT"
+    },
+    "counters": {
+      "admitted": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "deferred": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "discovered": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "examined": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "excluded": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "expected": {
+        "denominator_source": "INDEPENDENT",
+        "value": 1
+      },
+      "failed": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "opened": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "parsed": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "unresolved": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      }
+    },
+    "inputs": [
+      {
+        "bytes": 140,
+        "closure": {
+          "accounted": 4,
+          "expected": 4,
+          "holds": true,
+          "source": "INDEPENDENT"
+        },
+        "declared_sha256": "6717b12e09e1b262927e09e3619b12e1ed9a11d9aa114e7b858a5f663d2c91b9",
+        "diagnostics": [],
+        "discovered": true,
+        "format": "csv",
+        "id": "readings",
+        "opened": true,
+        "parsed": true,
+        "path": "fixtures/readings.csv",
+        "required": true,
+        "row_counts": {
+          "admitted": 4,
+          "deferred": 0,
+          "excluded": 0,
+          "failed": 0,
+          "unresolved": 0
+        },
+        "rows": 4,
+        "sha256": "6717b12e09e1b262927e09e3619b12e1ed9a11d9aa114e7b858a5f663d2c91b9",
+        "state": "PARSED"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check_id": "columns",
+      "diagnostics": [],
+      "evidence": {
+        "columns": [
+          "reading_id",
+          "station",
+          "level_cm"
+        ],
+        "inputs": {
+          "readings": {
+            "header": [
+              "reading_id",
+              "station",
+              "level_cm"
+            ],
+            "missing_columns": [],
+            "rows_admitted": 4,
+            "sha256": "6717b12e09e1b262927e09e3619b12e1ed9a11d9aa114e7b858a5f663d2c91b9",
+            "state": "PARSED"
+          }
+        }
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [],
+      "inputs": [
+        "readings"
+      ],
+      "invocation_id": "inv-3bccffb21ed6",
+      "kind": "required_columns",
+      "reason": "VERIFIED",
+      "required": true,
+      "rows_examined": 4,
+      "verdict": "PASS",
+      "version": "1"
+    },
+    {
+      "check_id": "duplicates",
+      "diagnostics": [],
+      "evidence": {
+        "inputs": {
+          "readings": {
+            "duplicate_key_groups": 0,
+            "duplicate_keys": [],
+            "exact_duplicate_extra_rows": 0,
+            "exact_duplicate_groups": 0,
+            "exact_duplicates": [],
+            "row_key": [
+              "reading_id"
+            ],
+            "rows_admitted": 4,
+            "sha256": "6717b12e09e1b262927e09e3619b12e1ed9a11d9aa114e7b858a5f663d2c91b9",
+            "state": "PARSED"
+          }
+        }
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [],
+      "inputs": [
+        "readings"
+      ],
+      "invocation_id": "inv-9418e70a4891",
+      "kind": "duplicate_rows",
+      "reason": "VERIFIED",
+      "required": true,
+      "rows_examined": 4,
+      "verdict": "PASS",
+      "version": "1"
+    },
+    {
+      "check_id": "rows",
+      "diagnostics": [],
+      "evidence": {
+        "inputs": {
+          "readings": {
+            "closure": {
+              "accounted": 4,
+              "expected": 4,
+              "holds": true,
+              "source": "INDEPENDENT"
+            },
+            "row_counts": {
+              "admitted": 4,
+              "deferred": 0,
+              "excluded": 0,
+              "failed": 0,
+              "unresolved": 0
+            },
+            "rows_admitted": 4,
+            "sha256": "6717b12e09e1b262927e09e3619b12e1ed9a11d9aa114e7b858a5f663d2c91b9",
+            "state": "PARSED"
+          }
+        },
+        "rows_admitted_total": 4
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [],
+      "inputs": [
+        "readings"
+      ],
+      "invocation_id": "inv-f66509e1f730",
+      "kind": "row_count",
+      "reason": "VERIFIED",
+      "required": true,
+      "rows_examined": 4,
+      "verdict": "PASS",
+      "version": "1"
+    },
+    {
+      "check_id": "time_window",
+      "diagnostics": [
+        "the time sources list no events"
+      ],
+      "evidence": {
+        "document": {
+          "bytes": 153,
+          "declared": true,
+          "diagnostic": null,
+          "path": "fixtures/time/events.json",
+          "role": "time_sources",
+          "sha256": "6082057c520337da9b7ede9db1cacc3a4dcde6b2e2b9873f594ae4bf269186ea",
+          "state": "PARSED"
+        },
+        "window": {
+          "end": "2030-04-30T23:59:59Z",
+          "start": "2030-04-01T00:00:00Z"
+        }
+      },
+      "execution_state": "NOT_APPLICABLE",
+      "failure_modes": [],
+      "inputs": [],
+      "invocation_id": "inv-f8399be1c761",
+      "kind": "time_source",
+      "reason": "INSUFFICIENT_EVIDENCE",
+      "required": true,
+      "rows_examined": 0,
+      "verdict": "ABSTAIN",
+      "version": "1"
+    }
+  ],
+  "checks_abstained": 1,
+  "checks_executed": 3,
+  "checks_expected": 4,
+  "checks_failed": 0,
+  "checks_passed": 3,
+  "claim_tallies": [],
+  "completed_at": "2026-09-26T00:00:00Z",
+  "counters": {
+    "checks_abstained": 1,
+    "checks_declared": 4,
+    "checks_errored": 0,
+    "checks_executed": 3,
+    "checks_expected": 4,
+    "checks_failed": 0,
+    "checks_not_applicable": 1,
+    "checks_passed": 3,
+    "checks_skipped": 0,
+    "expected_inputs": 1,
+    "inputs_discovered": 1,
+    "inputs_examined": 1,
+    "inputs_opened": 1,
+    "inputs_parsed": 1,
+    "rows_examined": 4
+  },
+  "declared": {
+    "checks": [
+      {
+        "id": "rows",
+        "inputs": [
+          "readings"
+        ],
+        "kind": "row_count",
+        "params": {},
+        "required": true,
+        "version": "1"
+      },
+      {
+        "id": "columns",
+        "inputs": [
+          "readings"
+        ],
+        "kind": "required_columns",
+        "params": {
+          "columns": [
+            "reading_id",
+            "station",
+            "level_cm"
+          ]
+        },
+        "required": true,
+        "version": "1"
+      },
+      {
+        "id": "duplicates",
+        "inputs": [
+          "readings"
+        ],
+        "kind": "duplicate_rows",
+        "params": {},
+        "required": true,
+        "version": "1"
+      },
+      {
+        "id": "time_window",
+        "inputs": [],
+        "kind": "time_source",
+        "params": {},
+        "required": true,
+        "version": "1"
+      }
+    ],
+    "inputs": [
+      {
+        "denominator_source": "INDEPENDENT",
+        "expected_rows": 4,
+        "format": "csv",
+        "id": "readings",
+        "path": "fixtures/readings.csv",
+        "required": true,
+        "row_key": [
+          "reading_id"
+        ],
+        "sha256": "6717b12e09e1b262927e09e3619b12e1ed9a11d9aa114e7b858a5f663d2c91b9"
+      }
+    ]
+  },
+  "disclaimer": "A receipt supports integrity, provenance, and replayability. It does not establish scientific truth, accuracy, safety, or fitness for use.",
+  "documents": [
+    {
+      "bytes": 153,
+      "diagnostic": null,
+      "path": "fixtures/time/events.json",
+      "roles": [
+        "time_sources"
+      ],
+      "sha256": "6082057c520337da9b7ede9db1cacc3a4dcde6b2e2b9873f594ae4bf269186ea",
+      "state": "PARSED"
+    }
+  ],
+  "evidence_boundary": {
+    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 8 entries; ledger head 011c9976aa33ad146a0973a7f5ba710707b7725d0a801b11d390519f2a7bf377; evidence manifest 2143cd8d0c05e86d2d635aedb79a226bf8ed756b696cfe6383a48993cc4436c3.",
+    "performance": "Run status ABSTAIN (INSUFFICIENT_EVIDENCE) from 4 check result(s): 3 PASS, 0 FAIL, 1 ABSTAIN, 0 ERROR; 9 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
+    "scientific_validity": "NOT ESTABLISHED"
+  },
+  "evidence_manifest_sha256": "2143cd8d0c05e86d2d635aedb79a226bf8ed756b696cfe6383a48993cc4436c3",
+  "exit_code": 2,
+  "expected_inputs": 1,
+  "failure_modes": [
+    "PARTIAL_EXECUTION"
+  ],
+  "findings": [
+    {
+      "detail": "time_source NOT_APPLICABLE ABSTAIN: the time sources list no events",
+      "failure_modes": [],
+      "reason": "INSUFFICIENT_EVIDENCE",
+      "source": "check:time_window",
+      "status": "ABSTAIN"
+    },
+    {
+      "detail": "checks_executed=3 of checks_expected=4",
+      "failure_modes": [
+        "PARTIAL_EXECUTION"
+      ],
+      "reason": "PARTIAL_EXECUTION",
+      "source": "contract:checks_executed",
+      "status": "ABSTAIN"
+    }
+  ],
+  "inputs_discovered": 1,
+  "inputs_opened": 1,
+  "invariants": [
+    {
+      "applicable": true,
+      "detail": "check results marked CHECKED: 3 claimed <= 4 invoked",
+      "holds": true,
+      "name": "checked_claims_le_invocations"
+    },
+    {
+      "applicable": true,
+      "detail": "4 invocation(s) each reached exactly one terminal result",
+      "holds": true,
+      "name": "every_invocation_has_terminal_result"
+    },
+    {
+      "applicable": true,
+      "detail": "4 required check(s) each reached a terminal state",
+      "holds": true,
+      "name": "every_required_check_has_terminal_state"
+    },
+    {
+      "applicable": true,
+      "detail": "4 verdict(s) each trace to a terminal invocation",
+      "holds": true,
+      "name": "every_verdict_has_invocation"
+    },
+    {
+      "applicable": true,
+      "detail": "2 INDEPENDENT closure(s) hold",
+      "holds": true,
+      "name": "input_accounting_closure"
+    },
+    {
+      "applicable": true,
+      "detail": "8 entries chain to head 011c9976aa33ad146a0973a7f5ba710707b7725d0a801b11d390519f2a7bf377",
+      "holds": true,
+      "name": "ledger_chain_intact"
+    },
+    {
+      "applicable": false,
+      "detail": "the run does not claim PASS",
+      "holds": null,
+      "name": "pass_requires_complete_required_checks"
+    },
+    {
+      "applicable": true,
+      "detail": "every input behind a PASS is complete",
+      "holds": true,
+      "name": "pass_requires_complete_required_inputs"
+    },
+    {
+      "applicable": true,
+      "detail": "rows_examined=12",
+      "holds": true,
+      "name": "pass_requires_examined_rows"
+    },
+    {
+      "applicable": true,
+      "detail": "every PASS carries non-empty, hashed evidence",
+      "holds": true,
+      "name": "pass_requires_nonempty_evidence"
+    }
+  ],
+  "ledger_head_sha256": "011c9976aa33ad146a0973a7f5ba710707b7725d0a801b11d390519f2a7bf377",
+  "ledger_length": 8,
+  "manifest": {
+    "file": "manifest.json",
+    "issues": [],
+    "run_label": "corpus-coverage-debt-synthetic-01",
+    "sha256": "663d7597f7eef6d2e266300bd51bfa69e4777a98e1e15b88c60599c4a128d9b9"
+  },
+  "network": {
+    "live": false,
+    "opener": "urllib",
+    "timeout_seconds": 10,
+    "user_agent": "scientific-evidence-gate/0.1.0 (local evidence gate)"
+  },
+  "reason": "INSUFFICIENT_EVIDENCE",
+  "reasons": [
+    "INSUFFICIENT_EVIDENCE",
+    "PARTIAL_EXECUTION"
+  ],
+  "receipt": {
+    "content_sha256": "d965cfd4520220f68c94526db58ba3f0fc0127f438e3aeb81d5e43f017af0a00",
+    "key_id": null,
+    "signature_state": "UNSIGNED"
+  },
+  "rows_examined": 4,
+  "run_id": "run-c94566eed728c723",
+  "schema": "science-gate-run/v1",
+  "started_at": "2026-09-26T00:00:00Z",
+  "status": "ABSTAIN",
+  "tool": {
+    "name": "scientific-evidence-gate",
+    "version": "0.1.0"
+  }
+}

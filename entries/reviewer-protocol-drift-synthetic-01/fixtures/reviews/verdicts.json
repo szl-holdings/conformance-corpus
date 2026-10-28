@@ -1,0 +1,23 @@
+{
+  "schema": "science-gate-reviews/v1",
+  "verdicts": [
+    {
+      "reviewer": "syn-reviewer-a",
+      "verdict": "ACCEPT",
+      "subject": "corpus-reviewer-protocol-drift-synthetic-01",
+      "recorded_at": "2026-04-02T09:00:00Z"
+    },
+    {
+      "reviewer": "syn-reviewer-b",
+      "verdict": "ACCEPT",
+      "subject": "corpus-reviewer-protocol-drift-synthetic-01",
+      "recorded_at": "2026-04-02T11:30:00Z"
+    },
+    {
+      "reviewer": "SYN-Reviewer-B ",
+      "verdict": "ACCEPT",
+      "subject": "corpus-reviewer-protocol-drift-synthetic-01",
+      "recorded_at": "2026-04-03T08:15:00Z"
+    }
+  ]
+}

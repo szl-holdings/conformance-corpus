@@ -1,0 +1,15 @@
+# environment.lock: the interpreter and tool versions the expected results were checked against.
+# REPLACE every value from the machine that made the recorded run.
+python_implementation=REPLACE (e.g. CPython)
+python_version=REPLACE (e.g. 3.11.9)
+platform=REPLACE (platform.platform())
+science_gate_distribution=scientific-evidence-gate
+science_gate_version=REPLACE (science-gate --version)
+seg_git_commit=REPLACE (git -C <seg> rev-parse HEAD)
+seg_worktree_dirty_before_run=REPLACE (true|false; git status --porcelain)
+seg_worktree_dirty_after_run=REPLACE (true|false)
+seg_src_tree_sha256=REPLACE (sha256 over 'relpath sha256' lines of src/science_gate/**/*.py, sorted)
+science_gate_fixed_time=2026-09-26T00:00:00Z
+science_gate_runtime_dependencies=none (standard library only)
+hmac_key_configured=REPLACE (false => receipts are UNSIGNED)
+network=none (frozen captures only; no --live)

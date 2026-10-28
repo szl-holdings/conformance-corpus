@@ -1,0 +1,14 @@
+{
+  "schema": "science-gate-summary/v1",
+  "status": "PASS",
+  "run_id": "tallyfern-qc-run-0007 (fictional)",
+  "recorded_at": "2026-09-20T12:00:00Z",
+  "pinned": {
+    "inputs": {
+      "readings": {
+        "sha256": "16ce60c2b70a83f14ef500ed7f147750eebefa86a75befc06ed62e8cc10e9eaa",
+        "rows": 0
+      }
+    }
+  }
+}

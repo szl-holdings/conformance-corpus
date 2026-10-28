@@ -1,0 +1,68 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "<REPLACE: reviewer-protocol-drift-<source>-NN, lowercase letters, digits and hyphens, 3-64 characters, e.g. reviewer-protocol-drift-synthetic-02>",
+  "title": "<REPLACE: one line naming the case; for this category, a required reviewer is missing, or a verdict is duplicated. End with (SYNTHETIC) when synthetic>",
+  "failure_mode": "PROTOCOL_DRIFT",
+  "synthetic": true,
+  "scientific_question": "<REPLACE: the question the checked work serves. For synthetic entries begin 'Illustrative only (invented): ...'>",
+  "claim_tested": "<REPLACE: the exact claim about the CHECK, not about the world. Pattern for this category: Given N required reviewers and a verdicts document in which <reviewer> recorded no verdict and/or <reviewer> recorded more than one, science-gate verify with a required reviewer_protocol check reports ABSTAIN (exit 2, reason PROTOCOL_BROKEN, failure modes exactly [PROTOCOL_DRIFT]) and names the missing and duplicated reviewers, instead of passing on a verdict count.>",
+  "falsified_by": "<REPLACE: the observation that would show the claim false: a different status, exit code, reason or failure_modes list, or a report.md lacking a must_mention string>",
+  "data_owner": "<REPLACE: who owns the data. Synthetic: 'The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.'>",
+  "scientific_owner": "<REPLACE: who answers for the science. Synthetic: 'The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.'>",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "<REPLACE: why these flags. Keep the SYNTHETIC defaults unless a license is chosen and recorded in evidence_of_grant. With evidence_of_grant NOASSERTION every flag other than evaluation_allowed must stay false. Evaluation permission never implies training permission.>"
+  },
+  "source_licenses": [
+    {
+      "path": ".",
+      "license": "NOASSERTION",
+      "evidence": "<REPLACE: where the license, or its absence, can be checked. Synthetic: every file was generated for the corpus; no license chosen; no third-party material>"
+    }
+  ],
+  "expected_outcome": {
+    "command": "verify manifest.json",
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "PROTOCOL_BROKEN",
+    "failure_modes": [
+      "PROTOCOL_DRIFT"
+    ],
+    "must_mention": [
+      "PROTOCOL_DRIFT",
+      "PROTOCOL_BROKEN",
+      "<REPLACE: the missing reviewer, if any>",
+      "recorded no verdict",
+      "<REPLACE: the duplicated reviewer, if any>",
+      "more than one verdict"
+    ]
+  },
+  "known_failures": [],
+  "unresolved_cases": [
+    "<REPLACE: what this entry does not exercise, one item per case>"
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "<REPLACE: Draft until someone other than the author reviews it; say what the reviewer should confirm>"
+  },
+  "does_not_prove": [
+    "Passing this entry shows only that a verifier produced the declared outcome (status, exit code, reason, failure modes and required report strings) on these declared SYNTHETIC fixtures. It is a conformance result on declared fixtures only.",
+    "It does not show that the verifier catches this failure outside this corpus, in other data, or when the failure takes another form.",
+    "It does not show that any scientific conclusion is true or false. The data, the study and the conclusion here are invented and mean nothing.",
+    "It does not show that the verifier, or anything checked with it, is fit for any particular use.",
+    "<REPLACE: category-specific limits of what passing shows>"
+  ],
+  "provenance": {
+    "created": "<REPLACE: YYYY-MM-DD>",
+    "generator": "<REPLACE: how the files were produced, by whom or what, and that the expected outcome was fixed before the recorded run>",
+    "reviewed_by": []
+  }
+}

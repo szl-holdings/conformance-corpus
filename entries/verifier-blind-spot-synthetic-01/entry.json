@@ -1,0 +1,71 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "verifier-blind-spot-synthetic-01",
+  "title": "SYNTHETIC: a duplicated record that no declared check looks for must be reported as a BLIND_SPOT by mutation testing",
+  "failure_mode": "BLIND_SPOT",
+  "synthetic": true,
+  "scientific_question": "Illustrative only (the setting is fictional): do the invented lantern readings of the fictional Brassmoor stations agree with the declared values? No real station, instrument, person or measurement is described.",
+  "claim_tested": "When `science-gate mutate` runs on an accepting evidence tree whose declared checks (row_count, required_columns, numeric_agreement) include no duplicate_rows check and no independent row count, the mutation operator M04_duplicate_row is applicable and executed. Its mutant, with record BM-04 duplicated and the digest re-declared, still verifies as PASS, so the report marks M04_duplicate_row as escaped (blind_spot true). The overall status is FAIL with reason BLIND_SPOT and exit code 1. Every other executed operator is detected by its expected detector, and the sensitivity figure is reported as 8/9 rather than rounded up or hidden.",
+  "falsified_by": "Running `science-gate mutate manifest.json` from this entry directory yields any status other than FAIL, any exit code other than 1, a reason other than BLIND_SPOT, a blind-spot set other than exactly [M04_duplicate_row], an M04 mutant that is not reported as verifying PASS, or a mutation-report.md that does not name M04_duplicate_row and its expected detector check:duplicate_rows.",
+  "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
+  "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "No license has been chosen for the corpus, so no grant exists beyond local evaluation. Evaluation permission does not imply training permission. Redistribution stays false until a license is chosen by the corpus owner."
+  },
+  "source_licenses": [
+    {
+      "path": "fixtures/",
+      "license": "NOASSERTION",
+      "evidence": "Generated for this corpus by its author; no license has been chosen and no third-party material is included."
+    },
+    {
+      "path": "manifest.json",
+      "license": "NOASSERTION",
+      "evidence": "Generated for this corpus by its author; no license has been chosen."
+    }
+  ],
+  "expected_outcome": {
+    "command": "mutate manifest.json --output <tmp>/mutate",
+    "status": "FAIL",
+    "exit_code": 1,
+    "reason": "BLIND_SPOT",
+    "failure_modes": [],
+    "must_mention": [
+      "BLIND_SPOT",
+      "M04_duplicate_row",
+      "check:duplicate_rows",
+      "the mutant verified as PASS",
+      "8/9"
+    ]
+  },
+  "known_failures": [],
+  "unresolved_cases": [
+    "In a first draft of this fixture the numeric_agreement check cited BM-04, the record M04 duplicates. The mutant then ABSTAINed (REQUIRES_HUMAN_REVIEW, ambiguous key), and M04 was still reported as a blind spot because its expected detector did not fire. That 'caught for the wrong reason' variant is a distinct property and deserves its own entry. It is not covered here.",
+    "The expected counts (9 applicable and executed, 8 detected, 1 escaped, 11 not applicable) depend on the 20 operators of science-gate 0.1.0. A tool with a different operator set would need its own expected counts, but the blind-spot set must still be exactly [M04_duplicate_row].",
+    "science-gate mutate writes no receipt. The receipt in receipts/ comes from a supplementary `verify` of the same manifest, which is the accepting baseline (PASS)."
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "Draft written by a single author (an AI assistant). An independent reviewer must confirm that the fixture leaves exactly one declared mutation undetected, and that the expected outcome follows from ARCHITECTURE.md section 10, before the entry leaves draft."
+  },
+  "does_not_prove": [
+    "A pass on this entry shows only that the mutation harness reports this one escape, on this one synthetic fixture, as declared. It is a performance claim about declared fixtures.",
+    "It does not show that the harness finds every blind spot, or that a tree with no reported blind spot is free of undetected defect kinds.",
+    "It does not show that any reading is right or wrong. The data are invented and no scientific validity is established.",
+    "It does not show that scientific-evidence-gate is fit for any particular use."
+  ],
+  "provenance": {
+    "created": "2026-09-29",
+    "generator": "Specified by the corpus author (an AI assistant working in this workspace) and written by a Python standard-library script that computed every SHA-256 from the exact bytes it wrote. All names and values are invented; nothing is derived from a real dataset, paper, person or institution. Expected results were written from the intended behaviour and then confirmed by a recorded run (evaluation/).",
+    "reviewed_by": []
+  }
+}

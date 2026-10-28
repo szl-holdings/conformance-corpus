@@ -1,0 +1,5 @@
+sample_id,batch,score
+SYN-R01,synthetic-batch-1,0.72
+SYN-R02,synthetic-batch-1,0.64
+SYN-R03,synthetic-batch-2,0.81
+SYN-R04,synthetic-batch-2,0.59

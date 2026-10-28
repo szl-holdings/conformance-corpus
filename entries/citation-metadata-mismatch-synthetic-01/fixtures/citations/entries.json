@@ -1,0 +1,58 @@
+{
+  "schema": "science-gate-citations/v1",
+  "citations": [
+    {
+      "citation_id": "C1",
+      "doi": "10.5555/cc-synth.cmm.0001",
+      "title": "Counting imaginary moss on a fictional ridge (synthetic fixture)",
+      "authors": [
+        {
+          "family": "Madeupson",
+          "given": "Ada"
+        },
+        {
+          "family": "Placeholderi",
+          "given": "Dee"
+        }
+      ],
+      "year": 2031,
+      "journal": "Journal of Invented Fixtures",
+      "volume": "3",
+      "issue": "1"
+    },
+    {
+      "citation_id": "C2",
+      "doi": "10.5555/cc-synth.cmm.0002",
+      "title": "Invented rainfall gauges for a made-up valley (synthetic fixture)",
+      "authors": [
+        {
+          "family": "Notrealova",
+          "given": "Bo"
+        },
+        {
+          "family": "Madeupson",
+          "given": "Ada"
+        }
+      ],
+      "year": 2032,
+      "journal": "Synthetic Placeholder Reports",
+      "volume": "8",
+      "issue": "2"
+    },
+    {
+      "citation_id": "C3",
+      "doi": "10.5555/cc-synth.cmm.0003",
+      "title": "Nonexistent soil cores from a pretend marsh (synthetic fixture)",
+      "authors": [
+        {
+          "family": "Inventado",
+          "given": "Eli"
+        }
+      ],
+      "year": 2030,
+      "journal": "Journal of Invented Fixtures",
+      "volume": "2",
+      "issue": "4"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "<REPLACE: entry id>",
+  "synthetic": true,
+  "command": "verify manifest.json",
+  "invocation": {
+    "cwd": "the entry directory",
+    "argv": [
+      "python",
+      "-m",
+      "science_gate.cli",
+      "verify",
+      "manifest.json",
+      "--output",
+      "<tmp>"
+    ],
+    "environment": {
+      "PYTHONPATH": "<scientific-evidence-gate>/src",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z"
+    },
+    "output": "an OS temporary directory outside the entry"
+  },
+  "status": "FAIL",
+  "exit_code": 1,
+  "reason": "SOURCE_MISMATCH",
+  "failure_modes": [
+    "STALE_DEPENDENCY"
+  ],
+  "failure_modes_match": "exact: run.json failure_modes must equal this list",
+  "must_mention": [
+    "STALE_DEPENDENCY",
+    "STALE_PENDING_REVALIDATION",
+    "publication blocked",
+    "<REPLACE: id of the stale CONCLUSION or FIGURE_OR_TABLE node>",
+    "<REPLACE: id of the upstream node whose file changed>"
+  ],
+  "must_mention_in": "report.md",
+  "headline_prefix": "FAIL (SOURCE_MISMATCH)",
+  "intended_before_run": "<REPLACE: true only if this outcome was written before the recorded run>",
+  "recorded_run_matches": "<REPLACE: true or false, from comparing the recorded run; NEVER edit the expected values to make this true>",
+  "mismatches": [],
+  "note": "<REPLACE: why this outcome is the intended one, citing the contract (scientific-evidence-gate docs/ARCHITECTURE.md). If the tool disagrees, keep the INTENDED outcome here, list the mismatch, and record it in entry.json known_failures>",
+  "recorded_run": {
+    "run_id": "<REPLACE: from run.json>",
+    "evidence_manifest_sha256": "<REPLACE: from run.json>",
+    "ledger_head_sha256": "<REPLACE: from run.json>",
+    "ledger_length": "<REPLACE: from run.json>",
+    "receipt_content_sha256": "<REPLACE: from receipt.json>",
+    "signature_state": "<REPLACE: UNSIGNED unless a key was configured>",
+    "informational": "These values depend on the tool version and are not part of the expected outcome."
+  },
+  "does_not_prove": "Matching these results shows conformance on declared fixtures only. It does not show scientific validity, detection of failures outside this corpus, or fitness for use."
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "coverage-debt-synthetic-01",
+  "category": "coverage-debt",
+  "synthetic": true,
+  "written": "Written from the entry's intent by the generator, before the recorded run; not copied from tool output. evaluation/comparison.json records whether the run matched.",
+  "command": {
+    "subcommand": "verify",
+    "argv": [
+      "-m",
+      "science_gate.cli",
+      "verify",
+      "manifest.json",
+      "--output",
+      "<tmp>/run"
+    ],
+    "cwd": "<entry>",
+    "env": {
+      "PYTHONPATH": "<seg>/src",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z"
+    },
+    "env_unset": [
+      "SCIENCE_GATE_HMAC_KEY_FILE"
+    ]
+  },
+  "status": "ABSTAIN",
+  "exit_code": 2,
+  "reason": "INSUFFICIENT_EVIDENCE",
+  "reasons_include": [
+    "INSUFFICIENT_EVIDENCE",
+    "PARTIAL_EXECUTION"
+  ],
+  "failure_modes": [
+    "PARTIAL_EXECUTION"
+  ],
+  "failure_modes_comparison": "exact set, compared with run.json failure_modes",
+  "must_mention": [
+    "**ABSTAIN** (INSUFFICIENT_EVIDENCE), exit code 2.",
+    "Failure modes: PARTIAL_EXECUTION",
+    "`time_window`: time_source ABSTAIN (INSUFFICIENT_EVIDENCE), rows examined 0; the time sources list no events",
+    "check `time_window` was NOT_APPLICABLE",
+    "checks_executed 3 of checks_expected 4",
+    "## WHAT THIS RESULT DOES NOT PROVE",
+    "Scientific validity: NOT ESTABLISHED"
+  ],
+  "must_mention_scope": "report.md",
+  "must_not_mention": [
+    "**PASS**"
+  ],
+  "checks": {
+    "rows": {
+      "verdict": "PASS",
+      "execution_state": "CHECKED",
+      "rows_examined": 4
+    },
+    "columns": {
+      "verdict": "PASS",
+      "execution_state": "CHECKED"
+    },
+    "duplicates": {
+      "verdict": "PASS",
+      "execution_state": "CHECKED"
+    },
+    "time_window": {
+      "verdict": "ABSTAIN",
+      "execution_state": "NOT_APPLICABLE",
+      "rows_examined": 0,
+      "reason": "INSUFFICIENT_EVIDENCE"
+    }
+  },
+  "details": {
+    "counters": {
+      "checks_expected": 4,
+      "checks_executed": 3,
+      "checks_passed": 3,
+      "checks_abstained": 1,
+      "checks_not_applicable": 1
+    }
+  },
+  "receipt": {
+    "signature_state": "UNSIGNED"
+  },
+  "does_not_prove": [
+    "A pass shows conformance on declared fixtures only: science-gate produced the declared outcome on this entry's synthetic fixtures, with the tool version recorded in environment.lock.",
+    "It does not show that science-gate detects this failure in data, layouts or tool versions outside this entry.",
+    "It does not establish scientific validity: the data, works, people and sites are invented, so no scientific conclusion is supported or refuted.",
+    "It does not show that science-gate, or any pipeline that uses it, is fit for any particular use.",
+    "It does not show that the readings fall inside or outside the April 2030 window; no observation time was examined, so nothing is known about it."
+  ],
+  "notes": [
+    "PARTIAL_EXECUTION is intended: the architecture counts a required check as executed only when it reached CHECKED, so a NOT_APPLICABLE check leaves checks_executed (3) below checks_expected (4). The corpus category COVERAGE_DEBT maps onto the gate reason INSUFFICIENT_EVIDENCE, not onto a taxonomy failure mode of its own."
+  ]
+}

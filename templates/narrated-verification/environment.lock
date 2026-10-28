@@ -1,0 +1,14 @@
+# environment.lock: the environment the recorded evaluation ran in. Fill after the run.
+# Passing shows conformance on the declared fixture only; it does not show scientific validity, and it does not show fitness for any use.
+python_version=<e.g. 3.11.9>
+python_implementation=<e.g. CPython>
+platform=<platform.platform() output>
+science_gate_version=<output of: python -m science_gate.cli --version>
+science_gate_repo=scientific-evidence-gate (local checkout, read only)
+science_gate_git_commit=<git rev-parse HEAD of the scientific-evidence-gate checkout>
+science_gate_worktree_dirty=<yes|no>
+science_gate_worktree_changes=<number of lines from git status --porcelain>
+science_gate_src_tree_sha256=<sha256 over sorted lines '<path under src> <file sha256>\n' for every .py>
+SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z
+PYTHONDONTWRITEBYTECODE=1
+SCIENCE_GATE_HMAC_KEY_FILE=<unset, or the key_id if the receipt was signed>

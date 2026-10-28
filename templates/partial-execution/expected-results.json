@@ -1,0 +1,41 @@
+{
+  "schema": "conformance-corpus-expected-results/v1",
+  "entry_id": "<ENTRY_ID, e.g. partial-execution-synthetic-02>",
+  "synthetic": true,
+  "command": "verify manifest.json",
+  "argv": [
+    "verify",
+    "manifest.json",
+    "--output",
+    "<tmp>/run"
+  ],
+  "cwd": "<entry>",
+  "environment": {
+    "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "status": "ABSTAIN",
+  "exit_code": 2,
+  "reason": "PARTIAL_EXECUTION",
+  "failure_modes": [
+    "PARTIAL_EXECUTION"
+  ],
+  "failure_modes_match": "exact set: run.json failure_modes, sorted, must equal this list",
+  "must_mention": [
+    "PARTIAL_EXECUTION",
+    "checks_executed=<N> of checks_expected=<M>",
+    "<ID OF THE UNEXECUTED CHECK>",
+    "<PATH OF THE EVIDENCE THAT WAS NEVER WRITTEN>"
+  ],
+  "must_mention_in": "report.md written by the run (case-sensitive substring match)",
+  "status_must_not_be": [
+    "PASS"
+  ],
+  "intended_by": "<WHO; written before the recorded run, not copied from it>",
+  "note": "<ONE PARAGRAPH: the defect and why this is the conforming outcome>",
+  "does_not_prove": [
+    "Reproducing this entry's expected outcome shows conformance on this declared fixture only.",
+    "It does not show that the verifier catches failures outside the corpus.",
+    "It does not show that any scientific conclusion is true, and it does not show that the verifier is fit for any particular use."
+  ]
+}

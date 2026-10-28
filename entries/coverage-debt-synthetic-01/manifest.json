@@ -1,0 +1,72 @@
+{
+  "schema": "science-gate-manifest/v1",
+  "run_label": "corpus-coverage-debt-synthetic-01",
+  "inputs": [
+    {
+      "id": "readings",
+      "path": "fixtures/readings.csv",
+      "format": "csv",
+      "required": true,
+      "row_key": [
+        "reading_id"
+      ],
+      "expected_rows": 4,
+      "denominator_source": "INDEPENDENT",
+      "sha256": "6717b12e09e1b262927e09e3619b12e1ed9a11d9aa114e7b858a5f663d2c91b9"
+    }
+  ],
+  "time_sources": "fixtures/time/events.json",
+  "checks": [
+    {
+      "id": "rows",
+      "kind": "row_count",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "readings"
+      ]
+    },
+    {
+      "id": "columns",
+      "kind": "required_columns",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "readings"
+      ],
+      "params": {
+        "columns": [
+          "reading_id",
+          "station",
+          "level_cm"
+        ]
+      }
+    },
+    {
+      "id": "duplicates",
+      "kind": "duplicate_rows",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "readings"
+      ]
+    },
+    {
+      "id": "time_window",
+      "kind": "time_source",
+      "version": "1",
+      "required": true
+    }
+  ],
+  "corpus": {
+    "access_class": "SYNTHETIC",
+    "permissions": {
+      "evaluation_allowed": true,
+      "training_allowed": false,
+      "redistribution_allowed": false,
+      "derivatives_allowed": false,
+      "public_display_allowed": false,
+      "commercial_use_allowed": false
+    }
+  }
+}

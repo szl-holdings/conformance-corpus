@@ -1,0 +1,51 @@
+{
+  "schema": "conformance-corpus-comparison/v1",
+  "entry_id": "partial-execution-synthetic-01",
+  "synthetic": true,
+  "expected_source": "expected-results.json (intended outcome; not edited to match this run)",
+  "expected": {
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "PARTIAL_EXECUTION",
+    "failure_modes": [
+      "PARTIAL_EXECUTION"
+    ],
+    "must_mention": [
+      "PARTIAL_EXECUTION",
+      "checks_executed=3 of checks_expected=4",
+      "fixtures/time/events.json",
+      "time-window"
+    ]
+  },
+  "actual": {
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "run_json_exit_code": 2,
+    "reason": "INSUFFICIENT_EVIDENCE",
+    "reasons": [
+      "INSUFFICIENT_EVIDENCE",
+      "PARTIAL_EXECUTION"
+    ],
+    "failure_modes": [
+      "PARTIAL_EXECUTION"
+    ],
+    "headline": "ABSTAIN (INSUFFICIENT_EVIDENCE) run-ebeaf9c4a4607f57: 3/4 required checks executed, 5 rows examined, 1/1 inputs opened",
+    "signature_state": "UNSIGNED"
+  },
+  "must_mention_found": {
+    "PARTIAL_EXECUTION": true,
+    "checks_executed=3 of checks_expected=4": true,
+    "fixtures/time/events.json": true,
+    "time-window": true
+  },
+  "matches": {
+    "status": true,
+    "exit_code": true,
+    "reason": false,
+    "failure_modes": true,
+    "must_mention": true,
+    "status_must_not_be": true
+  },
+  "all_match": false,
+  "does_not_prove": "Passing shows conformance on this declared synthetic fixture only; it does not show scientific validity, and it does not show fitness for any use."
+}

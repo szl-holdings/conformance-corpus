@@ -1,0 +1,420 @@
+{
+  "accounting": {
+    "closure": {
+      "accounted": 1,
+      "expected": 1,
+      "holds": true,
+      "source": "INDEPENDENT"
+    },
+    "counters": {
+      "admitted": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "deferred": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "discovered": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "examined": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "excluded": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "expected": {
+        "denominator_source": "INDEPENDENT",
+        "value": 1
+      },
+      "failed": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      },
+      "opened": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "parsed": {
+        "denominator_source": "OBSERVED",
+        "value": 1
+      },
+      "unresolved": {
+        "denominator_source": "OBSERVED",
+        "value": 0
+      }
+    },
+    "inputs": [
+      {
+        "bytes": 146,
+        "closure": {
+          "accounted": 4,
+          "expected": 4,
+          "holds": true,
+          "source": "INDEPENDENT"
+        },
+        "declared_sha256": "56d2a65b338bf5977d78b03f8143cc48b07e2913f7b576d1a722aefeb53c440a",
+        "diagnostics": [],
+        "discovered": true,
+        "format": "csv",
+        "id": "samples",
+        "opened": true,
+        "parsed": true,
+        "path": "fixtures/data/samples.csv",
+        "required": true,
+        "row_counts": {
+          "admitted": 4,
+          "deferred": 0,
+          "excluded": 0,
+          "failed": 0,
+          "unresolved": 0
+        },
+        "rows": 4,
+        "sha256": "56d2a65b338bf5977d78b03f8143cc48b07e2913f7b576d1a722aefeb53c440a",
+        "state": "PARSED"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "check_id": "columns",
+      "diagnostics": [],
+      "evidence": {
+        "columns": [
+          "sample_id",
+          "batch",
+          "score"
+        ],
+        "inputs": {
+          "samples": {
+            "header": [
+              "sample_id",
+              "batch",
+              "score"
+            ],
+            "missing_columns": [],
+            "rows_admitted": 4,
+            "sha256": "56d2a65b338bf5977d78b03f8143cc48b07e2913f7b576d1a722aefeb53c440a",
+            "state": "PARSED"
+          }
+        }
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [],
+      "inputs": [
+        "samples"
+      ],
+      "invocation_id": "inv-d9e0dd88507a",
+      "kind": "required_columns",
+      "reason": "VERIFIED",
+      "required": true,
+      "rows_examined": 4,
+      "verdict": "PASS",
+      "version": "1"
+    },
+    {
+      "check_id": "reviewers",
+      "diagnostics": [
+        "required reviewer(s) ['syn-reviewer-c'] recorded no verdict",
+        "reviewer(s) ['syn-reviewer-b'] recorded more than one verdict"
+      ],
+      "evidence": {
+        "duplicate_verdicts": {
+          "syn-reviewer-b": [
+            2,
+            3
+          ]
+        },
+        "missing_reviewers": [
+          "syn-reviewer-c"
+        ],
+        "required_reviewers": [
+          "syn-reviewer-a",
+          "syn-reviewer-b",
+          "syn-reviewer-c"
+        ],
+        "reviewers_present": [
+          "syn-reviewer-a",
+          "syn-reviewer-b"
+        ],
+        "scope": "protocol completeness only; the content of the verdicts is not judged",
+        "unexpected_reviewers": [],
+        "verdict_values": {
+          "ACCEPT": 3
+        },
+        "verdicts": {
+          "bytes": 615,
+          "declared": true,
+          "diagnostic": null,
+          "path": "fixtures/reviews/verdicts.json",
+          "role": "reviews.verdicts",
+          "sha256": "82c2836b62964ad6c40f9d478bc32e3cc33350f9c70505086c83ab6642712c42",
+          "state": "PARSED"
+        },
+        "verdicts_recorded": 3
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [
+        "PROTOCOL_DRIFT"
+      ],
+      "inputs": [],
+      "invocation_id": "inv-7b936224ac5a",
+      "kind": "reviewer_protocol",
+      "reason": "PROTOCOL_BROKEN",
+      "required": true,
+      "rows_examined": 3,
+      "verdict": "ABSTAIN",
+      "version": "1"
+    },
+    {
+      "check_id": "rows",
+      "diagnostics": [],
+      "evidence": {
+        "inputs": {
+          "samples": {
+            "closure": {
+              "accounted": 4,
+              "expected": 4,
+              "holds": true,
+              "source": "INDEPENDENT"
+            },
+            "row_counts": {
+              "admitted": 4,
+              "deferred": 0,
+              "excluded": 0,
+              "failed": 0,
+              "unresolved": 0
+            },
+            "rows_admitted": 4,
+            "sha256": "56d2a65b338bf5977d78b03f8143cc48b07e2913f7b576d1a722aefeb53c440a",
+            "state": "PARSED"
+          }
+        },
+        "rows_admitted_total": 4
+      },
+      "execution_state": "CHECKED",
+      "failure_modes": [],
+      "inputs": [
+        "samples"
+      ],
+      "invocation_id": "inv-fa12bff1feb5",
+      "kind": "row_count",
+      "reason": "VERIFIED",
+      "required": true,
+      "rows_examined": 4,
+      "verdict": "PASS",
+      "version": "1"
+    }
+  ],
+  "checks_abstained": 1,
+  "checks_executed": 3,
+  "checks_expected": 3,
+  "checks_failed": 0,
+  "checks_passed": 2,
+  "claim_tallies": [],
+  "completed_at": "2026-09-26T00:00:00Z",
+  "counters": {
+    "checks_abstained": 1,
+    "checks_declared": 3,
+    "checks_errored": 0,
+    "checks_executed": 3,
+    "checks_expected": 3,
+    "checks_failed": 0,
+    "checks_not_applicable": 0,
+    "checks_passed": 2,
+    "checks_skipped": 0,
+    "expected_inputs": 1,
+    "inputs_discovered": 1,
+    "inputs_examined": 1,
+    "inputs_opened": 1,
+    "inputs_parsed": 1,
+    "rows_examined": 7
+  },
+  "declared": {
+    "checks": [
+      {
+        "id": "rows",
+        "inputs": [
+          "samples"
+        ],
+        "kind": "row_count",
+        "params": {},
+        "required": true,
+        "version": "1"
+      },
+      {
+        "id": "columns",
+        "inputs": [
+          "samples"
+        ],
+        "kind": "required_columns",
+        "params": {
+          "columns": [
+            "sample_id",
+            "batch",
+            "score"
+          ]
+        },
+        "required": true,
+        "version": "1"
+      },
+      {
+        "id": "reviewers",
+        "inputs": [],
+        "kind": "reviewer_protocol",
+        "params": {},
+        "required": true,
+        "version": "1"
+      }
+    ],
+    "inputs": [
+      {
+        "denominator_source": "INDEPENDENT",
+        "expected_rows": 4,
+        "format": "csv",
+        "id": "samples",
+        "path": "fixtures/data/samples.csv",
+        "required": true,
+        "row_key": [
+          "sample_id"
+        ],
+        "sha256": "56d2a65b338bf5977d78b03f8143cc48b07e2913f7b576d1a722aefeb53c440a"
+      }
+    ]
+  },
+  "disclaimer": "A receipt supports integrity, provenance, and replayability. It does not establish scientific truth, accuracy, safety, or fitness for use.",
+  "documents": [
+    {
+      "bytes": 615,
+      "diagnostic": null,
+      "path": "fixtures/reviews/verdicts.json",
+      "roles": [
+        "reviews.verdicts"
+      ],
+      "sha256": "82c2836b62964ad6c40f9d478bc32e3cc33350f9c70505086c83ab6642712c42",
+      "state": "PARSED"
+    }
+  ],
+  "evidence_boundary": {
+    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 6 entries; ledger head a5ed0328d1af412128632734c6f4d0b3bd793892bee8e644365daee1610bdd39; evidence manifest cf03da130604214b0ac1a706f226333fc09a66306aa2c7ec7c8d5d8d7e414b5c.",
+    "performance": "Run status ABSTAIN (PROTOCOL_BROKEN) from 3 check result(s): 2 PASS, 0 FAIL, 1 ABSTAIN, 0 ERROR; 9 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
+    "scientific_validity": "NOT ESTABLISHED"
+  },
+  "evidence_manifest_sha256": "cf03da130604214b0ac1a706f226333fc09a66306aa2c7ec7c8d5d8d7e414b5c",
+  "exit_code": 2,
+  "expected_inputs": 1,
+  "failure_modes": [
+    "PROTOCOL_DRIFT"
+  ],
+  "findings": [
+    {
+      "detail": "reviewer_protocol CHECKED ABSTAIN: required reviewer(s) ['syn-reviewer-c'] recorded no verdict; reviewer(s) ['syn-reviewer-b'] recorded more than one verdict",
+      "failure_modes": [
+        "PROTOCOL_DRIFT"
+      ],
+      "reason": "PROTOCOL_BROKEN",
+      "source": "check:reviewers",
+      "status": "ABSTAIN"
+    }
+  ],
+  "inputs_discovered": 1,
+  "inputs_opened": 1,
+  "invariants": [
+    {
+      "applicable": true,
+      "detail": "check results marked CHECKED: 3 claimed <= 3 invoked",
+      "holds": true,
+      "name": "checked_claims_le_invocations"
+    },
+    {
+      "applicable": true,
+      "detail": "3 invocation(s) each reached exactly one terminal result",
+      "holds": true,
+      "name": "every_invocation_has_terminal_result"
+    },
+    {
+      "applicable": true,
+      "detail": "3 required check(s) each reached a terminal state",
+      "holds": true,
+      "name": "every_required_check_has_terminal_state"
+    },
+    {
+      "applicable": true,
+      "detail": "3 verdict(s) each trace to a terminal invocation",
+      "holds": true,
+      "name": "every_verdict_has_invocation"
+    },
+    {
+      "applicable": true,
+      "detail": "2 INDEPENDENT closure(s) hold",
+      "holds": true,
+      "name": "input_accounting_closure"
+    },
+    {
+      "applicable": true,
+      "detail": "6 entries chain to head a5ed0328d1af412128632734c6f4d0b3bd793892bee8e644365daee1610bdd39",
+      "holds": true,
+      "name": "ledger_chain_intact"
+    },
+    {
+      "applicable": false,
+      "detail": "the run does not claim PASS",
+      "holds": null,
+      "name": "pass_requires_complete_required_checks"
+    },
+    {
+      "applicable": true,
+      "detail": "every input behind a PASS is complete",
+      "holds": true,
+      "name": "pass_requires_complete_required_inputs"
+    },
+    {
+      "applicable": true,
+      "detail": "rows_examined=11",
+      "holds": true,
+      "name": "pass_requires_examined_rows"
+    },
+    {
+      "applicable": true,
+      "detail": "every PASS carries non-empty, hashed evidence",
+      "holds": true,
+      "name": "pass_requires_nonempty_evidence"
+    }
+  ],
+  "ledger_head_sha256": "a5ed0328d1af412128632734c6f4d0b3bd793892bee8e644365daee1610bdd39",
+  "ledger_length": 6,
+  "manifest": {
+    "file": "manifest.json",
+    "issues": [],
+    "run_label": "corpus-reviewer-protocol-drift-synthetic-01",
+    "sha256": "6ff18e2b947833e22d923337b4559867dcdb4da6dfa8c7245e6850d4e78acf89"
+  },
+  "network": {
+    "live": false,
+    "opener": "urllib",
+    "timeout_seconds": 10,
+    "user_agent": "scientific-evidence-gate/0.1.0 (local evidence gate)"
+  },
+  "reason": "PROTOCOL_BROKEN",
+  "reasons": [
+    "PROTOCOL_BROKEN"
+  ],
+  "receipt": {
+    "content_sha256": "b4c729358e88d3bace4a1180d68bc1f13e05f63c134b10fd7f95a355fc8f1faf",
+    "key_id": null,
+    "signature_state": "UNSIGNED"
+  },
+  "rows_examined": 7,
+  "run_id": "run-4b040081a8b6d019",
+  "schema": "science-gate-run/v1",
+  "started_at": "2026-09-26T00:00:00Z",
+  "status": "ABSTAIN",
+  "tool": {
+    "name": "scientific-evidence-gate",
+    "version": "0.1.0"
+  }
+}

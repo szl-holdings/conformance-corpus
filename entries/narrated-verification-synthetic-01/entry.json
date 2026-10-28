@@ -1,0 +1,78 @@
+{
+  "schema": "conformance-corpus-entry/v1",
+  "entry_id": "narrated-verification-synthetic-01",
+  "title": "Citation log claims five verifications with two invocation records, synthetic",
+  "failure_mode": "NARRATED_VERIFICATION",
+  "synthetic": true,
+  "scientific_question": "Illustrative only (SYNTHETIC): are the five invented references cited by a fictional marsh-survey note correctly identified? No real question is being answered.",
+  "claim_tested": "Given a citation verification log that claims five citations VERIFIED (claimed_verified=5) but records invocations for only two of them, science-gate verify returns ABSTAIN (exit 2) with reason UNVERIFIED and failure mode NARRATED_VERIFICATION only, names the three unbacked citations (C3, C4, C5), and reports the violated invariant checked_claims_le_invocations (5 claimed, 2 invoked).",
+  "falsified_by": "science-gate returns PASS or exit code 0; or it counts C3, C4 or C5 as verified; or it reports checked_claims_le_invocations as holding; or it returns FAIL, which would treat unshown claims as shown false.",
+  "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
+  "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
+  "permissions": {
+    "access_class": "SYNTHETIC",
+    "evaluation_allowed": true,
+    "training_allowed": false,
+    "redistribution_allowed": false,
+    "derivatives_allowed": false,
+    "public_display_allowed": false,
+    "commercial_use_allowed": false,
+    "granted_by": "generated for this corpus; no third-party rights",
+    "evidence_of_grant": "NOASSERTION",
+    "notes": "No grant exists beyond local evaluation: every file was generated for this corpus (see provenance.generator) and no license has been chosen (NOASSERTION), so every flag other than evaluation_allowed stays false. Evaluation permission does not imply training permission. Redistribution stays false until a corpus license is chosen; the data carries no third-party rights, so this is a choice, not a constraint."
+  },
+  "source_licenses": [
+    {
+      "path": "fixtures/citations/entries.json",
+      "license": "NOASSERTION",
+      "evidence": "generated for this corpus; no license has been chosen"
+    },
+    {
+      "path": "fixtures/citations/verification-log.json",
+      "license": "NOASSERTION",
+      "evidence": "generated for this corpus; no license has been chosen"
+    },
+    {
+      "path": "fixtures/data/observations.csv",
+      "license": "NOASSERTION",
+      "evidence": "generated for this corpus; no license has been chosen"
+    }
+  ],
+  "expected_outcome": {
+    "command": "verify manifest.json",
+    "status": "ABSTAIN",
+    "exit_code": 2,
+    "reason": "UNVERIFIED",
+    "failure_modes": [
+      "NARRATED_VERIFICATION"
+    ],
+    "must_mention": [
+      "NARRATED_VERIFICATION",
+      "checked_claims_le_invocations",
+      "3 citation(s) claimed VERIFIED with no complete invocation record",
+      "5 claimed but only 2 invoked",
+      "C3",
+      "C4",
+      "C5"
+    ]
+  },
+  "known_failures": [],
+  "unresolved_cases": [
+    "The check is structural (layer 1). The two recorded invocations are complete records, but this entry says nothing about whether C1 and C2 are correct: layers 2 and 3 (citation_resolver, citation_metadata) are deliberately not declared.",
+    "A log that omits the invocations list entirely (no record, rather than too few records) is a different shape of narration and is not covered here."
+  ],
+  "human_review": {
+    "required": true,
+    "reason": "Draft written by one author; the recorded run matches the intended outcome, but no one other than the author has checked the fixture or the expectation."
+  },
+  "does_not_prove": [
+    "Reproducing this entry's expected outcome shows conformance on this declared synthetic fixture only.",
+    "It does not show that the verifier catches failures outside the corpus.",
+    "It does not show that any scientific conclusion is true, and it does not show that the verifier is fit for any particular use."
+  ],
+  "provenance": {
+    "created": "2026-09-29",
+    "generator": "Values hand-specified by the corpus author and written by a one-off local Python script (not part of the corpus); every data value is invented. The files under evaluation/ and receipts/ were produced by running science-gate 0.1.0 (scientific-evidence-gate commit 7ec36c6bb134) with SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z, with local paths replaced by <tmp>, <entry>, <SEG> and <python>.",
+    "reviewed_by": []
+  }
+}

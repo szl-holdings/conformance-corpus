@@ -1,0 +1,15 @@
+# environment.lock: the interpreter and tool the expected results were confirmed with.
+# Reproducing the expected results under this environment shows conformance on declared fixtures only;
+# it does not show scientific validity or fitness for any use.
+python.implementation=<e.g. CPython>
+python.version=<e.g. 3.11.9>
+platform=<os, release, machine>
+science_gate.cli_version=<output of science-gate --version>
+science_gate.distribution=scientific-evidence-gate
+science_gate.git_commit=<full commit hash of the scientific-evidence-gate checkout>
+science_gate.git_worktree=<clean | dirty: list changed paths>
+science_gate.src_tree_sha256=<sha256 of lines '<sha256>  <path>' for src/science_gate/**/*.py, sorted, LF-terminated>
+SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z
+SCIENCE_GATE_HMAC_KEY_FILE=<unset (receipts UNSIGNED) | key id only, never the key>
+network=none
+recorded=<YYYY-MM-DD>

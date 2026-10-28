@@ -1,0 +1,75 @@
+{
+  "schema": "science-gate-manifest/v1",
+  "run_label": "corpus-omitted-population-synthetic-01",
+  "inputs": [
+    {
+      "id": "specimens",
+      "path": "fixtures/specimens.csv",
+      "format": "csv",
+      "required": true,
+      "row_key": [
+        "specimen_id"
+      ],
+      "expected_rows": 5,
+      "denominator_source": "OBSERVED",
+      "sha256": "332625dbf3d73ae54d7a2411db2c43d61d7a71a7675ecfaa4f01fb0dc5c020f8"
+    }
+  ],
+  "accepted_snapshot": "fixtures/snapshots/accepted.json",
+  "checks": [
+    {
+      "id": "rows",
+      "kind": "row_count",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "specimens"
+      ]
+    },
+    {
+      "id": "columns",
+      "kind": "required_columns",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "specimens"
+      ],
+      "params": {
+        "columns": [
+          "specimen_id",
+          "plot",
+          "mass_mg"
+        ]
+      }
+    },
+    {
+      "id": "duplicates",
+      "kind": "duplicate_rows",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "specimens"
+      ]
+    },
+    {
+      "id": "snapshot",
+      "kind": "snapshot_completeness",
+      "version": "1",
+      "required": true,
+      "inputs": [
+        "specimens"
+      ]
+    }
+  ],
+  "corpus": {
+    "access_class": "SYNTHETIC",
+    "permissions": {
+      "evaluation_allowed": true,
+      "training_allowed": false,
+      "redistribution_allowed": false,
+      "derivatives_allowed": false,
+      "public_display_allowed": false,
+      "commercial_use_allowed": false
+    }
+  }
+}
