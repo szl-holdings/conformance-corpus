@@ -101,14 +101,15 @@
             "sha256": "16ce60c2b70a83f14ef500ed7f147750eebefa86a75befc06ed62e8cc10e9eaa",
             "state": "EMPTY"
           }
-        }
+        },
+        "skip_justification": "EMPTY_POPULATION"
       },
       "execution_state": "NOT_APPLICABLE",
       "failure_modes": [],
       "inputs": [
         "readings"
       ],
-      "invocation_id": "inv-0693bc78fd13",
+      "invocation_id": "inv-5700bc53a57d",
       "kind": "required_columns",
       "reason": "INSUFFICIENT_EVIDENCE",
       "required": true,
@@ -129,14 +130,15 @@
             "sha256": "16ce60c2b70a83f14ef500ed7f147750eebefa86a75befc06ed62e8cc10e9eaa",
             "state": "EMPTY"
           }
-        }
+        },
+        "skip_justification": "EMPTY_POPULATION"
       },
       "execution_state": "NOT_APPLICABLE",
       "failure_modes": [],
       "inputs": [
         "readings"
       ],
-      "invocation_id": "inv-ae4d789e0baa",
+      "invocation_id": "inv-c35101494307",
       "kind": "duplicate_rows",
       "reason": "INSUFFICIENT_EVIDENCE",
       "required": true,
@@ -157,14 +159,15 @@
             "sha256": "16ce60c2b70a83f14ef500ed7f147750eebefa86a75befc06ed62e8cc10e9eaa",
             "state": "EMPTY"
           }
-        }
+        },
+        "skip_justification": "EMPTY_POPULATION"
       },
       "execution_state": "NOT_APPLICABLE",
       "failure_modes": [],
       "inputs": [
         "readings"
       ],
-      "invocation_id": "inv-c42147d73d06",
+      "invocation_id": "inv-edb083639ed8",
       "kind": "row_count",
       "reason": "INSUFFICIENT_EVIDENCE",
       "required": true,
@@ -208,7 +211,7 @@
         "VACUOUS_PASS"
       ],
       "inputs": [],
-      "invocation_id": "inv-b78591ed65b3",
+      "invocation_id": "inv-ef2ba6d0ffda",
       "kind": "summary_consistency",
       "reason": "UNVERIFIED",
       "required": true,
@@ -224,6 +227,77 @@
   "checks_passed": 0,
   "claim_tallies": [],
   "completed_at": "2026-09-26T00:00:00Z",
+  "controls": {
+    "canary": {
+      "holds": true,
+      "must_fail": {
+        "invocation_id": "inv-218036d750f0",
+        "reason": "SOURCE_MISMATCH",
+        "verdict": "FAIL"
+      },
+      "must_pass": {
+        "invocation_id": "inv-7432b9811761",
+        "reason": "VERIFIED",
+        "verdict": "PASS"
+      }
+    },
+    "claim_join": null,
+    "comparator_self_test": {
+      "holds": true,
+      "invocation_id": "inv-f4d9ce5ef664",
+      "pairs": [
+        {
+          "actual": "DISAGREES",
+          "claim": "0.15",
+          "expected": "DISAGREES",
+          "stored": "0.14"
+        },
+        {
+          "actual": "EXACT",
+          "claim": "12.4",
+          "expected": "EXACT",
+          "stored": "12.40"
+        },
+        {
+          "actual": "AGREES_AT_STATED_PRECISION",
+          "claim": "0.1",
+          "expected": "AGREES_AT_STATED_PRECISION",
+          "stored": "0.14"
+        }
+      ]
+    },
+    "falsifiers": {
+      "NO_CASE": [],
+      "NO_GENERATOR": [],
+      "REFUTED": [],
+      "UNWITNESSED": [],
+      "WITNESSED": [],
+      "invocations": 0
+    },
+    "min_discrimination": null,
+    "pins": {
+      "changed": [],
+      "holds": true,
+      "pinned": 4,
+      "writes": []
+    },
+    "plan": {
+      "checks_planned": 4,
+      "entry_sha256": "2c9da193019b2124aa39e319949eff2835b28761d0700e27f403d08d08dc9f7f",
+      "inputs_planned": 1,
+      "manifest_sha256": "5a1965efb458051fd3cff2feaa36bbea50d53efbaa65ab1fb68e5c527711257f",
+      "pins": 4
+    },
+    "verdict_transitions": [
+      {
+        "after": "ABSTAIN",
+        "before": "NONE",
+        "reason": "INSUFFICIENT_EVIDENCE",
+        "source": "input:readings",
+        "step": 1
+      }
+    ]
+  },
   "counters": {
     "checks_abstained": 4,
     "checks_declared": 4,
@@ -231,15 +305,18 @@
     "checks_executed": 1,
     "checks_expected": 4,
     "checks_failed": 0,
+    "checks_justified": 3,
     "checks_not_applicable": 3,
     "checks_passed": 0,
+    "checks_shortfall": 3,
     "checks_skipped": 0,
+    "control_invocations": 3,
     "expected_inputs": 1,
     "inputs_discovered": 1,
     "inputs_examined": 0,
     "inputs_opened": 1,
     "inputs_parsed": 1,
-    "rows_examined": 1
+    "rows_examined": 0
   },
   "declared": {
     "checks": [
@@ -318,15 +395,14 @@
     }
   ],
   "evidence_boundary": {
-    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 8 entries; ledger head fee5f3832ede269966919d53032e5958a8bf1a0fad2544006edbdd35dc47eae1; evidence manifest c260b1b9642bf7fdda006a915b79ad335d855177c7d7b201d7b2c7746f083fb9.",
-    "performance": "Run status ABSTAIN (INSUFFICIENT_EVIDENCE) from 4 check result(s): 0 PASS, 0 FAIL, 4 ABSTAIN, 0 ERROR; 6 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
+    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 15 entries; ledger head 413063f432c56a8c7e3afef6e29e23aaf54a399a2f9b98cf7d9f3f6ee94653fa; evidence manifest 4bb86362d505fc4b25cf0cac7909b9c87d2311cbacd74a8e5ad6cfd8352a17d9.",
+    "performance": "CHECKER: falsifier witnesses 0 WITNESSED, 0 REFUTED, 0 UNWITNESSED, 0 NO_CASE, 0 NO_GENERATOR (0 falsifier invocation(s)); must-fail/must-pass canary held; comparator self-test held. RUN: Run status ABSTAIN (INSUFFICIENT_EVIDENCE) from 4 check result(s): 0 PASS, 0 FAIL, 4 ABSTAIN, 0 ERROR; 11 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
     "scientific_validity": "NOT ESTABLISHED"
   },
-  "evidence_manifest_sha256": "c260b1b9642bf7fdda006a915b79ad335d855177c7d7b201d7b2c7746f083fb9",
+  "evidence_manifest_sha256": "4bb86362d505fc4b25cf0cac7909b9c87d2311cbacd74a8e5ad6cfd8352a17d9",
   "exit_code": 2,
   "expected_inputs": 1,
   "failure_modes": [
-    "PARTIAL_EXECUTION",
     "VACUOUS_PASS"
   ],
   "findings": [
@@ -370,11 +446,38 @@
       "status": "ABSTAIN"
     },
     {
-      "detail": "checks_executed=1 of checks_expected=4",
+      "detail": "rows_examined=0 (distinct data rows of declared inputs); a PASS needs at least 1",
       "failure_modes": [
-        "PARTIAL_EXECUTION"
+        "VACUOUS_PASS"
       ],
-      "reason": "PARTIAL_EXECUTION",
+      "reason": "INSUFFICIENT_EVIDENCE",
+      "source": "contract:rows_examined",
+      "status": "ABSTAIN"
+    },
+    {
+      "detail": "required check 'columns' did not execute: it was NOT_APPLICABLE, justified as EMPTY_POPULATION (checks_executed=1 of checks_expected=4)",
+      "failure_modes": [
+        "VACUOUS_PASS"
+      ],
+      "reason": "INSUFFICIENT_EVIDENCE",
+      "source": "contract:checks_executed",
+      "status": "ABSTAIN"
+    },
+    {
+      "detail": "required check 'duplicates' did not execute: it was NOT_APPLICABLE, justified as EMPTY_POPULATION (checks_executed=1 of checks_expected=4)",
+      "failure_modes": [
+        "VACUOUS_PASS"
+      ],
+      "reason": "INSUFFICIENT_EVIDENCE",
+      "source": "contract:checks_executed",
+      "status": "ABSTAIN"
+    },
+    {
+      "detail": "required check 'rows' did not execute: it was NOT_APPLICABLE, justified as EMPTY_POPULATION (checks_executed=1 of checks_expected=4)",
+      "failure_modes": [
+        "VACUOUS_PASS"
+      ],
+      "reason": "INSUFFICIENT_EVIDENCE",
       "source": "contract:checks_executed",
       "status": "ABSTAIN"
     }
@@ -384,13 +487,25 @@
   "invariants": [
     {
       "applicable": true,
-      "detail": "check results marked CHECKED: 1 claimed <= 4 invoked",
+      "detail": "the must-fail canary failed and its known-good twin passed",
+      "holds": true,
+      "name": "canary_controls_hold"
+    },
+    {
+      "applicable": true,
+      "detail": "check results marked CHECKED: 1 claimed <= 7 invoked",
       "holds": true,
       "name": "checked_claims_le_invocations"
     },
     {
       "applicable": true,
-      "detail": "4 invocation(s) each reached exactly one terminal result",
+      "detail": "3 known pairs compared as expected",
+      "holds": true,
+      "name": "comparator_self_test"
+    },
+    {
+      "applicable": true,
+      "detail": "7 invocation(s) each reached exactly one terminal result",
       "holds": true,
       "name": "every_invocation_has_terminal_result"
     },
@@ -408,13 +523,19 @@
     },
     {
       "applicable": true,
+      "detail": "4 pinned file(s) unchanged and never written during the run",
+      "holds": true,
+      "name": "harness_pins_intact"
+    },
+    {
+      "applicable": true,
       "detail": "1 INDEPENDENT closure(s) hold",
       "holds": true,
       "name": "input_accounting_closure"
     },
     {
       "applicable": true,
-      "detail": "8 entries chain to head fee5f3832ede269966919d53032e5958a8bf1a0fad2544006edbdd35dc47eae1",
+      "detail": "15 entries chain to head 413063f432c56a8c7e3afef6e29e23aaf54a399a2f9b98cf7d9f3f6ee94653fa",
       "holds": true,
       "name": "ledger_chain_intact"
     },
@@ -438,13 +559,31 @@
     },
     {
       "applicable": false,
+      "detail": "no check result is PASS",
+      "holds": null,
+      "name": "pass_requires_falsifier_witness"
+    },
+    {
+      "applicable": false,
       "detail": "no check result and no run-level status claims PASS",
       "holds": null,
       "name": "pass_requires_nonempty_evidence"
+    },
+    {
+      "applicable": true,
+      "detail": "7 planned item(s) each ran exactly once",
+      "holds": true,
+      "name": "plan_closure"
+    },
+    {
+      "applicable": true,
+      "detail": "the recorded PLAN equals the plan the manifest implies",
+      "holds": true,
+      "name": "plan_matches_manifest"
     }
   ],
-  "ledger_head_sha256": "fee5f3832ede269966919d53032e5958a8bf1a0fad2544006edbdd35dc47eae1",
-  "ledger_length": 8,
+  "ledger_head_sha256": "413063f432c56a8c7e3afef6e29e23aaf54a399a2f9b98cf7d9f3f6ee94653fa",
+  "ledger_length": 15,
   "manifest": {
     "file": "manifest.json",
     "issues": [],
@@ -460,15 +599,14 @@
   "reason": "INSUFFICIENT_EVIDENCE",
   "reasons": [
     "INSUFFICIENT_EVIDENCE",
-    "PARTIAL_EXECUTION",
     "UNVERIFIED"
   ],
   "receipt": {
-    "content_sha256": "1450ea286c3412eb0821a7bd07cc5ec90a532621b736106630b91ed2dd1808a4",
+    "content_sha256": "d33f9b009598d7034d05e0a115aafb2d88dc85f3700bd90015643ebffea81492",
     "key_id": null,
     "signature_state": "UNSIGNED"
   },
-  "rows_examined": 1,
+  "rows_examined": 0,
   "run_id": "run-36a763016ef9da5c",
   "schema": "science-gate-run/v1",
   "started_at": "2026-09-26T00:00:00Z",

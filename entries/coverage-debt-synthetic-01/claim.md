@@ -8,28 +8,39 @@ Category: `coverage-debt`: a declared check had nothing to look at.
 
 The manifest declares four required checks over four invented water-level
 readings: `rows`, `columns`, `duplicates` and `time_window`. The first three
-have real rows to examine and should PASS. `time_window` (`time_source`) reads
-`fixtures/time/events.json`. That file exists and parses and declares an April
-2030 window, but its `events` list is empty, so the check has nothing to look
-at. A gate that reads "no failures" as success would report 4 of 4 checks with
-no failures and PASS.
+have real rows to examine and should PASS, each with a falsifier witness.
+`time_window` (`time_source`) reads the manifest's time-sources document, but
+the manifest declares none, so the check has nothing to look at. A gate that
+reads "no failures" as success would report 4 of 4 checks with no failures and
+PASS.
 
 The claim is that `science-gate verify manifest.json` returns **ABSTAIN, exit
-2, reason INSUFFICIENT_EVIDENCE**, with:
+2, reason OUT_OF_SCOPE, with no failure mode**, with:
 
-- `time_window` NOT_APPLICABLE, verdict ABSTAIN, 0 rows examined, diagnostic
-  "the time sources list no events";
+- `time_window` NOT_APPLICABLE, verdict ABSTAIN, reason OUT_OF_SCOPE, 0
+  subject records examined, diagnostic "the manifest declares no
+  time_sources", and the closed-vocabulary justification NOT_DECLARED;
 - `time_window` not counted as executed, so checks_executed is 3 of
-  checks_expected 4 (failure mode PARTIAL_EXECUTION);
+  checks_expected 4, and the contract finding names the NOT_DECLARED
+  justification instead of PARTIAL_EXECUTION;
 - report.md listing `time_window` under what abstained and what remains
   unresolved.
+
+This intended outcome was re-baselined on 2026-10-28 under
+scientific-evidence-gate `docs/ARCHITECTURE.md` section 17.7 (G2): a required
+check NOT_APPLICABLE as NOT_DECLARED gives ABSTAIN / OUT_OF_SCOPE. Before that,
+the entry used a declared time-sources document with no events and intended
+ABSTAIN / INSUFFICIENT_EVIDENCE with PARTIAL_EXECUTION (see
+`expected-results.json` `rebaseline`).
 
 ## What would falsify the claim
 
 - PASS, FAIL or ERROR
 - an exit code other than 2
-- a reason other than INSUFFICIENT_EVIDENCE
-- `time_window` shown as CHECKED or PASS, or counted as executed
+- a reason other than OUT_OF_SCOPE
+- any failure mode, PARTIAL_EXECUTION in particular
+- `time_window` shown as CHECKED or PASS, counted as executed, or labelled
+  with anything but NOT_DECLARED
 - a report.md that omits a `must_mention` string in `expected-results.json`
 
 ## What passing does not prove

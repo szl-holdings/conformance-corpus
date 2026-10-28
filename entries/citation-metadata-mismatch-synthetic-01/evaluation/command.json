@@ -12,11 +12,11 @@
   "env_set": {
     "PYTHONPATH": "<seg>/src",
     "PYTHONDONTWRITEBYTECODE": "1",
-    "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z",
-    "PYTHONIOENCODING": "utf-8"
+    "SCIENCE_GATE_FIXED_TIME": "2026-09-26T00:00:00Z"
   },
   "env_unset": [
-    "SCIENCE_GATE_HMAC_KEY_FILE"
+    "SCIENCE_GATE_HMAC_KEY_FILE",
+    "PYTHONHASHSEED"
   ],
   "shell": false,
   "git_bash_equivalent": "cd <entry> && PYTHONPATH=<seg>/src PYTHONDONTWRITEBYTECODE=1 SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z <python>/python.exe -m science_gate.cli verify manifest.json --output <tmp>/run",
@@ -28,45 +28,50 @@
   },
   "exit_code": 1,
   "stdout": [
-    "FAIL (SOURCE_MISMATCH) run-350cb2fc2f3085dd: 4/4 required checks executed, 12 rows examined, 1/1 inputs opened",
+    "FAIL (SOURCE_MISMATCH) run-14e19b81fbfed4fc: 4/4 required checks executed, 3 rows examined, 1/1 inputs opened",
     "<tmp>\\run\\run.json",
     "<tmp>\\run\\report.md",
     "<tmp>\\run\\ledger.jsonl",
     "<tmp>\\run\\evidence-manifest.json",
     "<tmp>\\run\\receipt.json",
+    "<tmp>\\run\\receipt.auth.json",
     "<tmp>\\run\\results.sarif",
     "<tmp>\\run\\report.html"
   ],
   "stderr": [],
   "run_directory_files": {
     "evidence-manifest.json": {
-      "bytes": 1759,
-      "sha256_of_original": "32834a775503ef36a0317e03a01bfd3209fc19f9a189cb5e9b59d4db3004acd0"
+      "bytes": 1760,
+      "sha256_of_original": "3f72a3dfcd45a93354c287846f1bff45a694a51cdd39029a75dd12ed28352e88"
     },
     "ledger.jsonl": {
-      "bytes": 12475,
-      "sha256_of_original": "85c896f60a0e872f7906d2d29a2caaa4ea992ad3480b8a5cdc8777f043a5a8c9"
+      "bytes": 26499,
+      "sha256_of_original": "30048d534f295cb9def8acbe5c3b177a6d9ff35f29903025a19c4b521b17aa20"
+    },
+    "receipt.auth.json": {
+      "bytes": 231,
+      "sha256_of_original": "9507527b90dd5146620ee414d9a1800e1cf3f21e80d3f539f3068cb7a77f2c1e"
     },
     "receipt.json": {
-      "bytes": 4643,
-      "sha256_of_original": "de74aa1e281394d6bd869af1a880ff3654a683b880476916bd07b0f218e46639"
+      "bytes": 5212,
+      "sha256_of_original": "fcf572a96acac7010dea4810c9613832dfca740d56c8f8cb01612c4c80d17212"
     },
     "report.html": {
-      "bytes": 66237,
-      "sha256_of_original": "a82dc2ee48cc7df7f39713c7cc026e2c96af8d98c91a4c0c4ff044a5731d3975"
+      "bytes": 118918,
+      "sha256_of_original": "5068e80519fbd814f884dd1763308404cf6822449facf983d405c7adb15b7586"
     },
     "report.md": {
-      "bytes": 6340,
-      "sha256_of_original": "a760ae16f7201e0aa818dee0e475a2999300c95c16240e28a2a2e7453416f883"
+      "bytes": 9101,
+      "sha256_of_original": "97c74e638b4577bbd60f897a856aa8c6571fc815c959444a6972f417519f1b46"
     },
     "results.sarif": {
-      "bytes": 6604,
-      "sha256_of_original": "e0bc149e2981bdec6265d32659bba3feb5357a450754fe196bb92cc19d6991d3"
+      "bytes": 9549,
+      "sha256_of_original": "6aefbd16f86aba532758eac998f9a43f91d7234afcba2cba2baf546d8f84d698"
     },
     "run.json": {
-      "bytes": 24175,
-      "sha256_of_original": "378b3e63461122632f8b76ca0a2e9dea729f336429197e01fdb2dea0474966c4"
+      "bytes": 31532,
+      "sha256_of_original": "19ac6f7147f855761b88fe7586f09dfa7b14dd760f9ad7e9d0c6cc8e67af49bc"
     }
   },
-  "recorded_on": "2026-09-29 (wall clock); tool time fixed at 2026-09-26T00:00:00Z"
+  "recorded_on": "2026-10-28 (wall clock); tool time fixed at 2026-09-26T00:00:00Z"
 }

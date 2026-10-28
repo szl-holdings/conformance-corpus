@@ -31,7 +31,7 @@
     "failure_modes": [
       "NARRATED_VERIFICATION"
     ],
-    "headline": "ABSTAIN (UNVERIFIED) run-90ccfbdd98889d7d: 2/2 required checks executed, 9 rows examined, 1/1 inputs opened",
+    "headline": "ABSTAIN (UNVERIFIED) run-90ccfbdd98889d7d: 2/2 required checks executed, 4 rows examined, 1/1 inputs opened",
     "signature_state": "UNSIGNED"
   },
   "must_mention_found": {
@@ -52,5 +52,30 @@
     "status_must_not_be": true
   },
   "all_match": true,
+  "determinism": {
+    "second_run_byte_identical": {
+      "evidence-manifest.json": true,
+      "ledger.jsonl": true,
+      "receipt.auth.json": true,
+      "receipt.json": true,
+      "report.html": true,
+      "report.md": true,
+      "results.sarif": true,
+      "run.json": true
+    },
+    "all_identical": true,
+    "note": "A second run into a different temp directory with PYTHONHASHSEED=4242, same fixed time."
+  },
+  "receipt_verification": {
+    "ok": true,
+    "content_intact": true,
+    "recomputed_sha256": "82df013f7c60494d4e055aad03faf3d811cd1fa2eb108b55c0214f734a7d50fa",
+    "signature_state": "UNSIGNED",
+    "signature_verified": null,
+    "auth_status": "UNSIGNED",
+    "run_id": "run-90ccfbdd98889d7d",
+    "problems": [],
+    "detail": "no key when written: SCIENCE_GATE_HMAC_KEY_FILE is not set; only the content hash was checked"
+  },
   "does_not_prove": "Passing shows conformance on this declared synthetic fixture only; it does not show scientific validity, and it does not show fitness for any use."
 }

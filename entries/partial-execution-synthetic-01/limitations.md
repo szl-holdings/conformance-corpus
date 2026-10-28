@@ -19,9 +19,14 @@
   this entry uses a required check that could not execute because its evidence was never written.
   A crash in the middle of a check, a timeout, or a ledger with an unterminated invocation are not
   covered.
-- **Primary reason is disputed.** The intended primary reason (PARTIAL_EXECUTION) differs from the
-  recorded one; see `entry.json` `known_failures` and `unresolved_cases`. coverage-debt-synthetic-01
-  intends INSUFFICIENT_EVIDENCE for a run with the same reasons; the corpus has no single rule yet.
+- **Intended outcome unreachable at commit e563fd3.** The intended primary reason and failure mode
+  (PARTIAL_EXECUTION) differ from the recorded ones; see `entry.json` `known_failures` and
+  `unresolved_cases`. Section 17.7 (G2) of the science-gate architecture now gives a labelled skip
+  ABSTAIN with its label's reason, and only an unlabelled skip FAIL / PARTIAL_EXECUTION; no fixture
+  can produce an unlabelled skip through `verify`, because the label rules of section 17.7 give
+  every verify skip path a label, and INPUT_UNAVAILABLE maps to OMITTED_POPULATION. This is a spec
+  contradiction that needs a gate or spec decision. Until then the divergence is a documented gap
+  (`known_failures` and `DOCUMENTED_GAPS`, owner-approved on 2026-10-28); the intended outcome is unchanged.
 - **One author, not reviewed.** `reviewed_by` is empty.
 - **Tool-version bound.** The recorded outcome is for science-gate 0.1.0 at the commit in
   `environment.lock`.

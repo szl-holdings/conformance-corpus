@@ -24,15 +24,16 @@ tool version recorded in `environment.lock`.
   verdicts.
 - **Required checks only.** It does not cover an optional empty check, which is
   shown in the report but does not decide the run.
-- **Empty population only.** A missing or malformed time-sources document is a
-  different case (SKIPPED). This entry covers only a document that parses and
-  holds an empty population.
-- **Disputed across entries.** The intended failure mode (PARTIAL_EXECUTION
-  from a NOT_APPLICABLE required check) conflicts with the position of
-  vacuous-pass-synthetic-01. The intended primary reason (INSUFFICIENT_EVIDENCE)
-  conflicts with the position of partial-execution-synthetic-01, whose run has
-  the same reasons. See `entry.json` `unresolved_cases`. The expected outcome
-  has not been edited.
+- **Undeclared document only.** This entry covers a required check whose
+  document the manifest does not declare (NOT_DECLARED). A declared document
+  with no events (EMPTY_POPULATION) and a missing or malformed one (SKIPPED)
+  are different cases, with different outcomes under section 17.7 of the
+  science-gate architecture, and are not exercised here.
+- **Re-baselined.** On 2026-10-28 the intended outcome changed from ABSTAIN /
+  INSUFFICIENT_EVIDENCE with PARTIAL_EXECUTION to ABSTAIN / OUT_OF_SCOPE with
+  no failure mode, under section 17.7 (G2). The cross-entry conflicts recorded
+  before (with vacuous-pass-synthetic-01 and partial-execution-synthetic-01)
+  are settled by that rule. An independent reviewer should still confirm it.
 - **One tool version.** The recorded run used the science-gate version and
   commit in `environment.lock`.
 - **Unreviewed draft.** It was written by one author and has not been

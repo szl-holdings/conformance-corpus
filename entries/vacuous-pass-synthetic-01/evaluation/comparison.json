@@ -25,14 +25,12 @@
     "reason": "INSUFFICIENT_EVIDENCE",
     "reasons": [
       "INSUFFICIENT_EVIDENCE",
-      "PARTIAL_EXECUTION",
       "UNVERIFIED"
     ],
     "failure_modes": [
-      "PARTIAL_EXECUTION",
       "VACUOUS_PASS"
     ],
-    "headline": "ABSTAIN (INSUFFICIENT_EVIDENCE) run-36a763016ef9da5c: 1/4 required checks executed, 1 rows examined, 1/1 inputs opened",
+    "headline": "ABSTAIN (INSUFFICIENT_EVIDENCE) run-36a763016ef9da5c: 1/4 required checks executed, 0 rows examined, 1/1 inputs opened",
     "signature_state": "UNSIGNED"
   },
   "must_mention_found": {
@@ -40,16 +38,41 @@
     "fixtures/data/readings.csv": true,
     "EMPTY": true,
     "with 0 rows": true,
-    "rows_examined": false
+    "rows_examined": true
   },
   "matches": {
     "status": true,
     "exit_code": true,
     "reason": true,
-    "failure_modes": false,
-    "must_mention": false,
+    "failure_modes": true,
+    "must_mention": true,
     "status_must_not_be": true
   },
-  "all_match": false,
+  "all_match": true,
+  "determinism": {
+    "second_run_byte_identical": {
+      "evidence-manifest.json": true,
+      "ledger.jsonl": true,
+      "receipt.auth.json": true,
+      "receipt.json": true,
+      "report.html": true,
+      "report.md": true,
+      "results.sarif": true,
+      "run.json": true
+    },
+    "all_identical": true,
+    "note": "A second run into a different temp directory with PYTHONHASHSEED=4242, same fixed time."
+  },
+  "receipt_verification": {
+    "ok": true,
+    "content_intact": true,
+    "recomputed_sha256": "d33f9b009598d7034d05e0a115aafb2d88dc85f3700bd90015643ebffea81492",
+    "signature_state": "UNSIGNED",
+    "signature_verified": null,
+    "auth_status": "UNSIGNED",
+    "run_id": "run-36a763016ef9da5c",
+    "problems": [],
+    "detail": "no key when written: SCIENCE_GATE_HMAC_KEY_FILE is not set; only the content hash was checked"
+  },
   "does_not_prove": "Passing shows conformance on this declared synthetic fixture only; it does not show scientific validity, and it does not show fitness for any use."
 }

@@ -104,6 +104,7 @@
             ]
           }
         ],
+        "checker_sha256": "55d55a90755925c7a73eb94d6508eae7c83a90f3772a3c679d465d5d990c7813",
         "claimed_verified": 3,
         "coverage": {
           "bibliography_citations": 3,
@@ -124,8 +125,29 @@
         },
         "entries_claimed_verified": 3,
         "entries_itemized": 3,
+        "falsification": "WITNESSED",
+        "falsifiers": [
+          {
+            "actual": {
+              "execution_state": "CHECKED",
+              "reason": "UNVERIFIED",
+              "verdict": "ABSTAIN"
+            },
+            "case_id": "drop-backing-invocations",
+            "checker_sha256": "55d55a90755925c7a73eb94d6508eae7c83a90f3772a3c679d465d5d990c7813",
+            "control_id": "control:falsifier:citation-log:drop-backing-invocations",
+            "description": "every invocation recorded for C1, the first citation claimed VERIFIED, removed from the log",
+            "expected": {
+              "reason": "UNVERIFIED",
+              "verdict": "ABSTAIN"
+            },
+            "outcome": "REJECTED",
+            "params_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        ],
         "invocation_records": {
           "complete": 3,
+          "impossible_timeline_count": 0,
           "incomplete": [],
           "incomplete_count": 0,
           "state": "RECORDED",
@@ -149,7 +171,17 @@
           "NARRATED": 0,
           "NOT_CLAIMED": 0
         },
-        "scope": "structural only: each claimed verification must point to a complete invocation record (request, response_sha256, retrieved_at); this does not show that any citation is correct",
+        "params_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "scope": "structural only: each claimed verification must point to a complete invocation record (request, response_sha256, retrieved_at) that is possible; this does not show that any citation is correct",
+        "timeline": {
+          "detail": null,
+          "impossible": [],
+          "impossible_count": 0,
+          "invocations_judged": 0,
+          "registration_unknown": 3,
+          "rule": "an invocation retrieved before the cited DOI's registration (registered_at in its frozen record) cannot have verified it, so it backs no claim; invocations whose DOI has no recorded registration are not judged",
+          "state": "ASSESSED"
+        },
         "verifier": {
           "name": "fictional-citation-checker",
           "version": "0.0-synthetic"
@@ -158,7 +190,7 @@
       "execution_state": "CHECKED",
       "failure_modes": [],
       "inputs": [],
-      "invocation_id": "inv-27b6ce963f81",
+      "invocation_id": "inv-282bc7a7f45a",
       "kind": "verification_log",
       "reason": "VERIFIED",
       "required": true,
@@ -316,6 +348,7 @@
           "SOURCE_UNAVAILABLE": 0,
           "VERIFIED_WITHIN_DECLARED_SCOPE": 1
         },
+        "distrusted_prefixes": [],
         "entries": {
           "bytes": 1367,
           "declared": true,
@@ -326,12 +359,12 @@
           "state": "PARSED"
         },
         "frozen": {
-          "bytes": 2844,
+          "bytes": 3438,
           "declared": true,
           "diagnostic": null,
           "path": "fixtures/citations/frozen.json",
           "role": "citations.frozen",
-          "sha256": "0d6b0b030c13ed56a599a6702baead038ca120d3468b627884ccbe9c980af7d5",
+          "sha256": "e4b03e35dd02b8495e8c6cd69cccb726d856b11ae625285ea92f257d79effc98",
           "state": "PARSED"
         },
         "network": {
@@ -361,7 +394,7 @@
         "SOURCE_MISMATCH"
       ],
       "inputs": [],
-      "invocation_id": "inv-751784105fd2",
+      "invocation_id": "inv-3c21e92a517f",
       "kind": "citation_metadata",
       "reason": "SOURCE_MISMATCH",
       "required": true,
@@ -375,6 +408,26 @@
         "DOI_TARGET_MISMATCH: 10.5555/cc-synth.cmm.0003 (cited as C3) reached the work 10.5555/cc-synth.cmm.0030"
       ],
       "evidence": {
+        "canaries": {
+          "10.5555": {
+            "detail": "CANARY_HOLDS: captured NOT_FOUND with body responseCode 100 at 2026-09-20T09:00:00Z",
+            "doi": "10.5555/science-gate-canary-6e3efa96d1da",
+            "handle_response_code": 100,
+            "holds": true,
+            "provenance": {
+              "live_refresh_performed": false,
+              "request_url_or_query": "https://resolver.invalid/api/handles/10.5555/science-gate-canary-6e3efa96d1da",
+              "resolver_identity": "fictional-fixture-resolver",
+              "resolver_schema_version": "fixture-1",
+              "response_sha256": "d27c358584677ea32a7c524622c65811209f47c736183fa2fa5b88fffb269533",
+              "retrieved_at": "2026-09-20T09:00:00Z"
+            },
+            "source": "frozen",
+            "state": "DOI_NOT_RESOLVED_AT_CAPTURE"
+          }
+        },
+        "canary_rule": "every prefix the capture answered needs a frozen canary record, and every prefix with a live DOI_RESOLVED answer needs a live canary <prefix>/science-gate-canary-<sha256(run_id)[:12]>; a canary holds only with body responseCode 100; a canary that resolves is a proven miss (FAIL / BLIND_SPOT) and every DOI under its prefix is SOURCE_UNAVAILABLE; a missing or unconfirmed canary leaves coverage unknown (ABSTAIN / BLIND_SPOT)",
+        "distrusted_prefixes": [],
         "dois_examined": 3,
         "entries": {
           "bytes": 1367,
@@ -386,14 +439,15 @@
           "state": "PARSED"
         },
         "frozen": {
-          "bytes": 2844,
+          "bytes": 3438,
           "declared": true,
           "diagnostic": null,
           "path": "fixtures/citations/frozen.json",
           "role": "citations.frozen",
-          "sha256": "0d6b0b030c13ed56a599a6702baead038ca120d3468b627884ccbe9c980af7d5",
+          "sha256": "e4b03e35dd02b8495e8c6cd69cccb726d856b11ae625285ea92f257d79effc98",
           "state": "PARSED"
         },
+        "live_canaries": {},
         "network": {
           "live": false,
           "opener": "urllib",
@@ -407,6 +461,7 @@
             ],
             "diagnostics": [],
             "doi": "10.5555/cc-synth.cmm.0001",
+            "handle_response_code": null,
             "http_status": 200,
             "provenance": {
               "live_refresh_performed": false,
@@ -426,6 +481,7 @@
             ],
             "diagnostics": [],
             "doi": "10.5555/cc-synth.cmm.0002",
+            "handle_response_code": null,
             "http_status": 200,
             "provenance": {
               "live_refresh_performed": false,
@@ -447,6 +503,7 @@
               "TARGET_MISMATCH: the resolver returned the work 10.5555/cc-synth.cmm.0030"
             ],
             "doi": "10.5555/cc-synth.cmm.0003",
+            "handle_response_code": null,
             "http_status": 200,
             "provenance": {
               "live_refresh_performed": false,
@@ -474,7 +531,7 @@
         "SOURCE_MISMATCH"
       ],
       "inputs": [],
-      "invocation_id": "inv-634be97e511f",
+      "invocation_id": "inv-07d9384249de",
       "kind": "citation_resolver",
       "reason": "SOURCE_MISMATCH",
       "required": true,
@@ -486,6 +543,27 @@
       "check_id": "observations",
       "diagnostics": [],
       "evidence": {
+        "checker_sha256": "4c70ae2861fe2106d090a0c2443951020963525a6ea4296e9f746426d0f00ca0",
+        "falsification": "WITNESSED",
+        "falsifiers": [
+          {
+            "actual": {
+              "execution_state": "CHECKED",
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "case_id": "drop-last-row",
+            "checker_sha256": "4c70ae2861fe2106d090a0c2443951020963525a6ea4296e9f746426d0f00ca0",
+            "control_id": "control:falsifier:observations:drop-last-row",
+            "description": "the last admitted row of each input with an INDEPENDENT expected_rows removed",
+            "expected": {
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "outcome": "REJECTED",
+            "params_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        ],
         "inputs": {
           "observations": {
             "closure": {
@@ -506,6 +584,7 @@
             "state": "PARSED"
           }
         },
+        "params_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
         "rows_admitted_total": 3
       },
       "execution_state": "CHECKED",
@@ -513,7 +592,7 @@
       "inputs": [
         "observations"
       ],
-      "invocation_id": "inv-0ab4de6becc9",
+      "invocation_id": "inv-0779cb57da0f",
       "kind": "row_count",
       "reason": "VERIFIED",
       "required": true,
@@ -542,6 +621,87 @@
     }
   ],
   "completed_at": "2026-09-26T00:00:00Z",
+  "controls": {
+    "canary": {
+      "holds": true,
+      "must_fail": {
+        "invocation_id": "inv-07f62e85d39a",
+        "reason": "SOURCE_MISMATCH",
+        "verdict": "FAIL"
+      },
+      "must_pass": {
+        "invocation_id": "inv-66822bc168e5",
+        "reason": "VERIFIED",
+        "verdict": "PASS"
+      }
+    },
+    "claim_join": null,
+    "comparator_self_test": {
+      "holds": true,
+      "invocation_id": "inv-7974776933c4",
+      "pairs": [
+        {
+          "actual": "DISAGREES",
+          "claim": "0.15",
+          "expected": "DISAGREES",
+          "stored": "0.14"
+        },
+        {
+          "actual": "EXACT",
+          "claim": "12.4",
+          "expected": "EXACT",
+          "stored": "12.40"
+        },
+        {
+          "actual": "AGREES_AT_STATED_PRECISION",
+          "claim": "0.1",
+          "expected": "AGREES_AT_STATED_PRECISION",
+          "stored": "0.14"
+        }
+      ]
+    },
+    "falsifiers": {
+      "NO_CASE": [],
+      "NO_GENERATOR": [],
+      "REFUTED": [],
+      "UNWITNESSED": [],
+      "WITNESSED": [
+        "citation-log",
+        "observations"
+      ],
+      "invocations": 2
+    },
+    "min_discrimination": null,
+    "pins": {
+      "changed": [],
+      "holds": true,
+      "pinned": 7,
+      "writes": []
+    },
+    "plan": {
+      "checks_planned": 4,
+      "entry_sha256": "c19be5c70501225d7afa4e358372459bb40b46ad83b69e40a8e6b28d7cf7c6b8",
+      "inputs_planned": 1,
+      "manifest_sha256": "9e1013e14cdaf982bb90a5ef70620148d07a1b683bfe997e8a3cab9b2bae9d33",
+      "pins": 7
+    },
+    "verdict_transitions": [
+      {
+        "after": "PASS",
+        "before": "NONE",
+        "reason": "VERIFIED",
+        "source": "check:citation-log",
+        "step": 1
+      },
+      {
+        "after": "FAIL",
+        "before": "PASS",
+        "reason": "SOURCE_MISMATCH",
+        "source": "check:citation-metadata",
+        "step": 3
+      }
+    ]
+  },
   "counters": {
     "checks_abstained": 0,
     "checks_declared": 4,
@@ -549,15 +709,18 @@
     "checks_executed": 4,
     "checks_expected": 4,
     "checks_failed": 2,
+    "checks_justified": 0,
     "checks_not_applicable": 0,
     "checks_passed": 2,
+    "checks_shortfall": 0,
     "checks_skipped": 0,
+    "control_invocations": 5,
     "expected_inputs": 1,
     "inputs_discovered": 1,
     "inputs_examined": 1,
     "inputs_opened": 1,
     "inputs_parsed": 1,
-    "rows_examined": 12
+    "rows_examined": 3
   },
   "declared": {
     "checks": [
@@ -624,13 +787,13 @@
       "state": "PARSED"
     },
     {
-      "bytes": 2844,
+      "bytes": 3438,
       "diagnostic": null,
       "path": "fixtures/citations/frozen.json",
       "roles": [
         "citations.frozen"
       ],
-      "sha256": "0d6b0b030c13ed56a599a6702baead038ca120d3468b627884ccbe9c980af7d5",
+      "sha256": "e4b03e35dd02b8495e8c6cd69cccb726d856b11ae625285ea92f257d79effc98",
       "state": "PARSED"
     },
     {
@@ -645,11 +808,11 @@
     }
   ],
   "evidence_boundary": {
-    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 8 entries; ledger head 26ad8a89e39dfff986ae98780f7d5903b7a7339eea71023d95ea926b748c8864; evidence manifest d2090cfeb13bad06905413703091ade6b1969178ef81b445aed160a8f25ec922.",
-    "performance": "Run status FAIL (SOURCE_MISMATCH) from 4 check result(s): 2 PASS, 2 FAIL, 0 ABSTAIN, 0 ERROR; 9 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
+    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 19 entries; ledger head 624edec45fbc085e2dd5476bec9f874c9e203693c81f7a3321a789e415a79f05; evidence manifest 4744f7dd1fd3a0229d21ce9c9033bf3c1bdd0957ad6781d23b8f5a45a7fe5297.",
+    "performance": "CHECKER: falsifier witnesses 2 WITNESSED, 0 REFUTED, 0 UNWITNESSED, 0 NO_CASE, 0 NO_GENERATOR (2 falsifier invocation(s)); must-fail/must-pass canary held; comparator self-test held. RUN: Run status FAIL (SOURCE_MISMATCH) from 4 check result(s): 2 PASS, 2 FAIL, 0 ABSTAIN, 0 ERROR; 15 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
     "scientific_validity": "NOT ESTABLISHED"
   },
-  "evidence_manifest_sha256": "d2090cfeb13bad06905413703091ade6b1969178ef81b445aed160a8f25ec922",
+  "evidence_manifest_sha256": "4744f7dd1fd3a0229d21ce9c9033bf3c1bdd0957ad6781d23b8f5a45a7fe5297",
   "exit_code": 1,
   "expected_inputs": 1,
   "failure_modes": [
@@ -680,13 +843,25 @@
   "invariants": [
     {
       "applicable": true,
-      "detail": "check results marked CHECKED: 4 claimed <= 4 invoked; citation-log: claimed_verified vs complete invocation records: 3 claimed <= 3 invoked; citation-log: entries claimed VERIFIED vs entries with a record: 3 claimed <= 3 invoked",
+      "detail": "the must-fail canary failed and its known-good twin passed",
+      "holds": true,
+      "name": "canary_controls_hold"
+    },
+    {
+      "applicable": true,
+      "detail": "check results marked CHECKED: 4 claimed <= 9 invoked; citation-log: claimed_verified vs complete invocation records: 3 claimed <= 3 invoked; citation-log: entries claimed VERIFIED vs entries with a record: 3 claimed <= 3 invoked",
       "holds": true,
       "name": "checked_claims_le_invocations"
     },
     {
       "applicable": true,
-      "detail": "4 invocation(s) each reached exactly one terminal result",
+      "detail": "3 known pairs compared as expected",
+      "holds": true,
+      "name": "comparator_self_test"
+    },
+    {
+      "applicable": true,
+      "detail": "9 invocation(s) each reached exactly one terminal result",
       "holds": true,
       "name": "every_invocation_has_terminal_result"
     },
@@ -704,13 +879,19 @@
     },
     {
       "applicable": true,
+      "detail": "7 pinned file(s) unchanged and never written during the run",
+      "holds": true,
+      "name": "harness_pins_intact"
+    },
+    {
+      "applicable": true,
       "detail": "2 INDEPENDENT closure(s) hold",
       "holds": true,
       "name": "input_accounting_closure"
     },
     {
       "applicable": true,
-      "detail": "8 entries chain to head 26ad8a89e39dfff986ae98780f7d5903b7a7339eea71023d95ea926b748c8864",
+      "detail": "19 entries chain to head 624edec45fbc085e2dd5476bec9f874c9e203693c81f7a3321a789e415a79f05",
       "holds": true,
       "name": "ledger_chain_intact"
     },
@@ -728,19 +909,37 @@
     },
     {
       "applicable": true,
-      "detail": "rows_examined=12",
+      "detail": "rows_examined=3 (distinct data rows of declared inputs)",
       "holds": true,
       "name": "pass_requires_examined_rows"
+    },
+    {
+      "applicable": true,
+      "detail": "2 PASS result(s) each carry a ledger-backed falsifier witness",
+      "holds": true,
+      "name": "pass_requires_falsifier_witness"
     },
     {
       "applicable": true,
       "detail": "every PASS carries non-empty, hashed evidence",
       "holds": true,
       "name": "pass_requires_nonempty_evidence"
+    },
+    {
+      "applicable": true,
+      "detail": "7 planned item(s) each ran exactly once",
+      "holds": true,
+      "name": "plan_closure"
+    },
+    {
+      "applicable": true,
+      "detail": "the recorded PLAN equals the plan the manifest implies",
+      "holds": true,
+      "name": "plan_matches_manifest"
     }
   ],
-  "ledger_head_sha256": "26ad8a89e39dfff986ae98780f7d5903b7a7339eea71023d95ea926b748c8864",
-  "ledger_length": 8,
+  "ledger_head_sha256": "624edec45fbc085e2dd5476bec9f874c9e203693c81f7a3321a789e415a79f05",
+  "ledger_length": 19,
   "manifest": {
     "file": "manifest.json",
     "issues": [],
@@ -758,12 +957,12 @@
     "SOURCE_MISMATCH"
   ],
   "receipt": {
-    "content_sha256": "a45146a3b5ee72f5ff2c39f998d30189dd30863acfb2475332d79082648c208d",
+    "content_sha256": "383502fc327348a30454a216b43b00c13541b90ff3e1ac0623f9a7674582053d",
     "key_id": null,
     "signature_state": "UNSIGNED"
   },
-  "rows_examined": 12,
-  "run_id": "run-350cb2fc2f3085dd",
+  "rows_examined": 3,
+  "run_id": "run-14e19b81fbfed4fc",
   "schema": "science-gate-run/v1",
   "started_at": "2026-09-26T00:00:00Z",
   "status": "FAIL",

@@ -65,7 +65,8 @@
   "unresolved_cases": [
     "A citation whose DOI, title and author set point at three different frozen works (CONFLATED_ENTRY) is not exercised here.",
     "Given-name and author-order differences (AUTHOR_ORDER_MISMATCH) are not exercised here.",
-    "Live resolution (--live) is not exercised; the frozen capture is taken as given."
+    "Live resolution (--live) is not exercised; the frozen capture is taken as given.",
+    "2026-10-28 fixture repair: fixtures/citations/frozen.json gained a canary record for prefix 10.5555 (10.5555/science-gate-canary-6e3efa96d1da: canary true, outcome NOT_FOUND, handle_response_code 100, the six provenance fields). ARCHITECTURE.md 17.14 requires a holding frozen canary for every prefix the capture answered; without it citation_resolver added ABSTAIN / BLIND_SPOT with VACUOUS_PASS (CANARY_NOT_HELD / NO_CANARY)."
   ],
   "human_review": {
     "required": true,
@@ -80,7 +81,7 @@
   ],
   "provenance": {
     "created": "2026-09-29",
-    "generator": "Generated for this corpus by a Claude Code subagent (model claude-opus-5-5, workstream 3) with a Python generator script run from an OS temp directory. Every name, DOI, site and value is invented.",
+    "generator": "Generated for this corpus by a Claude Code subagent (model claude-opus-5-5, workstream 3) with a Python generator script run from an OS temp directory. Every name, DOI, site and value is invented. Refreshed on 2026-10-28: evaluation/, receipts/ and environment.lock were regenerated against scientific-evidence-gate commit e563fd301d71; see the corpus README, 'Refresh (2026-10-28)'.",
     "reviewed_by": []
   }
 }

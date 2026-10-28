@@ -1,8 +1,21 @@
 {
   "purpose": "Repaired-fixture control. A temp copy of this entry had only its defect undone and was run the same way. A PASS here shows that the entry's recorded outcome comes from the defect, not from an unrelated problem in the fixtures. The corpus copy was not modified.",
   "changes_applied_to_temp_copy": [
-    "fixtures/time/events.json: one event inside the April 2030 window (local 08:00 at +02:00 = 06:00Z)"
+    "manifest.json: declares time_sources fixtures/time/events.json (the defect is that the corpus copy declares none)",
+    "fixtures/time/events.json: added, with one event inside the April 2030 window (local 08:00 at +02:00 = 06:00Z)"
   ],
+  "repaired_fixture": {
+    "manifest.json": {
+      "sha256": "663d7597f7eef6d2e266300bd51bfa69e4777a98e1e15b88c60599c4a128d9b9",
+      "bytes": 1512,
+      "content": "{\n  \"schema\": \"science-gate-manifest/v1\",\n  \"run_label\": \"corpus-coverage-debt-synthetic-01\",\n  \"inputs\": [\n    {\n      \"id\": \"readings\",\n      \"path\": \"fixtures/readings.csv\",\n      \"format\": \"csv\",\n      \"required\": true,\n      \"row_key\": [\n        \"reading_id\"\n      ],\n      \"expected_rows\": 4,\n      \"denominator_source\": \"INDEPENDENT\",\n      \"sha256\": \"6717b12e09e1b262927e09e3619b12e1ed9a11d9aa114e7b858a5f663d2c91b9\"\n    }\n  ],\n  \"time_sources\": \"fixtures/time/events.json\",\n  \"checks\": [\n    {\n      \"id\": \"rows\",\n      \"kind\": \"row_count\",\n      \"version\": \"1\",\n      \"required\": true,\n      \"inputs\": [\n        \"readings\"\n      ]\n    },\n    {\n      \"id\": \"columns\",\n      \"kind\": \"required_columns\",\n      \"version\": \"1\",\n      \"required\": true,\n      \"inputs\": [\n        \"readings\"\n      ],\n      \"params\": {\n        \"columns\": [\n          \"reading_id\",\n          \"station\",\n          \"level_cm\"\n        ]\n      }\n    },\n    {\n      \"id\": \"duplicates\",\n      \"kind\": \"duplicate_rows\",\n      \"version\": \"1\",\n      \"required\": true,\n      \"inputs\": [\n        \"readings\"\n      ]\n    },\n    {\n      \"id\": \"time_window\",\n      \"kind\": \"time_source\",\n      \"version\": \"1\",\n      \"required\": true\n    }\n  ],\n  \"corpus\": {\n    \"access_class\": \"SYNTHETIC\",\n    \"permissions\": {\n      \"evaluation_allowed\": true,\n      \"training_allowed\": false,\n      \"redistribution_allowed\": false,\n      \"derivatives_allowed\": false,\n      \"public_display_allowed\": false,\n      \"commercial_use_allowed\": false\n    }\n  }\n}\n"
+    },
+    "fixtures/time/events.json": {
+      "sha256": "3a16237f476a1587249401ab9663f177929924d9e4d4a6b4c56cb81ef135a5d8",
+      "bytes": 344,
+      "content": "{\n  \"schema\": \"science-gate-time-sources/v1\",\n  \"window\": {\n    \"start\": \"2030-04-01T00:00:00Z\",\n    \"end\": \"2030-04-30T23:59:59Z\"\n  },\n  \"events\": [\n    {\n      \"id\": \"cd-syn-event-01\",\n      \"local_time\": \"2030-04-15T08:00:00\",\n      \"timezone\": \"+02:00\",\n      \"utc\": \"2030-04-15T06:00:00Z\",\n      \"source\": \"fictional-logger-a\"\n    }\n  ]\n}\n"
+    }
+  },
   "expected": {
     "status": "PASS",
     "exit_code": 0,
@@ -13,7 +26,7 @@
     "exit_code": 0,
     "reason": "VERIFIED",
     "failure_modes": [],
-    "headline": "PASS (VERIFIED) run-b8d59f93ad7b877f: 4/4 required checks executed, 5 rows examined, 1/1 inputs opened"
+    "headline": "PASS (VERIFIED) run-d18a721309c72680: 4/4 required checks executed, 4 rows examined, 1/1 inputs opened"
   },
   "match": true,
   "does_not_prove": "A control PASS shows conformance on declared fixtures only. It does not establish scientific validity or fitness for use."

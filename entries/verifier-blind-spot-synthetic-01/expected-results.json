@@ -27,7 +27,7 @@
     "M04_duplicate_row",
     "check:duplicate_rows",
     "the mutant verified as PASS",
-    "8/9"
+    "9/10"
   ],
   "must_mention_in": "mutation-report.md",
   "failure_modes_match": "exact: mutation-report.json has no top-level failure_modes field; it must be absent or equal this (empty) list",
@@ -53,22 +53,23 @@
       "M11_changed_numeric_formatting",
       "M15_skipped_required_checker",
       "M16_truncated_ledger",
-      "M17_reordered_hash_chain"
+      "M17_reordered_hash_chain",
+      "M21_removed_plan"
     ],
     "counts_in_json": {
-      "applicable_mutations": 9,
-      "executed_mutations": 9,
-      "detected_mutations": 8,
+      "applicable_mutations": 10,
+      "executed_mutations": 10,
+      "detected_mutations": 9,
       "escaped_mutations": 1,
       "skipped_mutations": 0,
       "not_applicable_mutations": 11
     },
-    "sensitivity_fraction": "8/9",
-    "counts_note": "The counts follow from the 20 operators of science-gate 0.1.0 (ARCHITECTURE.md section 10) and from which of them find a target in this tree. The blind-spot set, exactly [M04_duplicate_row], is the part of this entry that is independent of the operator set.",
+    "sensitivity_fraction": "9/10",
+    "counts_note": "The counts follow from the 21 operators of science-gate at commit e563fd3 (ARCHITECTURE.md 17.12 added M21_removed_plan to the 20 of 0.1.0) and from which of them find a target in this tree. Until 2026-10-28 they were 9 applicable and executed, 8 detected (8/9); the update was owner-approved on 2026-10-28. The blind-spot set, exactly [M04_duplicate_row], is the part of this entry that is independent of the operator set.",
     "must_not": [
       "status PASS or ABSTAIN",
       "M04_duplicate_row counted as detected",
-      "a sensitivity of 1 or 9/9",
+      "a sensitivity of 1 or 10/10",
       "a skipped or not-applicable operator counted as detected"
     ]
   },

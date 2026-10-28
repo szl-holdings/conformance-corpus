@@ -1,8 +1,9 @@
-ABSTAIN (INSUFFICIENT_EVIDENCE) run-36a763016ef9da5c: 1/4 required checks executed, 1 rows examined, 1/1 inputs opened
+ABSTAIN (INSUFFICIENT_EVIDENCE) run-36a763016ef9da5c: 1/4 required checks executed, 0 rows examined, 1/1 inputs opened
 <tmp>/run\run.json
 <tmp>/run\report.md
 <tmp>/run\ledger.jsonl
 <tmp>/run\evidence-manifest.json
 <tmp>/run\receipt.json
+<tmp>/run\receipt.auth.json
 <tmp>/run\results.sarif
 <tmp>/run\report.html

@@ -4,5 +4,6 @@ ABSTAIN (INSUFFICIENT_EVIDENCE) run-ebeaf9c4a4607f57: 3/4 required checks execut
 <tmp>/run\ledger.jsonl
 <tmp>/run\evidence-manifest.json
 <tmp>/run\receipt.json
+<tmp>/run\receipt.auth.json
 <tmp>/run\results.sarif
 <tmp>/run\report.html

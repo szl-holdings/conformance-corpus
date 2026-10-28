@@ -5,7 +5,7 @@
   "failure_mode": "BLIND_SPOT",
   "synthetic": true,
   "scientific_question": "Illustrative only (the setting is fictional): do the invented lantern readings of the fictional Brassmoor stations agree with the declared values? No real station, instrument, person or measurement is described.",
-  "claim_tested": "When `science-gate mutate` runs on an accepting evidence tree whose declared checks (row_count, required_columns, numeric_agreement) include no duplicate_rows check and no independent row count, the mutation operator M04_duplicate_row is applicable and executed. Its mutant, with record BM-04 duplicated and the digest re-declared, still verifies as PASS, so the report marks M04_duplicate_row as escaped (blind_spot true). The overall status is FAIL with reason BLIND_SPOT and exit code 1. Every other executed operator is detected by its expected detector, and the sensitivity figure is reported as 8/9 rather than rounded up or hidden.",
+  "claim_tested": "When `science-gate mutate` runs on an accepting evidence tree whose declared checks (required_columns, numeric_agreement) include no duplicate_rows check and no independent row count, the mutation operator M04_duplicate_row is applicable and executed. Its mutant, with record BM-04 duplicated and the digest re-declared, still verifies as PASS, so the report marks M04_duplicate_row as escaped (blind_spot true). The overall status is FAIL with reason BLIND_SPOT and exit code 1. Every other executed operator is detected by its expected detector, and the sensitivity figure is reported as 9/10 (21 operators, ARCHITECTURE.md 17.12; 8/9 under the 20 operators of 0.1.0 until 2026-10-28) rather than rounded up or hidden.",
   "falsified_by": "Running `science-gate mutate manifest.json` from this entry directory yields any status other than FAIL, any exit code other than 1, a reason other than BLIND_SPOT, a blind-spot set other than exactly [M04_duplicate_row], an M04 mutant that is not reported as verifying PASS, or a mutation-report.md that does not name M04_duplicate_row and its expected detector check:duplicate_rows.",
   "data_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: no third-party data and no third-party rights.",
   "scientific_owner": "The corpus maintainers (generated for this corpus). SYNTHETIC: the scenario is invented and illustrative only and makes no scientific claim; the maintainers answer for the fixture's intent only.",
@@ -44,14 +44,16 @@
       "M04_duplicate_row",
       "check:duplicate_rows",
       "the mutant verified as PASS",
-      "8/9"
+      "9/10"
     ]
   },
   "known_failures": [],
   "unresolved_cases": [
     "In a first draft of this fixture the numeric_agreement check cited BM-04, the record M04 duplicates. The mutant then ABSTAINed (REQUIRES_HUMAN_REVIEW, ambiguous key), and M04 was still reported as a blind spot because its expected detector did not fire. That 'caught for the wrong reason' variant is a distinct property and deserves its own entry. It is not covered here.",
     "The expected counts (9 applicable and executed, 8 detected, 1 escaped, 11 not applicable) depend on the 20 operators of science-gate 0.1.0. A tool with a different operator set would need its own expected counts, but the blind-spot set must still be exactly [M04_duplicate_row].",
-    "science-gate mutate writes no receipt. The receipt in receipts/ comes from a supplementary `verify` of the same manifest, which is the accepting baseline (PASS)."
+    "science-gate mutate writes no receipt. The receipt in receipts/ comes from a supplementary `verify` of the same manifest, which is the accepting baseline (PASS).",
+    "2026-10-28 fixture repair: the row_count check 'rows' was removed from manifest.json. Under ARCHITECTURE.md 17.5 a row_count PASS needs a falsifier witness, and its only case (drop-last-row) needs an INDEPENDENT expected_rows; this input deliberately has none (an independent count would also expose M04 through closure), so the check could only ABSTAIN / BLIND_SPOT (FALSIFIER_NO_CASE) and the accepting baseline was invalid (INVALID_BASELINE). Without it the baseline verifies as PASS with witnessed required_columns and numeric_agreement checks.",
+    "Changed 2026-10-28 (owner-approved on 2026-10-28): the operator-count expectations were re-baselined to the run against scientific-evidence-gate commit e563fd3. ARCHITECTURE.md 17.12 adds operator M21_removed_plan (21 operators instead of 20); it applies to this tree and is detected (invariant:plan_closure). must_mention '8/9' became '9/10', and expected-results.json additional_expectations now expect 10 applicable and executed, 9 detected, 1 escaped, 0 skipped and 11 not applicable, with M21_removed_plan among the detected ids. The blind-spot set is still exactly [M04_duplicate_row]."
   ],
   "human_review": {
     "required": true,
@@ -65,7 +67,7 @@
   ],
   "provenance": {
     "created": "2026-09-29",
-    "generator": "Specified by the corpus author (an AI assistant working in this workspace) and written by a Python standard-library script that computed every SHA-256 from the exact bytes it wrote. All names and values are invented; nothing is derived from a real dataset, paper, person or institution. Expected results were written from the intended behaviour and then confirmed by a recorded run (evaluation/).",
+    "generator": "Specified by the corpus author (an AI assistant working in this workspace) and written by a Python standard-library script that computed every SHA-256 from the exact bytes it wrote. All names and values are invented; nothing is derived from a real dataset, paper, person or institution. Expected results were written from the intended behaviour and then confirmed by a recorded run (evaluation/). Refreshed on 2026-10-28: evaluation/, receipts/ and environment.lock were regenerated against scientific-evidence-gate commit e563fd301d71; see the corpus README, 'Refresh (2026-10-28)'.",
     "reviewed_by": []
   }
 }

@@ -1,7 +1,8 @@
 $ python -m science_gate.cli mutate manifest.json --output <tmp>/mutate
-FAIL (INVALID_BASELINE) mut-3f40cabadd6f265e: the accepting baseline was FAIL (SOURCE_MISMATCH). No sensitivity figure was produced because the verifier failed its accepting baseline.
+FAIL (INVALID_BASELINE) mut-f2502c7c53bea537: the accepting baseline was FAIL (SOURCE_MISMATCH). No sensitivity figure was produced because the verifier failed its accepting baseline.
 <tmp>/mutate/mutation-report.json
 <tmp>/mutate/mutation-report.md
+<tmp>/mutate/mutation-report.html
 [exit code 1]
 
 $ python -m science_gate.cli verify manifest.json --output <tmp>/verify
@@ -11,6 +12,7 @@ FAIL (SOURCE_MISMATCH) run-debea99fd49b07b0: 4/4 required checks executed, 4 row
 <tmp>/verify/ledger.jsonl
 <tmp>/verify/evidence-manifest.json
 <tmp>/verify/receipt.json
+<tmp>/verify/receipt.auth.json
 <tmp>/verify/results.sarif
 <tmp>/verify/report.html
 [exit code 1]

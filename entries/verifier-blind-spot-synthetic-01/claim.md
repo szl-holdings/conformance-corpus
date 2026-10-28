@@ -11,11 +11,15 @@
 The claim is about the **mutation harness**, not about the world.
 
 The evidence tree verifies as **PASS**, so the baseline is valid. It
-declares three checks:
+declares two checks, each with a falsifier witness:
 
-- `row_count`
 - `required_columns`
 - `numeric_agreement`, citing records BM-01 and BM-02
+
+(Until 2026-10-28 it also declared a `row_count` check. Under section 17.5
+of the science-gate architecture a row count with no INDEPENDENT expectation
+has no falsifier case and cannot PASS, so it made the baseline invalid; it
+was removed. See `entry.json` `unresolved_cases`.)
 
 It declares **no `duplicate_rows` check**. Its input declares **no
 independent row count**. So nothing in the declared evaluation is in a
@@ -32,7 +36,11 @@ do all of the following:
    (`blind_spot: true`).
 3. Report overall **FAIL** with reason **BLIND_SPOT**, exit code **1**.
 4. Report every other executed operator as detected by its *expected*
-   detector. The sensitivity is **8/9**, not rounded up and not hidden.
+   detector. The sensitivity is **9/10**, not rounded up and not hidden.
+   (Until 2026-10-28 this read 8/9, under the 20 operators of science-gate
+   0.1.0. Section 17.12 added M21_removed_plan, which applies to this tree
+   and is detected, so the sensitivity is **9/10**; the update was
+   owner-approved on 2026-10-28.)
 
 The blind-spot set must be exactly `[M04_duplicate_row]`.
 

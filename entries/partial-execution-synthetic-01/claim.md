@@ -27,7 +27,7 @@ ABSTAIN, not FAIL: nothing was contradicted. One required check simply never ran
 
 ## Recorded result
 
-The recorded run returns ABSTAIN, exit 2, failure modes PARTIAL_EXECUTION, and mentions every required string, but its primary reason is **INSUFFICIENT_EVIDENCE**, not PARTIAL_EXECUTION. `expected-results.json` was not changed to match. See `entry.json` `known_failures` and `unresolved_cases`.
+The run against science-gate commit 7ec36c6 returned ABSTAIN, exit 2, failure modes PARTIAL_EXECUTION, and mentioned every required string, but its primary reason was **INSUFFICIENT_EVIDENCE**, not PARTIAL_EXECUTION. `expected-results.json` was not changed to match. See `entry.json` `known_failures` and `unresolved_cases`. The run against commit e563fd3 (refreshed 2026-10-28) returns ABSTAIN, exit 2, primary reason INSUFFICIENT_EVIDENCE and failure modes **OMITTED_POPULATION** only, and its report no longer mentions PARTIAL_EXECUTION: the skipped check now carries the closed-vocabulary label INPUT_UNAVAILABLE (section 17.7 of the science-gate architecture). Section 17.7 (G2) re-baselines this category to an unlabelled skip, FAIL / PARTIAL_EXECUTION, which no fixture can produce through `verify`, so the intended outcome was left unchanged for a reviewer. See `entry.json` `known_failures` and `unresolved_cases`.
 
 ## What passing does not prove
 

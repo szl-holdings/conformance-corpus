@@ -1,8 +1,9 @@
-FAIL (SOURCE_MISMATCH) run-7e468bf65c2d53c1: 3/3 required checks executed, 6 rows examined, 1/1 inputs opened
+FAIL (SOURCE_MISMATCH) run-7e468bf65c2d53c1: 3/3 required checks executed, 3 rows examined, 1/1 inputs opened
 <tmp>\run.json
 <tmp>\report.md
 <tmp>\ledger.jsonl
 <tmp>\evidence-manifest.json
 <tmp>\receipt.json
+<tmp>\receipt.auth.json
 <tmp>\results.sarif
 <tmp>\report.html

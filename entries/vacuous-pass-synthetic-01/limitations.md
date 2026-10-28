@@ -18,9 +18,9 @@
 - **One shape of emptiness.** Only a header-only CSV is covered. Empty JSON inputs, filters that exclude
   every row, and checks whose scope is empty for other reasons are not.
 - **One author, not reviewed.** `reviewed_by` is empty. The intended failure-mode set and the
-  `rows_examined` expectation are the author's position and are disputed by the recorded run (see
-  `entry.json` `known_failures` and `unresolved_cases`). coverage-debt-synthetic-01 expects the
-  opposite treatment of NOT_APPLICABLE required checks; the corpus has no single rule yet.
+  `rows_examined` expectation are the author's position. The run against commit 7ec36c6 disputed
+  both; the run against commit e563fd3 agrees with both, because section 17.7 of the science-gate
+  architecture (G1, G2) settled the rule (see `entry.json` `unresolved_cases`).
 - **Tool-version bound.** The recorded outcome is for science-gate 0.1.0 at the commit in
   `environment.lock`; other versions may differ.
 - **No redistribution yet.** No license has been chosen (NOASSERTION); redistribution is not allowed.

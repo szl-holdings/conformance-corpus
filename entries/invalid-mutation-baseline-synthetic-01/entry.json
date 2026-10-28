@@ -65,7 +65,7 @@
   ],
   "provenance": {
     "created": "2026-09-29",
-    "generator": "Specified by the corpus author (an AI assistant working in this workspace) and written by a Python standard-library script that computed every SHA-256 from the exact bytes it wrote. All names and values are invented; nothing is derived from a real dataset, paper, person or institution. Expected results were written from the intended behaviour and then confirmed by a recorded run (evaluation/).",
+    "generator": "Specified by the corpus author (an AI assistant working in this workspace) and written by a Python standard-library script that computed every SHA-256 from the exact bytes it wrote. All names and values are invented; nothing is derived from a real dataset, paper, person or institution. Expected results were written from the intended behaviour and then confirmed by a recorded run (evaluation/). Refreshed on 2026-10-28: evaluation/, receipts/ and environment.lock were regenerated against scientific-evidence-gate commit e563fd301d71; see the corpus README, 'Refresh (2026-10-28)'.",
     "reviewed_by": []
   }
 }

@@ -24,7 +24,8 @@ UNSIGNED receipt. Then compare with `../expected-results.json`:
 - `stdout.txt`: what science-gate printed (paths replaced by `<tmp>`; Windows CRLF line endings
   normalized to LF)
 - `report.md`, `run.json`: copied from the run directory byte for byte (they contained no local path)
-- `comparison.json`: the intended outcome against the recorded one, field by field
+- `comparison.json`: the intended outcome against the recorded one, field by field, a second run
+  with `PYTHONHASHSEED=4242` compared byte for byte, and the receipt re-check
 
 | field | intended (expected-results.json) | recorded run | match |
 |---|---|---|---|

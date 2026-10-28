@@ -84,10 +84,31 @@
       "check_id": "columns",
       "diagnostics": [],
       "evidence": {
+        "checker_sha256": "2a2867d1c7f0a1829b582c3b0ed22ae5c5aa8ee0e471be78c50f583710adbbef",
         "columns": [
           "reading_id",
           "station",
           "level_cm"
+        ],
+        "falsification": "WITNESSED",
+        "falsifiers": [
+          {
+            "actual": {
+              "execution_state": "CHECKED",
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "case_id": "drop-column",
+            "checker_sha256": "2a2867d1c7f0a1829b582c3b0ed22ae5c5aa8ee0e471be78c50f583710adbbef",
+            "control_id": "control:falsifier:columns:drop-column",
+            "description": "declared column 'reading_id' removed from the header and every record",
+            "expected": {
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "outcome": "REJECTED",
+            "params_sha256": "f724f709c910b313a4c72cda36021152fc950b857e8cfb36819287f1b78e3320"
+          }
         ],
         "inputs": {
           "readings": {
@@ -101,14 +122,15 @@
             "sha256": "6717b12e09e1b262927e09e3619b12e1ed9a11d9aa114e7b858a5f663d2c91b9",
             "state": "PARSED"
           }
-        }
+        },
+        "params_sha256": "f724f709c910b313a4c72cda36021152fc950b857e8cfb36819287f1b78e3320"
       },
       "execution_state": "CHECKED",
       "failure_modes": [],
       "inputs": [
         "readings"
       ],
-      "invocation_id": "inv-3bccffb21ed6",
+      "invocation_id": "inv-9caad6d837f5",
       "kind": "required_columns",
       "reason": "VERIFIED",
       "required": true,
@@ -120,6 +142,27 @@
       "check_id": "duplicates",
       "diagnostics": [],
       "evidence": {
+        "checker_sha256": "0f05cd7da6e67d0de6378ce239962977a5ebcbae983540fe36973608b9afebf0",
+        "falsification": "WITNESSED",
+        "falsifiers": [
+          {
+            "actual": {
+              "execution_state": "CHECKED",
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "case_id": "duplicate-first-row",
+            "checker_sha256": "0f05cd7da6e67d0de6378ce239962977a5ebcbae983540fe36973608b9afebf0",
+            "control_id": "control:falsifier:duplicates:duplicate-first-row",
+            "description": "a copy of the first admitted row appended to each input",
+            "expected": {
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "outcome": "REJECTED",
+            "params_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        ],
         "inputs": {
           "readings": {
             "duplicate_key_groups": 0,
@@ -134,14 +177,15 @@
             "sha256": "6717b12e09e1b262927e09e3619b12e1ed9a11d9aa114e7b858a5f663d2c91b9",
             "state": "PARSED"
           }
-        }
+        },
+        "params_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
       },
       "execution_state": "CHECKED",
       "failure_modes": [],
       "inputs": [
         "readings"
       ],
-      "invocation_id": "inv-9418e70a4891",
+      "invocation_id": "inv-1ed386bd6822",
       "kind": "duplicate_rows",
       "reason": "VERIFIED",
       "required": true,
@@ -153,6 +197,27 @@
       "check_id": "rows",
       "diagnostics": [],
       "evidence": {
+        "checker_sha256": "4c70ae2861fe2106d090a0c2443951020963525a6ea4296e9f746426d0f00ca0",
+        "falsification": "WITNESSED",
+        "falsifiers": [
+          {
+            "actual": {
+              "execution_state": "CHECKED",
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "case_id": "drop-last-row",
+            "checker_sha256": "4c70ae2861fe2106d090a0c2443951020963525a6ea4296e9f746426d0f00ca0",
+            "control_id": "control:falsifier:rows:drop-last-row",
+            "description": "the last admitted row of each input with an INDEPENDENT expected_rows removed",
+            "expected": {
+              "reason": "SOURCE_MISMATCH",
+              "verdict": "FAIL"
+            },
+            "outcome": "REJECTED",
+            "params_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+          }
+        ],
         "inputs": {
           "readings": {
             "closure": {
@@ -173,6 +238,7 @@
             "state": "PARSED"
           }
         },
+        "params_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
         "rows_admitted_total": 4
       },
       "execution_state": "CHECKED",
@@ -180,7 +246,7 @@
       "inputs": [
         "readings"
       ],
-      "invocation_id": "inv-f66509e1f730",
+      "invocation_id": "inv-90625c1b68e0",
       "kind": "row_count",
       "reason": "VERIFIED",
       "required": true,
@@ -191,29 +257,26 @@
     {
       "check_id": "time_window",
       "diagnostics": [
-        "the time sources list no events"
+        "the manifest declares no time_sources"
       ],
       "evidence": {
         "document": {
-          "bytes": 153,
-          "declared": true,
+          "bytes": null,
+          "declared": false,
           "diagnostic": null,
-          "path": "fixtures/time/events.json",
+          "path": null,
           "role": "time_sources",
-          "sha256": "6082057c520337da9b7ede9db1cacc3a4dcde6b2e2b9873f594ae4bf269186ea",
-          "state": "PARSED"
+          "sha256": null,
+          "state": null
         },
-        "window": {
-          "end": "2030-04-30T23:59:59Z",
-          "start": "2030-04-01T00:00:00Z"
-        }
+        "skip_justification": "NOT_DECLARED"
       },
       "execution_state": "NOT_APPLICABLE",
       "failure_modes": [],
       "inputs": [],
-      "invocation_id": "inv-f8399be1c761",
+      "invocation_id": "inv-74ba568d795e",
       "kind": "time_source",
-      "reason": "INSUFFICIENT_EVIDENCE",
+      "reason": "OUT_OF_SCOPE",
       "required": true,
       "rows_examined": 0,
       "verdict": "ABSTAIN",
@@ -227,6 +290,88 @@
   "checks_passed": 3,
   "claim_tallies": [],
   "completed_at": "2026-09-26T00:00:00Z",
+  "controls": {
+    "canary": {
+      "holds": true,
+      "must_fail": {
+        "invocation_id": "inv-cbe68cc29395",
+        "reason": "SOURCE_MISMATCH",
+        "verdict": "FAIL"
+      },
+      "must_pass": {
+        "invocation_id": "inv-7747753a5bb2",
+        "reason": "VERIFIED",
+        "verdict": "PASS"
+      }
+    },
+    "claim_join": null,
+    "comparator_self_test": {
+      "holds": true,
+      "invocation_id": "inv-3d0832f5c49e",
+      "pairs": [
+        {
+          "actual": "DISAGREES",
+          "claim": "0.15",
+          "expected": "DISAGREES",
+          "stored": "0.14"
+        },
+        {
+          "actual": "EXACT",
+          "claim": "12.4",
+          "expected": "EXACT",
+          "stored": "12.40"
+        },
+        {
+          "actual": "AGREES_AT_STATED_PRECISION",
+          "claim": "0.1",
+          "expected": "AGREES_AT_STATED_PRECISION",
+          "stored": "0.14"
+        }
+      ]
+    },
+    "falsifiers": {
+      "NO_CASE": [],
+      "NO_GENERATOR": [],
+      "REFUTED": [],
+      "UNWITNESSED": [],
+      "WITNESSED": [
+        "columns",
+        "duplicates",
+        "rows"
+      ],
+      "invocations": 3
+    },
+    "min_discrimination": null,
+    "pins": {
+      "changed": [],
+      "holds": true,
+      "pinned": 3,
+      "writes": []
+    },
+    "plan": {
+      "checks_planned": 4,
+      "entry_sha256": "0f55a15982231911265e51771c31fc3a7f1aac764d0b541192497d446098d299",
+      "inputs_planned": 1,
+      "manifest_sha256": "0fbe1336c0ce43a210b7cc9eac5c1b60068a8cfaac5473b70b300a0658a2aa75",
+      "pins": 3
+    },
+    "verdict_transitions": [
+      {
+        "after": "PASS",
+        "before": "NONE",
+        "reason": "VERIFIED",
+        "source": "check:columns",
+        "step": 1
+      },
+      {
+        "after": "ABSTAIN",
+        "before": "PASS",
+        "reason": "OUT_OF_SCOPE",
+        "source": "check:time_window",
+        "step": 4
+      }
+    ]
+  },
   "counters": {
     "checks_abstained": 1,
     "checks_declared": 4,
@@ -234,9 +379,12 @@
     "checks_executed": 3,
     "checks_expected": 4,
     "checks_failed": 0,
+    "checks_justified": 1,
     "checks_not_applicable": 1,
     "checks_passed": 3,
+    "checks_shortfall": 1,
     "checks_skipped": 0,
+    "control_invocations": 6,
     "expected_inputs": 1,
     "inputs_discovered": 1,
     "inputs_examined": 1,
@@ -307,43 +455,28 @@
     ]
   },
   "disclaimer": "A receipt supports integrity, provenance, and replayability. It does not establish scientific truth, accuracy, safety, or fitness for use.",
-  "documents": [
-    {
-      "bytes": 153,
-      "diagnostic": null,
-      "path": "fixtures/time/events.json",
-      "roles": [
-        "time_sources"
-      ],
-      "sha256": "6082057c520337da9b7ede9db1cacc3a4dcde6b2e2b9873f594ae4bf269186ea",
-      "state": "PARSED"
-    }
-  ],
+  "documents": [],
   "evidence_boundary": {
-    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 8 entries; ledger head 011c9976aa33ad146a0973a7f5ba710707b7725d0a801b11d390519f2a7bf377; evidence manifest 2143cd8d0c05e86d2d635aedb79a226bf8ed756b696cfe6383a48993cc4436c3.",
-    "performance": "Run status ABSTAIN (INSUFFICIENT_EVIDENCE) from 4 check result(s): 3 PASS, 0 FAIL, 1 ABSTAIN, 0 ERROR; 9 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
+    "integrity": "SHA-256 recorded for 1 of 1 declared input(s); execution ledger sealed at 21 entries; ledger head f44a63f353e99e3569e2f3b8e0247b77403d65ca9716cf156d3c04b7a1a1efc1; evidence manifest 5a40778b2f979588271ca74afaad017615a23e04baedd1031f2ca70691151742.",
+    "performance": "CHECKER: falsifier witnesses 3 WITNESSED, 0 REFUTED, 0 UNWITNESSED, 0 NO_CASE, 0 NO_GENERATOR (3 falsifier invocation(s)); must-fail/must-pass canary held; comparator self-test held. RUN: Run status ABSTAIN (OUT_OF_SCOPE) from 4 check result(s): 3 PASS, 0 FAIL, 1 ABSTAIN, 0 ERROR; 15 applicable invariant(s), 0 violated. This describes how the declared checks behaved on the declared inputs only.",
     "scientific_validity": "NOT ESTABLISHED"
   },
-  "evidence_manifest_sha256": "2143cd8d0c05e86d2d635aedb79a226bf8ed756b696cfe6383a48993cc4436c3",
+  "evidence_manifest_sha256": "5a40778b2f979588271ca74afaad017615a23e04baedd1031f2ca70691151742",
   "exit_code": 2,
   "expected_inputs": 1,
-  "failure_modes": [
-    "PARTIAL_EXECUTION"
-  ],
+  "failure_modes": [],
   "findings": [
     {
-      "detail": "time_source NOT_APPLICABLE ABSTAIN: the time sources list no events",
+      "detail": "time_source NOT_APPLICABLE ABSTAIN: the manifest declares no time_sources",
       "failure_modes": [],
-      "reason": "INSUFFICIENT_EVIDENCE",
+      "reason": "OUT_OF_SCOPE",
       "source": "check:time_window",
       "status": "ABSTAIN"
     },
     {
-      "detail": "checks_executed=3 of checks_expected=4",
-      "failure_modes": [
-        "PARTIAL_EXECUTION"
-      ],
-      "reason": "PARTIAL_EXECUTION",
+      "detail": "required check 'time_window' did not execute: it was NOT_APPLICABLE, justified as NOT_DECLARED (checks_executed=3 of checks_expected=4)",
+      "failure_modes": [],
+      "reason": "OUT_OF_SCOPE",
       "source": "contract:checks_executed",
       "status": "ABSTAIN"
     }
@@ -353,13 +486,25 @@
   "invariants": [
     {
       "applicable": true,
-      "detail": "check results marked CHECKED: 3 claimed <= 4 invoked",
+      "detail": "the must-fail canary failed and its known-good twin passed",
+      "holds": true,
+      "name": "canary_controls_hold"
+    },
+    {
+      "applicable": true,
+      "detail": "check results marked CHECKED: 3 claimed <= 10 invoked",
       "holds": true,
       "name": "checked_claims_le_invocations"
     },
     {
       "applicable": true,
-      "detail": "4 invocation(s) each reached exactly one terminal result",
+      "detail": "3 known pairs compared as expected",
+      "holds": true,
+      "name": "comparator_self_test"
+    },
+    {
+      "applicable": true,
+      "detail": "10 invocation(s) each reached exactly one terminal result",
       "holds": true,
       "name": "every_invocation_has_terminal_result"
     },
@@ -377,13 +522,19 @@
     },
     {
       "applicable": true,
+      "detail": "3 pinned file(s) unchanged and never written during the run",
+      "holds": true,
+      "name": "harness_pins_intact"
+    },
+    {
+      "applicable": true,
       "detail": "2 INDEPENDENT closure(s) hold",
       "holds": true,
       "name": "input_accounting_closure"
     },
     {
       "applicable": true,
-      "detail": "8 entries chain to head 011c9976aa33ad146a0973a7f5ba710707b7725d0a801b11d390519f2a7bf377",
+      "detail": "21 entries chain to head f44a63f353e99e3569e2f3b8e0247b77403d65ca9716cf156d3c04b7a1a1efc1",
       "holds": true,
       "name": "ledger_chain_intact"
     },
@@ -401,24 +552,42 @@
     },
     {
       "applicable": true,
-      "detail": "rows_examined=12",
+      "detail": "rows_examined=4 (distinct data rows of declared inputs)",
       "holds": true,
       "name": "pass_requires_examined_rows"
+    },
+    {
+      "applicable": true,
+      "detail": "3 PASS result(s) each carry a ledger-backed falsifier witness",
+      "holds": true,
+      "name": "pass_requires_falsifier_witness"
     },
     {
       "applicable": true,
       "detail": "every PASS carries non-empty, hashed evidence",
       "holds": true,
       "name": "pass_requires_nonempty_evidence"
+    },
+    {
+      "applicable": true,
+      "detail": "7 planned item(s) each ran exactly once",
+      "holds": true,
+      "name": "plan_closure"
+    },
+    {
+      "applicable": true,
+      "detail": "the recorded PLAN equals the plan the manifest implies",
+      "holds": true,
+      "name": "plan_matches_manifest"
     }
   ],
-  "ledger_head_sha256": "011c9976aa33ad146a0973a7f5ba710707b7725d0a801b11d390519f2a7bf377",
-  "ledger_length": 8,
+  "ledger_head_sha256": "f44a63f353e99e3569e2f3b8e0247b77403d65ca9716cf156d3c04b7a1a1efc1",
+  "ledger_length": 21,
   "manifest": {
     "file": "manifest.json",
     "issues": [],
     "run_label": "corpus-coverage-debt-synthetic-01",
-    "sha256": "663d7597f7eef6d2e266300bd51bfa69e4777a98e1e15b88c60599c4a128d9b9"
+    "sha256": "0fbe1336c0ce43a210b7cc9eac5c1b60068a8cfaac5473b70b300a0658a2aa75"
   },
   "network": {
     "live": false,
@@ -426,18 +595,17 @@
     "timeout_seconds": 10,
     "user_agent": "scientific-evidence-gate/0.1.0 (local evidence gate)"
   },
-  "reason": "INSUFFICIENT_EVIDENCE",
+  "reason": "OUT_OF_SCOPE",
   "reasons": [
-    "INSUFFICIENT_EVIDENCE",
-    "PARTIAL_EXECUTION"
+    "OUT_OF_SCOPE"
   ],
   "receipt": {
-    "content_sha256": "d965cfd4520220f68c94526db58ba3f0fc0127f438e3aeb81d5e43f017af0a00",
+    "content_sha256": "1ae7724d7b65776db7fcc106531647e3d7dc69c780a77506481359f0ddf732c2",
     "key_id": null,
     "signature_state": "UNSIGNED"
   },
   "rows_examined": 4,
-  "run_id": "run-c94566eed728c723",
+  "run_id": "run-739f4765bf370c62",
   "schema": "science-gate-run/v1",
   "started_at": "2026-09-26T00:00:00Z",
   "status": "ABSTAIN",

@@ -6,7 +6,7 @@
 
 No sensitivity figure was produced because the verifier failed its accepting baseline.
 
-Report `mut-3f40cabadd6f265e` for manifest `manifest.json` (sha256 `920bd0fac69904844b728031fc5c4404f2507a27c974c2636555a912ca439d01`), generated 2026-09-26T00:00:00Z.
+Report `mut-f2502c7c53bea537` for manifest `manifest.json` (sha256 `920bd0fac69904844b728031fc5c4404f2507a27c974c2636555a912ca439d01`), generated 2026-09-26T00:00:00Z. Sampled: no. Reused: no.
 
 ## BASELINE
 
@@ -18,3 +18,5 @@ The untouched copy verified as **FAIL** (SOURCE_MISMATCH), run `run-debea99fd49b
 - Mutation testing measures how this verifier reacted to the injected defects on this one evidence tree. Defects of other kinds, or the same defects in other trees, may still go undetected.
 - A detected mutation shows that a detector fired, not that the evidence it guards is scientifically valid. Scientific validity is not established by this tool.
 - Every verify ran offline with a network opener that refuses all requests; live citation lookups were not exercised.
+- Activation is judged from file opens seen by one in-process audit hook. Reads made by a subprocess or by a C extension that bypasses Python's audited file APIs are invisible to it.
+- Nothing was sampled and nothing was reused: every applicable operator was generated, applied and judged afresh in this call.

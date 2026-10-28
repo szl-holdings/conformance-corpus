@@ -1,18 +1,22 @@
-# environment.lock: the environment in which expected-results.json was confirmed
-# SYNTHETIC entry. Passing shows conformance on declared fixtures only; it does not show
-# scientific validity or fitness for use.
-python_implementation = "CPython"
-python_version = "3.11.9"
-platform = "win32 (Windows 11 Home 10.0.26200)"
-science_gate_distribution = "scientific-evidence-gate"
-science_gate_version = "0.1.0"
-science_gate_git_commit = "7ec36c6bb13494dab3fdc15a2c5bf2b0f0ac1926"
-science_gate_worktree_clean_at_run = true
-science_gate_src_tree_sha256 = "d59ffc0c4e038d1bea81e1184e599d0c596ed25f6b51264299e84810dd97a9ef"
-science_gate_src_tree_sha256_method = "sha256 of the output of: cd src && find science_gate -name '*.py' | sort | xargs sha256sum"
-science_gate_runtime_dependencies = "none (standard library only)"
-SCIENCE_GATE_FIXED_TIME = "2026-09-26T00:00:00Z"
-PYTHONDONTWRITEBYTECODE = "1"
-SCIENCE_GATE_HMAC_KEY_FILE = "unset (receipts are UNSIGNED)"
-network = "none (no --live; citations not used)"
-recorded = "2026-09-29"
+# environment.lock: the environment in which this entry's evaluation/ records and receipts/receipt.json were produced.
+# entry: reviewer-protocol-drift-synthetic-01 (SYNTHETIC). Reproducing them shows conformance on declared fixtures only; it does not show
+# scientific validity or fitness for any use. Format: key=value, one per line, the same keys in every entry.
+lock_format=conformance-corpus-environment-lock/v1
+recorded=2026-10-28 (wall-clock date; tool time fixed by SCIENCE_GATE_FIXED_TIME)
+python_implementation=CPython
+python_version=3.11.9
+platform=Windows-10-10.0.26200-SP0 (as Python reports it; build 26200 is Windows 11)
+science_gate_distribution=scientific-evidence-gate
+science_gate_version=0.1.0
+science_gate_git_commit=e563fd301d71ea409ad9884a571fe1df8f23a367
+science_gate_worktree=clean (git status --porcelain was empty before and after every run)
+science_gate_src_tree_sha256=2dc76fa869bd830485c733aee1b80b8934c032ba1e831ad327787b1928513baa
+science_gate_src_tree_sha256_after_runs=2dc76fa869bd830485c733aee1b80b8934c032ba1e831ad327787b1928513baa
+science_gate_src_tree_files=32
+science_gate_src_tree_sha256_method=sha256 over, for each src/science_gate/**/*.py sorted by path, the UTF-8 path relative to src/science_gate, a NUL byte, and the 32-byte sha256 of the file (the digest tests/test_corpus.py prints)
+science_gate_runtime_dependencies=none (standard library only)
+SCIENCE_GATE_FIXED_TIME=2026-09-26T00:00:00Z
+SCIENCE_GATE_HMAC_KEY_FILE=unset (receipts UNSIGNED)
+PYTHONDONTWRITEBYTECODE=1
+PYTHONHASHSEED=unset for the recorded run; a second run with 4242 was compared byte for byte
+network=none (offline; no --live)
