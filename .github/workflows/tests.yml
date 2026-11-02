@@ -31,10 +31,19 @@ jobs:
         with:
           path: corpus
           persist-credentials: false
+      - name: Require the separately scoped verifier read credential
+        env:
+          SCIENCE_GATE_READ_TOKEN: ${{ secrets.SCIENCE_GATE_READ_TOKEN }}
+        run: |
+          if [ -z "$SCIENCE_GATE_READ_TOKEN" ]; then
+            echo "::error::SCIENCE_GATE_READ_TOKEN is required: a repository-scoped token cannot read the private verifier. Configure a credential with contents:read on scientific-evidence-gate only."
+            exit 1
+          fi
       - name: Checkout the reviewed science-gate source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: szl-holdings/scientific-evidence-gate
+          token: ${{ secrets.SCIENCE_GATE_READ_TOKEN }}
           ref: 6b0afb1a75517e95594295b2c991c71f26c7866f
           path: scientific-evidence-gate
           # The existing suite validates historical environment.lock commits.

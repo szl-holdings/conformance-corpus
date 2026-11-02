@@ -48,6 +48,14 @@ GitHub Actions runs the same suite on Python 3.11 and 3.13 for pull requests
 and pushes to `main`. It checks out science-gate at the reviewed commit
 `6b0afb1a75517e95594295b2c991c71f26c7866f`, with history so the existing
 `environment.lock` provenance assertions can resolve recorded commits.
+The verifier is private. The workflow requires a repository secret named
+`SCIENCE_GATE_READ_TOKEN`, bound to a credential with only `contents: read`
+on `szl-holdings/scientific-evidence-gate`. Its owner must provision and rotate
+that credential; this workflow does not create it or widen the default token.
+The credential is used only by the pinned verifier checkout, with credential
+persistence disabled. A missing credential fails explicitly before the cross-
+repository checkout. Fork pull requests without the secret remain blocked.
+
 Changing that source pin requires reviewing the resulting fixture behavior;
 it does not rewrite the entries' intended outcomes or historical locks.
 
