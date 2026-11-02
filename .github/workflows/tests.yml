@@ -59,7 +59,7 @@ jobs:
           python -B - <<'PY'
           import sys
           import unittest
-          
+
           suite = unittest.defaultTestLoader.discover("tests")
           if suite.countTestCases() == 0:
               raise SystemExit("No tests discovered; refusing an empty CI pass")
