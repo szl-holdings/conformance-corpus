@@ -42,6 +42,21 @@ Useful filters (`-k` matches part of a test name):
 If the science-gate source is not found, every run-based test **fails**. A
 missing tool is never reported as a skip or a pass.
 
+## Automated checks
+
+GitHub Actions runs the same suite on Python 3.11 and 3.13 for pull requests
+and pushes to `main`. It checks out science-gate at the reviewed commit
+`6b0afb1a75517e95594295b2c991c71f26c7866f`, with history so the existing
+`environment.lock` provenance assertions can resolve recorded commits.
+Changing that source pin requires reviewing the resulting fixture behavior;
+it does not rewrite the entries' intended outcomes or historical locks.
+
+Empty discovery and a run with no completed passing tests fail. Documented
+`expectedFailure` results remain visible and are counted separately from
+completed passing tests. A green workflow therefore does not mean every known
+tool gap is resolved. An unexpected success still fails so the documented gap
+can be reviewed instead of silently disappearing.
+
 ## What is checked
 
 **Corpus level:**
