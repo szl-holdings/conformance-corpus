@@ -51,10 +51,11 @@ the checks in full.
   refused.
 - **A run that changes its entry.** `test_29_run_leaves_the_entry_unchanged`
   fails if a run adds, removes or changes any file in the entry directory.
-- **Receipt keys.** Every `SCIENCE_GATE_*` variable is removed from the run
-  environment, so no HMAC key is used, and
-  `test_receipts_are_unsigned_and_not_called_proof` requires every committed
-  `receipts/receipt.json` to be UNSIGNED with a null signature.
+- **Receipt keys.** The run environment drops every `SCIENCE_GATE_*`
+  variable the caller set and adds only `SCIENCE_GATE_FIXED_TIME`, so no HMAC
+  key is used, and `test_receipts_are_unsigned_and_not_called_proof` requires
+  every committed `receipts/receipt.json` to be UNSIGNED with a null
+  signature.
 
 ## What they do not guard against
 
