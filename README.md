@@ -380,3 +380,13 @@ Two things remain that were not part of the approved edits:
 partial-execution's documented gaps (reason, failure_modes, must_mention
 PARTIAL_EXECUTION). There were 0 failures, 0 errors and 0 unexpected
 successes, and 11 of 12 entries reproduce every asserted field.
+
+## Relation to the estate
+
+This repository is part of the [SZL Holdings](https://github.com/szl-holdings)
+GitHub estate. It is private, and the corpus has not been published (see
+Status above). It exercises
+[scientific-evidence-gate](https://github.com/szl-holdings/scientific-evidence-gate),
+which is also private. The estate's public models, datasets and Spaces are
+under the [SZLHOLDINGS](https://huggingface.co/SZLHOLDINGS) Hugging Face
+organization. To report a security problem, see [SECURITY.md](SECURITY.md).
