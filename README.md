@@ -380,3 +380,7 @@ Two things remain that were not part of the approved edits:
 partial-execution's documented gaps (reason, failure_modes, must_mention
 PARTIAL_EXECUTION). There were 0 failures, 0 errors and 0 unexpected
 successes, and 11 of 12 entries reproduce every asserted field.
+
+## Relation to the estate
+
+Part of the [SZL Holdings](https://github.com/szl-holdings) GitHub estate; models, datasets and Spaces are published under the [SZLHOLDINGS](https://huggingface.co/SZLHOLDINGS) Hugging Face org.
