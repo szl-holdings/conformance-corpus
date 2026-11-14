@@ -1,0 +1,74 @@
+name: Corpus conformance
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: declared fixtures (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      SCIENCE_GATE_SRC: ${{ github.workspace }}/scientific-evidence-gate/src
+    defaults:
+      run:
+        working-directory: corpus
+    steps:
+      - name: Checkout the corpus under review
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: corpus
+          persist-credentials: false
+      - name: Require the separately scoped verifier read credential
+        env:
+          SCIENCE_GATE_READ_TOKEN: ${{ secrets.SCIENCE_GATE_READ_TOKEN }}
+        run: |
+          if [ -z "$SCIENCE_GATE_READ_TOKEN" ]; then
+            echo "::error::SCIENCE_GATE_READ_TOKEN is required: a repository-scoped token cannot read the private verifier. Configure a credential with contents:read on scientific-evidence-gate only."
+            exit 1
+          fi
+      - name: Checkout the reviewed science-gate source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: szl-holdings/scientific-evidence-gate
+          token: ${{ secrets.SCIENCE_GATE_READ_TOKEN }}
+          ref: 6b0afb1a75517e95594295b2c991c71f26c7866f
+          path: scientific-evidence-gate
+          # The existing suite validates historical environment.lock commits.
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify the source pin
+        run: test "$(git -C ../scientific-evidence-gate rev-parse HEAD)" = 6b0afb1a75517e95594295b2c991c71f26c7866f
+      - name: Run the existing corpus assertions and report documented gaps
+        run: |
+          python -B - <<'PY'
+          import sys
+          import unittest
+
+          suite = unittest.defaultTestLoader.discover("tests")
+          if suite.countTestCases() == 0:
+              raise SystemExit("No tests discovered; refusing an empty CI pass")
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          passed = (result.testsRun - len(result.failures) - len(result.errors)
+                    - len(result.skipped) - len(result.expectedFailures)
+                    - len(result.unexpectedSuccesses))
+          print(f"Completed passing tests: {passed}; skipped: {len(result.skipped)}; "
+                f"documented expected failures: {len(result.expectedFailures)}")
+          if not result.wasSuccessful() or passed <= 0:
+              sys.exit(1)
+          PY
