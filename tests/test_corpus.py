@@ -27,7 +27,7 @@ has the full layout.
 ``CorpusHygieneTests`` check the publication rules on every corpus file:
 no local home path, local user name or email address; no build junk; LF line
 endings; DOIs under the 10.5555 test prefix only; the corpus is never called
-a benchmark; no license is chosen; no template placeholder is left in an
+a benchmark; the repo license is Apache-2.0 (owner sign-off 2026-11-25) and entry sources stay NOASSERTION; no template placeholder is left in an
 entry; every receipt is UNSIGNED and says it does not establish scientific
 validity; every ``environment.lock`` names the science-gate version and a
 commit that exists in the science-gate repository (``git cat-file -t``).
@@ -841,9 +841,9 @@ class CorpusHygieneTests(unittest.TestCase):
                     affirmative.append(f"{rel}:{number}")
         self.assertEqual(affirmative, [], "a line calls the corpus a benchmark without negating it")
 
-    def test_no_license_is_chosen(self) -> None:
+    def test_repo_license_is_chosen(self) -> None:
         license_files = [rel for rel, _ in self.files if LICENSE_FILE_RE.match(rel.rsplit("/", 1)[-1])]
-        self.assertEqual(license_files, [], "a license file exists, but no license has been chosen")
+        self.assertEqual(license_files, ["LICENSE"], "the repo must carry exactly the Apache-2.0 LICENSE (owner sign-off 2026-11-25)")
         for entry_dir in list_dirs(ENTRIES_DIR):
             with self.subTest(entry=entry_dir.name):
                 licenses = [item.get("license") for item in load_json(entry_dir / "entry.json").get("source_licenses", [])]
